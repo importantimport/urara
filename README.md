@@ -1,3 +1,11 @@
+<div align="center">
+    <br>
+    <a href="https://github.com/importantimport/urara">
+        <img src="https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png" alt="urara" width="192px" />
+    </a>
+    <br>
+</div>
+
 # Urara [WIP]
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fimportantimport%2Furara?ref=badge_shield)
 
