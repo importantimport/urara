@@ -1,0 +1,153 @@
+/* global */
+
+html {
+  scroll-behavior: smooth;
+  @apply !bg-base-200 overflow-x-hidden overflow-y-scroll break-words;
+}
+
+::selection {
+  @apply bg-primary text-primary-content;
+}
+
+/* prose */
+
+.prose blockquote {
+  @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
+}
+
+.prose p {
+  @apply mb-3;
+}
+
+.prose a {
+  @apply text-secondary transition-all ease-in-out underline underline-transparent;
+}
+
+.prose a:hover {
+  @apply text-secondary-focus underline-secondary-focus;
+}
+
+.prose h1 {
+  @apply text-3xl font-semibold;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold;
+}
+
+.prose h4 {
+  @apply text-base font-semibold;
+}
+
+.prose h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold mb-4 mt-6;
+}
+
+.prose .shiki {
+  @apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
+}
+
+.prose .shiki::before {
+  @apply -ml-5;
+}
+
+.prose .shiki code {
+  @apply children:pr-5;
+}
+
+.prose dl, dd {
+  @apply text-base pl-8 mb-4;
+}
+
+.prose ol {
+  @apply text-base pl-8 list-decimal mb-4;
+}
+
+.prose ul {
+  @apply text-base pl-8 list-disc mb-4;
+}
+
+.prose kbd {
+  @apply kbd;
+}
+
+.prose hr {
+  @apply border-none divider;
+}
+
+.prose input {
+  @apply checkbox checkbox-xs;
+}
+
+/* modify */
+
+.card {
+  @apply bg-base-100;
+}
+
+.card-body {
+  @apply <md:p-4;
+}
+
+#footer a {
+  @apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
+}
+
+/* extend */
+
+.spoiler {
+  @apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
+}
+
+/* fix */
+
+.btn-primary:hover {
+  @apply bg-primary-focus border-primary-focus;
+}
+
+.btn-secondary:hover {
+  @apply bg-secondary-focus border-secondary-focus;
+}
+
+.btn-accent:hover {
+  @apply bg-accent-focus border-accent-focus;
+}
+
+.btn-ghost:hover,
+.btn-link:hover {
+  @apply bg-base-content bg-opacity-20 border-opacity-0;
+}
+
+.collapse {
+  @apply relative grid overflow-hidden;
+}
+
+.collapse-title,
+.collapse > input[type='checkbox'] {
+  @apply p-4 md:px-8;
+}
+
+.collapse-content,
+.collapse-title,
+.collapse > input[type='checkbox'] {
+  @apply row-start-1 col-start-1;
+}
+
+.collapse > input[type='checkbox'] {
+  @apply appearance-none opacity-0;
+}
+
+.collapse-content {
+  @apply row-start-2 overflow-hidden;
+}
+
+.collapse-open .collapse-content,
+.collapse:focus:not(.collapse-close) .collapse-content,
+.collapse:not(.collapse-close) input[type='checkbox']:checked ~ .collapse-content {
+  @apply max-h-9000px;
+}
