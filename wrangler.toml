@@ -1,9 +1,0 @@
-name = "kwaadev"
-type = "javascript"
-usage_model = ''
-compatibility_flags = []
-site = {bucket = "./build",entry-point = "./workers-site"}
-build = {command = "",upload = {format = "service-worker"}}
-compatibility_date = "2021-10-17"
-workers_dev = false
-route = "kwaa.dev/*"
