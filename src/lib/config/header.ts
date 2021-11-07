@@ -1,5 +1,5 @@
 interface headerConfig {
-  nav?: {[href: string]: string}
+  nav?: { [href: string]: string }
   html?: string
 }
 

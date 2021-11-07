@@ -60,7 +60,8 @@ h6 {
   @apply children:pr-5;
 }
 
-.prose dl, dd {
+.prose dl,
+dd {
   @apply text-base pl-8 mb-4;
 }
 

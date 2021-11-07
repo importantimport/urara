@@ -21,7 +21,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
     <title type="html"><![CDATA[${post.title}]]></title>
     <link href="${site.url + post.path}" />
     <id>${site.url + post.path}</id>
-    <published>${new Date(post.date ??= '2021-11-01').toJSON()}</published>
+    <published>${new Date((post.date ??= '2021-11-01')).toJSON()}</published>
     <updated>${new Date(post.lastmod ?? post.date).toJSON()}</updated>${
         post.descr ? `\n    <summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''
       }

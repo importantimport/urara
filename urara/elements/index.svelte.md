@@ -94,9 +94,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 | Table Header 1 | Table Header 2 | Table Header 3 |
 | :------------- | :------------: | -------------: |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
+| Division 1     |   Division 2   |     Division 3 |
+| Division 1     |   Division 2   |     Division 3 |
+| Division 1     |   Division 2   |     Division 3 |
 
 [scrollToTop](#contents)
 
@@ -125,7 +125,7 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
         .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
       ...module?.metadata
     }))
-    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare((a.date ?? '1989-06-04')))
+    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
     .forEach(post => {
       post.priority === undefined
         ? posts[500].push(post)
@@ -153,7 +153,7 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
 
 リバースカードオープン、エネミーコントローラー！
 
-ライフを1000払い、コマンド入力、<kbd>←</kbd> <kbd>→</kbd> <kbd>A</kbd> <kbd>B</kbd>！
+ライフを 1000 払い、コマンド入力、<kbd>←</kbd> <kbd>→</kbd> <kbd>A</kbd> <kbd>B</kbd>！
 
 このコマンドにより、全てのアニヲタを破壊する！
 
