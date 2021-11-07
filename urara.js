@@ -3,142 +3,152 @@ import * as path from 'path'
 import chokidar from 'chokidar'
 import chalk from 'chalk'
 
-const output = (color, msg, filepath) =>
+const config = {
+  extensions: ['svelte', 'svx', 'md', 'js', 'ts'],
+  rename: ['404'],
+  catch: ['ENOENT', 'EEXIST']
+}
+
+const check = ext => (config.extensions.includes(ext) ? 'src/routes' : 'static')
+
+const log = (color, msg, dest) =>
   console.log(
-    `${chalk.dim(new Date().toLocaleTimeString())} ${chalk.magenta.bold(`[urara]`)} ${chalk[color](msg)} ${
-      filepath ? chalk.dim(filepath) : chalk.dim('')
+    `${chalk.dim(new Date().toLocaleTimeString())} ${chalk.magentaBright.bold(`[urara]`)} ${chalk[color](msg)} ${
+      dest ? chalk.dim(dest) : ''
     }`
   )
 
-async function mkDir(dir) {
-  await fs.mkdir(dir, { recursive: true }).then(() => output('yellow', 'make dir', dir))
+const error = err => {
+  if (config.catch.includes(err.code)) {
+    console.log(
+      `${chalk.dim(new Date().toLocaleTimeString())} ${chalk.redBright.bold(`[urara]`)} ${chalk.red('error')} ${chalk.dim(
+        err.message
+      )}`
+    )
+  } else {
+    throw err
+  }
 }
 
-async function rmDir(dir) {
-  await fs.rm(dir, { recursive: true }).then(() => output('red', 'remove dir', dir))
+const cpFile = (src, stat) => {
+  const dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))
+  fs.copyFile(src, dest)
+    .then(log('green', `${stat ?? 'copy'} file`, dest))
+    .catch(error)
 }
 
-async function rm(dir) {
-  await fs.readdir(dir, { withFileTypes: true }).then(files => {
-    for (let file of files) {
-      if (file.isDirectory())
-        fs.rm(path.join(dir, file.name), { recursive: true }).then(() => output('red', 'remove dir', path.join(dir, file.name)))
-    }
-  })
+const rmFile = src => {
+  const dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))
+  fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
 }
 
-async function cp(dir) {
-  await fs.readdir(dir, { withFileTypes: true }).then(files => {
-    for (let file of files) {
+const cpDir = src =>
+  fs.readdir(src, { withFileTypes: true }).then(files =>
+    files.forEach(file => {
+      const dest = path.join(src, file.name)
+      file.isDirectory()
+        ? mkDir(dest).then(cpDir(dest))
+        : file.name.startsWith('.')
+        ? log('cyan', 'ignore file', dest)
+        : cpFile(dest)
+    })
+  )
+
+const mkDir = src =>
+  fs
+    .mkdir(path.join('src/routes', src.slice(6)), { recursive: true })
+    .then(
+      fs
+        .mkdir(path.join('static', src.slice(6)), { recursive: true })
+        .then(log('green', 'make dir', path.join('static', src.slice(6))))
+        .catch(error)
+    )
+    .then(log('green', 'make dir', path.join('src/routes', src.slice(6))))
+    .catch(error)
+
+const rmDir = src =>
+  fs
+    .rm(path.join('src/routes', src.slice(6)), { force: true, recursive: true })
+    .then(
+      fs
+        .rm(path.join('static', src.slice(6)), { force: true, recursive: true })
+        .then(log('yellow', 'remove dir', path.join('static', src.slice(6))))
+        .catch(error)
+    )
+    .then(log('yellow', 'remove dir', path.join('src/routes', src.slice(6))))
+    .catch(error)
+
+const build = async () => {
+  fs.mkdir('static').then(log('green', 'make dir', 'static'))
+  cpDir('urara').catch(error)
+}
+
+const clean = async () => {
+  fs.rm('static', { recursive: true }).then(log('yellow', 'remove dir', 'static')).catch(error)
+  fs.readdir('src/routes', { withFileTypes: true }).then(files =>
+    files.forEach(file => {
       if (file.isDirectory()) {
-        fs.mkdir(path.join(`src/routes`, dir.slice(6), file.name), { recursive: true }).then(() =>
-          output('yellow', 'make dir', path.join(`src/routes`, dir.slice(6), file.name))
-        )
-        fs.mkdir(path.join(`static`, dir.slice(6), file.name), { recursive: true }).then(() =>
-          output('yellow', 'make dir', path.join(`src/routes`, dir.slice(6), file.name))
-        )
-        cp(path.join(dir, file.name))
-      } else if (!/(^[.#]|(?:__|~)$)/.test(file.name)) {
-        ;/\.(svelte|svx|md|js|ts)$/i.test(file.name)
-          ? fs
-              .copyFile(path.join(dir, file.name), path.join(`src/routes/`, dir.slice(6), file.name))
-              .then(() => output('green', 'copy file', path.join(`src/routes`, dir.slice(6), file.name)))
-          : fs
-              .copyFile(path.join(dir, file.name), path.join(`static`, dir.slice(6), file.name))
-              .then(() => output('green', 'copy file', path.join(`static`, dir.slice(6), file.name)))
+        const dest = path.join('src/routes', file.name)
+        fs.rm(dest, { recursive: true }).then(log('yellow', 'remove dir', dest)).catch(error)
       }
-
-      // if (/\.(svx|md|js|ts)$/i.test(file.name)) {
-      // 	fs.copyFile(
-      // 		path.join(dir, file.name),
-      // 		path.join(`src/routes/`, dir.slice(6), file.name)
-      // 	).then(() => output('green', 'copy file', path.join(`src/routes`, dir.slice(6), file.name)))
-      // } else {
-      // 	fs.copyFile(path.join(dir, file.name), path.join(`static`, dir.slice(6), file.name)).then(
-      // 		() => output('green', 'copy file', path.join(`static`, dir.slice(6), file.name))
-      // 	)
-      // }
-    }
-  })
-}
-
-async function watchAdd(file, unlink = false) {
-  let pathAdd
-  ;/\.(svelte|svx|md|js|ts)$/i.test(path.parse(file).ext) ? (pathAdd = `src/routes`) : (pathAdd = `static`)
-  if (unlink === true)
-    fs.rm(path.join(pathAdd, file.slice(6))).then(() =>
-      fs
-        .copyFile(file, path.join(pathAdd, file.slice(6)))
-        .then(() => output('green', 'update file', path.join(pathAdd, file.slice(6))))
-    )
-  else
-    fs.copyFile(file, path.join(pathAdd, file.slice(6))).then(() =>
-      output('green', 'copy file', path.join(pathAdd, file.slice(6)))
-    )
-}
-
-async function watchAddDir(dir) {
-  fs.mkdir(path.join(`src/routes`, dir.slice(6)), { recursive: true })
-    .then(() =>
-      fs
-        .mkdir(path.join(`static`, dir.slice(6)), { recursive: true })
-        .then(() => output('yellow', 'make dir', path.join(`static`, dir.slice(6))))
-    )
-    .then(() => output('yellow', 'make dir', path.join(`src/routes`, dir.slice(6))))
-}
-
-async function watchUnlink(file) {
-  let pathAdd
-  ;/\.(svelte|svx|md|js|ts)$/i.test(path.parse(file).ext) ? (pathAdd = `src/routes`) : (pathAdd = `static`)
-  fs.rm(path.join(pathAdd, file.slice(6)), { foece: true, recursive: true }).then(() =>
-    output('red', 'remove file', path.join(pathAdd, file.slice(6)))
+    })
   )
 }
 
-async function watchUnlinkDir(dir) {
-  fs.rm(path.join(`src/routes`, dir.slice(6)), { force: true, recursive: true })
-    .then(() =>
-      fs
-        .rm(path.join(`static`, dir.slice(6)), { force: true, recursive: true })
-        .then(() => output('red', 'remove dir', path.join(`static`, dir.slice(6))))
-    )
-    .then(() => output('red', 'remove dir', path.join(`src/routes`, dir.slice(6))))
+const rename = async () => {
+  fs.readdir('build', { withFileTypes: true }).then(files =>
+    files.forEach(file => {
+      if (file.isDirectory() && config.rename.includes(file.name)) {
+        log('cyan', 'find', file.name)
+        const src = path.join('build', file.name, 'index.html')
+        const dest = path.join('build', file.name + '.html')
+        fs.copyFile(src, dest)
+          .then(log('green', 'copy file', dest))
+          .then(fs.rm(src).then(log('yellow', 'remove file', src)).catch(error))
+          .catch(error)
+      }
+    })
+  )
 }
 
 switch (process.argv[2]) {
   case 'watch':
     {
-      let watcher = chokidar.watch(`urara`, {
-        ignored: file => /(^[.#]|(?:__|~)$)/.test(path.basename(file))
+      let watcher = chokidar.watch('urara', {
+        ignored: file => path.basename(file).startsWith('.')
       })
       watcher
-        .on('add', file => watchAdd(file))
-        .on('change', file => watchAdd(file, true))
-        .on('unlink', file => watchUnlink(file))
-        .on('addDir', dir => watchAddDir(dir))
-        .on('unlinkDir', dir => watchUnlinkDir(dir))
-        .on('error', error => output('red', 'error', error))
-        .on('ready', () => output('cyan', 'initial scan complete. ready for changes'))
-      process.on('SIGINT', () => {
-        output('red', 'existing...')
-        rm(`src/routes`)
-        rm(`static`)
-        watcher.close()
-      })
+        .on('add', file => cpFile(file))
+        .on('change', file => cpFile(file, 'update'))
+        .on('unlink', file => rmFile(file))
+        .on('addDir', dir => mkDir(dir))
+        .on('unlinkDir', dir => rmDir(dir))
+        .on('error', error => log('red', 'error', error))
+        .on('ready', () => log('cyan', 'initial scan complete. ready for changes'))
+      process
+        .on('SIGINT', () => {
+          log('red', 'sigint')
+          clean()
+          watcher.close()
+        })
+        .on('SIGTERM', () => {
+          log('red', 'sigterm')
+        })
+        .on('exit', () => {
+          log('red', 'exit')
+        })
     }
     break
   case 'build':
-    mkDir(`static`)
-    cp(`urara`)
+    build().then(log('cyan', 'copy complete.'))
     break
   case 'clean':
-    rmDir(`static`)
-    rm(`src/routes`)
+    clean().then(log('cyan', 'clean complete.'))
     break
-  case '404':
-    console.log('TODO')
+  case 'rename':
+    rename().then(log('cyan', 'rename complete.'))
     break
   default:
-    output('red', 'error', 'invalid arguments')
+    log('red', 'error', 'invalid arguments')
     break
 }
