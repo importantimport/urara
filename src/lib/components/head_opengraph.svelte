@@ -22,8 +22,7 @@
     {#if post.cover}
       <meta
         property="og:image"
-        content={validate(Array.isArray(post.cover) ? post.cover[1] : post.cover, { absolute: true })}
-      />
+        content={validate(Array.isArray(post.cover) ? post.cover[1] : post.cover, { absolute: true })} />
       <meta name="twitter:card" content="summary_large_image" />
     {:else}
       <meta property="og:image" content={validate(icons.maskable512.src ?? icons.any512.src, { absolute: true })} />

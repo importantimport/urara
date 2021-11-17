@@ -17,7 +17,6 @@
       rel="apple-touch-icon"
       href={validate(icons.appleTouchIcon.src)}
       sizes={icons.appleTouchIcon.sizes}
-      type={icons.appleTouchIcon.type}
-    />
+      type={icons.appleTouchIcon.type} />
   {/if}
 </svelte:head>
