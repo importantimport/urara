@@ -79,7 +79,7 @@ const rmDir = src =>
     .catch(error)
 
 const build = async () => {
-  fs.mkdir('static').then(log('green', 'make dir', 'static'))
+  fs.mkdir('static').then(log('green', 'make dir', 'static')).catch(error)
   cpDir('urara').catch(error)
 }
 
@@ -129,10 +129,11 @@ switch (process.argv[2]) {
         .on('SIGINT', () => {
           log('red', 'sigint')
           clean()
-          watcher.close()
+          watcher?.close()
         })
         .on('SIGTERM', () => {
           log('red', 'sigterm')
+          watcher?.close()
         })
         .on('exit', () => {
           log('red', 'exit')
