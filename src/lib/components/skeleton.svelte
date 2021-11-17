@@ -6,8 +6,8 @@
 {#each { length: (count ??= 1) } as _, index}
   <div
     out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
-    class="transition-shadow ease-in-out card lg:card-side shadow-xl hover:shadow-2xl mb-8">
-    <div class="card-body">
+    class="card lg:card-side shadow-xl mb-8">
+    <div class="card-body <sm:p-4">
       <div class="card-title bg-base-300 animate-pulse rounded h-9" />
       <div class="bg-base-300 animate-pulse rounded h-6 w-24 mb-2" />
       <div class="bg-base-300 animate-pulse rounded h-5 mb-1" />
