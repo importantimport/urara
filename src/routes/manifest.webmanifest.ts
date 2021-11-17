@@ -6,5 +6,5 @@ export const get = (): EndpointOutput => ({
   headers: {
     'Content-Type': 'application/manifest+json; charset=utf-8'
   },
-  body: JSON.stringify(toSnake(manifest), null, 4)
+  body: JSON.stringify(Object.fromEntries(Object.entries(manifest).map(([k, v]) => [toSnake(k), v])), null, 4)
 })

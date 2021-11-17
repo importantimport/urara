@@ -1,7 +1,8 @@
-export const toSnake = (obj: Record<string, unknown>): Record<string, unknown> =>
-  Object.fromEntries(Object.entries(obj).map(([k, v]) => [k.replace(/([A-Z])/g, '_$1').toLowerCase(), v]))
+export const toSnake = (str: string): string =>
+  str.charAt(0).toLowerCase() +
+  str
+    .slice(1)
+    .replace(/([A-Z]+)/g, '_$1')
+    .toLowerCase()
 
-export const toCamel = (obj: Record<string, unknown>): Record<string, unknown> =>
-  Object.fromEntries(
-    Object.entries(obj).map(([k, v]) => [k.toLowerCase().replace(/([-_][a-z])/g, g => g.slice(-1).toUpperCase()), v])
-  )
+export const toCamel = (str: string): string => str.toLowerCase().replace(/([-_][a-z])/g, g => g.slice(-1).toUpperCase())
