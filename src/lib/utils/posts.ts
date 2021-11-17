@@ -3,7 +3,7 @@
  * @returns posts list with priority
  */
 export const genPosts = (): Record<number, Urara.Post[]> => {
-  let posts: Record<number, Urara.Post[]> = { 500: [] }
+  const posts: Record<number, Urara.Post[]> = { 500: [] }
   Object.entries(import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
     .map(([postpath, module]) => ({
       slug: postpath,
