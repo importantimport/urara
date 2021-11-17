@@ -9,37 +9,44 @@ html {
   @apply bg-primary text-primary-content;
 }
 
-/* prose */
+/* urara-prose */
 
-.prose blockquote {
+.urara-prose > blockquote {
   @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
 }
 
-.prose p {
+.urara-prose > p {
   @apply mb-3;
 }
 
-.prose a {
-  @apply text-secondary transition-all ease-in-out underline underline-transparent;
+.urara-prose > p > a, .urara-link {
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  @apply font-semibold bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
-.prose a:hover {
-  @apply text-secondary-focus underline-secondary-focus;
+.urara-prose > p > a:hover, .urara-link:hover {
+  background-size: 100% 100%;
+  @apply !text-secondary-content;
 }
 
-.prose h1 {
+.urara-prose > p strong a {
+  @apply font-bold;
+}
+
+.urara-prose > h1 {
   @apply text-3xl font-semibold;
 }
 
-.prose h2 {
+.urara-prose > h2 {
   @apply text-2xl font-semibold;
 }
 
-.prose h4 {
+.urara-prose > h4 {
   @apply text-base font-semibold;
 }
 
-.prose h1,
+.urara-prose > h1,
 h2,
 h3,
 h4,
@@ -48,61 +55,41 @@ h6 {
   @apply font-semibold mb-4 mt-6;
 }
 
-.prose .shiki {
+.urara-prose > .shiki {
   @apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
 }
 
-.prose .shiki::before {
+.urara-prose > .shiki::before {
   @apply -ml-5;
 }
 
-.prose .shiki code {
+.urara-prose > .shiki code {
   @apply children:pr-5;
 }
 
-.prose dl,
+.urara-prose > dl,
 dd {
   @apply text-base pl-8 mb-4;
 }
 
-.prose ol {
+.urara-prose > ol {
   @apply text-base pl-8 list-decimal mb-4;
 }
 
-.prose ul {
+.urara-prose > ul {
   @apply text-base pl-8 list-disc mb-4;
 }
 
-.prose kbd {
+.urara-prose kbd {
   @apply kbd;
 }
 
-.prose hr {
+.urara-prose hr {
   @apply border-none divider;
 }
 
-.prose input {
+.urara-prose input {
   @apply checkbox checkbox-xs;
-}
-
-/* modify */
-
-.card {
-  @apply bg-base-100;
-}
-
-.card-body {
-  @apply <md:p-4;
-}
-
-#footer a {
-  @apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
-}
-
-/* extend */
-
-.spoiler {
-  @apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
 }
 
 /* fix */
@@ -152,3 +139,21 @@ dd {
 .collapse:not(.collapse-close) input[type='checkbox']:checked ~ .collapse-content {
   @apply max-h-9000px;
 }
+
+/* modify */
+
+#footer a {
+  @apply transition-all ease-in-out text-base-content font-semibold underline underline-2 underline-transparent opacity-75 hover:(opacity-100 text-secondary underline-secondary);
+}
+
+/* extend */
+
+.urara-card-shadow {
+  @apply shadow-xl transition-shadow ease-in-out hover:shadow-2xl;
+}
+
+.spoiler {
+  @apply transition-colors ease-in-out delay-500 duration-500 bg-base-content hover:bg-transparent focus:bg-transparent;
+}
+
+/* your code here */

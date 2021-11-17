@@ -5,7 +5,7 @@
   export { className as class }
 </script>
 
-<footer id="footer" class="{className} p-10 footer bg-base-300 text-base-content footer-center rounded-box">
+<footer id="footer" class="{className} footer footer-center bg-base-300 text-base-content rounded-box p-10">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
@@ -26,7 +26,7 @@
       /
       <a rel="noopener external" target="_blank" href="https://github.com/pngwn/mdsvex">MDSveX</a>
       /
-      <a rel="noopener external" target="_blank" href="https://github.com/importantimport/urara">Urara</a>
+      <a rel="noopener external" target="_blank" class="urara-link" href="https://github.com/importantimport/urara">Urara</a>
     </p>
     {#if footerConfig.html}
       {@html `${footerConfig.html}`}

@@ -22,6 +22,17 @@
     <link rel="canonical" href={site.url} />
   {/if}
   <slot />
+  <script>
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+      document.documentElement.setAttribute(
+        'data-theme',
+        window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      )
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light')
+      })
+    }
+  </script>
 </svelte:head>
 
 <Icon />

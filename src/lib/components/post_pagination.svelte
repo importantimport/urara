@@ -4,9 +4,9 @@
 </script>
 
 <nav
-  class="card flex flex-col md:flex-row flex-warp justify-evenly transition-shadow ease-in-out duration-250 shadow-xl hover:shadow-2xl mb-8">
+  class="card bg-base-100 urara-card-shadow flex flex-col md:flex-row flex-warp justify-evenly mb-8">
   {#if next && (!next.priority || (next.priority[1] ?? next.priority) > 0)}
-    <a href={next.path} class="flex-1 card-body group">
+    <a href={next.path} class="flex-1 card-body <sm:p-4 group">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 stroke-current opacity-50 group-hover:(stroke-primary opacity-100) mr-auto mb-2"
@@ -24,7 +24,7 @@
     {/if}
   {/if}
   {#if prev && (!prev.priority || (prev.priority[1] ?? prev.priority) > 0)}
-    <a href={prev.path} class="flex-1 card-body group">
+    <a href={prev.path} class="flex-1 card-body <sm:p-4 group">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 stroke-current opacity-50 group-hover:(stroke-primary opacity-100) ml-auto mb-2"

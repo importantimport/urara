@@ -44,14 +44,14 @@
 <Head {post} />
 
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  <div class="card shadow-xl mb-8">
-    <div class="card-body">
+  <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card-body <sm:p-4">
       <h1 class="card-title text-3xl">{title ?? post?.path}</h1>
       <Date {date} {lastmod} {priority} />
       {#if !cover}
         <div class="divider mt-0" />
       {/if}
-      <main class="prose">
+      <main class="prose urara-prose">
         {#if cover}<figure class="-mx-4 md:-mx-8 !w-auto my-4">
             <Cover {cover} class="w-full" />
           </figure>

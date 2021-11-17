@@ -18,15 +18,6 @@
     // @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
     import('virtual:windi-devtools')
     localStorage.setItem('posts', JSON.stringify(posts))
-    if (!localStorage.getItem('theme') && window.matchMedia) {
-      document.documentElement.setAttribute(
-        'data-theme',
-        window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      )
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light')
-      })
-    }
   }
 </script>
 
