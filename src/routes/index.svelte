@@ -81,7 +81,7 @@
         <div
           in:fly={{ x: 100, duration: 250, delay: 300 }}
           out:fly={{ x: -100, duration: 250 }}
-          class="p-10 bg-base-300 text-base-content footer footer-center rounded-box mb-8">
+          class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
           <div class="prose items-center">
             <h2>
               Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
