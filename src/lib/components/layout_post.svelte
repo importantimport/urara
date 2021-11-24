@@ -6,7 +6,6 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte'
   import { browser } from '$app/env'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
@@ -20,7 +19,7 @@
   export let priority = undefined
   export let tags = undefined
   export let cover = undefined
-  // export let descr = undefined
+  export let descr = undefined
 
   let posts = undefined
   let post = undefined
@@ -28,20 +27,18 @@
   let prev = undefined
   let next = undefined
 
-  onMount(() => {
-    if (browser) {
-      posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
-        .sort(([a], [b]) => parseInt(a) - parseInt(b))
-        .flatMap(([, value]) => value)
-      post = posts.find(post => post?.path === window.location.pathname)
-      index = posts.findIndex(post => post?.path === window.location.pathname)
-      prev = posts[index + 1]
-      next = posts[index - 1]
-    }
-  })
+  if (browser) {
+    posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
+      .sort(([a], [b]) => parseInt(a) - parseInt(b))
+      .flatMap(([, value]) => value)
+    post = posts.find(post => post?.path === window.location.pathname)
+    index = posts.findIndex(post => post?.path === window.location.pathname)
+    prev = posts[index + 1]
+    next = posts[index - 1]
+  }
 </script>
 
-<Head {post} />
+<Head post={{ title, date, lastmod, priority, tags, cover, descr }} />
 
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
   <div class="card bg-base-100 shadow-xl mb-8">
