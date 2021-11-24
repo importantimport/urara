@@ -19,13 +19,15 @@ html {
   @apply mb-3;
 }
 
-.urara-prose > p > a, .urara-link {
+.urara-prose > p > a,
+.urara-link {
   background-size: 100% 0.2em;
   background-position: 0 88%;
   @apply font-semibold bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
-.urara-prose > p > a:hover, .urara-link:hover {
+.urara-prose > p > a:hover,
+.urara-link:hover {
   background-size: 100% 100%;
   @apply !text-secondary-content;
 }

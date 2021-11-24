@@ -3,8 +3,7 @@
   export let prev = undefined
 </script>
 
-<nav
-  class="card bg-base-100 urara-card-shadow flex flex-col md:flex-row flex-warp justify-evenly mb-8">
+<nav class="card bg-base-100 urara-card-shadow flex flex-col md:flex-row flex-warp justify-evenly mb-8">
   {#if next && (!next.priority || (next.priority[1] ?? next.priority) > 0)}
     <a href={next.path} class="flex-1 card-body <sm:p-4 group">
       <svg

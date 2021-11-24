@@ -1,3 +1,8 @@
 {
-  "recommendations": ["svelte.svelte-vscode","dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "voorjaar.windicss-intellisense"]
+  "recommendations": [
+    "svelte.svelte-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "voorjaar.windicss-intellisense"
+  ]
 }
