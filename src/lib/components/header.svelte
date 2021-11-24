@@ -25,8 +25,11 @@
 
 <header
   id="header"
-  class="navbar fixed w-screen z-50 mb-2 shadow-lg bg-neutral bg-opacity-50 backdrop-filter backdrop-blur rounded-none text-neutral-content transform-gpu transition-transform ease-in-out duration-250"
-  class:-translate-y-32={!pin || scrollY === 0}>
+  class="navbar fixed w-screen z-50 backdrop-filter backdrop-blur rounded-none transform-gpu transition-all ease-in-out {scrollY <
+  64
+    ? 'bg-transparent text-base-content'
+    : 'bg-neutral/50 text-neutral-content shadow-xl'}"
+  class:-translate-y-32={!pin}>
   <div class="flex-1">
     <a href="/" class="btn btn-ghost rounded-full normal-case text-lg font-bold">
       {site.title}
