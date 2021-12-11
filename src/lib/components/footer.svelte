@@ -5,7 +5,7 @@
   export { className as class }
 </script>
 
-<footer id="footer" class="{className} footer footer-center bg-base-300 text-base-content rounded-box p-10">
+<footer id="footer" class="{className} footer footer-center bg-base-300 text-base-content rounded-box p-8 <md:rounded-none">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
@@ -16,9 +16,9 @@
       {/each}
     </p>
     <p>
-      Copyright © {site.since && site.since !== new Date().toJSON().substr(0, 4)
-        ? `${site.since} - ${new Date().toJSON().substr(0, 4)}`
-        : new Date().toJSON().substr(0, 4)}
+      Copyright © {site.since && site.since !== new Date().toJSON().substring(0, 4)
+        ? `${site.since} - ${new Date().toJSON().substring(0, 4)}`
+        : new Date().toJSON().substring(0, 4)}
       {site.author.name}
       <br />
       Powered by

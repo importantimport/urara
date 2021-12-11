@@ -6,35 +6,28 @@
   export let index: number
 </script>
 
-<div
-  in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 300 }}
-  out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
-  class="card md:card-side bg-base-100 urara-card-shadow group mb-8">
+<article
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+  itemprop="blogPost"
+  in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 200 }}
+  out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}
+  class="card bg-base-100 urara-card-shadow md:card-side <md:rounded-none group mb-8">
   {#if post.cover}
-    <figure class="overflow-hidden order-first md:order-last rounded-box shadow-lg">
-      <Cover
-        class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
-        cover={post.cover} />
-    </figure>
+    <Cover
+      figureClass="overflow-hidden order-first md:(order-last rounded-box) shadow-lg"
+      imgClass="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-400 group-hover:scale-120"
+      cover={post.cover} />
   {/if}
-  <div class="card-body <sm:p-4">
+  <div class="card-body">
     <h1
+      itemprop="name headline"
       class="card-title text-3xl transition-all ease-in-out underline underline-4 underline-transparent hover:underline-primary">
       <a href={post.path}>{post.title ?? post.path.slice(1)}</a>
     </h1>
-    <Date type="index" {post} />
     {#if post.descr}
-      <p class="mb-auto">{post.descr}</p>
+      <p itemprop="description" class="mb-auto">{post.descr}</p>
     {/if}
-    {#if post.path}
-      <div class="card-actions mt-auto md:-mb-4 -ml-4">
-        <a href={post.path} class="btn btn-link normal-case <sm:rounded-l-none m-0 pl-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24">
-            <path stroke="current cap-round join-round width-2" d="M9 5l7 7-7 7" />
-          </svg>
-          {post.path.slice(1)}
-        </a>
-      </div>
-    {/if}
+    <Date {post} type="index" />
   </div>
-</div>
+</article>

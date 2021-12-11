@@ -2,7 +2,6 @@ import type { EndpointOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
-const posts = genPosts()
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${site.title}</title>
@@ -11,10 +10,10 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
   <link href="${site.url}/atom.xml" rel="self" />
   <updated>${new Date().toJSON()}</updated>
   <author>
-    <name>${site.author.name}</name>${site.author.email ? `<email>${site.author.email}</email>` : ''}
+    <name>${site.author.name}</name>
   </author>
   <id>${site.url}/</id>
-  ${Object.entries(posts)
+  ${Object.entries(await genPosts())
     .flatMap(([key, value]) => (+key > 0 ? value : []))
     .map(
       post => `<entry>

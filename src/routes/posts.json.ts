@@ -1,10 +1,9 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import { genPosts } from '$lib/utils/posts'
 
-const posts = genPosts()
-export const get = (): EndpointOutput => ({
+export const get = async (): Promise<EndpointOutput> => ({
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   },
-  body: JSON.stringify(posts, null, 2)
+  body: JSON.stringify(await genPosts(), null, 2)
 })

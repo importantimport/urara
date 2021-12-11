@@ -6,7 +6,7 @@
 </div>
 <br>
 
-<h1 align="center">Urara [WIP]</h1>
+<h1 align="center">Urara [β]</h1>
 <p align="center">Sweet & Powerful SvelteKit blog template.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
@@ -19,7 +19,7 @@
 <a href="https://github.com/importantimport/urara/discussions">Discussions</a>
 </p>
 
-## Try it now!
+## 🎉 Try it now!
 
 ### GitHub
 
@@ -27,16 +27,13 @@
 
 ### Local
 
-This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni).
-
 ```bash
-nx degit importantimport/urara blog && cd blog
+npx degit importantimport/urara blog
 ```
 
-## Developing
+## ⚡️ Developing
 
-Once you've created a project and installed dependencies with
-`antfu/ni`, start a development server:
+This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
 
 ```bash
 nr dev
@@ -48,7 +45,7 @@ nr dev --host 0.0.0.0
 nr dev --host 0.0.0.0 --port 8080
 ```
 
-## Building
+## 🏗️ Building
 
 This template uses `@sveltejs/adapter-static@next` by default, but you can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
 
@@ -69,7 +66,7 @@ MODE=vercel nr build
 > whether you installed an adapter. This should _not_ be used to serve
 > your app in production.
 
-## Sites
+## ✨ Sites
 
 - [./kwaa.dev](https://kwaa.dev)
 
@@ -80,7 +77,7 @@ and more...
 
 are you using urara? add the `urara-blog` topic on your repo!
 
-## License
+## 📝 License
 
 This work is free, it comes without any warranty. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,

@@ -6,11 +6,17 @@ interface ImportMetaEnv {
 }
 
 interface ImportMeta {
-  env: ImportMetaEnv // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  globEager<Module = { [key: string]: any }>(pattern: string): Record<string, Module>
+  env: ImportMetaEnv
+  globEager<Module = { [key: string]: unknown }>(pattern: string): Record<string, Module>
 }
 
 declare namespace Urara {
+  interface PostToc {
+    depth?: number
+    title?: string
+    slug?: string
+    children?: PostToc[]
+  }
   interface PostMetadata extends Record<string, unknown> {
     title?: string
     date?: string
@@ -19,6 +25,7 @@ declare namespace Urara {
     tags?: string[]
     priority?: number | [string, number]
     cover?: string | [string, string]
+    toc?: boolean | PostToc[]
   }
   interface PostModule {
     default: { render: () => { html: string; head: string; css: { code: string } } }

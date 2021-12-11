@@ -1,13 +1,13 @@
-export type Icon = {
-  src: string
-  sizes?: string
-  type?: string
-  purpose?: string
-}
-
-export const icons: { [name: string]: Icon } = {
+export const icons: {
+  [name: string]: {
+    src: string
+    sizes?: string
+    type?: string
+    purpose?: string
+  }
+} = {
   favicon: {
-    src: '/favicon.ico',
+    src: '/favicon.png',
     sizes: '32x32',
     type: 'image/png'
   },

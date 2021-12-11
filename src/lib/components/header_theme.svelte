@@ -1,10 +1,8 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { themes } from '$lib/config/themes'
-
   export let pin: boolean
-  let currentTheme: string
-  let currentThemeColor: string
+  let currentTheme: string, currentThemeColor: string
 
   const hex = (
     h: number,
@@ -66,12 +64,12 @@
   </div>
   <ul
     tabindex="0"
-    class="p-2 shadow-2xl menu dropdown-content bg-base-200 text-base-content rounded-box w-52"
+    class="p-2 shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52"
     class:hidden={pin === false}>
     {#each Object.entries(themes) as [theme, name]}
       <li>
         <!-- svelte-ignore a11y-missing-attribute -->
-        <a on:click={() => (currentTheme = theme)} class:active={currentTheme === theme}>
+        <a href={'javascript:void(0)'} on:click={() => (currentTheme = theme)} class:active={currentTheme === theme}>
           {name}
         </a>
       </li>

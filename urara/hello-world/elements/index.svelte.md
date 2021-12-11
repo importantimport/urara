@@ -1,17 +1,28 @@
 ---
 title: Elements
+date: 2021-12-12
 priority: 501
-tags: ['Urara']
+tags: ['Urara', 'Elements']
 ---
 
 ## Contents
 
 - [Headings](#headings)
-- [Paragraphs](#paragraphs)
-- [Lists](#lists)
-- [Tables](#table)
-- [Code](#code)
-- [Misc](#misc)
+  - [Heading](#heading)
+    - [Heading](#heading-1)
+      - [Heading](#heading-2)
+        - [Heading](#heading-3)
+          - [Heading](#heading-4)
+  - [Paragraphs](#paragraphs)
+  - [Lists](#lists)
+    - [Definition List (dl)](#definition-list-dl)
+    - [Ordered List (ol)](#ordered-list-ol)
+    - [Unordered List (ul)](#unordered-list-ul)
+    - [Checkbox List (ul)](#checkbox-list-ul)
+  - [Table](#table)
+  - [Code](#code)
+  - [Misc](#misc)
+  - [Svelte Components](#svelte-components)
 
 ---
 
@@ -33,7 +44,9 @@ tags: ['Urara']
 
 ## Paragraphs
 
-**_The_** _quick_ <u>brown</u> [fox](https://www.foxnews.com/) `jumps` ~~over~~ the ||lazy|| **dog**.
+||spoiler||
+
+**_The_** _quick_ <u>brown</u> [fox](https://www.foxnews.com/) `jumps` ~~over~~ the lazy **dog**.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -105,46 +118,45 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```ts
 /**
  * Generate Posts List
- * @returns posts list with priority
+ * @param modules import.meta.globEager https://vitejs.dev/guide/features.html#glob-import
+ * @returns Promise<{ [priority: number]: Urara.Post[] }>
  */
-export const genPosts = (): Record<number, Urara.Post[]> => {
-  let posts: Record<number, Urara.Post[]> = { 500: [] }
-  Object.entries(import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
-    .map(([postpath, module]) => ({
-      slug: postpath,
-      path: postpath.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/g, ''),
-      html: module.default
-        .render()
-        .html // eslint-disable-next-line no-control-regex
-        .replace(/[\u0000-\u001F]/g, '')
-        .replace(/[\r\n]/g, '')
-        .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
-        .replace(/( class=")(.*?)(")/gi, '')
-        .replace(/( style=")(.*?)(")/gi, '')
-        .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
-        .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
-      ...module?.metadata
-    }))
-    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
-    .forEach(post => {
-      post.priority === undefined
-        ? posts[500].push(post)
-        : Array.isArray(post.priority)
-        ? posts[post.priority[1]]
-          ? posts[post.priority[1]].push(post)
-          : (() => {
-              posts[post.priority[1]] = []
-              posts[post.priority[1]].push(post)
-            })()
-        : posts[post.priority]
-        ? posts[post.priority].push(post)
-        : (() => {
-            posts[post.priority] = []
-            posts[post.priority].push(post)
-          })()
-    })
-  return posts
-}
+export const genPosts = async (
+  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>(
+    '/src/routes/**/index.{md,svelte.md,svx}'
+  )
+): Promise<{ [priority: number]: Urara.Post[] }> =>
+  Object.fromEntries(
+    (
+      Object.entries(
+        Object.entries(modules)
+          .map(([path, module]) => [
+            module.metadata?.priority?.[1] ?? module.metadata?.priority ?? 500,
+            {
+              slug: path,
+              path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
+              html: import.meta.env.PROD
+                ? module.default
+                    .render()
+                    .html // eslint-disable-next-line no-control-regex
+                    .replace(/[\u0000-\u001F]/g, '')
+                    .replace(/[\r\n]/g, '')
+                    .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
+                    .replace(/( class=")(.*?)(")/gi, '')
+                    .replace(/( style=")(.*?)(")/gi, '')
+                    .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
+                    .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
+                : '',
+              ...module.metadata
+            }
+          ])
+          .reduce((acc, [priority, post]) => ({ ...acc, [priority]: [...(acc[priority] ?? []), post] }), {})
+      ) as [string, Urara.Post[]][]
+    ).map(([priority, posts]) => [
+      priority,
+      posts.sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
+    ])
+  )
 ```
 
 ## Misc

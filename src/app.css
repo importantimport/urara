@@ -20,13 +20,15 @@ html {
 }
 
 .urara-prose > p > a,
+.urara-prose > blockquote > p > a,
 .urara-link {
   background-size: 100% 0.2em;
   background-position: 0 88%;
-  @apply font-semibold bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
+  @apply font-semibold rounded-sm bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
 .urara-prose > p > a:hover,
+.urara-prose > blockquote > p > a:hover,
 .urara-link:hover {
   background-size: 100% 100%;
   @apply !text-secondary-content;
@@ -54,19 +56,38 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-semibold mb-4 mt-6;
+  @apply font-semibold mb-4 mt-6 snap-mt-32;
 }
 
 .urara-prose > .shiki {
-  @apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
+  @apply mockup-code !bg-neutral transition-all ease-in-out duration-400 hover:(-mx-8 rounded-none) overflow-x-scroll pl-5;
 }
 
 .urara-prose > .shiki::before {
-  @apply -ml-5;
+  @apply sticky -left-5 -ml-5;
 }
 
-.urara-prose > .shiki code {
-  @apply children:pr-5;
+.urara-prose > .shiki::-webkit-scrollbar {
+  height: 15px;
+}
+
+.urara-prose > .shiki::-webkit-scrollbar-thumb {
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: transparent;
+}
+
+.urara-prose > .shiki:hover::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--nc) / 0.3);
+}
+
+.urara-prose > .shiki:hover::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(var(--nc) / 0.6);
+}
+
+.urara-prose > .shiki > code {
+  @apply bg-transparent inline-block py-0 pl-0 pr-5;
 }
 
 .urara-prose > dl,
@@ -142,20 +163,27 @@ dd {
   @apply max-h-9000px;
 }
 
+.tooltip:hover:before,
+.tooltip:hover:after {
+  @apply opacity-100 delay-75;
+}
+
 /* modify */
 
 #footer a {
   @apply transition-all ease-in-out text-base-content font-semibold underline underline-2 underline-transparent opacity-75 hover:(opacity-100 text-secondary underline-secondary);
 }
 
+/* .blur class bug */
+
+.spoiler {
+  @apply bg-base-content hover:bg-transparent focus:bg-transparent transition-all rounded-sm ease-in-out duration-250;
+}
+
 /* extend */
 
 .urara-card-shadow {
   @apply shadow-xl transition-shadow ease-in-out hover:shadow-2xl;
-}
-
-.spoiler {
-  @apply transition-colors ease-in-out delay-500 duration-500 bg-base-content hover:bg-transparent focus:bg-transparent;
 }
 
 /* your code here */

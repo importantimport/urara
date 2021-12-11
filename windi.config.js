@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite-plugin-windicss'
 import { transform } from 'windicss/helpers'
+import daisyColors from 'daisyui/colors/index.js'
 import filters from 'windicss/plugin/filters'
 import typography from 'windicss/plugin/typography'
-import daisyColors from 'daisyui/colors/index.js'
+import scrollSnap from 'windicss/plugin/scroll-snap'
 
 export default defineConfig({
   attributify: true,
@@ -14,7 +15,7 @@ export default defineConfig({
     }
   },
   variants: {},
-  plugins: [filters, typography, transform('daisyui')],
+  plugins: [filters, typography, scrollSnap, transform('daisyui')],
   daisyui: {
     themes: ['light', 'dark', 'cupcake', 'emerald', 'valentine', 'synthwave', 'halloween', 'aqua', 'dracula']
   }

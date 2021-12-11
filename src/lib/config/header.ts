@@ -6,6 +6,6 @@ interface headerConfig {
 export const config: headerConfig = {
   nav: {
     '/hello-world': 'Get Started',
-    '/elements': 'Elements'
+    '/hello-world/elements': 'Elements'
   }
 }

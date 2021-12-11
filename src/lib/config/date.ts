@@ -1,18 +1,10 @@
-export const indexConfig: { locales: string; options: Intl.DateTimeFormatOptions } = {
-  locales: 'en-US',
-  options: {
+export const dateConfig = (type: string): { locales: string; options: Intl.DateTimeFormatOptions } => {
+  const locales = 'en-US'
+  const options: Intl.DateTimeFormatOptions = {
     weekday: 'short',
     month: 'short',
     day: 'numeric'
   }
-}
-
-export const layoutConfig: { locales: string; options: Intl.DateTimeFormatOptions } = {
-  locales: 'en-US',
-  options: {
-    year: 'numeric',
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric'
-  }
+  if (type === 'layout') options.year = 'numeric'
+  return { locales, options }
 }

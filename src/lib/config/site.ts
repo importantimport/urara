@@ -15,14 +15,14 @@ interface Sites {
 
 export const site: Sites = {
   title: 'Urara',
-  subtitle: 'Subtitle',
+  subtitle: 'Sweet & Powerful SvelteKit Blog Template',
   lang: 'en-US',
   descr: 'Powered by SvelteKit/Urara',
   author: {
     name: 'John Doe',
-    avatar: '',
-    email: '',
-    bio: ''
+    avatar: '/assets/maskable@512.png',
+    status: '🌸',
+    bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
   url: import.meta.env.URARA_SITE_URL ?? 'https://example.com',
   themeColor: '#3D4451'

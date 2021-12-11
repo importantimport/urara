@@ -17,9 +17,9 @@
 
 <Head />
 
-<div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  <div class="card bg-base-100 shadow-xl mb-8">
-    <div class="card-body <sm:p-4">
+<div class="mx-auto w-full max-w-screen-md">
+  <div class="card bg-base-100 shadow-xl <md:rounded-none mb-8">
+    <div class="card-body">
       <h1 class="card-title text-3xl">{status}</h1>
       <div class="prose">
         {message}

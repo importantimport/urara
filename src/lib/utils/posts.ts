@@ -1,42 +1,41 @@
 /**
  * Generate Posts List
- * @returns posts list with priority
+ * @param modules import.meta.globEager https://vitejs.dev/guide/features.html#glob-import
+ * @returns Promise<{ [priority: number]: Urara.Post[] }>
  */
-export const genPosts = (): Record<number, Urara.Post[]> => {
-  const posts: Record<number, Urara.Post[]> = { 500: [] }
-  Object.entries(import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
-    .map(([postpath, module]) => ({
-      slug: postpath,
-      path: postpath.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/g, ''),
-      html: module.default
-        .render()
-        .html // eslint-disable-next-line no-control-regex
-        .replace(/[\u0000-\u001F]/g, '')
-        .replace(/[\r\n]/g, '')
-        .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
-        .replace(/( class=")(.*?)(")/gi, '')
-        .replace(/( style=")(.*?)(")/gi, '')
-        .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
-        .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
-      ...module?.metadata
-    }))
-    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
-    .forEach(post => {
-      post.priority === undefined
-        ? posts[500].push(post)
-        : Array.isArray(post.priority)
-        ? posts[post.priority[1]]
-          ? posts[post.priority[1]].push(post)
-          : (() => {
-              posts[post.priority[1]] = []
-              posts[post.priority[1]].push(post)
-            })()
-        : posts[post.priority]
-        ? posts[post.priority].push(post)
-        : (() => {
-            posts[post.priority] = []
-            posts[post.priority].push(post)
-          })()
-    })
-  return posts
-}
+export const genPosts = async (
+  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>(
+    '/src/routes/**/index.{md,svelte.md,svx}'
+  )
+): Promise<{ [priority: number]: Urara.Post[] }> =>
+  Object.fromEntries(
+    (
+      Object.entries(
+        Object.entries(modules)
+          .map(([path, module]) => [
+            module.metadata?.priority?.[1] ?? module.metadata?.priority ?? 500,
+            {
+              slug: path,
+              path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
+              html: import.meta.env.PROD
+                ? module.default
+                    .render()
+                    .html // eslint-disable-next-line no-control-regex
+                    .replace(/[\u0000-\u001F]/g, '')
+                    .replace(/[\r\n]/g, '')
+                    .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
+                    .replace(/( class=")(.*?)(")/gi, '')
+                    .replace(/( style=")(.*?)(")/gi, '')
+                    .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
+                    .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
+                : '',
+              ...module.metadata
+            }
+          ])
+          .reduce((acc, [priority, post]) => ({ ...acc, [priority]: [...(acc[priority] ?? []), post] }), {})
+      ) as [string, Urara.Post[]][]
+    ).map(([priority, posts]) => [
+      priority,
+      posts.sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
+    ])
+  )

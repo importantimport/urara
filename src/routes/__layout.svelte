@@ -12,7 +12,7 @@
   import Header from '$lib/components/header.svelte'
   import 'virtual:windi.css'
   import '../app.css'
-  export let posts: Record<number, Urara.Post[]>
+  export let posts: { [priority: number]: Urara.Post[] }
   export let path: string
   if (browser) {
     // @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
@@ -24,10 +24,7 @@
 <Header />
 
 {#key path}
-  <div
-    class="min-h-screen pt-24 mb-8 lg:mb-16"
-    in:fly={{ y: 100, duration: 250, delay: 300 }}
-    out:fly={{ y: 100, duration: 250 }}>
+  <div class="min-h-screen pt-24 lg:mb-16" in:fly={{ y: 100, duration: 200, delay: 200 }} out:fly={{ y: -100, duration: 200 }}>
     <slot />
   </div>
 {/key}

@@ -5,7 +5,7 @@
 
 <svelte:head>
   {#if icons.favicon}
-    <link rel="icon" href={validate(icons.favicon.src)} sizes={icons.favicon.sizes} type={icons.favicon.type} />
+    <link rel="icon" href={icons.favicon.src} sizes={icons.favicon.sizes} type={icons.favicon.type} />
   {/if}
   {#if icons.any192}
     <link rel="icon" href={validate(icons.any192.src)} sizes={icons.any192.sizes} type={icons.any192.type} />
