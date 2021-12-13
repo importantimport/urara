@@ -1,13 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@sveltejs/adapter-auto': ^1.0.0-next.3
   '@sveltejs/adapter-static': ^1.0.0-next.21
   '@sveltejs/kit': ^1.0.0-next.201
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
   chalk: ^4.1.2
   chokidar: ^3.5.2
-  daisyui: ^1.16.2
+  daisyui: ^1.16.4
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.1
@@ -38,13 +39,14 @@ specifiers:
   workbox-strategies: ^6.4.2
 
 devDependencies:
+  '@sveltejs/adapter-auto': 1.0.0-next.3
   '@sveltejs/adapter-static': 1.0.0-next.21
   '@sveltejs/kit': 1.0.0-next.201_svelte@3.44.2
   '@typescript-eslint/eslint-plugin': 4.33.0_b77187731987bbf90b17856f1d20b7ae
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.3
   chalk: 4.1.2
   chokidar: 3.5.2
-  daisyui: 1.16.2
+  daisyui: 1.16.4
   eslint: 7.32.0
   eslint-config-prettier: 8.3.0_eslint@7.32.0
   eslint-plugin-svelte3: 3.2.1_eslint@7.32.0+svelte@3.44.2
@@ -134,6 +136,10 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iarna/toml/2.2.5:
+    resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
+    dev: true
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -163,8 +169,35 @@ packages:
       picomatch: 2.3.0
     dev: true
 
+  /@sveltejs/adapter-auto/1.0.0-next.3:
+    resolution: {integrity: sha512-FVNLtr0bj/slQqA0TuoylnVsGrvBYdYL+hpp2Qy5Kg3q1m8i9bJ0aifKnaGn7m01II2KUSnpnhuRbX/HwKVDcA==}
+    dependencies:
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.2
+      '@sveltejs/adapter-netlify': 1.0.0-next.35
+      '@sveltejs/adapter-vercel': 1.0.0-next.31
+    dev: true
+
+  /@sveltejs/adapter-cloudflare/1.0.0-next.2:
+    resolution: {integrity: sha512-4Q7ZuoMck7wwzIO7gd8gqnm7gWflztTDHU/C1DzLr8V2UprQFQwsUE/padtQhFPXkgAiXJ8AwLksey4A8qjOsA==}
+    dependencies:
+      esbuild: 0.13.15
+    dev: true
+
+  /@sveltejs/adapter-netlify/1.0.0-next.35:
+    resolution: {integrity: sha512-3PC1RaRReu652ot+LC9EOjkebnZehdwvUm0zhPC8OFPJJccQwq6Y1kbHDeACIIFRTaKLIRBpuYh3idP6ffUGdw==}
+    dependencies:
+      '@iarna/toml': 2.2.5
+      esbuild: 0.13.15
+    dev: true
+
   /@sveltejs/adapter-static/1.0.0-next.21:
     resolution: {integrity: sha512-B4+QoUVAaANKx+mHntG8SqF45zbj3Ct4Akg/cGauo6COyfKZRhO5OsMa+wPuT2TKJBZC4eEDK0p+p9nyQBkxKQ==}
+    dev: true
+
+  /@sveltejs/adapter-vercel/1.0.0-next.31:
+    resolution: {integrity: sha512-W8p/U00B6ihVrDpwMkgEexfVUzaLmn4MRtXj//Gw4NDFfsrZR4P5wBidrOAIkCYBMvqCOHD+vbAvIiAMOaN23g==}
+    dependencies:
+      esbuild: 0.13.15
     dev: true
 
   /@sveltejs/kit/1.0.0-next.201_svelte@3.44.2:
@@ -369,7 +402,7 @@ packages:
     dependencies:
       debug: 4.3.3
       jiti: 1.12.9
-      windicss: 3.2.1
+      windicss: 3.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -383,7 +416,7 @@ packages:
       fast-glob: 3.2.7
       magic-string: 0.25.7
       micromatch: 4.0.4
-      windicss: 3.2.1
+      windicss: 3.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -610,8 +643,8 @@ packages:
       which: 2.0.2
     dev: true
 
-  /daisyui/1.16.2:
-    resolution: {integrity: sha512-kHoTvq3/eU8tPbu3U3Nwq7yy0I5zauqAYRSvw1x+t8g9FBjFm3jNtUQO/vBjUZsU7ABIf5aaT58iBF2NeusCUA==}
+  /daisyui/1.16.4:
+    resolution: {integrity: sha512-bpPUlIR6PJdnaM+Vj+Rd0ljMwbdwjvFAW9E/bhxCRDEU48OnmpKQxnkwNGAtXbwWWATS6I1dEIlLdM8zCbV3uQ==}
     dev: true
 
   /debug/4.3.3:
@@ -1933,8 +1966,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /postcss/8.4.4:
-    resolution: {integrity: sha512-joU6fBsN6EIer28Lj6GDFoC/5yOZzLCfn0zHAn/MYXI7aPt4m4hK5KC5ovEZXy+lnCjmYIbQWngvju2ddyEr8Q==}
+  /postcss/8.4.5:
+    resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.1.30
@@ -2612,7 +2645,7 @@ packages:
       debug: 4.3.3
       kolorist: 1.5.0
       vite: 2.7.1
-      windicss: 3.2.1
+      windicss: 3.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2634,7 +2667,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.13.15
-      postcss: 8.4.4
+      postcss: 8.4.5
       resolve: 1.20.0
       rollup: 2.61.1
     optionalDependencies:
@@ -2674,8 +2707,8 @@ packages:
       isexe: 2.0.0
     dev: true
 
-  /windicss/3.2.1:
-    resolution: {integrity: sha512-LusrIrryBFHAPQ/OOTbS4EWWuzI6eGeJglI9nQ3kDBr1cqH69NWt8Z8q59f9kTkgptXroejmWfksWwqgHs8EVw==}
+  /windicss/3.3.0:
+    resolution: {integrity: sha512-LxA9iCPEe4lBbC5MGLo6g1gbJxYlTXpDCLJRaHo0EcEN6X0ki26hunOJWGcBvO9qz1r/ead1L7wS5MkSoOCIZQ==}
     engines: {node: '>= 12'}
     hasBin: true
     dev: true

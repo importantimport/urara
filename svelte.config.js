@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess'
+import adapterAuto from '@sveltejs/adapter-auto'
 import adapterStatic from '@sveltejs/adapter-static'
 import WindiCSS from 'vite-plugin-windicss'
 import { mdsvex } from 'mdsvex'
@@ -11,14 +12,16 @@ const config = {
   // for more information about preprocessors
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
-    adapter: adapterStatic({
+    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key) )
+    ? adapterAuto()
+    : adapterStatic({
       pages: 'build',
       assets: 'build',
       fallback: null
     }),
     target: 'body',
     vite: {
-      mode: process.env.MODE || 'development',
+      mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
       plugins: [
         WindiCSS({

@@ -7,7 +7,7 @@
 <br>
 
 <h1 align="center">Urara [β]</h1>
-<p align="center">Sweet & Powerful SvelteKit blog template.</p>
+<p align="center">Sweet & Powerful SvelteKit Blog Template.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
 <a href="https://github.com/importantimport/urara/blob/main/COPYING"><img src="https://img.shields.io/github/license/importantimport/urara?color=%23fff" alt="License"></a>
@@ -28,16 +28,23 @@
 ### Local
 
 ```bash
-npx degit importantimport/urara blog
+npx degit importantimport/urara [blog-name]
 ```
 
-## ⚡️ Developing
+## ⚡️ Usage
+
+### Development
 
 This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
 
 ```bash
+# http://localhost:3000
 nr dev
+```
 
+or listen to different IP and port:
+
+```bash
 # http://0.0.0.0:3000
 nr dev --host 0.0.0.0
 
@@ -45,26 +52,34 @@ nr dev --host 0.0.0.0
 nr dev --host 0.0.0.0 --port 8080
 ```
 
-## 🏗️ Building
-
-This template uses `@sveltejs/adapter-static@next` by default, but you can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+### Build
 
 ```bash
-MODE=production nr build
-
-# build for 'workers' mode
-MODE=workers nr build
-
-# build for 'netlify' mode
-MODE=netlify nr build
-
-# build for 'vercel' mode
-MODE=vercel nr build
+nr build
 ```
 
-> You can preview the built app with `nr preview`, regardless of
-> whether you installed an adapter. This should _not_ be used to serve
-> your app in production.
+or use the specified adapter to build:
+
+```bash
+# Vercel
+VERCEL=true nr build
+
+# Cloudflare Pages
+CF_PAGES=true nr build
+
+# Netlify
+NETLIFY=true nr build
+```
+
+> This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default.
+
+> when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
+
+> u can modify it to any adapter supported by SvelteKit. see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+
+> u can preview the built app with `nr preview`, regardless of
+> whether u installed an adapter. This should _not_ be used to serve
+> ur app in production.
 
 ## ✨ Sites
 
@@ -75,7 +90,7 @@ and more...
 - [urara-blog - Discussions](https://github.com/importantimport/urara/discussions/2)
 - [urara-blog - Topics](https://github.com/topics/urara-blog)
 
-are you using urara? add the `urara-blog` topic on your repo!
+are u using Urara? add the `urara-blog` topic on ur repo!
 
 ## 📝 License
 
