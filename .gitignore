@@ -5,8 +5,6 @@ node_modules
 src/routes/**/
 static/
 build/
-dist/
-workers-site/
 .vercel_build_output/
 .env.local
 .env.**.local
