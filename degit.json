@@ -1,6 +1,6 @@
 [
   {
     "action": "remove",
-    "files": ["degit.json", ".env.demo", "COPYING"]
+    "files": ["degit.json", "COPYING"]
   }
 ]
