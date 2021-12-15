@@ -10,61 +10,53 @@ cover: '/hello-world/cover.webp'
 
 Welcome to Urara! this article contains some basic operations to help you quickly get started.
 
-to use the reduced commands, you need to install @antfu/ni.
+## Development
 
-## Developing
-
-```bash
-nr dev # http://localhost:3000
-nr dev --open # http://localhost:3000 - open the app in a new browser tab
-nr dev --host 0.0.0.0 # http://0.0.0.0:3000
-nr dev --port 8080 # http://localhost:8080
-```
-
-## Building
-
-This template uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
 
 ```bash
-MODE=production nr build
-MODE=workers nr build # build for 'workers' mode
-MODE=netlify nr build # build for 'netlify' mode
-MODE=vercel nr build # build for 'vercel' mode
+# http://localhost:3000
+nr dev
 ```
 
-and create different configuration files to correspond to the corresponding mode:
+or listen to different IP and port:
 
-```ini
-# .env.workers
-MODE=production
-URARA_SITE_URL='https://example.workers.dev'
+```bash
+# http://0.0.0.0:3000
+nr dev --host 0.0.0.0
+
+# http://0.0.0.0:8080
+nr dev --host 0.0.0.0 --port 8080
 ```
 
-```js
-// svelte.config.js
-const config = {
-  ...,
-  kit: {
-    adapter:
-      process.env.MODE === 'workers'
-        ? adapterWorkers()
-        : process.env.MODE === 'vercel'
-        ? adapterVercel()
-        : process.env.MODE === 'netlify'
-        ? adapterNetlify()
-        : adapterStatic({
-            pages: 'build',
-            assets: 'build',
-            fallback: null
-          }),
-    ...,
-  }
-}
+## Build
+
+```bash
+nr build
 ```
 
-> You can preview the built app with `nr preview`, regardless of
-> whether you installed an adapter. This should _not_ be used to serve
-> your app in production.
+or use the specified adapter:
+
+```bash
+# Vercel
+VERCEL=true nr build
+
+# Cloudflare Pages
+CF_PAGES=true nr build
+
+# Netlify
+NETLIFY=true nr build
+```
+
+> This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default.
+
+> when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
+
+> u can modify it to any adapter supported by SvelteKit. see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+
+> u can preview the built app with `nr preview`, regardless of
+> whether u installed an adapter. This should _not_ be used to serve
+> ur app in production.
 
 ## Misc
 

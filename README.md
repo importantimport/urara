@@ -58,7 +58,7 @@ nr dev --host 0.0.0.0 --port 8080
 nr build
 ```
 
-or use the specified adapter to build:
+or use the specified adapter:
 
 ```bash
 # Vercel
