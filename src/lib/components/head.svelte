@@ -13,9 +13,9 @@
   <meta name="theme-color" content={site.themeColor} />
   {#if post}
     <title>{post.title ? `${post.title} | ${site.title}` : site.title + ` - ${site.subtitle}` ?? ''}</title>
+    <link rel="canonical" href={site.url + post.path} />
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
-    {#if post.path}<link rel="canonical" href={`${site.url + post.path}`} />{/if}
   {:else}
     <title>{site.title}</title>
     <meta name="description" content={site.descr} />

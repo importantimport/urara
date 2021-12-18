@@ -12,11 +12,10 @@ export const genPosts = async (
     (
       Object.entries(
         Object.entries(modules)
-          .map(([path, module]) => [
+          .map(([_path, module]) => [
             module.metadata?.priority?.[1] ?? module.metadata?.priority ?? 500,
             {
-              slug: path,
-              path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
+              ...module.metadata,
               html: import.meta.env.PROD
                 ? module.default
                     .render()
@@ -28,8 +27,7 @@ export const genPosts = async (
                     .replace(/( style=")(.*?)(")/gi, '')
                     .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
                     .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
-                : '',
-              ...module.metadata
+                : ''
             }
           ])
           .reduce((acc, [priority, post]) => ({ ...acc, [priority]: [...(acc[priority] ?? []), post] }), {})

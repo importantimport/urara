@@ -22,6 +22,7 @@
   export let tags = undefined
   export let cover = undefined
   export let descr = undefined
+  export let path = undefined
   export let toc = undefined
 
   let loaded = false
@@ -43,7 +44,7 @@
   onMount(() => (loaded = true))
 </script>
 
-<Head post={{ title, date, lastmod, priority, tags, cover, descr }} />
+<Head post={{ title, date, lastmod, priority, tags, cover, descr, path }} />
 
 <div class="flex flex-col flex-nowrap justify-center xl:(flex-row flex-wrap)">
   <div

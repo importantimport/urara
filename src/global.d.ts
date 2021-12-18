@@ -25,6 +25,8 @@ declare namespace Urara {
     tags?: string[]
     priority?: number | [string, number]
     cover?: string | [string, string]
+    slug?: string
+    path?: string
     toc?: boolean | PostToc[]
   }
   interface PostModule {
@@ -32,8 +34,6 @@ declare namespace Urara {
     metadata: PostMetadata
   }
   interface Post extends PostMetadata {
-    slug?: string
-    path?: string
     html?: string
   }
 }
