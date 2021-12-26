@@ -12,13 +12,13 @@ const config = {
   // for more information about preprocessors
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
-    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key) )
-    ? adapterAuto()
-    : adapterStatic({
-      pages: 'build',
-      assets: 'build',
-      fallback: null
-    }),
+    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
+      ? adapterAuto()
+      : adapterStatic({
+          pages: 'build',
+          assets: 'build',
+          fallback: null
+        }),
     target: 'body',
     vite: {
       mode: process.env.MODE || 'production',

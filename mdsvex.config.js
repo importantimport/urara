@@ -7,31 +7,34 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import { parse, join } from 'path'
 
-const highlighter = async (code, lang) => `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
-  highlighter
-    .codeToHtml(code, { lang })
-    .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
-    .replace(/\\([trn])/g, '&#92;$1')
-)}\` }`
+const highlighter = async (code, lang) =>
+  `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
+    highlighter
+      .codeToHtml(code, { lang })
+      .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
+      .replace(/\\([trn])/g, '&#92;$1')
+  )}\` }`
 
-const remarkUraraFm = () => (tree, { data, filename }) => {
-  const filepath = filename.split('/src/routes')[1]
-  let { dir, name } = parse(filepath)
-  if (!data.fm) data.fm = {}
-  data.fm.slug = filepath
-  data.fm.path = join(dir, `/${name}`.replace('\/index', '').replace('\.svelte', ''))
-  if (data.fm?.toc !== false) {
-    let [slugs, toc] = [new Slugger(), []]
-    visit(tree, 'heading', node => {
-      toc.push({
-        depth: node.depth,
-        title: toString(node),
-        slug: slugs.slug(toString(node))
+const remarkUraraFm =
+  () =>
+  (tree, { data, filename }) => {
+    const filepath = filename.split('/src/routes')[1]
+    let { dir, name } = parse(filepath)
+    if (!data.fm) data.fm = {}
+    data.fm.slug = filepath
+    data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    if (data.fm?.toc !== false) {
+      let [slugs, toc] = [new Slugger(), []]
+      visit(tree, 'heading', node => {
+        toc.push({
+          depth: node.depth,
+          title: toString(node),
+          slug: slugs.slug(toString(node))
+        })
       })
-    })
-    data.fm.toc = toc
+      data.fm.toc = toc
+    }
   }
-}
 
 const remarkUraraSpoiler = () => tree =>
   visit(tree, 'paragraph', node => {
