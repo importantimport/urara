@@ -6,7 +6,7 @@ html {
 }
 
 ::selection {
-  @apply bg-primary text-primary-content;
+  @apply bg-primary/60 text-primary-content;
 }
 
 /* urara-prose */
