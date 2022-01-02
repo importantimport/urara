@@ -1,6 +1,6 @@
 [
   {
     "action": "remove",
-    "files": ["degit.json", "COPYING"]
+    "files": ["degit.json", "COPYING", ".github/FUNDING.yml"]
   }
 ]
