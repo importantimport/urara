@@ -14,7 +14,7 @@
       (acc, heading) => {
         let parent = acc
         while (parent.depth + 1 < heading.depth) parent = parent.children[parent.children.length - 1]
-        if (!parent.children?.some(h => h.slug === heading.slug)) parent.children = [...(parent.children ?? []), heading]
+        parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
         return acc
       },
       { depth: toc[0].depth - 1, children: [] }
