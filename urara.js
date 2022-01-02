@@ -1,3 +1,8 @@
+/**
+ * Urara.JS
+ * Version: Crazy Universe
+ */
+
 import { promises as fs } from 'fs'
 import * as path from 'path'
 import chokidar from 'chokidar'
@@ -13,19 +18,32 @@ const check = ext => (config.extensions.includes(ext) ? 'src/routes' : 'static')
 
 const log = (color, msg, dest) =>
   console.log(
+    chalk.dim(new Date().toLocaleTimeString() + ' ') +
+      chalk.magentaBright.bold('[urara] ') +
+      chalk[color](msg + ' ') +
+      chalk.dim(dest ?? '')
   )
 
 const error = err => {
   if (config.catch.includes(err.code)) {
     console.log(
+      chalk.dim(new Date().toLocaleTimeString() + ' ') +
+        chalk.redBright.bold('[urara] ') +
+        chalk.red('error ') +
+        chalk.dim(err.message)
     )
   } else {
     throw err
   }
 }
 
+const cpFile = (src, { stat = 'copy', dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
+  fs
+    .copyFile(src, dest)
+    .then(log('green', `${stat} file`, dest))
     .catch(error)
 
+const rmFile = (src, dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))) =>
   fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
 
 const cpDir = src =>
@@ -105,10 +123,12 @@ switch (process.argv[2]) {
       })
       watcher
         .on('add', file => cpFile(file))
+        .on('change', file => cpFile(file, { stat: 'update' }))
         .on('unlink', file => rmFile(file))
         .on('addDir', dir => mkDir(dir))
         .on('unlinkDir', dir => rmDir(dir))
         .on('error', error => log('red', 'error', error))
+        .on('ready', () => log('cyan', 'copy complete. ready for changes'))
       process
         .on('SIGINT', () => {
           log('red', 'sigint')
