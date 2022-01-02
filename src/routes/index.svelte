@@ -7,11 +7,11 @@
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/env'
-  import Head from '$lib/components/head.svelte'
+  import { genTags } from '$lib/utils/tags'
+  import Flex from '$lib/components/layout_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
-  import { genTags } from '$lib/utils/tags'
 
   let allPosts: Urara.Post[]
   let allTags: { [tag: string]: number }
@@ -26,12 +26,11 @@
   }
 
   $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
-
-  $: if (posts) years = [new Date().toJSON().substring(0, 4)]
+  $: if (posts) years = [posts[0]?.date ? new Date(posts[0].date).toJSON().substring(0, 4) : new Date().toJSON().substring(0, 4)]
 
   onMount(() => {
     if (browser) {
-      tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
+      tags = $page.url.searchParams.get('tags') ? $page.url.searchParams.get('tags').split(',') : []
       tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
       loaded = true
     }
@@ -50,19 +49,11 @@
   }
 </script>
 
-<Head />
-
-<div class="flex flex-col flex-nowrap justify-center <xl:children:mx-auto xl:(flex-row flex-wrap)">
-  <div
-    class="flex-1 w-full max-w-screen-md order-first xl:(max-w-96 delay-400 mr-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : 'translate-x-[100vw] xl:translate-x-96 opacity-0'}">
+<Flex hidden={false}>
+  <div slot="left">
     <Profile />
   </div>
-  <div
-    class="flex-1 w-full max-w-screen-md xl:(order-last max-w-96 delay-400 ml-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : '-translate-x-[100vw] xl:-translate-x-96 opacity-0'}">
+  <div slot="right">
     {#if allTags && Object.keys(allTags).length > 0}
       <label
         id="tags"
@@ -89,15 +80,13 @@
       </label>
     {/if}
   </div>
-  <div class="flex-none w-full max-w-screen-md">
+  <div slot="center">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
-      {#if posts.length == 0}
-        {#if !loaded}
-          <div class="h-screen" />
-        {:else}
+      {#if posts.length === 0}
+        {#if loaded}
           <div
-            in:fly={{ x: 100, duration: 200, delay: 200 }}
+            in:fly={{ x: 100, duration: 200, delay: 400 }}
             out:fly={{ x: -100, duration: 200 }}
             class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
             <div class="prose items-center">
@@ -114,19 +103,31 @@
               </button>
             </div>
           </div>
+          <!-- {:else}
+          <div class="h-screen" /> -->
         {/if}
       {/if}
       <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
         {#each posts as post, index}
-          {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
-            <div class="divider mb-8">
-              {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
-            </div>
-          {/if}
-          <Post {post} {index} />
+          <div
+            in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 400 }}
+            out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
+            {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
+              <div class="divider mb-8">
+                {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+              </div>
+            {/if}
+            <Post {post} />
+          </div>
         {/each}
       </main>
-      <Footer />
+      {#if loaded}
+        <div
+          in:fly={{ x: posts.length % 2 ? 100 : -100, duration: 200, delay: 400 }}
+          out:fly={{ x: posts.length % 2 ? -100 : 100, duration: 200 }}>
+          <Footer />
+        </div>
+      {/if}
     {/key}
   </div>
-</div>
+</Flex>

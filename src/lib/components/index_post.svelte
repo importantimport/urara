@@ -1,17 +1,13 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition'
   import Date from '$lib/components/post_date.svelte'
   import Cover from '$lib/components/post_cover.svelte'
   export let post: Urara.Post
-  export let index: number
 </script>
 
 <article
   itemscope
   itemtype="https://schema.org/BlogPosting"
   itemprop="blogPost"
-  in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 200 }}
-  out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}
   class="card bg-base-100 urara-card-shadow md:card-side <md:rounded-none group mb-8">
   {#if post.cover}
     <Cover

@@ -55,6 +55,8 @@ export const mdsvexConfig = {
     dashes: 'oldschool'
   },
   layout: {
+    _flex: './src/lib/components/layout_flex.svelte',
+    _card: './src/lib/components/layout_card.svelte',
     _: './src/lib/components/layout_post.svelte'
   },
   highlight: {
