@@ -43,63 +43,51 @@ const cpFile = (src, { stat = 'copy', dest = path.join(check(path.parse(src).ext
     .then(log('green', `${stat} file`, dest))
     .catch(error)
 
-const rmFile = (src, dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))) =>
+const rmFile = (src, { dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
   fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
 
 const cpDir = src =>
   fs.readdir(src, { withFileTypes: true }).then(files =>
     files.forEach(file => {
       const dest = path.join(src, file.name)
-      file.isDirectory()
-        ? mkDir(dest).then(cpDir(dest))
-        : file.name.startsWith('.')
-        ? log('cyan', 'ignore file', dest)
-        : cpFile(dest)
-    })
-  )
-
-const mkDir = src =>
-  fs
-    .mkdir(path.join('src/routes', src.slice(6)), { recursive: true })
-    .then(
-      fs
-        .mkdir(path.join('static', src.slice(6)), { recursive: true })
-        .then(log('green', 'make dir', path.join('static', src.slice(6))))
-        .catch(error)
-    )
-    .then(log('green', 'make dir', path.join('src/routes', src.slice(6))))
-    .catch(error)
-
-const rmDir = src =>
-  fs
-    .rm(path.join('src/routes', src.slice(6)), { force: true, recursive: true })
-    .then(
-      fs
-        .rm(path.join('static', src.slice(6)), { force: true, recursive: true })
-        .then(log('yellow', 'remove dir', path.join('static', src.slice(6))))
-        .catch(error)
-    )
-    .then(log('yellow', 'remove dir', path.join('src/routes', src.slice(6))))
-    .catch(error)
-
-const build = async () => {
-  fs.mkdir('static').then(log('green', 'make dir', 'static')).catch(error)
-  cpDir('urara').catch(error)
-}
-
-const clean = async () => {
-  fs.rm('static', { recursive: true }).then(log('yellow', 'remove dir', 'static')).catch(error)
-  fs.readdir('src/routes', { withFileTypes: true }).then(files =>
-    files.forEach(file => {
       if (file.isDirectory()) {
-        const dest = path.join('src/routes', file.name)
-        fs.rm(dest, { recursive: true }).then(log('yellow', 'remove dir', dest)).catch(error)
+        mkDir(dest)
+        cpDir(dest)
+      } else if (file.name.startsWith('.')) {
+        log('cyan', 'ignore file', dest)
+      } else {
+        cpFile(dest)
       }
     })
   )
+
+const mkDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+  dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
 }
 
-const rename = async () => {
+const rmDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+  dest.forEach(path => fs.rm(path, { force: true, recursive: true }).then(log('yellow', 'remove dir', path)).catch(error))
+}
+
+const cleanDir = src =>
+  fs.readdir(src, { withFileTypes: true }).then(files => {
+    files.forEach(file => {
+      const dest = path.join(src, file.name)
+      file.isDirectory() ? rmDir(dest) : file.name.startsWith('.') ? log('cyan', 'ignore file', dest) : rmFile(dest)
+    })
+  })
+
+const build = () => {
+  mkDir('static', { dest: ['static'] })
+  cpDir('urara')
+}
+
+const clean = () => {
+  cleanDir('urara')
+  rmDir('static', { dest: ['static'] })
+}
+
+const rename = () => {
   fs.readdir('build', { withFileTypes: true }).then(files =>
     files.forEach(file => {
       if (file.isDirectory() && config.rename.includes(file.name)) {
@@ -145,13 +133,13 @@ switch (process.argv[2]) {
     }
     break
   case 'build':
-    build().then(log('cyan', 'copy complete.'))
+    build()
     break
   case 'clean':
-    clean().then(log('cyan', 'clean complete.'))
+    clean()
     break
   case 'rename':
-    rename().then(log('cyan', 'rename complete.'))
+    rename()
     break
   default:
     log('red', 'error', 'invalid arguments')
