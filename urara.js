@@ -4,7 +4,7 @@ import chokidar from 'chokidar'
 import chalk from 'chalk'
 
 const config = {
-  extensions: ['svelte', 'svx', 'md', 'js', 'ts'],
+  extensions: ['svelte', 'md', 'js', 'ts'],
   rename: ['404'],
   catch: ['ENOENT', 'EEXIST']
 }
@@ -13,34 +13,20 @@ const check = ext => (config.extensions.includes(ext) ? 'src/routes' : 'static')
 
 const log = (color, msg, dest) =>
   console.log(
-    `${chalk.dim(new Date().toLocaleTimeString())} ${chalk.magentaBright.bold(`[urara]`)} ${chalk[color](msg)} ${
-      dest ? chalk.dim(dest) : ''
-    }`
   )
 
 const error = err => {
   if (config.catch.includes(err.code)) {
     console.log(
-      `${chalk.dim(new Date().toLocaleTimeString())} ${chalk.redBright.bold(`[urara]`)} ${chalk.red('error')} ${chalk.dim(
-        err.message
-      )}`
     )
   } else {
     throw err
   }
 }
 
-const cpFile = (src, stat) => {
-  const dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))
-  fs.copyFile(src, dest)
-    .then(log('green', `${stat ?? 'copy'} file`, dest))
     .catch(error)
-}
 
-const rmFile = src => {
-  const dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6))
   fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
-}
 
 const cpDir = src =>
   fs.readdir(src, { withFileTypes: true }).then(files =>
@@ -119,12 +105,10 @@ switch (process.argv[2]) {
       })
       watcher
         .on('add', file => cpFile(file))
-        .on('change', file => cpFile(file, 'update'))
         .on('unlink', file => rmFile(file))
         .on('addDir', dir => mkDir(dir))
         .on('unlinkDir', dir => rmDir(dir))
         .on('error', error => log('red', 'error', error))
-        .on('ready', () => log('cyan', 'initial scan complete. ready for changes'))
       process
         .on('SIGINT', () => {
           log('red', 'sigint')

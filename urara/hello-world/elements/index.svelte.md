@@ -122,9 +122,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
  * @returns Promise<{ [priority: number]: Urara.Post[] }>
  */
 export const genPosts = async (
-  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>(
-    '/src/routes/**/index.{md,svelte.md,svx}'
-  )
+  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md}')
 ): Promise<{ [priority: number]: Urara.Post[] }> =>
   Object.fromEntries(
     (
@@ -134,7 +132,7 @@ export const genPosts = async (
             module.metadata?.priority?.[1] ?? module.metadata?.priority ?? 500,
             {
               slug: path,
-              path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
+              path: path.slice(11).replace(/\/index.md|\/index.svelte.md/, ''),
               html: import.meta.env.PROD
                 ? module.default
                     .render()

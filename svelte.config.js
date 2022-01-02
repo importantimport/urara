@@ -28,7 +28,7 @@ const config = {
           config: 'windi.config.js',
           transformCSS: 'pre',
           scan: {
-            fileExtensions: ['svelte', 'svx', 'md', 'js', 'ts']
+            fileExtensions: ['svelte', 'md', 'js', 'ts']
           }
         })
       ]
