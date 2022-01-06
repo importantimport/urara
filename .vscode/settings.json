@@ -1,4 +1,5 @@
 {
+  "files.eol": "\n",
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "css.lint.unknownAtRules": "ignore",
   "svelte.plugin.css.diagnostics.enable": false,
