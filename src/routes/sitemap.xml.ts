@@ -10,7 +10,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
           post => `
         <url>
             <loc>${site.url + post.path}</loc>
-            <lastmod>${post.lastmod ? post.lastmod.substring(0, 10) : post.date.substring(0, 10)}</lastmod>
+            ${post.date || post.lastmod ? `<lastmod>${(post.lastmod ?? post.date).substring(0, 10)}</lastmod>` : ''}
             <priority>${
               post.priority
                 ? ((1000 - (Array.isArray(post.priority) ? post.priority[1] : post.priority)) / 1000).toFixed(1)
