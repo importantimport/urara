@@ -30,6 +30,7 @@ html {
 
 .urara-prose > p > a:hover,
 .urara-prose > blockquote > p > a:hover,
+.urara-prose li > a:hover,
 .urara-link:hover {
   background-size: 100% 100%;
   @apply !text-secondary-content;
@@ -91,17 +92,17 @@ h6 {
   @apply bg-transparent inline-block py-0 pl-0 pr-5;
 }
 
-.urara-prose > dl,
+.urara-prose dl,
 dd {
-  @apply text-base pl-8 mb-4;
+  @apply text-base pl-8;
 }
 
-.urara-prose > ol {
-  @apply text-base pl-8 list-decimal mb-4;
+.urara-prose ol {
+  @apply text-base pl-8 list-decimal;
 }
 
-.urara-prose > ul {
-  @apply text-base pl-8 list-disc mb-4;
+.urara-prose ul {
+  @apply text-base pl-8 list-disc;
 }
 
 .urara-prose kbd {
