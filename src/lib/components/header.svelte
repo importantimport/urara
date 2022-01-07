@@ -2,6 +2,8 @@
   import { browser } from '$app/env'
   import { site } from '$lib/config/site'
   import { config as headerConfig } from '$lib/config/header'
+  import IconLink from '~icons/heroicons-outline/link'
+  import IconChevronUp from '~icons/heroicons-outline/chevron-up'
   import Theme from '$lib/components/header_theme.svelte'
 
   let pin: boolean
@@ -43,11 +45,7 @@
       </nav>
       <div class="lg:hidden dropdown dropdown-end">
         <div tabindex="0" class="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-none" viewBox="0 0 24 24">
-            <path
-              stroke="current cap-round join-round width-2"
-              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-          </svg>
+          <IconLink />
         </div>
         <ul
           tabindex="0"
@@ -81,7 +79,5 @@
       stroke-dasharray={30 * 2 * Math.PI}
       stroke-dashoffset={30 * 2 * Math.PI - (percent / 100) * (30 * 2 * Math.PI)} />
   </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" class="inlinw-block h-6 w-6" fill="none" viewBox="0 0 24 24">
-    <path stroke="current cap-round join-round width-2" d="M5 15l7-7 7 7" />
-  </svg>
+  <IconChevronUp />
 </button>

@@ -12,6 +12,7 @@
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
+  import IconTrash from '~icons/heroicons-outline/trash'
 
   let allPosts: Urara.Post[]
   let allTags: { [tag: string]: number }
@@ -95,11 +96,7 @@
                 Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
               </h2>
               <button on:click={() => clean()} class="btn btn-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
-                  <path
-                    stroke="current cap-round join-round width-2"
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
+                <IconTrash class="inline-block w-6 h-6 mr-2" />
                 tags = []
               </button>
             </div>
