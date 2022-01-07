@@ -6,13 +6,13 @@ html {
 }
 
 ::selection {
-  @apply bg-primary/60 text-primary-content;
+  @apply bg-primary/20
 }
 
 /* urara-prose */
 
 .urara-prose > blockquote {
-  @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
+  @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 px-4 mx-8 <md:mx-4;
 }
 
 .urara-prose > p {
@@ -21,6 +21,7 @@ html {
 
 .urara-prose > p > a,
 .urara-prose > blockquote > p > a,
+.urara-prose li > a,
 .urara-link {
   background-size: 100% 0.2em;
   background-position: 0 88%;
