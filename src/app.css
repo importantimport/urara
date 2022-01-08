@@ -6,7 +6,7 @@ html {
 }
 
 ::selection {
-  @apply bg-primary/20
+  @apply bg-primary/20;
 }
 
 /* urara-prose */
