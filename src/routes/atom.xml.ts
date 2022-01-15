@@ -25,7 +25,7 @@ const render = async (): Promise<string> => {
     <name><![CDATA[${site.author.name}]]></name>
   </author>
   ${Object.keys(tags)
-    .map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${tag}" />`)
+    .map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`)
     .join('\n')}
   ${posts
     .map(
@@ -39,7 +39,7 @@ const render = async (): Promise<string> => {
     <content type="html">
       <![CDATA[${post.html}]]>
     </content>
-    ${post.tags ? post.tags.map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${tag}" />`).join('\n') : ''}
+    ${post.tags ? post.tags.map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`).join('\n') : ''}
   </entry>`
     )
     .join('\n')}
