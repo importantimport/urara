@@ -39,7 +39,11 @@ const render = async (): Promise<string> => {
     <content type="html">
       <![CDATA[${post.html}]]>
     </content>
-    ${post.tags ? post.tags.map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`).join('\n') : ''}
+    ${
+      post.tags
+        ? post.tags.map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`).join('\n')
+        : ''
+    }
   </entry>`
     )
     .join('\n')}

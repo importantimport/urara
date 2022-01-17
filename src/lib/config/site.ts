@@ -24,6 +24,6 @@ export const site: Sites = {
     status: '🌸',
     bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
-  url: import.meta.env.URARA_SITE_URL ?? 'https://example.com',
+  url: (import.meta.env.URARA_SITE_URL as string) ?? 'https://example.com',
   themeColor: '#3D4451'
 }

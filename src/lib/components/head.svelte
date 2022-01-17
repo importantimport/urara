@@ -1,7 +1,10 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
+  import { head } from '$lib/config/head'
+  import { mode } from '$lib/config/misc'
   import Icon from '$lib/components/head_icon.svelte'
   import OpenGraph from '$lib/components/head_opengraph.svelte'
+  import RelMeAuth from '$lib/components/head_relmeauth.svelte'
   export let post: Urara.Post = undefined
 </script>
 
@@ -29,7 +32,10 @@
       })
     }
   </script>
+  <Icon />
+  <OpenGraph {post} />
+  <RelMeAuth />
+  {#each [...head.custom.common, ...(mode === 'prod' ? head.custom.prod : head.custom.dev)] as tag}
+    {@html tag}
+  {/each}
 </svelte:head>
-
-<Icon />
-<OpenGraph {post} />
