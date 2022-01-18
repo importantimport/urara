@@ -1,6 +1,6 @@
 /**
  * Urara.JS
- * Version: Crazy Universe
+ * Version: 64
  */
 
 import { promises as fs } from 'fs'
