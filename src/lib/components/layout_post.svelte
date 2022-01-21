@@ -7,6 +7,7 @@
 
 <script lang="ts">
   import { browser } from '$app/env'
+  import { site } from '$lib/config/site'
   import Flex from '$lib/components/layout_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
@@ -49,14 +50,22 @@
     {/if}
   </div>
   <div slot="center">
-    <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8">
+    <article
+      itemscope
+      itemtype="https://schema.org/BlogPosting"
+      class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
+      <div class="hidden h-card p-author">
+        <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
+        <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
+      </div>
+      <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
       <div class="card-body">
-        <h1 itemprop="name headline" class="card-title text-3xl">{title ?? post?.path}</h1>
+        <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
         {#if !cover}
           <div class="divider my-6" />
         {/if}
-        <main itemprop="articleBody" class="urara-prose prose">
+        <main itemprop="articleBody" class="urara-prose prose e-content">
           {#if cover}
             <Cover {cover} figureClass="-mx-8 !w-auto my-8" imgClass="w-full" />
           {/if}
@@ -66,7 +75,7 @@
           <div class="divider my-0" />
           <div>
             {#each tags as tag}
-              <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2">
+              <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">
                 #{tag}
               </a>
             {/each}

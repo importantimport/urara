@@ -7,4 +7,4 @@
   src = validate(src)
 </script>
 
-<img {src} {alt} class={className ?? 'rounded-lg my-2'} loading="lazy" decoding="async" />
+<img {src} {alt} class="u-photo {className ?? 'rounded-lg my-2'}" loading="lazy" decoding="async" />

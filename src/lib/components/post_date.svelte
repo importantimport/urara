@@ -36,7 +36,19 @@
       : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-200">
     <IconCalendar class="inline-block w-5 h-5 mr-2 {currentDate === 'date' ? '' : 'hidden'}" />
     <IconPencilAlt class="inline-block w-5 h-5 mr-2 {currentDate === 'date' ? 'hidden' : ''}" />
-    <time class:hidden={currentDate === 'lastmod'} datetime={jsonDate} itemprop="dateCreated">{stringDate}</time>
-    <time class:hidden={currentDate === 'date'} datetime={jsonLastmod} itemprop="dateModified">{stringLastmod}</time>
+    <time
+      class:hidden={currentDate === 'lastmod'}
+      class:dt-published={type === 'layout'}
+      datetime={jsonDate}
+      itemprop="dateCreated">
+      {stringDate}
+    </time>
+    <time
+      class:hidden={currentDate === 'date'}
+      class:dt-updated={type === 'layout'}
+      datetime={jsonLastmod}
+      itemprop="dateModified">
+      {stringLastmod}
+    </time>
   </button>
 </div>
