@@ -1,19 +1,26 @@
-interface Sites {
+interface Site {
   title: string
   subtitle?: string
   lang?: string
   descr?: string
   author: {
     name: string
-  } & {
-    [key: string]: string
+    avatar: string
+    status?: string
+    bio?: string
+    bioBefore?: string
+    bioAfter?: string
+    github?: string
+    twitter?: string
+    identica?: string
+    pgp?: string[]
   }
   url: string
   themeColor?: string
   since?: string
 }
 
-export const site: Sites = {
+export const site: Site = {
   title: 'Urara',
   subtitle: 'Sweet & Powerful SvelteKit Blog Template',
   lang: 'en-US',
