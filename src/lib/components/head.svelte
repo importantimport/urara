@@ -10,13 +10,13 @@
 
 <svelte:head>
   <meta name="theme-color" content={site.themeColor} />
-  {#if post}
-    <title>{post.title ? `${post.title} | ${site.title}` : site.title + ` - ${site.subtitle}` ?? ''}</title>
+  {#if post.path}
+    <title>{post.title ?? post.path} | {site.title}</title>
     <link rel="canonical" href={site.url + post.path} />
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
   {:else}
-    <title>{site.title}</title>
+    <title>{site.subtitle ? `${site.title} - ${site.subtitle}` : site.title}</title>
     <meta name="description" content={site.descr} />
     <link rel="canonical" href={site.url} />
   {/if}
