@@ -7,7 +7,7 @@
 
 <footer
   id="footer"
-  class="footer footer-center bg-base-300 text-base-content rounded-box <md:rounded-none shadow-inner p-8 {className ?? ''}">
+  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-box <md:rounded-none p-8 {className ?? ''}">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
@@ -31,7 +31,7 @@
       <a rel="noopener external" target="_blank" class="urara-link" href="https://github.com/importantimport/urara">Urara</a>
     </p>
     {#if footerConfig.html}
-      {@html `${footerConfig.html}`}
+      {@html footerConfig.html}
     {/if}
   </div>
 </footer>

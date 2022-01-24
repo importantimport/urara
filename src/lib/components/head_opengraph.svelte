@@ -10,7 +10,7 @@
 {#if post}
   <meta property="og:title" content={post.title ?? post.path} />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content={`${site.url + post.path}`} />
+  <meta property="og:url" content={site.url + post.path} />
   <meta property="og:description" content={post.descr ?? site.descr} />
   <meta property="article:author" content={site.author.name} />
   <meta property="article:published_time" content={post.date} />
