@@ -7,28 +7,26 @@ tags: ['Urara', 'Elements']
 
 ## Contents
 
+- [Contents](#contents)
 - [Headings](#headings)
   - [Heading](#heading)
     - [Heading](#heading-1)
       - [Heading](#heading-2)
         - [Heading](#heading-3)
-          - [Heading](#heading-4)
-  - [Paragraphs](#paragraphs)
-  - [Lists](#lists)
-    - [Definition List (dl)](#definition-list-dl)
-    - [Ordered List (ol)](#ordered-list-ol)
-    - [Unordered List (ul)](#unordered-list-ul)
-    - [Checkbox List (ul)](#checkbox-list-ul)
-  - [Table](#table)
-  - [Code](#code)
-  - [Misc](#misc)
-  - [Svelte Components](#svelte-components)
+- [Paragraphs](#paragraphs)
+- [Lists](#lists)
+  - [Definition List (dl)](#definition-list-dl)
+  - [Ordered List (ol)](#ordered-list-ol)
+  - [Unordered List (ul)](#unordered-list-ul)
+  - [Checkbox List (ul)](#checkbox-list-ul)
+- [Table](#table)
+- [Code](#code)
+- [Misc](#misc)
+- [Svelte Components](#svelte-components)
 
 ---
 
-# Headings
-
-## Heading
+## Headings
 
 ### Heading
 
