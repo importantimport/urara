@@ -1,11 +1,12 @@
+import shiki from 'shiki'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
-import shiki from 'shiki'
-import Slugger from 'github-slugger'
+import { statSync } from 'fs'
+import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
-import { parse, join } from 'path'
+import Slugger from 'github-slugger'
 
 const highlighter = async (code, lang) =>
   `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
@@ -33,6 +34,11 @@ const remarkUraraFm =
         })
       })
       data.fm.toc = toc
+    }
+    if (!data.fm.date || !data.fm.lastmod) {
+      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
+      if (!data.fm.date) data.fm.date = ctime
+      if (!data.fm.lastmod) data.fm.lastmod = mtime
     }
   }
 
@@ -65,7 +71,7 @@ export const mdsvexConfig = {
   remarkPlugins: [remarkUraraFm, remarkUraraSpoiler],
   rehypePlugins: [
     rehypeSlug,
-    rehypeAutolinkHeadings,
+    [rehypeAutolinkHeadings, { behavior: 'wrap' }],
     [
       rehypeExternalLinks,
       {
