@@ -19,7 +19,7 @@
 <a href="https://github.com/importantimport/urara/discussions">Discussions</a>
 </p>
 
-## 🎉 Try it now!
+## ✨ Try it now!
 
 ### Local
 
@@ -31,9 +31,20 @@ npx degit importantimport/urara [blog-name]
 
 [![Use this template](https://img.shields.io/badge/-Use%20this%20Template-181717?style=for-the-badge&logo=GitHub)](https://github.com/importantimport/urara/generate) [![Deploy with Vercel](https://img.shields.io/badge/-Deploy%20with%20Vercel-1374ef?style=for-the-badge&logo=Vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara&env=URARA_SITE_URL&envDescription=Site%20URL.&envLink=https%3A%2F%2Fexample.com&project-name=urara-blog&repository-name=urara-blog) [![Deploy to Netlify](https://img.shields.io/badge/-Deploy%20to%20Netlify-15847d?style=for-the-badge&logo=Netlify&logoColor=white)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara#URARA_SITE_URL=https://example.com&CUSTOM_LOGO=https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png)
 
+## 📝 Checklist
+
+here is an index of some files to help u modify or delete them:
+
+- [ ] Configuration: `/src/lib/config/`
+- [ ] Icons: `/urara/assets/`
+- [ ] Styles: `/src/app.css`
+- [ ] Service Worker: `/src/service-worker.ts`
+
+🎉 enjoy! (and give this project a ⭐️ if u can, thx)
+
 ## ⚡️ Usage
 
-### Development
+### Developing
 
 This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
 
@@ -52,7 +63,9 @@ nr dev --host 0.0.0.0
 nr dev --host 0.0.0.0 --port 8080
 ```
 
-### Build
+### Building
+
+This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default, when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
 
 ```bash
 nr build
@@ -71,17 +84,14 @@ CF_PAGES=true nr build
 NETLIFY=true nr build
 ```
 
-> This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default.
-
-> when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
-
-> u can modify it to any adapter supported by SvelteKit. see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+> u can modify it to any adapter supported by SvelteKit.
+> see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
 
 > u can preview the built app with `nr preview`, regardless of
 > whether u installed an adapter. This should _not_ be used to serve
 > ur app in production.
 
-## ✨ Sites
+## 🚀 Sites
 
 - [./kwaa.dev](https://kwaa.dev)
 
