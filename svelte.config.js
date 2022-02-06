@@ -20,7 +20,6 @@ const config = {
           assets: 'build',
           fallback: null
         }),
-    target: 'body',
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
