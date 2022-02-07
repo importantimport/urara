@@ -55,7 +55,7 @@
   <meta name="theme-color" content={currentThemeColor} />
 </svelte:head>
 
-<div id="change-theme" class="dropdown lg:dropdown-hover dropdown-end">
+<div id="change-theme" class="dropdown dropdown-hover dropdown-end">
   <div tabindex="0" class="btn btn-square btn-ghost">
     <IconColorSwatch />
   </div>
