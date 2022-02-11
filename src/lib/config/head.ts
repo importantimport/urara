@@ -4,5 +4,5 @@ export const head = {
     dev: [],
     prod: []
   },
-  relMe: ['https://kwaa.moe']
+  relMe: []
 }
