@@ -9,7 +9,6 @@
 </script>
 
 <svelte:head>
-  <meta name="theme-color" content={site.themeColor} />
   {#if post?.path}
     <title>{post.title ?? post.path} | {site.title}</title>
     <link rel="canonical" href={site.url + post.path} />
