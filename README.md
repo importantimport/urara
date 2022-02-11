@@ -16,6 +16,8 @@
 <p align="center">
 <a href="https://urara-demo.netlify.app">Demo</a>
 /
+<a href="https://urara-docs.netlify.app">Documentation</a>
+/
 <a href="https://github.com/importantimport/urara/discussions">Discussions</a>
 </p>
 
