@@ -47,7 +47,7 @@
   }
 </script>
 
-<Flex hidden={false}>
+<Flex>
   <div slot="left">
     <Profile />
   </div>
