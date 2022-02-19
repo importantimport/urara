@@ -9,13 +9,14 @@
   export let cover = undefined
   export let descr = undefined
   export let path = undefined
+  export let page = undefined
   let loaded = false
   export let head = true
   onMount(() => (loaded = true))
 </script>
 
 {#if head !== false}
-  <Head post={{ title, date, lastmod, priority, tags, cover, descr, path }} />
+  <Head post={{ title, date, lastmod, priority, tags, cover, descr, path }} {page} />
 {/if}
 
 <div class="flex flex-col flex-nowrap justify-center xl:(flex-row flex-wrap)">

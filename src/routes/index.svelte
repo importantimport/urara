@@ -47,7 +47,7 @@
   }
 </script>
 
-<Flex>
+<Flex page={{path: '/'}}>
   <div slot="left">
     <Profile />
   </div>

@@ -16,9 +16,10 @@
   export let cover = undefined
   export let descr = undefined
   export let path = undefined
+  export let page = undefined
 </script>
 
-<Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
+<Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path} {page}>
   <div slot="left" class="h-full">
     <slot name="left" />
   </div>

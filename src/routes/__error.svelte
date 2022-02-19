@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
-  export const load = ({ error, status }) => ({
+  export const load = ({ url, error, status }) => ({
     props: {
-      status: status,
-      message: error.message
+      status,
+      message: error.message,
+      pathname: url.pathname
     }
   })
 </script>
@@ -12,10 +13,11 @@
   import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string
-  console.error(status, message)
+  export let pathname: string
+  console.error(status, pathname, message)
 </script>
 
-<Card>
+<Card page={{title: '404', path: pathname}}>
   <h1 class="opacity-15 !text-12xl !<md:text-6xl !-mt-2">
     {status}
   </h1>

@@ -36,4 +36,8 @@ declare namespace Urara {
   interface Post extends PostMetadata {
     html?: string
   }
+  interface Page {
+    title?: string
+    path: string
+  }
 }
