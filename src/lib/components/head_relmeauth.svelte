@@ -10,9 +10,6 @@
   {#if site.author.twitter}
     <link rel="me" href="https://twitter.com/{site.author.github}" />
   {/if}
-  {#if site.author.identica}
-    <link rel="me" href="https://identi.ca/{site.author.github}" />
-  {/if}
   {#if head.relMe}
     {#each head.relMe as href}
       <link rel="me" {href} />

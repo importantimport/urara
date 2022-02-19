@@ -12,7 +12,6 @@ interface Site {
     bioAfter?: string
     github?: string
     twitter?: string
-    identica?: string
     pgp?: string[]
   }
   url: string
