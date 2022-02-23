@@ -1,3 +1,11 @@
+/* tailwind */
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 /* global */
 
 html {
@@ -9,100 +17,64 @@ html {
   @apply bg-primary/20;
 }
 
-/* urara-prose */
+/* .urara-prose */
 
-.urara-prose > blockquote {
-  @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 px-4 mx-8 <md:mx-4;
+.urara-prose {
+  @apply !max-w-none;
 }
 
-.urara-prose > p {
-  @apply mb-3;
+/* .urara-prose heading */
+
+.urara-prose > :is(h1, h2, h3, h4, h5) > a {
+  @apply no-underline font-bold;
 }
 
-.urara-prose > p > a,
-.urara-prose > blockquote > p > a,
-.urara-prose li > a,
-.urara-link {
-  background-size: 100% 0.2em;
-  background-position: 0 88%;
-  @apply font-semibold rounded-sm bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
+.urara-prose > :is(h1, h2, h3, h4, h5) > a::after {
+  @apply pl-2 text-base-200 transition-all content-['#'];
 }
 
-.urara-prose > p > a:hover,
-.urara-prose > blockquote > p > a:hover,
-.urara-prose li > a:hover,
-.urara-link:hover {
-  background-size: 100% 100%;
-  @apply !text-secondary-content;
+.urara-prose > :is(h1, h2, h3, h4, h5):hover > a::after {
+  @apply text-primary;
 }
 
-.urara-prose > p strong a {
-  @apply font-bold;
+/* .urara-prose table */
+
+.urara-prose div > table > thead {
+  @apply border-0;
 }
 
-.urara-prose > h1 {
-  @apply text-3xl font-semibold;
+.urara-prose div > table > thead > tr > th {
+  @apply !relative;
 }
 
-.urara-prose > h2 {
-  @apply text-2xl font-semibold;
+/* .urara-prose pre */
+
+.urara-prose pre {
+  @apply mockup-code !bg-neutral min-w-0;
 }
 
-.urara-prose > h4 {
-  @apply text-base font-semibold;
-}
-
-.urara-prose > h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-semibold mb-4 mt-6 snap-mt-32;
-}
-
-.urara-prose > .shiki {
-  @apply mockup-code !bg-neutral transition-all ease-in-out duration-400 hover:(-mx-8 rounded-none) overflow-x-scroll pl-5;
-}
-
-.urara-prose > .shiki::before {
+.urara-prose pre.shiki::before {
   @apply sticky -left-5 -ml-5;
 }
 
-.urara-prose > .shiki::-webkit-scrollbar {
-  height: 15px;
+.urara-prose pre:not(.shiki) {
+  @apply bg-neutral text-neutral-content;
 }
 
-.urara-prose > .shiki::-webkit-scrollbar-thumb {
-  border: 5px solid transparent;
-  background-clip: padding-box;
-  border-radius: 9999px;
-  background-color: transparent;
+/* .urara-prose a */
+
+.urara-prose :is(p, li) > a {
+  @apply bg-[length:100%_0.2em] hover:bg-[length:100%_100%] bg-[position:0_88%] bg-gradient-to-t from-secondary/50 to-primary/25 bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
-.urara-prose > .shiki:hover::-webkit-scrollbar-thumb {
-  background-color: hsla(var(--nc) / 0.3);
+/* .urara-prose misc */
+
+.urara-prose :is(p, li) > code {
+  @apply bg-base-200 px-2;
 }
 
-.urara-prose > .shiki:hover::-webkit-scrollbar-thumb:hover {
-  background-color: hsla(var(--nc) / 0.6);
-}
-
-.urara-prose > .shiki > code {
-  @apply bg-transparent inline-block py-0 pl-0 pr-5;
-}
-
-.urara-prose dl,
-dd {
-  @apply text-base pl-8;
-}
-
-.urara-prose ol {
-  @apply text-base pl-8 list-decimal;
-}
-
-.urara-prose ul {
-  @apply text-base pl-8 list-disc;
+.urara-prose li > input {
+  @apply checkbox checkbox-xs;
 }
 
 .urara-prose kbd {
@@ -113,73 +85,14 @@ dd {
   @apply border-none divider;
 }
 
-.urara-prose input {
-  @apply checkbox checkbox-xs;
+/* footer a */
+
+footer a {
+  @apply !no-underline hover:text-primary hover:!underline transition-all;
 }
-
-/* fix */
-
-.btn-primary:hover {
-  @apply bg-primary-focus border-primary-focus;
-}
-
-.btn-secondary:hover {
-  @apply bg-secondary-focus border-secondary-focus;
-}
-
-.btn-accent:hover {
-  @apply bg-accent-focus border-accent-focus;
-}
-
-.btn-ghost:hover,
-.btn-link:hover {
-  @apply bg-base-content bg-opacity-20 border-opacity-0;
-}
-
-.collapse {
-  @apply relative grid overflow-hidden;
-}
-
-.collapse-title,
-.collapse > input[type='checkbox'] {
-  @apply p-4 md:px-8;
-}
-
-.collapse-content,
-.collapse-title,
-.collapse > input[type='checkbox'] {
-  @apply row-start-1 col-start-1;
-}
-
-.collapse > input[type='checkbox'] {
-  @apply appearance-none opacity-0;
-}
-
-.collapse-content {
-  @apply row-start-2 overflow-hidden;
-}
-
-.collapse-open .collapse-content,
-.collapse:focus:not(.collapse-close) .collapse-content,
-.collapse:not(.collapse-close) input[type='checkbox']:checked ~ .collapse-content {
-  @apply max-h-9000px;
-}
-
-.tooltip:hover:before,
-.tooltip:hover:after {
-  @apply opacity-100 delay-75;
-}
-
-/* modify */
-
-#footer a {
-  @apply transition-all ease-in-out text-base-content font-semibold underline underline-2 underline-transparent opacity-75 hover:(opacity-100 text-secondary underline-secondary);
-}
-
-/* .blur class bug */
 
 .spoiler {
-  @apply bg-base-content hover:bg-transparent focus:bg-transparent transition-all rounded-sm ease-in-out duration-250;
+  @apply blur-sm hover:blur-none active:blur-none transition-all select-all;
 }
 
 /* extend */

@@ -2,7 +2,7 @@
   import img from '$lib/components/prose/img.svelte'
   import code from '$lib/components/prose/code.svelte'
   import table from '$lib/components/prose/table.svelte'
-  export { img, code, table }
+  export { img, table }
 </script>
 
 <script lang="ts">
@@ -43,8 +43,8 @@
 </script>
 
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
-  <div slot="left" class="h-full <xl:hidden" />
-  <div slot="right" class="h-full <xl:hidden">
+  <div slot="left" class="h-full hidden xl:block" />
+  <div slot="right" class="h-full hidden xl:block">
     {#if toc?.length >= 1}
       <Toc {toc} />
     {/if}
@@ -53,13 +53,13 @@
     <article
       itemscope
       itemtype="https://schema.org/BlogPosting"
-      class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
+      class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
       <div class="hidden h-card p-author">
         <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
         <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
       </div>
       <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
-      <div class="card-body">
+      <div class="card-body gap-0">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
         {#if !cover}
@@ -67,12 +67,12 @@
         {/if}
         <main itemprop="articleBody" class="urara-prose prose e-content">
           {#if cover}
-            <Cover {cover} figureClass="-mx-8 !w-auto my-8" imgClass="w-full" />
+            <Cover {cover} figureClass="-mx-8 !w-auto" imgClass="w-full" />
           {/if}
           <slot />
         </main>
         {#if tags}
-          <div class="divider my-0" />
+          <div class="divider mt-4 mb-0" />
           <div>
             {#each tags as tag}
               <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">

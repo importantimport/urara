@@ -17,11 +17,11 @@
   console.error(status, pathname, message)
 </script>
 
-<Card page={{title: '404', path: pathname}}>
-  <h1 class="opacity-15 !text-12xl !<md:text-6xl !-mt-2">
+<Card page={{ title: '404', path: pathname }}>
+  <h1 class="opacity-15 !text-6xl !md:text-12xl !-mt-2">
     {status}
   </h1>
-  <h2 class="-mt-24 <md:-mt-12">{message}</h2>
+  <h2 class="-mt-12 md:-mt-24">{message}</h2>
   <div>
     <a href="/" class="btn btn-neutral !text-neutral-content shadow-xl hover:shadow-2xl mt-8">
       <IconHome class="inline-block w-6 h-6 -ml-1 mr-2" />

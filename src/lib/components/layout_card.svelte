@@ -28,7 +28,10 @@
   </div>
   <div slot="center">
     <slot name="top" />
-    <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8">
+    <article
+      itemscope
+      itemtype="https://schema.org/BlogPosting"
+      class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8">
       <main itemprop="articleBody" class="card-body prose urara-prose">
         {#if $$slots.left || $$slots.right || $$slots.top || $$slots.bottom}
           <slot name="center" />

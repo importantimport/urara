@@ -10,13 +10,13 @@
   import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
   import Header from '$lib/components/header.svelte'
-  import 'virtual:windi.css'
+  // import 'virtual:windi.css'
   import '../app.css'
   export let posts: { [priority: number]: Urara.Post[] }
   export let path: string
   if (browser) {
     // @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
-    import('virtual:windi-devtools')
+    // import('virtual:windi-devtools')
     localStorage.setItem('posts', JSON.stringify(posts))
   }
 </script>

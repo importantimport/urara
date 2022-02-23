@@ -16,9 +16,10 @@
   }${fs ? '' : 'fs=0&'}${loop ? 'loop=1' : ''}`
 </script>
 
-<div class="relative pb-[56.25%] mb-2 children:(absolute w-full h-full)">
+<div class="relative pb-[56.25%] mb-2">
   <iframe
     {src}
+    class="absolute w-full h-full"
     title="YouTube video player"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

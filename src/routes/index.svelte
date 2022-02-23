@@ -47,17 +47,17 @@
   }
 </script>
 
-<Flex page={{path: '/'}}>
-  <div slot="left">
+<Flex page={{ path: '/' }}>
+  <div slot="left" class="xl:max-w-sm xl:ml-auto">
     <Profile />
   </div>
-  <div slot="right">
+  <div slot="right" class="xl:max-w-sm">
     {#if allTags && Object.keys(allTags).length > 0}
       <label
         id="tags"
         data-nosnippet
         tabindex="0"
-        class="collapse collapse-arrow !children:(bg-base-100 xl:bg-transparent) shadow-xl !xl:sticky xl:(top-24 shadow-none) rounded-box <md:rounded-none mb-8">
+        class="collapse collapse-arrow xl:sticky xl:top-24 rounded-none md:rounded-box mb-8 ml-8">
         <input type="checkbox" />
         <div class="collapse-title text-xl font-medium">
           tags{#if tags?.length > 0}

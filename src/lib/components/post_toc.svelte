@@ -45,15 +45,11 @@
   $: if (intersecting.length > 0) bordered = intersecting
   $: if (intersectingArticle === false) bordered = []
   $: if (browser && bordered)
-    toc.forEach(heading => {
-      if (bordered.includes(heading.slug)) {
-        document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
-        document.getElementById(`toc-item-${heading.slug}`)?.classList.add('bordered')
-      } else {
-        document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
-        document.getElementById(`toc-item-${heading.slug}`)?.classList.remove('bordered')
-      }
-    })
+    toc.forEach(heading =>
+      bordered.includes(heading.slug)
+        ? document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
+        : document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
+    )
 </script>
 
 <nav id="post-toc" aria-label="TableOfContent" class="sticky top-16 py-8">

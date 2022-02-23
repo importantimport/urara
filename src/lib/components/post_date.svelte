@@ -16,13 +16,11 @@
   let currentPriority: number = 0
 </script>
 
-<div class="card-actions !mt-auto pt-6 gap-4 children:m-0">
+<div class="card-actions justify-start w-auto !mt-auto pt-6 gap-4 children:m-0">
   {#if post.priority}
     <button
       on:click={() => (currentPriority === 0 ? (currentPriority = 1) : (currentPriority = 0))}
-      class="btn btn-sm bg-base-300/50 text-base-content/75 {currentPriority === 0
-        ? '!hover:(btn-primary text-primary)'
-        : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-200">
+      class="btn btn-sm btn-ghost bg-base-200">
       <IconInformationCircle class="inline-block w-5 h-5 mr-2 {currentPriority === 0 ? '' : 'hidden'}" />
       <IconSortAscending class="inline-block w-5 h-5 mr-2 {currentPriority === 0 ? 'hidden' : ''}" />
       <span class:hidden={currentPriority === 1}>{post.priority[0]}</span>
@@ -31,9 +29,7 @@
   {/if}
   <button
     on:click={() => (currentDate === 'date' ? (currentDate = 'lastmod') : (currentDate = 'date'))}
-    class="btn btn-sm bg-base-300/50 text-base-content/75 {currentDate === 'date'
-      ? '!hover:(btn-primary text-primary)'
-      : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-200">
+    class="btn btn-sm btn-ghost bg-base-200">
     <IconCalendar class="inline-block w-5 h-5 mr-2 {currentDate === 'date' ? '' : 'hidden'}" />
     <IconPencilAlt class="inline-block w-5 h-5 mr-2 {currentDate === 'date' ? 'hidden' : ''}" />
     <time

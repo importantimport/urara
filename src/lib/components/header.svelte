@@ -38,7 +38,7 @@
   </div>
   <div class="flex-none">
     {#if headerConfig.nav}
-      <nav class="<lg:hidden">
+      <nav class="hidden lg:block">
         {#each Object.entries(headerConfig.nav) as [href, name]}
           <a {href} sveltekit:prefetch class="btn btn-ghost normal-case">{name}</a>
         {/each}
@@ -70,9 +70,10 @@
   class="btn btn-circle btn-lg fixed z-50 opacity-0 backdrop-filter backdrop-blur border-none shadow-lg bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transform-gpu transition-all ease-in-out"
   class:opacity-100={scrollY}
   class:translate-y-24={!pin || scrollY === 0}>
-  <svg class="h-16 w-16 fixed" stroke="accent width-3">
+  <svg class="h-16 w-16 fixed">
     <circle
-      class="transform-gpu transition-transform origin-center -rotate-90 stroke-accent stroke-width-4 stroke-cap-round fill-transparent"
+      class="transform-gpu transition-transform origin-center -rotate-90 stroke-accent stroke-[4px] fill-transparent"
+      stroke-linecap="round"
       r="30"
       cx="32"
       cy="32"

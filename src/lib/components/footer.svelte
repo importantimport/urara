@@ -7,7 +7,7 @@
 
 <footer
   id="footer"
-  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-box <md:rounded-none p-8 {className ?? ''}">
+  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-none md:rounded-box p-8 {className ?? ''}">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
@@ -16,22 +16,25 @@
           <span class="mr-1">·</span>
         {/if}
       {/each}
-    </p>
-    <p>
+      <br />
       Copyright © {site.since && site.since !== new Date().toJSON().substring(0, 4)
         ? `${site.since} - ${new Date().toJSON().substring(0, 4)}`
         : new Date().toJSON().substring(0, 4)}
       {site.author.name}
       <br />
       Powered by
-      <a rel="noopener external" target="_blank" href="https://github.com/sveltejs/kit">SvelteKit</a>
-      /
-      <a rel="noopener external" target="_blank" href="https://github.com/pngwn/mdsvex">MDsveX</a>
-      /
-      <a rel="noopener external" target="_blank" class="urara-link" href="https://github.com/importantimport/urara">Urara</a>
+      <a
+        rel="noopener external"
+        target="_blank"
+        class="tooltip tooltip-secondary hover:text-secondary"
+        data-tip="🌸 Based on SvelteKit / MDsveX 🌸"
+        href="https://github.com/importantimport/urara">
+        Urara
+      </a>
+      {#if footerConfig.html}
+        <br />
+        {@html footerConfig.html}
+      {/if}
     </p>
-    {#if footerConfig.html}
-      {@html footerConfig.html}
-    {/if}
   </div>
 </footer>
