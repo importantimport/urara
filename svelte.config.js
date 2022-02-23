@@ -26,6 +26,7 @@ const config = {
           assets: 'build',
           fallback: null
         }),
+    csp: { mode: 'auto' },
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
