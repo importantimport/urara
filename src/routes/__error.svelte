@@ -18,12 +18,12 @@
 </script>
 
 <Card page={{ title: '404', path: pathname }}>
-  <h1 class="opacity-15 !text-6xl !md:text-12xl !-mt-2">
+  <h1 class="opacity-20 text-6xl md:text-[12rem] -mt-2 mb-0">
     {status}
   </h1>
   <h2 class="-mt-12 md:-mt-24">{message}</h2>
-  <div>
-    <a href="/" class="btn btn-neutral !text-neutral-content shadow-xl hover:shadow-2xl mt-8">
+  <div class="card-actions">
+    <a href="/" class="btn btn-neutral no-underline shadow-xl hover:shadow-2xl mt-8">
       <IconHome class="inline-block w-6 h-6 -ml-1 mr-2" />
       Back to Home
     </a>
