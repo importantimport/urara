@@ -57,7 +57,7 @@
     toc={toc.reduce(
       (acc, heading) => {
         let parent = acc
-        while (parent.depth + 1 < heading.depth) parent = parent.children[parent.children.length - 1]
+        while (parent.depth + 1 < heading.depth) parent = parent.children.at(-1)
         parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
         return acc
       },
