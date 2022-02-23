@@ -57,7 +57,7 @@
         id="tags"
         data-nosnippet
         tabindex="0"
-        class="collapse collapse-arrow xl:sticky xl:top-24 rounded-none md:rounded-box mb-8 ml-8">
+        class="collapse collapse-arrow xl:sticky xl:top-24 rounded-none md:rounded-box mb-8 xl:ml-8">
         <input type="checkbox" />
         <div class="collapse-title text-xl font-medium">
           tags{#if tags?.length > 0}
