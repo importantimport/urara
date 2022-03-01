@@ -3,7 +3,6 @@ command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm build"
 publish = "build"
 [build.environment]
 NPM_FLAGS = "--version"
+NODE_VERSION = "17.6.0"
 [functions]
 node_bundler = "esbuild"
-[build.environment]
-NODE_VERSION = "17.6.0"
