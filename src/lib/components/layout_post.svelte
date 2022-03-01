@@ -45,7 +45,7 @@
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
   <div slot="left" class="h-full hidden xl:block" />
   <div slot="right" class="h-full hidden xl:block">
-    {#if toc?.length >= 1}
+    {#if browser && toc?.length >= 1}
       <Toc {toc} />
     {/if}
   </div>
