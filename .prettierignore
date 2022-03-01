@@ -3,4 +3,5 @@ static/**
 build/**
 node_modules/**
 pnpm-lock.yaml
-.vercel_build_output/
+.netlify/**
+.vercel_build_output/**

@@ -6,5 +6,6 @@ src/routes/**/
 static/
 build/
 .vercel_build_output/
+.netlify/
 .env.local
 .env.**.local
