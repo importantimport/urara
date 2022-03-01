@@ -5,3 +5,5 @@ publish = "build"
 NPM_FLAGS = "--version"
 [functions]
 node_bundler = "esbuild"
+[build.environment]
+NODE_VERSION = "17.6.0"
