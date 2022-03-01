@@ -12,7 +12,7 @@
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
         <a {href} rel="noopener external" target="_blank">{name}</a>
-        {#if i < Object.keys(footerConfig.nav).length - 1}
+        {#if i + 1 < Object.keys(footerConfig.nav).length}
           <span class="mr-1">·</span>
         {/if}
       {/each}
