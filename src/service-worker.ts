@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
-import { build, files, timestamp } from '$service-worker'
+import { build, files, version } from '$service-worker'
 import { registerRoute } from 'workbox-routing'
 import { precacheAndRoute, precache } from 'workbox-precaching'
 import { StaleWhileRevalidate } from 'workbox-strategies'
@@ -23,8 +23,8 @@ self.addEventListener('message', event => {
   if (event?.data.type === 'SKIP_WAITING') self.skipWaiting()
 })
 
-precache(pages.map(url => ({ url, revision: `${timestamp}` })))
+precache(pages.map(url => ({ url, revision: `${version}` })))
 
-precacheAndRoute([...build.map(url => ({ url, revision: null })), ...files.map(url => ({ url, revision: `${timestamp}` }))])
+precacheAndRoute([...build.map(url => ({ url, revision: null })), ...files.map(url => ({ url, revision: `${version}` }))])
 
 registerRoute(({ url }) => pages.includes(url.pathname), new StaleWhileRevalidate({}))
