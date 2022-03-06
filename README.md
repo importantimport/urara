@@ -14,11 +14,11 @@
 <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=shield" alt="FOSSA Status">
 </p>
 <p align="center">
-<a href="https://urara-demo.netlify.app">Demo</a>
+<a href="https://urara-demo.netlify.app">🚀 Demo</a>
 /
-<a href="https://urara-docs.netlify.app">Documentation</a>
+<a href="https://urara-docs.netlify.app">📝 Documentation</a>
 /
-<a href="https://github.com/importantimport/urara/discussions">Discussions</a>
+<a href="https://github.com/importantimport/urara/discussions">💬 Discussions</a>
 </p>
 
 ## ✨ Try it now!
@@ -26,72 +26,71 @@
 ### Local
 
 ```bash
-npx degit importantimport/urara [blog-name]
+npx degit importantimport/urara [blog-name] && cd [blog-name]
+pnpm i # if you don't have pnpm installed, run: npm install -g pnpm
 ```
 
 ### Remote
 
 [![Use this template](https://img.shields.io/badge/-Use%20this%20Template-181717?style=for-the-badge&logo=GitHub)](https://github.com/importantimport/urara/generate) [![Deploy with Vercel](https://img.shields.io/badge/-Deploy%20with%20Vercel-1374ef?style=for-the-badge&logo=Vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara&env=URARA_SITE_URL&envDescription=Site%20URL.&envLink=https%3A%2F%2Fexample.com&project-name=urara-blog&repository-name=urara-blog) [![Deploy to Netlify](https://img.shields.io/badge/-Deploy%20to%20Netlify-15847d?style=for-the-badge&logo=Netlify&logoColor=white)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara#URARA_SITE_URL=https://example.com&CUSTOM_LOGO=https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png)
 
-## 📝 Checklist
-
-here is an index of some files to help u modify or delete them:
-
-- [ ] Configuration: `/src/lib/config/`
-- [ ] Icons: `/urara/assets/`
-- [ ] Styles: `/src/app.css`
-- [ ] Service Worker: `/src/service-worker.ts`
-
-🎉 enjoy! (and give this project a ⭐️ if u can, thx)
 
 ## ⚡️ Usage
 
-### Developing
-
-This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
+This template recommends using [@antfu/ni](https://github.com/antfu/ni).
 
 ```bash
-# http://localhost:3000
-nr dev
+pnpm i -g @antfu/ni
 ```
 
-or listen to different IP and port:
+### Developing
+
+Start a development server:
 
 ```bash
-# http://0.0.0.0:3000
-nr dev --host 0.0.0.0
-
-# http://0.0.0.0:8080
-nr dev --host 0.0.0.0 --port 8080
+# pnpm run dev
+nr dev
 ```
 
 ### Building
 
-This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default, when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
+Create a production version of ur blog:
 
 ```bash
+# pnpm run build
 nr build
 ```
 
-or use the specified adapter:
+u can preview the built app with `nr preview`.
 
-```bash
-# Vercel
-VERCEL=true nr build
+### Documentation
 
-# Cloudflare Pages
-CF_PAGES=true nr build
+For full documentation, visit [urara-docs.netlify.app](https://urara-docs.netlify.app).
 
-# Netlify
-NETLIFY=true nr build
-```
+### Give this project a star
 
-> u can modify it to any adapter supported by SvelteKit.
-> see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+tyvm! ur ⭐ will give me more motivation to improve this project.
 
-> u can preview the built app with `nr preview`, regardless of
-> whether u installed an adapter. This should _not_ be used to serve
-> ur app in production.
+## 📦️ Pre-packed
+
+### TailwindCSS & PostCSS Plugins
+
+- [daisyUI](https://github.com/saadeghi/daisyui) - Tailwind CSS Components
+- [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
+- [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapid UI development.
+- [PostCSS](https://github.com/postcss/postcss) - a tool for transforming CSS with JavaScript
+- [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) - Convert modern CSS into something browsers understand
+- [PostCSS Import](https://github.com/postcss/postcss-import) - PostCSS plugin to inline @import rules content
+- [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
+
+### Markdown preprocessor & Syntax highlighter
+
+- [MDsveX](https://github.com/pngwn/MDsveX) - A markdown preprocessor for Svelte.
+- [Shiki Twoslash](https://github.com/shikijs/twoslash) - A beautiful Syntax Highlighter.
+
+### Vite Plugins
+
+- [Unplugin Icons](https://github.com/antfu/unplugin-icons) - Access thousands of icons as components on-demand universally.
 
 ## 🚀 Sites
 
