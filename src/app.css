@@ -9,8 +9,7 @@
 /* global */
 
 html {
-  scroll-behavior: smooth;
-  @apply !bg-base-200 overflow-x-hidden overflow-y-scroll break-words;
+  @apply !bg-base-200 scroll-smooth	overflow-x-hidden overflow-y-scroll;
 }
 
 ::selection {
