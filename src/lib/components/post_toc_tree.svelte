@@ -7,7 +7,7 @@
   <span
     on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })}
     id={`toc-link-${slug}`}
-    class="border-l-4 border-transparent transition-all hover:border-primary hover:bg-base-content hover:bg-opacity-10 active:bg-primary active:text-primary-content active:font-bold pr-4 {depth <=
+    class="cursor-pointer border-l-4 border-transparent transition-all hover:border-primary hover:bg-base-content hover:bg-opacity-10 active:bg-primary active:text-primary-content active:font-bold pr-4 {depth <=
     2
       ? 'py-3'
       : 'py-2'}"
