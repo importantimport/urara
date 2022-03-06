@@ -1,7 +1,7 @@
-import type { EndpointOutput } from '@sveltejs/kit'
+import type { RequestHandlerOutput } from '@sveltejs/kit'
 import { genPosts } from '$lib/utils/posts'
 
-export const get = async (): Promise<EndpointOutput> => ({
+export const get = async (): Promise<RequestHandlerOutput> => ({
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   },

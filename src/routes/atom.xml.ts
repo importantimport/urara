@@ -1,4 +1,4 @@
-import type { EndpointOutput } from '@sveltejs/kit'
+import type { RequestHandlerOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/misc'
 import { icons } from '$lib/config/icons'
@@ -50,7 +50,7 @@ const render = async (): Promise<string> => {
 </feed>`
 }
 
-export const get = async (): Promise<EndpointOutput> => ({
+export const get = async (): Promise<RequestHandlerOutput> => ({
   headers: {
     'Content-Type': 'application/atom+xml; charset=utf-8'
   },

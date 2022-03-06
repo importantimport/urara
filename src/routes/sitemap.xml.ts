@@ -1,4 +1,4 @@
-import type { EndpointOutput } from '@sveltejs/kit'
+import type { RequestHandlerOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
@@ -22,7 +22,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
       .join('')}
 </urlset>`
 
-export const get = async (): Promise<EndpointOutput> => ({
+export const get = async (): Promise<RequestHandlerOutput> => ({
   headers: {
     'Content-Type': 'application/xml; charset=utf-8'
   },
