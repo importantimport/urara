@@ -27,7 +27,7 @@
 
 ```bash
 npx degit importantimport/urara [blog-name] && cd [blog-name]
-pnpm i # if you don't have pnpm installed, run: npm install -g pnpm
+pnpm i # if u don't have pnpm installed, run: npx pnpm add -g pnpm
 ```
 
 ### Remote
@@ -107,7 +107,7 @@ are u using Urara? add the `urara-blog` topic on ur repo!
 
 This work is free, it comes without any warranty. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
-as published by Sam Hocevar. See the COPYING file for more details.
+as published by Sam Hocevar. See the [COPYING](https://github.com/importantimport/urara/blob/main/COPYING) file for more details.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fimportantimport%2Furara?ref=badge_large)
 
