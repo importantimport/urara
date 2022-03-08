@@ -8,7 +8,7 @@
   itemscope
   itemtype="https://schema.org/BlogPosting"
   itemprop="blogPost"
-  class="card bg-base-100 urara-card-shadow rounded-none md:rounded-box md:card-side group mb-8">
+  class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow rounded-none md:rounded-box md:card-side group mb-8">
   {#if post.cover}
     <Cover
       figureClass="w-full overflow-hidden order-first md:order-last md:rounded-box shadow-lg"

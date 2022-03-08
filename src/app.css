@@ -80,12 +80,6 @@ footer a {
   @apply blur-sm hover:blur-none active:blur-none transition-all select-all;
 }
 
-/* extend */
-
-.urara-card-shadow {
-  @apply shadow-xl transition-shadow ease-in-out hover:shadow-2xl;
-}
-
 /* .prose pre */
 
 .prose pre {

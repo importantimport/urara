@@ -8,7 +8,7 @@
   {#if site.author.avatar}
     <img class="hidden u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
     <div class="flex-0 avatar w-32 h-32 ml-auto my-auto justify-end">
-      <img class="rounded-full urara-card-shadow w-32 h-32" src={site.author.avatar} alt={site.author.name} />
+      <img class="rounded-full shadow-xl hover:shadow-2xl transition-shadow w-32 h-32" src={site.author.avatar} alt={site.author.name} />
       {#if site.author.status}
         <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">
           {site.author.status}
