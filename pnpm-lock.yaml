@@ -4,6 +4,7 @@ specifiers:
   '@iconify-json/heroicons-outline': ^1.1.1
   '@iconify-json/heroicons-solid': ^1.1.1
   '@sveltejs/adapter-auto': ^1.0.0-next.31
+  '@sveltejs/adapter-node': ^1.0.0-next.71
   '@sveltejs/adapter-static': ^1.0.0-next.29
   '@sveltejs/kit': ^1.0.0-next.294
   '@tailwindcss/typography': ^0.5.2
@@ -52,6 +53,7 @@ devDependencies:
   '@iconify-json/heroicons-outline': 1.1.1
   '@iconify-json/heroicons-solid': 1.1.1
   '@sveltejs/adapter-auto': 1.0.0-next.31
+  '@sveltejs/adapter-node': 1.0.0-next.71
   '@sveltejs/adapter-static': 1.0.0-next.29
   '@sveltejs/kit': 1.0.0-next.294_svelte@3.46.4
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
@@ -338,6 +340,12 @@ packages:
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.25
+      tiny-glob: 0.2.9
+    dev: true
+
+  /@sveltejs/adapter-node/1.0.0-next.71:
+    resolution: {integrity: sha512-ELSQBSyk0IHMRi5Zct95jP+lTUJ0VQ/d7DxPMQTaDYVexpehDBOV6bXDzSNBl9boIIfEv77VD3lA7kgtuJnGdg==}
+    dependencies:
       tiny-glob: 0.2.9
     dev: true
 

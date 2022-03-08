@@ -1,5 +1,6 @@
 import preprocess from 'svelte-preprocess'
 import adapterAuto from '@sveltejs/adapter-auto'
+import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
 import { mdsvex } from 'mdsvex'
 import { mdsvexConfig } from './mdsvex.config.js'
@@ -21,7 +22,9 @@ const config = {
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterAuto()
-      : adapterStatic({
+      : process.env.ADAPTER === 'node'
+        ? adapterNode({ out: 'build' })
+        : adapterStatic({
           pages: 'build',
           assets: 'build',
           fallback: null
