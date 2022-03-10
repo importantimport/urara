@@ -6,11 +6,8 @@ import { mdsvex } from 'mdsvex'
 import { mdsvexConfig } from './mdsvex.config.js'
 import Icons from 'unplugin-icons/vite'
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
+export default /** @type {import('@sveltejs/kit').Config} */ {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
   preprocess: [
     mdsvex(mdsvexConfig),
     preprocess({
@@ -43,5 +40,3 @@ const config = {
     }
   }
 }
-
-export default config
