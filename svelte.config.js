@@ -5,16 +5,13 @@ import adapterStatic from '@sveltejs/adapter-static'
 import Icons from 'unplugin-icons/vite'
 import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
+import postcss from './postcss.config.js'
 
 export default /** @type {import('@sveltejs/kit').Config} */ {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
   preprocess: [
     mdsvex(mdsvexConfig),
-    preprocess({
-      postcss: {
-        plugins: true
-      }
-    })
+    preprocess()
   ],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
@@ -30,6 +27,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
+      css: { postcss },
       plugins: [
         Icons({
           autoInstall: true,
