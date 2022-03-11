@@ -12,29 +12,29 @@ import Slugger from 'github-slugger'
 
 const remarkUraraFm =
   () =>
-    (tree, { data, filename }) => {
-      const filepath = filename.split('/src/routes')[1]
-      let { dir, name } = parse(filepath)
-      if (!data.fm) data.fm = {}
-      data.fm.slug = filepath
-      data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-      if (data.fm?.toc !== false) {
-        let [slugs, toc] = [new Slugger(), []]
-        visit(tree, 'heading', node => {
-          toc.push({
-            depth: node.depth,
-            title: toString(node),
-            slug: slugs.slug(toString(node))
-          })
+  (tree, { data, filename }) => {
+    const filepath = filename.split('/src/routes')[1]
+    let { dir, name } = parse(filepath)
+    if (!data.fm) data.fm = {}
+    data.fm.slug = filepath
+    data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    if (data.fm?.toc !== false) {
+      let [slugs, toc] = [new Slugger(), []]
+      visit(tree, 'heading', node => {
+        toc.push({
+          depth: node.depth,
+          title: toString(node),
+          slug: slugs.slug(toString(node))
         })
-        data.fm.toc = toc
-      }
-      if (!data.fm.date || !data.fm.lastmod) {
-        const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-        if (!data.fm.date) data.fm.date = ctime
-        if (!data.fm.lastmod) data.fm.lastmod = mtime
-      }
+      })
+      data.fm.toc = toc
     }
+    if (!data.fm.date || !data.fm.lastmod) {
+      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
+      if (!data.fm.date) data.fm.date = ctime
+      if (!data.fm.lastmod) data.fm.lastmod = mtime
+    }
+  }
 
 const remarkUraraSpoiler = () => tree =>
   visit(tree, 'paragraph', node => {
@@ -61,10 +61,15 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
   highlight: {
     highlighter: async (code, lang, meta) => {
       let fence, twoslash
-      try { fence = parseFence(lex([lang, meta].filter(Boolean).join(' '))) }
-      catch (error) { throw new Error(`Could not parse the codefence for this code sample \n${code}`) }
+      try {
+        fence = parseFence(lex([lang, meta].filter(Boolean).join(' ')))
+      } catch (error) {
+        throw new Error(`Could not parse the codefence for this code sample \n${code}`)
+      }
       if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang)
-      return `{@html \`${escapeSvelte(renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash))}\` }`
+      return `{@html \`${escapeSvelte(
+        renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash)
+      )}\` }`
     }
   },
   remarkPlugins: [remarkUraraFm, remarkUraraSpoiler],

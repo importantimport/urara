@@ -91,13 +91,13 @@ footer a {
 }
 
 .prose pre:not(.shiki)::before {
-  @apply sticky -left-5 -ml-5
+  @apply sticky -left-5 -ml-5;
 }
 
 /* shiki */
 
 pre.shiki {
-  @apply px-0
+  @apply px-0;
 }
 
 pre.shiki::before {
@@ -105,51 +105,51 @@ pre.shiki::before {
 }
 
 pre.shiki > div.code-title {
-  @apply absolute -mt-10 ml-20 pt-1.5 pl-1.5 opacity-50
+  @apply absolute -mt-10 ml-20 pt-1.5 pl-1.5 opacity-50;
 }
 
 pre.shiki .language-id {
-  @apply hidden
+  @apply hidden;
 }
 
 pre .code-container {
-  @apply overflow-auto
+  @apply overflow-auto;
 }
 
 pre .code-container > code > div.line > span:first-child {
-  @apply pl-5
+  @apply pl-5;
 }
 
 pre .code-container > code > div.line > span:last-child {
-  @apply pr-5
+  @apply pr-5;
 }
 
 pre.shiki div.dim {
-  @apply opacity-50 transition-opacity
+  @apply opacity-50 transition-opacity;
 }
 
 pre.shiki:hover div.dim {
-  @apply opacity-100
+  @apply opacity-100;
 }
 
 pre.shiki div.highlight {
-  @apply bg-warning/20
+  @apply bg-warning/20;
 }
 
 pre.twoslash {
-  @apply shadow-inner
+  @apply shadow-inner;
 }
 
 pre.twoslash data-lsp {
-  @apply border-b border-dashed border-transparent transition-all
+  @apply border-b border-dashed border-transparent transition-all;
 }
 
 pre.twoslash:hover data-lsp {
-  @apply border-neutral-content/30
+  @apply border-neutral-content/30;
 }
 
 pre.twoslash data-lsp:hover::before {
-  @apply content-[attr(lsp)] absolute rounded translate-y-5 bg-neutral-focus text-neutral-content font-mono whitespace-pre-wrap transition-all px-2 py-1 z-50
+  @apply content-[attr(lsp)] absolute rounded translate-y-5 bg-neutral-focus text-neutral-content font-mono whitespace-pre-wrap transition-all px-2 py-1 z-50;
 }
 
 /* your code here */
