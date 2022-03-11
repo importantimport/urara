@@ -34,7 +34,6 @@ pnpm i # if u don't have pnpm installed, run: npx pnpm add -g pnpm
 
 [![Use this template](https://img.shields.io/badge/-Use%20this%20Template-181717?style=for-the-badge&logo=GitHub)](https://github.com/importantimport/urara/generate) [![Deploy with Vercel](https://img.shields.io/badge/-Deploy%20with%20Vercel-1374ef?style=for-the-badge&logo=Vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara&env=URARA_SITE_URL&envDescription=Site%20URL.&envLink=https%3A%2F%2Fexample.com&project-name=urara-blog&repository-name=urara-blog) [![Deploy to Netlify](https://img.shields.io/badge/-Deploy%20to%20Netlify-15847d?style=for-the-badge&logo=Netlify&logoColor=white)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara#URARA_SITE_URL=https://example.com&CUSTOM_LOGO=https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png)
 
-
 ## ⚡️ Usage
 
 This template recommends using [@antfu/ni](https://github.com/antfu/ni).
@@ -76,11 +75,10 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 ### TailwindCSS & PostCSS Plugins
 
 - [daisyUI](https://github.com/saadeghi/daisyui) - Tailwind CSS Components
-- [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
+- [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
 - [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapid UI development.
 - [PostCSS](https://github.com/postcss/postcss) - a tool for transforming CSS with JavaScript
 - [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) - Convert modern CSS into something browsers understand
-- [PostCSS Import](https://github.com/postcss/postcss-import) - PostCSS plugin to inline @import rules content
 - [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
 
 ### Markdown preprocessor & Syntax highlighter
