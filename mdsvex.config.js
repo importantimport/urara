@@ -12,29 +12,29 @@ import Slugger from 'github-slugger'
 
 const remarkUraraFm =
   () =>
-  (tree, { data, filename }) => {
-    const filepath = filename.split('/src/routes')[1]
-    let { dir, name } = parse(filepath)
-    if (!data.fm) data.fm = {}
-    data.fm.slug = filepath
-    data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-    if (data.fm?.toc !== false) {
-      let [slugs, toc] = [new Slugger(), []]
-      visit(tree, 'heading', node => {
-        toc.push({
-          depth: node.depth,
-          title: toString(node),
-          slug: slugs.slug(toString(node))
+    (tree, { data, filename }) => {
+      const filepath = filename.split('/src/routes')[1]
+      let { dir, name } = parse(filepath)
+      if (!data.fm) data.fm = {}
+      data.fm.slug = filepath
+      data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+      if (data.fm?.toc !== false) {
+        let [slugs, toc] = [new Slugger(), []]
+        visit(tree, 'heading', node => {
+          toc.push({
+            depth: node.depth,
+            title: toString(node),
+            slug: slugs.slug(toString(node))
+          })
         })
-      })
-      data.fm.toc = toc
+        data.fm.toc = toc
+      }
+      if (!data.fm.date || !data.fm.lastmod) {
+        const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
+        if (!data.fm.date) data.fm.date = ctime
+        if (!data.fm.lastmod) data.fm.lastmod = mtime
+      }
     }
-    if (!data.fm.date || !data.fm.lastmod) {
-      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-      if (!data.fm.date) data.fm.date = ctime
-      if (!data.fm.lastmod) data.fm.lastmod = mtime
-    }
-  }
 
 const remarkUraraSpoiler = () => tree =>
   visit(tree, 'paragraph', node => {
@@ -48,8 +48,7 @@ const remarkUraraSpoiler = () => tree =>
     return node
   })
 
-/** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */
-export const mdsvexConfig = {
+export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
   extensions: ['.svelte.md', '.md'],
   smartypants: {
     dashes: 'oldschool'
