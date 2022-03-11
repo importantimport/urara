@@ -26,7 +26,7 @@
 
 <header
   id="header"
-  class="navbar fixed w-screen z-50 backdrop-filter backdrop-blur rounded-none transform-gpu transition-all ease-in-out {scrollY <
+  class="navbar fixed w-screen z-50 backdrop-blur rounded-none transform-gpu transition-all xl:bg-transparent xl:text-base-content xl:backdrop-blur-none xl:shadow-none {scrollY <
   32
     ? 'bg-transparent text-base-content'
     : 'bg-neutral/50 text-neutral-content shadow-xl'}"
