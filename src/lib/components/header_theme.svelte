@@ -65,10 +65,9 @@
     class:hidden={pin === false}>
     {#each Object.entries(themes) as [theme, name]}
       <li>
-        <!-- svelte-ignore a11y-missing-attribute -->
-        <a href={'javascript:void(0)'} on:click={() => (currentTheme = theme)} class:active={currentTheme === theme}>
+        <span on:click={() => (currentTheme = theme)} class:active={currentTheme === theme}>
           {name}
-        </a>
+        </span>
       </li>
     {/each}
   </ul>
