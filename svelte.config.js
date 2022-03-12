@@ -21,6 +21,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           fallback: null
         }),
     csp: { mode: 'auto' },
+    prerender: { default: true },
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
