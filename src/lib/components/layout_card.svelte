@@ -1,8 +1,7 @@
 <script lang="ts" context="module">
   import img from '$lib/components/prose/img.svelte'
-  import code from '$lib/components/prose/code.svelte'
   import table from '$lib/components/prose/table.svelte'
-  export { img, code, table }
+  export { img, table }
 </script>
 
 <script lang="ts">
