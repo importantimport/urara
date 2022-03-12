@@ -8,6 +8,6 @@ export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} 
   },
   plugins: [typography, daisyui],
   daisyui: {
-    themes: ['light', 'dark', 'cupcake', 'emerald', 'valentine', 'synthwave', 'halloween', 'aqua', 'dracula']
+    themes: ['light', 'dark', 'cupcake', 'emerald', 'valentine', 'synthwave', 'halloween', 'aqua', 'dracula', 'winter']
   }
 }

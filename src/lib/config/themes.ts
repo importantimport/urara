@@ -7,5 +7,6 @@ export const themes = {
   synthwave: '🌃 Synthwave',
   halloween: '🎃 Halloween',
   aqua: '💦 Aqua',
-  dracula: '🧛 Dracula'
+  dracula: '🧛 Dracula',
+  winter: '❄️ Winter'
 }
