@@ -2,6 +2,10 @@
   "name": "urara",
   "version": "0.0.1",
   "license": "WTFPL",
+  "repository": "importantimport/urara",
+  "homepage": "https://github.com/importantimport/urara",
+  "bugs": "https://github.com/importantimport/urara/issues",
+  "author": "藍",
   "scripts": {
     "clean": "node urara.js clean",
     "rename": "node urara.js rename",
