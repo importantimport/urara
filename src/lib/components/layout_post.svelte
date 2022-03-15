@@ -7,6 +7,7 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { site } from '$lib/config/site'
+  import { posts as storedPosts } from '$lib/stores/posts'
   import Flex from '$lib/components/layout_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
@@ -30,15 +31,13 @@
   let prev = undefined
   let next = undefined
 
-  if (browser) {
-    posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
-      .sort(([a], [b]) => parseInt(a) - parseInt(b))
-      .flatMap(([, value]) => value)
-    post = posts.find(post => post?.path === window.location.pathname)
-    index = posts.findIndex(post => post?.path === window.location.pathname)
+  $: storedPosts.subscribe(storedPosts => {
+    posts = Object.entries(storedPosts).flatMap(([, value]) => value)
+    post = posts.find(post => post?.path === path)
+    index = posts.findIndex(post => post?.path === path)
     prev = posts[index + 1]
     next = posts[index - 1]
-  }
+  })
 </script>
 
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>

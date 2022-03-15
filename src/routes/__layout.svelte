@@ -2,18 +2,20 @@
   export const prerender = true
   export const load = async ({ url, fetch }) => {
     const res = await fetch('/posts.json')
-    return res.ok ? { props: { path: url.pathname, posts: await res.json() } } : { props: { path: url.pathname } }
+    return res.ok ? { props: { path: url.pathname, res: await res.json() } } : { props: { path: url.pathname } }
   }
 </script>
 
 <script lang="ts">
-  import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
+  import { genTags } from '$lib/utils/posts'
+  import { posts, tags } from '$lib/stores/posts'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
-  export let posts: { [priority: number]: Urara.Post[] }
+  export let res: { [priority: number]: Urara.Post[] }
   export let path: string
-  if (browser) localStorage.setItem('posts', JSON.stringify(posts))
+  posts.set(res)
+  tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
 </script>
 
 <Header />

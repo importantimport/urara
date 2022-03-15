@@ -5,5 +5,5 @@ export const get = async (): Promise<RequestHandlerOutput> => ({
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   },
-  body: JSON.stringify(await genPosts(), null, 2)
+  body: JSON.stringify(genPosts(), null, 2)
 })

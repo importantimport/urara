@@ -2,11 +2,10 @@ import type { RequestHandlerOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/misc'
 import { icons } from '$lib/config/icons'
-import { genPosts } from '$lib/utils/posts'
-import { genTags } from '$lib/utils/tags'
+import { genPosts, genTags } from '$lib/utils/posts'
 
 const render = async (): Promise<string> => {
-  const posts = Object.entries(await genPosts())
+  const posts = Object.entries(genPosts({ postHtml: true }))
     .flatMap(([key, value]) => (+key > 0 ? value : []))
     .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
     .filter((_, index) => feed.limit === 0 || index < feed.limit)
