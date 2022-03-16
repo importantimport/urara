@@ -26,7 +26,7 @@
 ### Local
 
 ```bash
-npx degit importantimport/urara [blog-name] && cd [blog-name]
+npx degit importantimport/urara my-blog && cd my-blog # create a new project in my-blog
 pnpm i # if u don't have pnpm installed, run: npx pnpm add -g pnpm
 ```
 
@@ -36,19 +36,12 @@ pnpm i # if u don't have pnpm installed, run: npx pnpm add -g pnpm
 
 ## ⚡️ Usage
 
-This template recommends using [@antfu/ni](https://github.com/antfu/ni).
-
-```bash
-pnpm i -g @antfu/ni
-```
-
 ### Developing
 
 Start a development server:
 
 ```bash
-# pnpm run dev
-nr dev
+pnpm dev
 ```
 
 ### Building
@@ -56,11 +49,10 @@ nr dev
 Create a production version of ur blog:
 
 ```bash
-# pnpm run build
-nr build
+pnpm build
 ```
 
-u can preview the built app with `nr preview`.
+u can preview the built app with `pnpm preview`.
 
 ### Documentation
 
