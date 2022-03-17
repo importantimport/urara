@@ -11,7 +11,7 @@
     <a href={next.path} class="flex-1 card-body group">
       <IconChevronLeft class="h-6 w-6 opacity-50 group-hover:opacity-100 mr-auto mb-2" />
       <div
-        class="card-title text-left mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
+        class="card-title block text-left mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
         {next.title ?? next.path}
       </div>
     </a>
@@ -23,7 +23,7 @@
     <a href={prev.path} class="flex-1 card-body group">
       <IconChevronRight class="w-6 h-6 opacity-50 group-hover:opacity-100 ml-auto mb-2" />
       <div
-        class="card-title text-right mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
+        class="card-title block text-right mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
         {prev.title ?? prev.path}
       </div>
     </a>
