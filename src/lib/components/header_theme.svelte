@@ -72,10 +72,10 @@
           : ''}">
         <p class="flex-1 text-left text-base-content group-hover:text-primary-content transition-color">{name}</p>
         <div class="flex-0 m-auto flex gap-1">
-          <div class="bg-primary w-2 h-2 rounded" />
-          <div class="bg-secondary w-2 h-2 rounded" />
-          <div class="bg-accent w-2 h-2 rounded" />
-          <div class="bg-neutral w-2 h-2 rounded" />
+          <div class="bg-primary w-2 h-4 rounded" />
+          <div class="bg-secondary w-2 h-4 rounded" />
+          <div class="bg-accent w-2 h-4 rounded" />
+          <div class="bg-neutral w-2 h-4 rounded" />
         </div>
       </button>
     {/each}
