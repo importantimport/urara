@@ -61,14 +61,23 @@
   </div>
   <ul
     tabindex="0"
-    class="p-2 shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52"
+    class="flex shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2"
     class:hidden={pin === false}>
     {#each Object.entries(themes) as [theme, name]}
-      <li>
-        <span on:click={() => (currentTheme = theme)} class:active={currentTheme === theme}>
-          {name}
-        </span>
-      </li>
+      <button
+        data-theme={theme}
+        on:click={() => (currentTheme = theme)}
+        class="btn btn-ghost hover:bg-primary group rounded-lg flex bg-base-100 p-2 transition-all {currentTheme === theme
+          ? 'border-[3px] border-primary'
+          : ''}">
+        <p class="flex-1 text-left text-base-content group-hover:text-primary-content transition-color">{name}</p>
+        <div class="flex-0 m-auto flex gap-1">
+          <div class="bg-primary w-2 h-2 rounded" />
+          <div class="bg-secondary w-2 h-2 rounded" />
+          <div class="bg-accent w-2 h-2 rounded" />
+          <div class="bg-neutral w-2 h-2 rounded" />
+        </div>
+      </button>
     {/each}
   </ul>
 </div>
