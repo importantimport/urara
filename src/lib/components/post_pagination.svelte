@@ -16,7 +16,7 @@
       </div>
     </a>
     {#if prev && (!prev.priority || (prev.priority[1] ?? prev.priority) > 0)}
-      <div class="flex-0 divider mx-4 md:divider-vertical md:mx-0 md:my-4" />
+      <div class="flex-0 divider mx-4 md:divider-horizontal md:mx-0 md:my-4" />
     {/if}
   {/if}
   {#if prev && (!prev.priority || (prev.priority[1] ?? prev.priority) > 0)}
