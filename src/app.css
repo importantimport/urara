@@ -112,15 +112,19 @@ pre.shiki .language-id {
   @apply hidden;
 }
 
-pre .code-container {
+pre.shiki > .code-container {
   @apply overflow-auto;
 }
 
-pre .code-container > code > div.line > span:first-child {
+pre.shiki[text='true'] > div.code-container {
+  @apply mx-5;
+}
+
+pre.shiki:not([text='true']) > .code-container > code > div.line > span:first-child {
   @apply pl-5;
 }
 
-pre .code-container > code > div.line > span:last-child {
+pre.shiki:not([text='true']) > .code-container > code > div.line > span:last-child {
   @apply pr-5;
 }
 
@@ -134,10 +138,6 @@ pre.shiki:hover div.dim {
 
 pre.shiki div.highlight {
   @apply bg-warning/20;
-}
-
-pre.twoslash {
-  @apply shadow-inner;
 }
 
 pre.twoslash data-lsp {
