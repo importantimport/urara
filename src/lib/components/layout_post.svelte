@@ -14,6 +14,7 @@
   import Cover from '$lib/components/post_cover.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
   import Footer from '$lib/components/footer.svelte'
+  import Comment from '$lib/components/post_comment.svelte'
 
   export let title = undefined
   export let date = undefined
@@ -84,6 +85,9 @@
     {#if posts && post}
       {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
         <Pagination {next} {prev} />
+      {/if}
+      {#if browser && post?.comment !== false}
+        <Comment {post} />
       {/if}
     {/if}
     <Footer />
