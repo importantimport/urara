@@ -94,6 +94,16 @@ footer a {
   @apply sticky -left-5 -ml-5;
 }
 
+/* .urara-prose pre */
+
+.urara-prose pre {
+  @apply transition-all duration-300;
+}
+
+.urara-prose pre:hover {
+  @apply -mx-8 rounded-none;
+}
+
 /* shiki */
 
 pre.shiki {
