@@ -62,15 +62,23 @@ For full documentation, visit [urara-docs.netlify.app](https://urara-docs.netlif
 
 tyvm! ur ⭐ will give me more motivation to improve this project.
 
+## ✨ Features
+
+- Out of the box **Atom feed**, **Sitemap**, **PWA** (Web app manifest & ServiceWorker) support.
+- Present beautiful interface designs and animations with daisyUI, of course.
+- Good IndieWeb Compatibility - Mark up content with [microformats2](https://microformats.org/), [Webmentions](https://webmention.org/) comment component
+- Don't worry about the article and image directories - just put them under a folder and they'll be [copied automatically at build time](https://github.com/importantimport/urara/blob/main/urara.js).
+- [Comment Components](https://github.com/importantimport/urara/tree/main/src/lib/components/comments): Webmentions, Giscus, Utterances... u can use more than one.
+
 ## 📦️ Pre-packed
 
 ### TailwindCSS & PostCSS Plugins
 
-- [daisyUI](https://github.com/saadeghi/daisyui) - Tailwind CSS Components
+- [daisyUI](https://github.com/saadeghi/daisyui) - The most popular, free and open-source Tailwind CSS component library
 - [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
 - [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapid UI development.
-- [PostCSS](https://github.com/postcss/postcss) - a tool for transforming CSS with JavaScript
 - [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) - Convert modern CSS into something browsers understand
+- [PostCSS](https://github.com/postcss/postcss) - a tool for transforming CSS with JavaScript
 - [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
 
 ### Markdown preprocessor & Syntax highlighter
