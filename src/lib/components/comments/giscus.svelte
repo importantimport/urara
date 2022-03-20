@@ -20,6 +20,15 @@
     else s.setAttribute('data-theme', 'preferred_color_scheme')
     s.src = config.src ?? 'https://giscus.app/client.js'
     document.getElementById('giscus-container').appendChild(s)
+
+    const observer = new MutationObserver(() => {
+      document.getElementById('giscus-loading').remove()
+      observer.disconnect()
+    })
+
+    observer.observe(document.getElementById('giscus'), {
+      childList: true
+    })
   })
 </script>
 
