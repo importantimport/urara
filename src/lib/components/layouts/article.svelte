@@ -78,13 +78,11 @@
         {/if}
       </div>
     </article>
-    {#if posts && post}
-      {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
-        <Pagination {next} {prev} />
-      {/if}
-      {#if browser && post?.comment !== false}
-        <Comment {post} />
-      {/if}
+    {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
+      <Pagination {next} {prev} />
+    {/if}
+    {#if browser && post?.comment !== false}
+      <Comment {post} />
     {/if}
     <Footer />
   </div>
