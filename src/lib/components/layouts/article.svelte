@@ -6,10 +6,10 @@
 
 <script lang="ts">
   import { browser } from '$app/env'
-  import { site } from '$lib/config/site'
   import { posts as storedPosts } from '$lib/stores/posts'
   import Flex from '$lib/components/layouts/_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
+  import Hcard from '$lib/components/post_hcard.svelte'
   import Toc from '$lib/components/post_toc.svelte'
   import Cover from '$lib/components/post_cover.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
@@ -53,11 +53,7 @@
       itemscope
       itemtype="https://schema.org/BlogPosting"
       class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
-      <div class="hidden h-card p-author">
-        <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
-        <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
-      </div>
-      <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
+      <Hcard {post} />
       <div class="card-body gap-0">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
