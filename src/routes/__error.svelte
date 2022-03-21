@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-  import Card from '$lib/components/layout_card.svelte'
+  import Card from '$lib/components/layouts/_card.svelte'
   import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string

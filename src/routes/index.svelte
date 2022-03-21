@@ -4,7 +4,7 @@
   import { page } from '$app/stores'
   import { browser } from '$app/env'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
-  import Flex from '$lib/components/layout_flex.svelte'
+  import Flex from '$lib/components/layouts/_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
@@ -14,13 +14,6 @@
   let allTags: { [tag: string]: number }
   let loaded: boolean
   let [posts, tags, years] = [[], [''], []]
-
-  // $: if (browser) {
-  //   allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as { [priority: number]: Urara.Post[] })
-  //     .sort(([a], [b]) => parseInt(a) - parseInt(b))
-  //     .flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))
-  //   allTags = genTags(allPosts)
-  // }
 
   $: storedPosts.subscribe(
     storedPosts =>

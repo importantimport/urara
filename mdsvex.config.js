@@ -54,9 +54,10 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
     dashes: 'oldschool'
   },
   layout: {
-    _flex: './src/lib/components/layout_flex.svelte',
-    _card: './src/lib/components/layout_card.svelte',
-    _: './src/lib/components/layout_post.svelte'
+    article: './src/lib/components/layouts/article.svelte',
+    _card: './src/lib/components/layouts/_card.svelte',
+    _flex: './src/lib/components/layouts/_flex.svelte',
+    _: './src/lib/components/layouts/article.svelte'
   },
   highlight: {
     highlighter: async (code, lang, meta) => {
