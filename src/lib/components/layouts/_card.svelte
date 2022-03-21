@@ -5,7 +5,7 @@
 </script>
 
 <script lang="ts">
-  import Flex from '$lib/components/layout_flex.svelte'
+  import Flex from '$lib/components/layouts/_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   export let title = undefined
   export let date = undefined

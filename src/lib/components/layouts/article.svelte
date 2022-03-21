@@ -8,7 +8,7 @@
   import { browser } from '$app/env'
   import { site } from '$lib/config/site'
   import { posts as storedPosts } from '$lib/stores/posts'
-  import Flex from '$lib/components/layout_flex.svelte'
+  import Flex from '$lib/components/layouts/_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
   import Cover from '$lib/components/post_cover.svelte'
