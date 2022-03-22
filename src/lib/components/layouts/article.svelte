@@ -78,7 +78,7 @@
         {/if}
       </div>
     </article>
-    {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
+    {#if (posts.length > 1 && !post?.priority) || post?.priority[1] > 0}
       <Pagination {next} {prev} />
     {/if}
     {#if browser && post?.comment !== false}
