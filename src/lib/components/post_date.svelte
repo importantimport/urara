@@ -36,7 +36,7 @@
       class:hidden={currentDate === 'lastmod'}
       class:dt-published={type === 'layout'}
       datetime={jsonDate}
-      itemprop="dateCreated">
+      itemprop="datePublished">
       {stringDate}
     </time>
     <time

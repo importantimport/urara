@@ -19,7 +19,7 @@
     <h1
       itemprop="name headline"
       class="card-title text-3xl transition-all ease-in-out underline decoration-4 decoration-transparent hover:decoration-primary">
-      <a href={post.path}>{post.title ?? post.path.slice(1)}</a>
+      <a itemprop="url" class="u-url" href={post.path}>{post.title ?? post.path.slice(1)}</a>
     </h1>
     {#if post.descr}
       <p itemprop="description" class="mb-auto">{post.descr}</p>
