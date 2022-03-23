@@ -1,9 +1,11 @@
 <script lang="ts" context="module">
   export const prerender = true
-  export const load = async ({ url, fetch }) => {
-    const res = await fetch('/posts.json')
-    return res.ok ? { props: { path: url.pathname, res: await res.json() } } : { props: { path: url.pathname } }
-  }
+  export const load = async ({ url, fetch }) => ({
+    props: {
+      path: url.pathname,
+      res: await (await fetch('/posts.json')).json()
+    }
+  })
 </script>
 
 <script lang="ts">
