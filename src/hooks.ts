@@ -27,5 +27,5 @@ export const handle: Handle = async ({ event, resolve }) =>
     transformPage: ({ html }) =>
       prerendering
         ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
-        : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'})`)
+        : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`)
   })
