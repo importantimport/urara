@@ -167,7 +167,7 @@
     <button id="webmention-loading" class="btn btn-lg btn-block flex btn-ghost loading" />
   {/if}
   {#if config?.form === true}
-    <form id="webmention-form" method="post" action="https://webmention.io/{config.username}webmention">
+    <form id="webmention-form" method="post" action="https://webmention.io/{config.username}/webmention">
       <input type="hidden" name="target" value={site.url + post.path} />
       <div class="label gap-4">
         <span class="label-text">send webmentions here:</span>
