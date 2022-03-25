@@ -18,7 +18,7 @@ const render = async (): Promise<string> => {
   ${icons.favicon ? `<icon>${icons.favicon.src}</icon>` : ''}
   <link href="${site.url}" />
   <link href="${site.url}/atom.xml" rel="self" type="application/atom+xml" />
-  ${feed.hub !== false ? `<link href="${feed.hub}" rel="hub"/>` : ''}
+  ${feed?.hub ? feed.hub.forEach(hub => `<link href="${hub}" rel="hub"/>`) : ''}
   <updated>${new Date().toJSON()}</updated>
   <author>
     <name><![CDATA[${site.author.name}]]></name>
