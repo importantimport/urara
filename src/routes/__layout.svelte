@@ -23,7 +23,10 @@
 <Header />
 
 {#key path}
-  <div class="min-h-screen pt-24 lg:mb-16" in:fly={{ y: 100, duration: 200, delay: 200 }} out:fly={{ y: -100, duration: 200 }}>
+  <div
+    class="min-h-screen pt-16 xl:pt-24 md:pb-8 lg:pb-16 xl:pb-24"
+    in:fly={{ y: 100, duration: 200, delay: 200 }}
+    out:fly={{ y: -100, duration: 200 }}>
     <slot />
   </div>
 {/key}
