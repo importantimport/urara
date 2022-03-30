@@ -63,7 +63,6 @@
       {/if}
       <div class="card-body gap-0">
         <Status post={{ layout: 'article', date, lastmod, path }} />
-        <a class="hidden" href="https://brid.gy/publish/mastodon">https://brid.gy/publish/mastodon</a>
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <div class="divider my-4" />
         <main itemprop="articleBody" class="urara-prose prose e-content">
