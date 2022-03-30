@@ -50,7 +50,7 @@ export type UtterancesConfig = {
 }
 
 export type CommentConfig = {
-  use: string[]
+  use?: string[]
   /** tab style for multiple comments, preview at https://daisyui.com/components/tab */
   style?: 'none' | 'bordered' | 'lifted' | 'boxed'
   /** Webmention.io config, more at https://github.com/aaronpk/webmention.io#api */

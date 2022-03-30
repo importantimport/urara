@@ -1,24 +1,15 @@
 <script lang="ts" context="module">
-  import img from '$lib/components/prose/img.svelte'
+  import Image from '$lib/components/prose/img.svelte'
   import table from '$lib/components/prose/table.svelte'
-  export { img, table }
+  export { Image as img, table }
 </script>
 
 <script lang="ts">
   import Flex from '$lib/components/layouts/_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
-  export let title = undefined
-  export let date = undefined
-  export let lastmod = undefined
-  export let priority = undefined
-  export let tags = undefined
-  export let cover = undefined
-  export let descr = undefined
-  export let path = undefined
-  export let page = undefined
 </script>
 
-<Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path} {page}>
+<Flex>
   <div slot="left" class="h-full">
     <slot name="left" />
   </div>

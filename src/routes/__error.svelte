@@ -9,6 +9,7 @@
 </script>
 
 <script lang="ts">
+  import Head from '$lib/components/head.svelte'
   import Card from '$lib/components/layouts/_card.svelte'
   import IconHome from '~icons/heroicons-outline/home'
   export let status: string
@@ -17,7 +18,9 @@
   console.error(status, pathname, message)
 </script>
 
-<Card page={{ title: '404', path: pathname }}>
+<Head page={{ title: '404', path: pathname }} />
+
+<Card>
   <h1 class="opacity-20 text-6xl md:text-[12rem] -mt-2 mb-0">
     {status}
   </h1>

@@ -39,8 +39,8 @@
       `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config?.perPage ?? '20'}&sort-by=${
         config?.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
-        config?.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
-      }&target[]=${site.url + post.path}&target[]=${site.url + post.path}/`
+        config?.property && config.property.forEach(wmProperty => `&wm-property=${wmProperty}`)
+      }&target[]=${site.protocol + site.domain + post.path}&target[]=${site.protocol + site.domain + post.path}/`
     )
       .then(res => res.json())
       .then((feed: WebmentionFeed) => {
@@ -110,11 +110,11 @@
         ]
       }[mention['wm-property']]}
       {#if mention.url !== null}
-        <div class="{borderColor} border-2 rounded-2xl p-4">
-          <div class="flex bg-base-200 rounded-lg">
+        <div class="{borderColor} border-2 rounded-box p-4">
+          <div class="flex bg-base-200 rounded-btn">
             {#if mention?.author?.photo}
               <img
-                class="w-12 h-12 flex-0 rounded-lg"
+                class="w-12 h-12 flex-0 rounded-btn"
                 src={mention.author.photo}
                 alt={mention.author?.name ?? new URL(mention.url).host}
                 loading="lazy"
@@ -168,14 +168,16 @@
   {/if}
   {#if config?.form === true}
     <form id="webmention-form" method="post" action="https://webmention.io/{config.username}/webmention">
-      <input type="hidden" name="target" value={site.url + post.path} />
+      <input type="hidden" name="target" value={site.protocol + site.domain + post.path} />
       <div class="label gap-4">
         <span class="label-text">send webmentions here:</span>
         {#if config?.commentParade === true}
           <span class="label-text-alt text-right">
             or <a
               class="hover:!text-primary"
-              href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(site.url + post.path)}">
+              href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(
+                site.protocol + site.domain + post.path
+              )}">
               comment anonymously
             </a>
           </span>

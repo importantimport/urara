@@ -1,11 +1,6 @@
-export const icons: {
-  [name: string]: {
-    src: string
-    sizes?: string
-    type?: string
-    purpose?: string
-  }
-} = {
+import type { IconConfig } from '$lib/types/icon'
+
+export const icon: IconConfig = {
   favicon: {
     src: '/favicon.png',
     sizes: '32x32',

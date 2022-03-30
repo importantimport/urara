@@ -1,6 +1,6 @@
 <script lang="ts">
   import Image from '$lib/components/prose/img.svelte'
-  export let cover: Urara.Post['cover']
+  export let cover: Urara.Post.Article['cover']
   export let figureClass: string
   export let imgClass: string
   let src: string, alt: string
@@ -8,5 +8,5 @@
 </script>
 
 <figure class={figureClass}>
-  <Image class={imgClass} {src} {alt} />
+  <Image class="u-photo {imgClass}" {src} {alt} />
 </figure>

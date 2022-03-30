@@ -6,7 +6,7 @@
 </div>
 <br>
 
-<h1 align="center">Urara [β]</h1>
+<h1 align="center">Urara [γ]</h1>
 <p align="center">Sweet & Powerful SvelteKit Blog Template.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
@@ -64,9 +64,9 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 
 ## ✨ Features
 
-- Out of the box **Atom feed**, **Sitemap**, **PWA** (Web app manifest & ServiceWorker) support.
+- Out of the box **Atom feed** (WebSub), **Sitemap**, **PWA** (Web app manifest & ServiceWorker) support.
 - Present beautiful interface designs and animations with daisyUI, of course.
-- Good [IndieWeb](https://indieweb.org/) Compatibility - Mark up content with [microformats2](https://microformats.org/), Showcasing [Webmentions](https://webmention.org/) via [webmentions.io](https://webmentions.io) API
+- Good [IndieWeb](https://indieweb.org/) Compatibility - Multi-kind posts with [microformats2](https://microformats.org/) markup content, Showcasing [Webmentions](https://webmention.org/) via [webmentions.io](https://webmentions.io) API
 - Don't worry about the article and image directories - just put them under a folder and they'll be [copied automatically at build time](https://github.com/importantimport/urara/blob/main/urara.js).
 - [Comment Components](https://github.com/importantimport/urara/tree/main/src/lib/components/comments): Webmentions, Giscus, Utterances... u can use more than one.
 

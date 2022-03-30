@@ -18,7 +18,8 @@ const remarkUraraFm =
     if (!data.fm) data.fm = {}
     data.fm.slug = filepath
     data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-    if (data.fm?.toc !== false) {
+    if (!data.fm.layout) data.fm.layout = 'article'
+    if (data.fm.toc !== false) {
       let [slugs, toc] = [new Slugger(), []]
       visit(tree, 'heading', node => {
         toc.push({
@@ -55,8 +56,11 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
   },
   layout: {
     article: './src/lib/components/layouts/article.svelte',
-    _card: './src/lib/components/layouts/_card.svelte',
+    note: './src/lib/components/layouts/note.svelte',
+    photo: './src/lib/components/layouts/photo.svelte',
+    reply: './src/lib/components/layouts/reply.svelte',
     _flex: './src/lib/components/layouts/_flex.svelte',
+    _card: './src/lib/components/layouts/_card.svelte',
     _: './src/lib/components/layouts/article.svelte'
   },
   highlight: {

@@ -5,7 +5,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import Tree from '$lib/components/post_toc_tree.svelte'
-  export let toc: Urara.PostToc[]
+  export let toc: Urara.Post.Article.Toc[]
 
   let intersecting: string[] = []
   let intersectingArticle: boolean = true

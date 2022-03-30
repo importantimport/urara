@@ -1,35 +1,19 @@
-interface Site {
-  title: string
-  subtitle?: string
-  lang?: string
-  descr?: string
-  author: {
-    name: string
-    avatar: string
-    status?: string
-    bio?: string
-    bioBefore?: string
-    bioAfter?: string
-    github?: string
-    twitter?: string
-    pgp?: string[]
-  }
-  url: string
-  themeColor?: string
-  since?: string
-}
+import type { SiteConfig } from '$lib/types/site'
 
-export const site: Site = {
+export const site: SiteConfig = {
+  protocol: 'https://',
+  domain: (import.meta.env.URARA_SITE_DOMAIN as string) ?? 'urara-demo.netlify.app',
   title: 'Urara',
   subtitle: 'Sweet & Powerful SvelteKit Blog Template',
   lang: 'en-US',
   descr: 'Powered by SvelteKit/Urara',
   author: {
     name: 'John Doe',
-    avatar: '/assets/maskable@512.png',
+    photo: '/assets/maskable@512.png',
     status: '🌸',
     bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
-  url: (import.meta.env.URARA_SITE_URL as string) ?? 'https://example.com',
   themeColor: '#3D4451'
 }
+
+export const dev: boolean = import.meta.env.DEV ? true : false

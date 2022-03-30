@@ -1,53 +1,49 @@
 import type { RequestHandlerOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
-import { feed } from '$lib/config/misc'
-import { icons } from '$lib/config/icons'
+import { feed } from '$lib/config/general'
+import { icon } from '$lib/config/icon'
 import { genPosts, genTags } from '$lib/utils/posts'
 
-const render = async (): Promise<string> => {
-  const posts = Object.entries(genPosts({ postHtml: true }))
-    .flatMap(([key, value]) => (+key > 0 ? value : []))
-    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
-    .filter((_, index) => feed.limit === 0 || index < feed.limit)
-  const tags = genTags(posts)
-  return `<?xml version='1.0' encoding='utf-8'?>
+const render = async (
+  posts = genPosts({ postHtml: true }).filter((_, index) => feed.limit === 0 || index < feed.limit)
+): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>${site.url}/</id>
+  <id>${site.protocol + site.domain}/</id>
   <title><![CDATA[${site.title}]]></title>
   ${site.subtitle ? `<subtitle><![CDATA[${site.subtitle}]]></subtitle>` : ''}
-  ${icons.favicon ? `<icon>${icons.favicon.src}</icon>` : ''}
-  <link href="${site.url}" />
-  <link href="${site.url}/atom.xml" rel="self" type="application/atom+xml" />
-  ${feed?.hub ? feed.hub.forEach(hub => `<link href="${hub}" rel="hub"/>`) : ''}
+  ${icon.favicon ? `<icon>${icon.favicon.src}</icon>` : ''}
+  <link href="${site.protocol + site.domain}" />
+  <link href="${site.protocol + site.domain}/atom.xml" rel="self" type="application/atom+xml" />
+  ${feed?.hub ? feed.hub.map(hub => `<link href="${hub}" rel="hub"/>`).join('\n') : ''}
   <updated>${new Date().toJSON()}</updated>
   <author>
     <name><![CDATA[${site.author.name}]]></name>
   </author>
-  ${Object.keys(tags)
-    .map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`)
+  ${genTags(posts)
+    .map(tag => `<category term="${tag}" scheme="${site.protocol + site.domain}/?tags=${encodeURI(tag)}" />`)
     .join('\n')}
   ${posts
     .map(
       post => `<entry>
     <title type="html"><![CDATA[${post.title}]]></title>
-    <link href="${site.url + post.path}" />
-    <id>${site.url + post.path}</id>
+    <link href="${site.protocol + site.domain + post.path}" />
+    <id>${site.protocol + site.domain + post.path}</id>
     <published>${new Date((post.date ??= '2021-11-01')).toJSON()}</published>
     <updated>${new Date(post.lastmod ?? post.date).toJSON()}</updated>
-    ${post.descr ? `<summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''}
+    ${post.layout === 'article' && post.descr ? `<summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''}
     <content type="html">
       <![CDATA[${post.html}]]>
     </content>
     ${
+      post.tags &&
       post.tags
-        ? post.tags.map(tag => `<category term="${tag}" scheme="${site.url}/?tags=${encodeURI(tag)}" />`).join('\n')
-        : ''
+        .map(tag => `<category term="${tag}" scheme="${site.protocol + site.domain}/?tags=${encodeURI(tag)}" />`)
+        .join('\n')
     }
   </entry>`
     )
     .join('\n')}
 </feed>`
-}
 
 export const get = async (): Promise<RequestHandlerOutput> => ({
   headers: {

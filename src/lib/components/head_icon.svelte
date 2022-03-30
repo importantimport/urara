@@ -1,22 +1,26 @@
 <script lang="ts">
-  import { icons } from '$lib/config/icons'
-  import { validate } from '$lib/utils/src'
+  import { icon } from '$lib/config/icon'
+  import { site } from '$lib/config/site'
 </script>
 
 <svelte:head>
-  {#if icons.favicon}
-    <link rel="icon" href={icons.favicon.src} sizes={icons.favicon.sizes} type={icons.favicon.type} />
+  {#if icon.favicon}
+    <link rel="icon" href={icon.favicon.src} sizes={icon.favicon.sizes} type={icon.favicon.type} />
   {/if}
-  {#if icons.any192}
-    <link rel="icon" href={validate(icons.any192.src)} sizes={icons.any192.sizes} type={icons.any192.type} />
-  {:else if icons.maskable192}
-    <link rel="icon" href={validate(icons.maskable192.src)} sizes={icons.maskable192.sizes} type={icons.maskable192.type} />
+  {#if icon.any192}
+    <link rel="icon" href={site.protocol + site.domain + icon.any192.src} sizes={icon.any192.sizes} type={icon.any192.type} />
+  {:else if icon.maskable192}
+    <link
+      rel="icon"
+      href={site.protocol + site.domain + icon.maskable192.src}
+      sizes={icon.maskable192.sizes}
+      type={icon.maskable192.type} />
   {/if}
-  {#if icons.appleTouchIcon}
+  {#if icon.appleTouchIcon}
     <link
       rel="apple-touch-icon"
-      href={validate(icons.appleTouchIcon.src)}
-      sizes={icons.appleTouchIcon.sizes}
-      type={icons.appleTouchIcon.type} />
+      href={site.protocol + site.domain + icon.appleTouchIcon.src}
+      sizes={icon.appleTouchIcon.sizes}
+      type={icon.appleTouchIcon.type} />
   {/if}
 </svelte:head>
