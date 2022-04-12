@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import type { UtterancesConfig } from '$lib/types/comment'
+  import type { UtterancesConfig } from '$lib/types/post'
   export let config: UtterancesConfig
   onMount(() => {
     const s = document.createElement('script')

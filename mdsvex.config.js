@@ -16,9 +16,12 @@ const remarkUraraFm =
     const filepath = filename.split('/src/routes')[1]
     let { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
+    // Generate slug & path
     data.fm.slug = filepath
     data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    // Auto-set layout as article
     if (!data.fm.layout) data.fm.layout = 'article'
+    // Generate ToC
     if (data.fm.toc !== false) {
       let [slugs, toc] = [new Slugger(), []]
       visit(tree, 'heading', node => {
@@ -30,10 +33,14 @@ const remarkUraraFm =
       })
       data.fm.toc = toc
     }
-    if (!data.fm.date || !data.fm.lastmod) {
+    // Rename {date, lastmod} to {created, updated}
+    if (data.fm.date) data.fm.created = data.fm.date
+    if (data.fm.lastmod) data.fm.updated = data.fm.lastmod
+    // Auto-read created & updated
+    if (!data.fm.created || !data.fm.updated) {
       const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-      if (!data.fm.date) data.fm.date = ctime
-      if (!data.fm.lastmod) data.fm.lastmod = mtime
+      if (!data.fm.created) data.fm.created = ctime
+      if (!data.fm.updated) data.fm.updated = mtime
     }
   }
 
@@ -61,6 +68,7 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
     reply: './src/lib/components/layouts/reply.svelte',
     _flex: './src/lib/components/layouts/_flex.svelte',
     _card: './src/lib/components/layouts/_card.svelte',
+    _post: './src/lib/components/layouts/_post.svelte',
     _: './src/lib/components/layouts/article.svelte'
   },
   highlight: {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
-  import { head } from '$lib/config/head'
+  import { head } from '$lib/config/general'
 </script>
 
 <svelte:head>

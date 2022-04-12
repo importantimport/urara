@@ -18,10 +18,6 @@
     <slot name="right" />
   </div>
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
-    {#if $$slots.left || $$slots.right}
-      <slot name="center" />
-    {:else}
-      <slot />
-    {/if}
+    <slot name="center" />
   </div>
 </div>

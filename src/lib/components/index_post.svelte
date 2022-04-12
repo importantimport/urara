@@ -10,7 +10,7 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card image-full before:!bg-transparent bg-base-100 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box mb-8">
+    class="card image-full before:!bg-transparent bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box">
     <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
@@ -21,18 +21,24 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card bg-base-100 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box md:card-side mb-8">
+    class="card bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box {post.layout ===
+      'article' && post.cover
+      ? 'image-full group before:!rounded-none'
+      : ''}">
     {#if post.layout === 'article' && post.cover}
       <Cover
-        figureClass="order-first md:order-last mx-4 mt-4 md:mx-0 md:mt-0 md:w-3/5"
-        imgClass="object-cover object-center h-full w-full rounded-box md:rounded-none shadow-lg md:shadow-none"
+        figureClass="!block"
+        imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
         cover={post.cover} />
     {/if}
-    <div class="card-body">
+    <div
+      class="card-body {post.layout === 'article' && post.cover
+        ? 'md:col-start-1 md:row-start-1 md:text-neutral-content md:z-20'
+        : ''}">
       {#if post.layout === 'reply'}
         <Reply replyTo={post.replyTo} class="-mt-4 -mx-4 mb-4" />
       {/if}
-      <Status {post} index={true} />
+      <Status {post} index={true} cover={post.layout === 'article' && post.cover ? true : false} />
       {#if post.layout === 'article'}
         <h1
           itemprop="name headline"

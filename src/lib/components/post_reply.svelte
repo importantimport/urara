@@ -6,15 +6,15 @@
 </script>
 
 <div class="flex flex-wrap gap-2 rounded-box outline outline-neutral/10 p-4 {className}">
-  <span class="flex-0 font-bold uppercase opacity-30">Reply to:&nbsp;</span>
+  <span class="flex-none font-bold uppercase opacity-30">Reply to:&nbsp;</span>
   {#if Array.isArray(replyTo)}
     {#each replyTo as reply}
       <a
         href={reply}
         rel="noopener external"
         target="_blank"
-        class="flex-0 flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
-        <IconReply class="flex-0 my-auto w-4 h-4" />
+        class="flex-none flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
+        <IconReply class="flex-none my-auto w-4 h-4" />
         {reply}
       </a>
     {/each}
@@ -23,8 +23,8 @@
       href={replyTo}
       rel="noopener external"
       target="_blank"
-      class="ml-auto flex-0 flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
-      <IconReply class="flex-0 my-auto w-4 h-4" />
+      class="ml-auto flex-none flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
+      <IconReply class="flex-none my-auto w-4 h-4" />
       {replyTo}
     </a>
   {/if}

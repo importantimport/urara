@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { site } from '$lib/config/site'
-  import type { WebmentionConfig } from '$lib/types/comment'
+  import type { WebmentionConfig } from '$lib/types/post'
   import IconSortAscending from '~icons/heroicons-outline/sort-ascending'
   import IconSortDescending from '~icons/heroicons-outline/sort-descending'
   export let config: WebmentionConfig
@@ -114,7 +114,7 @@
           <div class="flex bg-base-200 rounded-btn">
             {#if mention?.author?.photo}
               <img
-                class="w-12 h-12 flex-0 rounded-btn"
+                class="w-12 h-12 flex-none rounded-btn"
                 src={mention.author.photo}
                 alt={mention.author?.name ?? new URL(mention.url).host}
                 loading="lazy"
@@ -192,7 +192,7 @@
             name="source"
             placeholder="https://example.com/my-post" />
         </div>
-        <button class="btn btn-primary flex-0 mt-auto" type="submit" id="webmention-submit">Send</button>
+        <button class="btn btn-primary flex-none mt-auto" type="submit" id="webmention-submit">Send</button>
       </div>
     </form>
   {/if}

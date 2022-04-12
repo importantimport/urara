@@ -22,8 +22,7 @@
 
   $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
 
-  $: if (posts)
-    years = [posts[0]?.date ? new Date(posts[0].date).toJSON().substring(0, 4) : new Date().toJSON().substring(0, 4)]
+  $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
 
   $: if (tags) {
     if (loaded) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
@@ -47,35 +46,19 @@
   </div>
   <div slot="right" class="xl:max-w-sm">
     {#if allTags && Object.keys(allTags).length > 0}
-      <label
-        id="tags"
-        data-nosnippet
-        tabindex="0"
-        class="collapse collapse-arrow xl:sticky xl:top-24 rounded-none md:rounded-box xl:ml-8">
-        <input class="hidden md:inline-block" type="checkbox" />
-        <div class="collapse-title text-xl font-medium hidden md:block">
-          tags{#if tags?.length > 0}
-            {#key tags}
-              <span in:fly={{ y: -100, duration: 200, delay: 200 }} out:fly={{ y: 100, duration: 200 }}>
-                ={tags.toString()}
-              </span>
-            {/key}
-          {/if}
-        </div>
-        <div
-          class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-0 max-w-fit md:max-w-full">
-          {#each allTags as tag}
-            <button
-              id={tag}
-              on:click={() => (tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag]))}
-              class:!btn-secondary={tags.includes(tag)}
-              class:shadow-lg={tags.includes(tag)}
-              class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 my-8 md:my-1 mx-1">
-              #{tag}
-            </button>
-          {/each}
-        </div>
-      </label>
+      <div
+        class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full md:mb-4">
+        {#each allTags as tag}
+          <button
+            id={tag}
+            on:click={() => (tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag]))}
+            class:!btn-secondary={tags.includes(tag)}
+            class:shadow-lg={tags.includes(tag)}
+            class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 my-8 md:my-1 mx-1">
+            #{tag}
+          </button>
+        {/each}
+      </div>
     {/if}
   </div>
   <div slot="center">
@@ -85,10 +68,12 @@
         <div
           in:fly={{ x: 100, duration: 200, delay: 400 }}
           out:fly={{ x: -100, duration: 200 }}
-          class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
+          class="bg-base-300 text-base-content shadow-inner text-center md:rounded-box p-10 -mb-2 md:mb-0 relative z-10">
           <div class="prose items-center">
             <h2>
-              Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
+              Not found: [{#each tags as tag, i}
+                '{tag}'{#if i + 1 < tags.length},{/if}
+              {/each}]
             </h2>
             <button on:click={() => (tags = [])} class="btn btn-secondary">
               <IconTrash class="inline-block w-6 h-6 mr-2" />
@@ -97,14 +82,19 @@
           </div>
         </div>
       {/if}
-      <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
+      <main
+        class="flex flex-col relative bg-base-100 md:bg-transparent md:gap-8 z-10"
+        itemprop="mainEntityOfPage"
+        itemscope
+        itemtype="https://schema.org/Blog">
         {#each posts as post, index}
+          {@const year = (post.published ?? post.created).substring(0, 4)}
           <div
             in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 400 }}
             out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
-            {#if post.date && !years.includes(post.date.substring(0, 4))}
-              <div class="divider mb-8">
-                {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+            {#if !years.includes(year)}
+              <div class="divider my-8 md:mt-0">
+                {years.push(year) && year}
               </div>
             {/if}
             <Post {post} />
@@ -113,8 +103,10 @@
       </main>
       {#if loaded}
         <div
+          class="sticky bottom-0 md:static md:mt-8"
           in:fly={{ x: posts.length + (1 % 2) ? 100 : -100, duration: 200, delay: 400 }}
           out:fly={{ x: posts.length + (1 % 2) ? -100 : 100, duration: 200 }}>
+          <div class="divider mt-0 mb-8 hidden lg:flex" />
           <Footer />
         </div>
       {/if}

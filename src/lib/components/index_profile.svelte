@@ -7,7 +7,7 @@
   <a href={site.protocol + site.domain} class="hidden u-url" rel="me">{site.title}</a>
   {#if site.author.photo}
     <img class="hidden u-photo" src={site.author.photo} alt={site.author.name} decoding="async" loading="lazy" />
-    <div class="flex-0 avatar w-32 h-32 ml-auto my-auto justify-end">
+    <div class="flex-none avatar w-32 h-32 ml-auto my-auto justify-end">
       <img
         class="rounded-full shadow-xl hover:shadow-2xl transition-shadow w-32 h-32"
         src={site.author.photo}

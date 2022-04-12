@@ -3,6 +3,17 @@ export type ThemeConfig = {
   name: string
 }[]
 
+export type HeadConfig = {
+  custom?:
+    | {
+        common?: string[]
+        dev?: string[]
+        prod?: string[]
+      }
+    | string[]
+  relMe?: string[]
+}
+
 export type HeaderConfig = {
   nav?: {
     text: string

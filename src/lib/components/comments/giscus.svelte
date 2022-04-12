@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { site } from '$lib/config/site'
-  import type { GiscusConfig } from '$lib/types/comment'
+  import type { GiscusConfig } from '$lib/types/post'
   export let config: GiscusConfig
 
   onMount(() => {

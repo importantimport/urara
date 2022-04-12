@@ -28,8 +28,8 @@ const render = async (
     <title type="html"><![CDATA[${post.title}]]></title>
     <link href="${site.protocol + site.domain + post.path}" />
     <id>${site.protocol + site.domain + post.path}</id>
-    <published>${new Date((post.date ??= '2021-11-01')).toJSON()}</published>
-    <updated>${new Date(post.lastmod ?? post.date).toJSON()}</updated>
+    <published>${new Date(post.published ?? post.created).toJSON()}</published>
+    <updated>${new Date(post.updated ?? post.published ?? post.created).toJSON()}</updated>
     ${post.layout === 'article' && post.descr ? `<summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''}
     <content type="html">
       <![CDATA[${post.html}]]>

@@ -40,19 +40,25 @@ declare namespace Urara {
     interface Common {
       /** @deprecated - do not use */
       priority?: never
-      /** prepare to transfer to `created` */
+      /** @deprecated - transfer to `created` */
       date?: string
-      /** prepare to transfer to `updated` */
+      /** @deprecated - transfer to `updated` */
       lastmod?: string
-
-      title?: string
-      published?: string
+      /** created time */
       created?: string
+      /** updated time */
       updated?: string
+      /** published time */
+      published?: string
+      title?: string
       path?: string
       slug?: string
       tags?: string[]
-      /** alternatives to `priority`. `'top'` */
+      /** enable some advanced features.
+       * @property hidden = hide this post from the homepage and Atom feed.
+       * @property bridgy-fed - add a link to Bridgy Fed in the post. https://fed.brid.gy/
+       * @property bridgy-{target} - add a link to Bridgy in the post. https://brid.gy/publish/{target}
+       */
       flags?: string[]
     }
     type Metadata = Common & (Article | Note | Photo | Reply)

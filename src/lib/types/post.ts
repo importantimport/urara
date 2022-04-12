@@ -1,3 +1,24 @@
+export type PostConfig = {
+  bridgy?: {
+    [kind: string]: ('fed' | 'mastodon' | 'flickr' | 'github' | 'twitter')[]
+  }
+  comment?: CommentConfig
+}
+
+export type CommentConfig = {
+  use: string[]
+  /** tab style for multiple comments, preview at https://daisyui.com/components/tab */
+  style?: 'none' | 'bordered' | 'lifted' | 'boxed'
+  /** Webmention.io config, more at https://github.com/aaronpk/webmention.io#api */
+  webmention?: WebmentionConfig
+  /** Giscus config, more at https://giscus.app */
+  giscus?: GiscusConfig
+  /** Disqus config */
+  disqus?: DisqusConfig
+  /** Utterances config, more at https://utteranc.es */
+  utterances?: UtterancesConfig
+}
+
 export type WebmentionConfig = {
   /** username you got when you signed up webmention.io. */
   username: string
@@ -49,14 +70,7 @@ export type UtterancesConfig = {
   theme?: string
 }
 
-export type CommentConfig = {
-  use?: string[]
-  /** tab style for multiple comments, preview at https://daisyui.com/components/tab */
-  style?: 'none' | 'bordered' | 'lifted' | 'boxed'
-  /** Webmention.io config, more at https://github.com/aaronpk/webmention.io#api */
-  webmention?: WebmentionConfig
-  /** Giscus config, more at https://giscus.app */
-  giscus?: GiscusConfig
-  /** Utterances config, more at https://utteranc.es */
-  utterances?: UtterancesConfig
+export type DisqusConfig = {
+  shortname: string
+  lang?: string
 }

@@ -1,4 +1,4 @@
-import type { ThemeConfig, HeaderConfig, FooterConfig, DateConfig, FeedConfig } from '$lib/types/general'
+import type { ThemeConfig, HeadConfig, HeaderConfig, FooterConfig, DateConfig, FeedConfig } from '$lib/types/general'
 
 export const theme: ThemeConfig = [
   {
@@ -42,6 +42,8 @@ export const theme: ThemeConfig = [
     text: '❄️ Winter'
   }
 ]
+
+export const head: HeadConfig = {}
 
 export const header: HeaderConfig = {
   nav: [
