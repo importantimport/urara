@@ -19,11 +19,12 @@
   export let tags = undefined
   export let cover = undefined
   export let toc = undefined
+  export let descr = undefined
   export let path = undefined
   export let flags = undefined
 </script>
 
-<Head post={{ layout: 'article', created, updated, published, title, tags, cover, path }} />
+<Head post={{ layout: 'article', created, updated, published, title, tags, descr, cover, path }} />
 
 <Post layout="article" {path} {flags} {tags} {created} {updated} {published}>
   <div slot="right" class="h-full hidden xl:block">

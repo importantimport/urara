@@ -17,7 +17,9 @@
     {#if post.layout === 'article'}
       <meta property="og:title" content={post.title ?? post.path.slice(1)} />
       <meta property="og:url" content={site.protocol + site.domain + post.path} />
-      <meta property="og:description" content={post.descr ?? site.descr} />
+      {#if post.descr}
+        <meta property="og:description" content={post.descr} />
+      {/if}
       {#if post.cover}
         <meta property="og:image" content={site.protocol + site.domain + post.cover} />
         <meta name="twitter:card" content="summary_large_image" />

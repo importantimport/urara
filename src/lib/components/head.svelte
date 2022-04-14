@@ -14,6 +14,7 @@
       <title>{post.path.slice(1)} | {site.title}</title>
     {/if}
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
+    {#if post.layout === 'article' && post.descr}<meta name="description" content={post.descr} />{/if}
   {:else}
     <meta name="description" content={site.descr} />
     {#if page}
