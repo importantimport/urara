@@ -44,8 +44,8 @@ export type DateConfig = {
 }
 
 export type FeedConfig = {
-  /** feed entry limit, `0` is unlimited. */
-  limit: number
+  /** feed entry limit. */
+  limit?: number
   /** WebSub (formerly PubSubHubbub) hubs. one per line */
   hub?: string[]
 }

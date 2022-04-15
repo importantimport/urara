@@ -5,7 +5,7 @@ import { icon } from '$lib/config/icon'
 import { genPosts, genTags } from '$lib/utils/posts'
 
 const render = async (
-  posts = genPosts({ postHtml: true }).filter((_, index) => feed.limit === 0 || index < feed.limit)
+  posts = genPosts({ postHtml: true, postLimit: feed.limit, filterHidden: true })
 ): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>${site.protocol + site.domain}/</id>
@@ -14,7 +14,7 @@ const render = async (
   ${icon.favicon ? `<icon>${icon.favicon.src}</icon>` : ''}
   <link href="${site.protocol + site.domain}" />
   <link href="${site.protocol + site.domain}/atom.xml" rel="self" type="application/atom+xml" />
-  ${feed?.hub ? feed.hub.map(hub => `<link href="${hub}" rel="hub"/>`).join('\n') : ''}
+  ${feed.hub?.map(hub => `<link href="${hub}" rel="hub"/>`).join('\n') ?? ''}
   <updated>${new Date().toJSON()}</updated>
   <author>
     <name><![CDATA[${site.author.name}]]></name>

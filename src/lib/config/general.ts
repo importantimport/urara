@@ -91,6 +91,4 @@ export const date: DateConfig = {
   }
 }
 
-export const feed: FeedConfig = {
-  limit: 0
-}
+export const feed: FeedConfig = {}
