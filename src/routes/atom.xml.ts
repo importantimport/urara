@@ -14,7 +14,7 @@ const render = async (
   ${icon.favicon ? `<icon>${icon.favicon.src}</icon>` : ''}
   <link href="${site.protocol + site.domain}" />
   <link href="${site.protocol + site.domain}/atom.xml" rel="self" type="application/atom+xml" />
-  ${feed.hub?.map(hub => `<link href="${hub}" rel="hub"/>`).join('\n') ?? ''}
+  ${feed.hubs?.map(hub => `<link href="${hub}" rel="hub"/>`).join('\n') ?? ''}
   <updated>${new Date().toJSON()}</updated>
   <author>
     <name><![CDATA[${site.author.name}]]></name>

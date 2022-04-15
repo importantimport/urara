@@ -47,5 +47,5 @@ export type FeedConfig = {
   /** feed entry limit. */
   limit?: number
   /** WebSub (formerly PubSubHubbub) hubs. one per line */
-  hub?: string[]
+  hubs?: string[]
 }
