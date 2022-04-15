@@ -35,7 +35,7 @@ export const genPosts: GenPostsFunction = ({
               .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
           : ''
     }))
-    .sort((a: Urara.Post, b: Urara.Post) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
+    .sort((a: Urara.Post, b: Urara.Post) => (b.published ?? b.created).localeCompare(a.published ?? a.created))
 
 /**
  * Generate Tags List
