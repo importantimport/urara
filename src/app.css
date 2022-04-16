@@ -155,8 +155,8 @@ pre.shiki:hover div.dim {
   @apply opacity-100;
 }
 
-pre.shiki div.highlight {
-  @apply bg-warning/20;
+pre.shiki div.highlight::before {
+  @apply bg-warning/20 absolute content-[''] w-full h-6
 }
 
 pre.twoslash data-lsp {
