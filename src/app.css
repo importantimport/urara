@@ -97,11 +97,20 @@ footer a {
 /* .urara-prose pre */
 
 .urara-prose pre {
-  @apply transition-all duration-300;
+  @apply -mx-8 rounded-none pb-0
 }
 
-.urara-prose pre:hover {
-  @apply -mx-8 rounded-none;
+.urara-prose pre > div.code-container {
+  @apply pb-5 overflow-x-auto
+}
+
+@media (min-width: 768px) {
+  .urara-prose pre {
+    @apply mx-0 rounded-box transition-all duration-300
+  }
+  .urara-prose pre:hover {
+    @apply -mx-8 rounded-none;
+  }
 }
 
 /* shiki */
