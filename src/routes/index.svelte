@@ -5,7 +5,6 @@
   import { browser } from '$app/env'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
   import Head from '$lib/components/head.svelte'
-  import Flex from '$lib/components/layouts/_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
@@ -25,14 +24,14 @@
   $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
 
   $: if (tags) {
-    if (loaded) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
+    posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
     if (browser && window.location.pathname === '/')
       window.history.replaceState({}, '', tags.length > 0 ? `?tags=${tags.toString()}` : `/`)
   }
 
   onMount(() => {
     if (browser) {
-      tags = $page.url.searchParams.get('tags') ? $page.url.searchParams.get('tags').split(',') : []
+      if ($page.url.searchParams.get('tags')) tags = $page.url.searchParams.get('tags').split(',')
       loaded = true
     }
   })
@@ -40,11 +39,17 @@
 
 <Head />
 
-<Flex>
-  <div slot="left" class="xl:max-w-sm xl:ml-auto">
+<div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
+  <div
+    in:fly={{ x: 25, duration: 300, delay: 500 }}
+    out:fly={{ x: 25, duration: 300 }}
+    class="flex-1 w-full max-w-screen-md order-first mx-auto xl:mr-0 xl:max-w-sm">
     <Profile />
   </div>
-  <div slot="right" class="xl:max-w-sm">
+  <div
+    in:fly={{ x: -25, duration: 300, delay: 500 }}
+    out:fly={{ x: -25, duration: 300 }}
+    class="flex-1 w-full max-w-screen-md xl:order-last mx-auto xl:ml-0 xl:max-w-sm">
     {#if allTags && Object.keys(allTags).length > 0}
       <div
         class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full md:mb-4">
@@ -61,13 +66,13 @@
       </div>
     {/if}
   </div>
-  <div slot="center">
+  <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
       {#if loaded && posts.length === 0}
         <div
-          in:fly={{ x: 100, duration: 200, delay: 400 }}
-          out:fly={{ x: -100, duration: 200 }}
+          in:fly={{ x: 100, duration: 300, delay: 500 }}
+          out:fly={{ x: -100, duration: 300 }}
           class="bg-base-300 text-base-content shadow-inner text-center md:rounded-box p-10 -mb-2 md:mb-0 relative z-10">
           <div class="prose items-center">
             <h2>
@@ -90,26 +95,25 @@
         {#each posts as post, index}
           {@const year = (post.published ?? post.created).substring(0, 4)}
           <div
-            in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 400 }}
-            out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
+            in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
+            out:fly={{ x: index % 2 ? -100 : 100, duration: 300 }}>
             {#if !years.includes(year)}
               <div class="divider my-8 md:mt-0">
                 {years.push(year) && year}
               </div>
             {/if}
-            <Post {post} />
+            <Post {post} loading={index < 5 ? 'eager' : 'lazy'} decoding={index < 5 ? 'auto' : 'async'} />
           </div>
         {/each}
       </main>
-      {#if loaded}
-        <div
-          class="sticky bottom-0 md:static md:mt-8"
-          in:fly={{ x: posts.length + (1 % 2) ? 100 : -100, duration: 200, delay: 400 }}
-          out:fly={{ x: posts.length + (1 % 2) ? -100 : 100, duration: 200 }}>
-          <div class="divider mt-0 mb-8 hidden lg:flex" />
-          <Footer />
-        </div>
-      {/if}
+      <div
+        class:hidden={!loaded}
+        class="sticky bottom-0 md:static md:mt-8"
+        in:fly={{ x: posts.length + (1 % 2) ? 100 : -100, duration: 300, delay: 500 }}
+        out:fly={{ x: posts.length + (1 % 2) ? -100 : 100, duration: 300 }}>
+        <div class="divider mt-0 mb-8 hidden lg:flex" />
+        <Footer />
+      </div>
     {/key}
   </div>
-</Flex>
+</div>

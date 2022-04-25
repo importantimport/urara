@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { fly } from 'svelte/transition'
   import { browser } from '$app/env'
   import { posts as storedPosts } from '$lib/stores/posts'
   import { post as postConfig } from '$lib/config/post'
@@ -8,26 +8,23 @@
   import Comment from '$lib/components/post_comment.svelte'
   import Footer from '$lib/components/footer.svelte'
 
-  export let layout = undefined
-  export let created = undefined
-  export let updated = undefined
-  export let published = undefined
-  export let tags = undefined
-  export let path = undefined
-  export let flags = undefined
+  export let layout: Urara.Post['layout']
+  export let created: Urara.Post['created']
+  export let updated: Urara.Post['updated']
+  export let published: Urara.Post['published'] = undefined
+  export let tags: Urara.Post['tags'] = undefined
+  export let path: Urara.Post['path']
+  export let flags: Urara.Post['flags'] = undefined
 
-  let posts = undefined
-  let post = undefined
-  let index = undefined
-  let prev = undefined
-  let next = undefined
-
-  let loaded = false
-  onMount(() => (loaded = true))
+  let posts: Urara.Post[]
+  let post: Urara.Post
+  let index: number
+  let prev: Urara.Post
+  let next: Urara.Post
 
   $: if (browser)
     storedPosts.subscribe(storedPosts => {
-      posts = storedPosts
+      posts = storedPosts as Urara.Post[]
       post = posts.find(post => post.path === path)
       index = posts.findIndex(post => post.path === path)
       prev = posts.slice(index + 1).find(post => !post.flags?.includes('hidden'))
@@ -40,15 +37,15 @@
 
 <div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
   <div
-    class="flex-1 w-full max-w-screen-md order-first  transition-all duration-[400ms] xl:delay-[600ms] ease-out transform mx-auto xl:mr-0 {loaded
-      ? 'translate-x-0 opacity-100'
-      : 'translate-x-[100vw] xl:translate-x-96 opacity-0'}">
+    in:fly={{ x: 25, duration: 300, delay: 500 }}
+    out:fly={{ x: 25, duration: 300 }}
+    class="flex-1 w-full max-w-screen-md order-first ease-out transform mx-auto xl:mr-0">
     <slot name="left" />
   </div>
   <div
-    class="flex-1 w-full max-w-screen-md xl:order-last transition-all duration-[400ms] xl:delay-[600ms] ease-out transform mx-auto xl:mr-0 {loaded
-      ? 'translate-x-0 opacity-100'
-      : '-translate-x-[100vw] xl:-translate-x-96 opacity-0'}">
+    in:fly={{ x: -25, duration: 300, delay: 500 }}
+    out:fly={{ x: -25, duration: 300 }}
+    class="flex-1 w-full max-w-screen-md xl:order-last ease-out transform mx-auto xl:mr-0">
     <slot name="right" />
   </div>
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">

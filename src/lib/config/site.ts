@@ -15,5 +15,3 @@ export const site: SiteConfig = {
   },
   themeColor: '#3D4451'
 }
-
-export const dev: boolean = import.meta.env.DEV ? true : false

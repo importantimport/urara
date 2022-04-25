@@ -66,9 +66,6 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
     note: './src/lib/components/layouts/note.svelte',
     photo: './src/lib/components/layouts/photo.svelte',
     reply: './src/lib/components/layouts/reply.svelte',
-    _flex: './src/lib/components/layouts/_flex.svelte',
-    _card: './src/lib/components/layouts/_card.svelte',
-    _post: './src/lib/components/layouts/_post.svelte',
     _: './src/lib/components/layouts/article.svelte'
   },
   highlight: {

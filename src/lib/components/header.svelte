@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { browser } from '$app/env'
+  import { browser, dev } from '$app/env'
   import { fly } from 'svelte/transition'
-  import { site, dev } from '$lib/config/site'
+  import { site } from '$lib/config/site'
   import { theme } from '$lib/config/general'
   import { header as headerConfig } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'
@@ -53,8 +53,8 @@
 <header id="header" class:-translate-y-32={!pin && scrollY > 0} class="fixed z-50 w-screen p-2 transition-all">
   {#if !search}
     <div
-      in:fly={{ x: -50, duration: 200, delay: 200 }}
-      out:fly={{ x: -50, duration: 200 }}
+      in:fly={{ x: -50, duration: 300, delay: 300 }}
+      out:fly={{ x: -50, duration: 300 }}
       class="navbar rounded-btn p-0 min-h-fit transition-all duration-300 ease-in-out {scrollY > 32
         ? 'bg-neutral/50 text-neutral-content backdrop-blur shadow-lg xl:bg-transparent xl:text-base-content xl:backdrop-blur-none xl:shadow-none'
         : ''}">
@@ -66,7 +66,7 @@
       </div>
       <div class="navbar-end">
         {#if headerConfig.search}
-          <button on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
+          <button aria-label="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
             <IconSearch />
           </button>
         {/if}
@@ -105,8 +105,8 @@
     </div>
   {:else}
     <div
-      in:fly={{ x: 50, duration: 200, delay: 200 }}
-      out:fly={{ x: 50, duration: 200 }}
+      in:fly={{ x: 50, duration: 300, delay: 300 }}
+      out:fly={{ x: 50, duration: 300 }}
       class="navbar rounded-btn p-0 min-h-fit transition-all {scrollY > 32
         ? 'bg-neutral/50 text-neutral-content backdrop-blur shadow-lg xl:bg-transparent xl:text-base-content xl:backdrop-blur-none xl:shadow-none'
         : ''}">
@@ -127,10 +127,10 @@
     aria-label="scroll to top"
     class="btn btn-circle btn-lg btn-ghost border-none col-start-1 row-start-1 z-50"
     class:opacity-100={scrollY}>
-      <IconChevronUp
-        class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97
-          ? 'text-accent'
-          : 'text-neutral-content'}" />
+    <IconChevronUp
+      class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97 ? 'text-accent' : 'text-neutral-content'}" />
   </button>
-  <div class="radial-progress text-accent col-start-1	row-start-1" style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
+  <div
+    class="radial-progress text-accent col-start-1	row-start-1"
+    style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
 </div>

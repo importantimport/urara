@@ -3,6 +3,8 @@
   import Reply from '$lib/components/post_reply.svelte'
   import Cover from '$lib/components/post_cover.svelte'
   export let post: Urara.Post
+  export let loading: 'eager' | 'lazy' = 'lazy'
+  export let decoding: 'async' | 'sync' | 'auto' = 'async'
 </script>
 
 {#if post.layout === 'photo'}
@@ -11,7 +13,7 @@
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
     class="card image-full before:!bg-transparent bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box">
-    <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} />
+    <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} {loading} {decoding} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
     </div>
@@ -29,7 +31,9 @@
       <Cover
         figureClass="!block"
         imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
-        cover={post.cover} />
+        cover={post.cover}
+        {loading}
+        {decoding} />
     {/if}
     <div
       class="card-body {post.layout === 'article' && post.cover

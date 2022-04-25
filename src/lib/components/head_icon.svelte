@@ -9,11 +9,7 @@
   {#if icon.any192}
     <link rel="icon" href={icon.any192.src} sizes={icon.any192.sizes} type={icon.any192.type} />
   {:else if icon.maskable192}
-    <link
-      rel="icon"
-      href={icon.maskable192.src}
-      sizes={icon.maskable192.sizes}
-      type={icon.maskable192.type} />
+    <link rel="icon" href={icon.maskable192.src} sizes={icon.maskable192.sizes} type={icon.maskable192.type} />
   {/if}
   {#if icon.appleTouchIcon}
     <link

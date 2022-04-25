@@ -3,10 +3,10 @@
   export let cover: Urara.Post.Article['cover']
   export let figureClass: string
   export let imgClass: string
-  let src: string, alt: string
-  Array.isArray(cover) ? ([src, alt] = [cover[1], cover[0]]) : ([src, alt] = [cover, cover])
+  export let loading: 'eager' | 'lazy' = 'lazy'
+  export let decoding: 'async' | 'sync' | 'auto' = 'async'
 </script>
 
 <figure class={figureClass}>
-  <Image class="u-photo {imgClass}" {src} {alt} />
+  <Image class="u-photo {imgClass}" src={cover} alt={cover} {loading} {decoding} />
 </figure>

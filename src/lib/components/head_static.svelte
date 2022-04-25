@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { dev } from '$app/env'
   import { head } from '$lib/config/general'
   import { post } from '$lib/config/post'
-  import { dev } from '$lib/config/site'
   import Icon from '$lib/components/head_icon.svelte'
   import RelMeAuth from '$lib/components/head_relmeauth.svelte'
 </script>
@@ -13,7 +13,7 @@
         {@html tag}
       {/each}
     {:else}
-      {#each [...(head.custom?.common ?? []), ...((dev ? head.custom?.dev : head.custom?.prod) ?? [])] as tag}
+      {#each [...(head.custom.common ?? []), ...((dev ? head.custom.dev : head.custom.prod) ?? [])] as tag}
         {@html tag}
       {/each}
     {/if}
