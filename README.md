@@ -101,6 +101,10 @@ and more...
 
 are u using Urara? add the `urara-blog` topic on ur repo!
 
+## 👥 Contributing
+
+If u're interested in contributing to Urara, pls read [contributing docs](.github/CONTRIBUTING.md) before submitting a pull request.
+
 ## 📝 License
 
 This work is free, it comes without any warranty. You can redistribute it and/or modify it under the
