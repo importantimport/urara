@@ -1,11 +1,5 @@
 <script lang="ts" context="module">
-  export const load = ({ url, error, status }) => ({
-    props: {
-      status,
-      message: error.message,
-      pathname: url.pathname
-    }
-  })
+  export const load = ({ url: { pathname }, error: { message }, status }) => ({ props: { status, message, pathname } })
 </script>
 
 <script lang="ts">
