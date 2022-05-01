@@ -104,15 +104,6 @@ footer a {
   @apply pb-5 overflow-x-auto;
 }
 
-@media (min-width: 768px) {
-  .urara-prose pre {
-    @apply mx-0 rounded-box transition-all duration-300;
-  }
-  .urara-prose pre:hover {
-    @apply -mx-8 rounded-none;
-  }
-}
-
 /* shiki */
 
 pre.shiki {
