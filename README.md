@@ -7,7 +7,7 @@
 <br>
 
 <h1 align="center">Urara [γ]</h1>
-<p align="center">Sweet & Powerful SvelteKit Blog Template.</p>
+<p align="center">Sweet & Powerful SvelteKit Blog Starter.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
 <a href="https://github.com/importantimport/urara/blob/main/COPYING"><img src="https://img.shields.io/github/license/importantimport/urara?color=%23fff" alt="License"></a>
