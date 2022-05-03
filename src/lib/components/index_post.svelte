@@ -12,8 +12,8 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card image-full before:!bg-transparent bg-base-100 rounded-none md:rounded-box">
-    <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} {loading} {decoding} />
+    class="h-entry card image-full before:!bg-transparent bg-base-100 rounded-none md:rounded-box">
+    <Cover figureClass="" imgClass="u-photo object-cover object-center h-full w-full" cover={post.cover} {loading} {decoding} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
     </div>
@@ -23,13 +23,13 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card bg-base-100 rounded-none md:rounded-box {post.layout === 'article' && post.cover
+    class="h-entry card bg-base-100 rounded-none md:rounded-box {post.layout === 'article' && post.cover
       ? 'image-full group before:!rounded-none'
       : ''}">
     {#if post.layout === 'article' && post.cover}
       <Cover
         figureClass="!block"
-        imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
+        imgClass="u-photo object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
         cover={post.cover}
         {loading}
         {decoding} />
@@ -46,10 +46,10 @@
         <h1
           itemprop="name headline"
           class="card-title text-3xl transition-all ease-in-out underline decoration-4 decoration-transparent hover:decoration-primary">
-          <a itemprop="url" class="u-url" href={post.path}>{post.title ?? post.path.slice(1)}</a>
+          <a itemprop="url" class="u-url p-name" href={post.path}>{post.title ?? post.path.slice(1)}</a>
         </h1>
         {#if post.descr}
-          <p itemprop="description" class="mb-auto">{post.descr}</p>
+          <p itemprop="description" class="p-summary mb-auto">{post.descr}</p>
         {/if}
       {/if}
       {@html post.html}

@@ -39,7 +39,7 @@
 
 <Head />
 
-<div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
+<div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap h-feed">
   <div
     in:fly={{ x: 25, duration: 300, delay: 500 }}
     out:fly={{ x: 25, duration: 300 }}
