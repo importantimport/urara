@@ -94,15 +94,18 @@
         itemtype="https://schema.org/Blog">
         {#each posts as post, index}
           {@const year = (post.published ?? post.created).substring(0, 4)}
+          {#if !years.includes(year)}
+            <div
+              in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
+              out:fly={{ x: index % 2 ? -100 : 100, duration: 300 }}
+              class="divider my-4 md:my-0">
+              {years.push(year) && year}
+            </div>
+          {/if}
           <div
             in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
             out:fly={{ x: index % 2 ? -100 : 100, duration: 300 }}
             class="rounded-box transition-all duration-500 ease-in-out hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl md:hover:-translate-y-0.5">
-            {#if !years.includes(year)}
-              <div class="divider my-8 md:mt-0">
-                {years.push(year) && year}
-              </div>
-            {/if}
             <Post {post} loading={index < 5 ? 'eager' : 'lazy'} decoding={index < 5 ? 'auto' : 'async'} />
           </div>
         {/each}
