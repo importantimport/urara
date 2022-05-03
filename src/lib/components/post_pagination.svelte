@@ -22,6 +22,7 @@
       <div class="card-body">
         <IconChevronLeft class="h-6 w-6 opacity-50 group-hover:opacity-100 mr-auto" />
         <a
+          rel="prev"
           href={prev.path}
           class="card-title block text-left mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
           {prev['title'] ?? prev.path.slice(1)}
@@ -46,6 +47,7 @@
       {/if}
       <div class="card-body">
         <a
+          rel="next"
           href={next.path}
           class="card-title block text-right mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
           {next['title'] ?? next.path.slice(1)}
