@@ -17,13 +17,13 @@
   export let path = undefined
   export let flags = undefined
 
-  export let replyTo = undefined
+  export let inReplyTo = undefined
 </script>
 
 <Head post={{ layout: 'reply', created, updated, published, tags, path }} />
 
 <Post layout="reply" {path} {flags} {tags} {created} {updated} {published}>
-  <Reply {replyTo} slot="top" class="mt-4 mx-4" />
+  <Reply {inReplyTo} slot="top" class="mt-4 mx-4" />
   <main slot="content" itemprop="articleBody" class="urara-prose prose p-name p-content">
     <slot />
   </main>

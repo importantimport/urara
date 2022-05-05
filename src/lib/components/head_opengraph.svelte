@@ -17,11 +17,11 @@
     {#if post.layout === 'article'}
       <meta property="og:title" content={post.title ?? post.path.slice(1)} />
       <meta property="og:url" content={site.protocol + site.domain + post.path} />
-      {#if post.descr}
-        <meta property="og:description" content={post.descr} />
+      {#if post.summary}
+        <meta property="og:description" content={post.summary} />
       {/if}
-      {#if post.cover}
-        <meta property="og:image" content={site.protocol + site.domain + post.cover} />
+      {#if post.photo}
+        <meta property="og:image" content={site.protocol + site.domain + post.photo} />
         <meta name="twitter:card" content="summary_large_image" />
       {:else}
         <meta property="og:image" content={icon.maskable512.src ?? icon.any512.src} />
@@ -38,7 +38,7 @@
   {:else}
     <meta property="og:type" content="website" />
     <meta property="og:image" content={icon.maskable512.src ?? icon.any512.src} />
-    <meta property="og:description" content={site.descr} />
+    <meta property="og:description" content={site.description} />
     {#if page}
       <meta property="og:title" content={page.title ?? page.path.slice(1)} />
       <meta property="og:url" content={site.protocol + site.domain + page.path} />

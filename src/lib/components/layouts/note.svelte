@@ -8,12 +8,11 @@
   import Head from '$lib/components/head.svelte'
   import Post from '$lib/components/layouts/_post.svelte'
 
+  export let path = undefined
   export let created = undefined
   export let updated = undefined
   export let published = undefined
-
   export let tags = undefined
-  export let path = undefined
   export let flags = undefined
 </script>
 

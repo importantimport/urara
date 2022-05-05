@@ -30,8 +30,8 @@
       prev = posts
         .slice(0, index)
         .reverse()
-        .find(post => !post.flags?.includes('hidden'))
-        next = posts.slice(index + 1).find(post => !post.flags?.includes('hidden'))
+        .find(post => !post.flags?.includes('unlisted'))
+      next = posts.slice(index + 1).find(post => !post.flags?.includes('unlisted'))
     })
 </script>
 
@@ -80,7 +80,7 @@
           {/if}
         </div>
       </article>
-      {#if (prev || next) && !flags?.includes('pagination-disabled') && !flags?.includes('hidden')}
+      {#if (prev || next) && !flags?.includes('pagination-disabled') && !flags?.includes('unlisted')}
         <Pagination {next} {prev} />
       {/if}
       {#if browser && postConfig.comment && !flags?.includes('comment-disabled')}

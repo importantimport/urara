@@ -14,9 +14,9 @@
       <title>{post.path.slice(1)} | {site.title}</title>
     {/if}
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
-    {#if post.layout === 'article' && post.descr}<meta name="description" content={post.descr} />{/if}
+    {#if post.layout === 'article' && post.summary}<meta name="description" content={post.summary} />{/if}
   {:else}
-    <meta name="description" content={site.descr} />
+    <meta name="description" content={site.description} />
     {#if page}
       <title>{page.title ?? page.path.slice(1)} | {site.title}</title>
       <link rel="canonical" href={site.protocol + site.domain + page.path} />

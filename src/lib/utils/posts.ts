@@ -5,8 +5,8 @@ interface GenPostsOptions {
   postHtml?: boolean
   /** limit a certain number of posts */
   postLimit?: number
-  /** hide posts with 'hidden' flag */
-  filterHidden?: boolean
+  /** hide posts with 'unlisted' flag */
+  filterUnlisted?: boolean
 }
 
 type GenPostsFunction = (options?: GenPostsOptions) => Urara.Post[]
@@ -22,7 +22,7 @@ export const genPosts: GenPostsFunction = ({
   modules = import.meta.globEager<Urara.Post.Module>('/src/routes/**/*.{md,svelte.md}'),
   postHtml = false,
   postLimit = undefined,
-  filterHidden = false
+  filterUnlisted = false
 } = {}) =>
   Object.entries(modules)
     .map(([, module]) => ({
@@ -41,7 +41,7 @@ export const genPosts: GenPostsFunction = ({
               .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
           : ''
     }))
-    .filter((post, index) => (!filterHidden || !post.flags?.includes('hidden')) && (!postLimit || index < postLimit))
+    .filter((post, index) => (!filterUnlisted || !post.flags?.includes('unlisted')) && (!postLimit || index < postLimit))
     .sort((a: Urara.Post, b: Urara.Post) => Date.parse(b.published ?? b.created) - Date.parse(a.published ?? a.created))
 
 /**

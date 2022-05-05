@@ -10,6 +10,7 @@
   let intersecting: string[] = []
   let intersectingArticle: boolean = true
   let bordered: string[] = []
+  let loaded: boolean = false
 
   onMount(() => {
     if (window.screen.availWidth >= 1280) {
@@ -27,6 +28,7 @@
         headingsObserver.observe(element)
       )
       articleObserver.observe(document.getElementsByTagName('main')[0])
+      setTimeout(() => (loaded = true), 1000)
     }
   })
 
@@ -47,15 +49,23 @@
     )
 </script>
 
-<nav id="post-toc" aria-label="TableOfContent" class="sticky top-16 py-8">
-  <Tree
-    toc={toc.reduce(
-      (acc, heading) => {
-        let parent = acc
-        while (parent.depth + 1 < heading.depth) parent = parent.children.at(-1)
-        parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
-        return acc
-      },
-      { depth: toc[0].depth - 1, children: [] }
-    )} />
-</nav>
+<aside class="sticky top-16 py-8">
+  <nav
+    id="post-toc"
+    aria-label="TableOfContent"
+    dir="rtl"
+    class:overflow-hidden={!loaded}
+    class:overflow-auto={loaded}
+    class="max-h-[calc(100vh-8rem)]">
+    <Tree
+      toc={toc.reduce(
+        (acc, heading) => {
+          let parent = acc
+          while (parent.depth + 1 < heading.depth) parent = parent.children.at(-1)
+          parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
+          return acc
+        },
+        { depth: toc[0].depth - 1, children: [] }
+      )} />
+  </nav>
+</aside>

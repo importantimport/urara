@@ -6,7 +6,7 @@ export const site: SiteConfig = {
   title: 'Urara',
   subtitle: 'Sweet & Powerful SvelteKit Blog Template',
   lang: 'en-US',
-  descr: 'Powered by SvelteKit/Urara',
+  description: 'Powered by SvelteKit/Urara',
   author: {
     name: 'John Doe',
     photo: '/assets/maskable@512.png',

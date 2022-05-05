@@ -5,6 +5,7 @@
 
 {#if title}
   <span
+    dir="ltr"
     on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })}
     id={`toc-link-${slug}`}
     class="cursor-pointer border-l-4 border-transparent transition-all hover:border-primary hover:bg-base-content hover:bg-opacity-10 active:bg-primary active:text-primary-content active:font-bold pr-4 {depth <=
@@ -20,7 +21,7 @@
   </span>
 {/if}
 {#if children.length > 0}
-  <ul id={`toc-list-${slug ?? 'root'}`}>
+  <ul dir="ltr" id={`toc-list-${slug ?? 'root'}`}>
     {#each children as child}
       <li id={`toc-item-${child.slug}`} class="flex flex-col">
         <svelte:self toc={child} />
