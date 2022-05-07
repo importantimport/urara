@@ -5,27 +5,29 @@
   export let config: GiscusConfig
 
   onMount(() => {
-    const s = document.createElement('script')
-    s.setAttribute('data-repo', config.repo)
-    s.setAttribute('data-mapping', config.mapping ?? 'pathname')
-    s.setAttribute('data-reactions-enabled', config.reactionsEnabled !== false ? '1' : '0')
-    s.setAttribute('data-emit-metadata', config.emitMetadata === true ? '1' : '0')
-    s.setAttribute('data-lang', config.lang ?? site.lang)
-    s.setAttribute('crossorigin', 'anonymous')
-    s.setAttribute('async', '')
-    if (config.repoID) s.setAttribute('data-repo-id', config.repoID)
-    if (config.category) s.setAttribute('data-category', config.category)
-    if (config.categoryID) s.setAttribute('data-category-id', config.categoryID)
-    if (config.theme) s.setAttribute('data-theme', config.theme)
-    else s.setAttribute('data-theme', 'preferred_color_scheme')
-    s.src = config.src ?? 'https://giscus.app/client.js'
-    document.getElementById('giscus-container').appendChild(s)
-
+    const giscus = document.createElement('script')
     const observer = new MutationObserver(() => {
       document.getElementById('giscus-loading').remove()
       observer.disconnect()
     })
+    
+    Object.entries({
+      src: config.src ?? 'https://giscus.app/client.js',
+      'data-repo': config.repo,
+      'data-repo-id': config.repoID,
+      'data-category': config.category ?? '',
+      'data-category-id': config.categoryID,
+      'data-mapping': 'pathname',
+      'data-reactions-enabled': config.reactionsEnabled === false ? '0' : '1',
+      'data-input-position': config.inputPosition ?? 'bottom',
+      'data-theme': config.theme ?? 'preferred_color_scheme',
+      'data-lang': config.lang ?? site.lang ?? 'en',
+      'data-loading': config.loading ?? '',
+      crossorigin: 'anonymous',
+      async: ''
+    }).forEach(([key, value]) => giscus.setAttribute(key, value))
 
+    document.getElementById('giscus-container').appendChild(giscus)
     observer.observe(document.getElementById('giscus'), {
       childList: true
     })

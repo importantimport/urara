@@ -13,8 +13,6 @@ export type CommentConfig = {
   webmention?: WebmentionConfig
   /** Giscus config, more at https://giscus.app */
   giscus?: GiscusConfig
-  /** Disqus config */
-  disqus?: DisqusConfig
   /** Utterances config, more at https://utteranc.es */
   utterances?: UtterancesConfig
 }
@@ -43,20 +41,24 @@ export type GiscusConfig = {
   src?: string
   /** a public GitHub repository. this repo is where the discussions will be linked to. */
   repo: string
-  repoID?: string
-  /** choose the discussion category where new discussions will be created. */
+  /** a public GitHub repository. this repo is where the discussions will be linked to. */
+  repoID: string
+  /** fill in here if only search for discussions in this category. */
   category?: string
-  categoryID?: string
-  /** choose the mapping between the embedding page and the embedded discussion. */
-  mapping?: 'pathname' | 'url' | 'title' | 'og:title'
+  /** choose the discussion category where new discussions will be created. */
+  categoryID: string
   /** the reactions for the discussion's main post will be shown before the comments. */
   reactionsEnabled?: boolean
   /** discussion metadata will be sent periodically to the parent window (the embedding page). */
   emitMetadata?: boolean
+  /** the comment input box will be placed above the comments, so that users can leave a comment without scrolling to the bottom of the discussion. */
+  inputPosition?: 'top' | 'bottom'
   /** choose a theme that matches your website. */
   theme?: string
   /** choose the language giscus will be displayed in. */
   lang?: string
+  /** loading of the comments will be deferred until the user scrolls near the comments container. */
+  loading?: 'lazy'
 }
 
 export type UtterancesConfig = {
@@ -68,9 +70,4 @@ export type UtterancesConfig = {
   label?: string
   /** choose an utterances theme that matches your blog. */
   theme?: string
-}
-
-export type DisqusConfig = {
-  shortname: string
-  lang?: string
 }
