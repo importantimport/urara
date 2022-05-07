@@ -10,7 +10,6 @@
   let intersecting: string[] = []
   let intersectingArticle: boolean = true
   let bordered: string[] = []
-  let loaded: boolean = false
 
   onMount(() => {
     if (window.screen.availWidth >= 1280) {
@@ -28,7 +27,6 @@
         headingsObserver.observe(element)
       )
       articleObserver.observe(document.getElementsByTagName('main')[0])
-      setTimeout(() => (loaded = true), 1000)
     }
   })
 
@@ -54,9 +52,7 @@
     id="post-toc"
     aria-label="TableOfContent"
     dir="rtl"
-    class:overflow-hidden={!loaded}
-    class:overflow-auto={loaded}
-    class="max-h-[calc(100vh-8rem)]">
+    class="max-h-[calc(100vh-12rem)] overflow-y-hidden hover:overflow-y-auto">
     <Tree
       toc={toc.reduce(
         (acc, heading) => {
