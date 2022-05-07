@@ -10,7 +10,7 @@
       document.getElementById('giscus-loading').remove()
       observer.disconnect()
     })
-    
+
     Object.entries({
       src: config.src ?? 'https://giscus.app/client.js',
       'data-repo': config.repo,
@@ -36,5 +36,5 @@
 
 <div id="giscus-container">
   <button id="giscus-loading" class="btn btn-lg flex mx-auto my-4 btn-ghost btn-circle loading" />
-  <div id="giscus" class="giscus -mb-4" />
+  <div id="giscus" class="giscus" />
 </div>
