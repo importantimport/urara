@@ -2,21 +2,25 @@
   import { onMount } from 'svelte'
   import type { UtterancesConfig } from '$lib/types/post'
   export let config: UtterancesConfig
-  onMount(() => {
-    const s = document.createElement('script')
-    s.setAttribute('repo', config.repo)
-    s.setAttribute('theme', config.theme ?? 'preferred-color-scheme')
-    s.setAttribute('crossorigin', 'anonymous')
-    s.setAttribute('async', '')
-    if (config.label) s.setAttribute('label', config.label)
-    s.src = config.src ?? 'https://utteranc.es/client.js'
-    document.getElementById('utterances').appendChild(s)
 
+  onMount(() => {
+    const utterances = document.createElement('script')
     const observer = new MutationObserver(() => {
       document.getElementById('utterances-loading').remove()
       observer.disconnect()
     })
 
+    Object.entries({
+      src: config.src ?? 'https://utteranc.es/client.js',
+      repo: config.repo,
+      'issue-term': 'pathname',
+      label: config.label ?? '',
+      theme: config.theme ?? 'preferred-color-scheme',
+      crossorigin: 'anonymous',
+      async: ''
+    }).forEach(([key, value]) => utterances.setAttribute(key, value))
+
+    document.getElementById('giscus-container').appendChild(utterances)
     observer.observe(document.getElementById('utterances'), {
       childList: true
     })
