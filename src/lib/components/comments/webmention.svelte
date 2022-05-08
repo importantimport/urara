@@ -53,7 +53,6 @@
           )
         }
         if (feed.children.length > 0) mentions = [...mentions, ...feed.children]
-        else load()
         page++
         loaded = true
       })
