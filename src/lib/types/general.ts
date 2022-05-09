@@ -4,13 +4,7 @@ export type ThemeConfig = {
 }[]
 
 export type HeadConfig = {
-  custom?:
-    | {
-        common?: string[]
-        dev?: string[]
-        prod?: string[]
-      }
-    | string[]
+  custom?: (params: { dev: boolean; post?: Urara.Post; page?: Urara.Page }) => string[]
   relMe?: string[]
 }
 

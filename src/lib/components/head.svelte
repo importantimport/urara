@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { dev } from '$app/env'
+  import { head } from '$lib/config/general'
   import { site } from '$lib/config/site'
   import OpenGraph from '$lib/components/head_opengraph.svelte'
   export let post: Urara.Post = undefined
@@ -24,6 +26,11 @@
       <title>{site.subtitle ? `${site.title} - ${site.subtitle}` : site.title}</title>
       <link rel="canonical" href={site.protocol + site.domain} />
     {/if}
+  {/if}
+  {#if head.custom}
+    {#each head.custom({ dev, post, page }) as tag}
+      {@html tag}
+    {/each}
   {/if}
 </svelte:head>
 
