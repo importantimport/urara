@@ -33,7 +33,7 @@
   </div>
   <div slot="top">
     {#if photo}
-      <figure class="mx-4 md:mx-0 w-auto">
+      <figure class="!block mx-4 md:mx-0 w-auto">
         <Image class="u-featured rounded-box w-full shadow-xl" src={photo} />
       </figure>
     {/if}
