@@ -4,7 +4,7 @@ import { site } from '$lib/config/site'
 export const icon: IconConfig = {
   favicon: {
     src: site.protocol + site.domain + '/favicon.png',
-    sizes: '32x32',
+    sizes: '48x48',
     type: 'image/png'
   },
   appleTouchIcon: {
