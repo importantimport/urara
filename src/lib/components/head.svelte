@@ -16,8 +16,8 @@
     {:else if post.layout === 'note'}
       <title>{post.path.slice(1)} | {site.title}</title>
     {/if}
-    {#if post.layout === 'article' && post.summary}<meta name="description" content={post.summary} />{/if}
     {#if post.tags}<meta name="keywords" content={post.tags.join(', ')} />{/if}
+    {#if post.summary}<meta name="description" content={post.summary} />{/if}
   {:else}
     <meta name="description" content={site.description} />
     <meta name="keywords" content={site.keywords?.join(', ')} />
