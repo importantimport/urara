@@ -13,6 +13,8 @@ export type SiteConfig = {
   lang?: string
   /** site description. `<meta name="description" content={site.description}>` */
   description?: string
+  /** site keywords. `<meta name="keywords" content={site.keywords}>` */
+  keywords?: string[]
   author: {
     name: string
     photo?: string

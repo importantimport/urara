@@ -8,6 +8,7 @@
 </script>
 
 <svelte:head>
+  <meta name="author" content={site.author?.name}>
   {#if post}
     <link rel="canonical" href={site.protocol + site.domain + post.path} />
     {#if post.layout === 'article'}
@@ -19,6 +20,7 @@
     {#if post.layout === 'article' && post.summary}<meta name="description" content={post.summary} />{/if}
   {:else}
     <meta name="description" content={site.description} />
+    <meta name="keywords" content={site.keywords?.join(', ')} />
     {#if page}
       <title>{page.title ?? page.path.slice(1)} | {site.title}</title>
       <link rel="canonical" href={site.protocol + site.domain + page.path} />
