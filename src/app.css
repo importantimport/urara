@@ -96,12 +96,12 @@ footer a {
 
 /* .urara-prose pre */
 
-.urara-prose pre {
-  @apply -mx-8 rounded-none pb-0;
+.urara-prose > pre {
+  @apply -mx-8 rounded-none pb-0
 }
 
-.urara-prose pre > div.code-container {
-  @apply pb-5 overflow-x-auto;
+.urara-prose > pre > div.code-container {
+  @apply pb-5 overflow-x-auto
 }
 
 /* shiki */
