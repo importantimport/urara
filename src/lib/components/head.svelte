@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-  <meta name="author" content={site.author?.name}>
+  <meta name="author" content={site.author?.name} />
   {#if post}
     <link rel="canonical" href={site.protocol + site.domain + post.path} />
     {#if post.layout === 'article'}
