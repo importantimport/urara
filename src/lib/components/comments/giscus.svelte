@@ -6,11 +6,6 @@
 
   onMount(() => {
     const giscus = document.createElement('script')
-    const observer = new MutationObserver(() => {
-      document.getElementById('giscus-loading').remove()
-      observer.disconnect()
-    })
-
     Object.entries({
       src: config.src ?? 'https://giscus.app/client.js',
       'data-repo': config.repo,
@@ -26,11 +21,16 @@
       crossorigin: 'anonymous',
       async: ''
     }).forEach(([key, value]) => giscus.setAttribute(key, value))
-
-    document.getElementById('giscus-container').appendChild(giscus)
-    observer.observe(document.getElementById('giscus'), {
-      childList: true
-    })
+    setTimeout(() => {
+      const observer = new MutationObserver(() => {
+        document.getElementById('giscus-loading').remove()
+        observer.disconnect()
+      })
+      observer.observe(document.getElementById('giscus'), {
+        childList: true
+      })
+      document.getElementById('giscus-container').appendChild(giscus)
+    }, 1000)
   })
 </script>
 

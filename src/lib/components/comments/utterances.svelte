@@ -5,11 +5,6 @@
 
   onMount(() => {
     const utterances = document.createElement('script')
-    const observer = new MutationObserver(() => {
-      document.getElementById('utterances-loading').remove()
-      observer.disconnect()
-    })
-
     Object.entries({
       src: config.src ?? 'https://utteranc.es/client.js',
       repo: config.repo,
@@ -19,11 +14,16 @@
       crossorigin: 'anonymous',
       async: ''
     }).forEach(([key, value]) => utterances.setAttribute(key, value))
-
-    document.getElementById('giscus-container').appendChild(utterances)
-    observer.observe(document.getElementById('utterances'), {
-      childList: true
-    })
+    setTimeout(() => {
+      const observer = new MutationObserver(() => {
+        document.getElementById('utterances-loading').remove()
+        observer.disconnect()
+      })
+      observer.observe(document.getElementById('utterances'), {
+        childList: true
+      })
+      document.getElementById('utterances-container').appendChild(utterances)
+    }, 1000)
   })
 </script>
 
