@@ -10,6 +10,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.2
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
+  autoprefixer: ^10.0.2
   chalk: ^4.1.2
   chokidar: ^3.5.3
   cssnano: ^5.1.7
@@ -30,6 +31,7 @@ specifiers:
   rehype-external-links: ^1.0.1
   rehype-slug: ^5.0.1
   remark: ^14.0.2
+  remark-footnotes: '2.0'
   shiki-twoslash: ^3.0.2
   svelte: ^3.47.0
   svelte-check: ^2.7.0
@@ -57,10 +59,11 @@ devDependencies:
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
   '@typescript-eslint/eslint-plugin': 4.33.0_bre6cjtjfaculj7kh43nxjxlbi
   '@typescript-eslint/parser': 4.33.0_hrkuebk64jiu2ut2d2sm4oylnu
+  autoprefixer: 10.4.5_postcss@8.4.12
   chalk: 4.1.2
   chokidar: 3.5.3
   cssnano: 5.1.7_postcss@8.4.12
-  daisyui: 2.14.2_postcss@8.4.12
+  daisyui: 2.14.2_yajbjwzoatdamav244yrmoj5ne
   eslint: 7.32.0
   eslint-config-prettier: 8.5.0_eslint@7.32.0
   eslint-plugin-svelte3: 3.4.1_4oxeyilw5mxcaksmcxtpjddhfe
@@ -77,6 +80,7 @@ devDependencies:
   rehype-external-links: 1.0.1
   rehype-slug: 5.0.1
   remark: 14.0.2
+  remark-footnotes: 2.0.0
   shiki-twoslash: 3.0.2
   svelte: 3.47.0
   svelte-check: 2.7.0_cp6olp7pwsfaq5mjijwt65d6uy
@@ -1034,12 +1038,13 @@ packages:
       css-tree: 1.1.3
     dev: true
 
-  /daisyui/2.14.2_postcss@8.4.12:
+  /daisyui/2.14.2_yajbjwzoatdamav244yrmoj5ne:
     resolution: {integrity: sha512-/FxRBLC/xydIqxv+EJHfmmH+UndrwcaAxbWsS/oVLnoeOdb4MN4VlkJ3sYOYrl3tmw/D1L5Lp0PK07ebY0O6QA==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
     dependencies:
+      autoprefixer: 10.4.5_postcss@8.4.12
       color: 4.2.3
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.12
@@ -3449,6 +3454,10 @@ packages:
       hast-util-to-string: 2.0.0
       unified: 10.1.2
       unist-util-visit: 4.1.0
+    dev: true
+
+  /remark-footnotes/2.0.0:
+    resolution: {integrity: sha512-3Clt8ZMH75Ayjp9q4CorNeyjwIxHFcTkaektplKGl2A1jNGEUey8cKL0ZC5vJwfcD5GFGsNLImLG/NGzWIzoMQ==}
     dev: true
 
   /remark-parse/10.0.1:
