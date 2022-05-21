@@ -1,7 +1,6 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
   import { header as headerConfig } from '$lib/config/general'
-  import IconSearch from '~icons/heroicons-outline/search'
 </script>
 
 <form
@@ -18,6 +17,6 @@
     name={headerConfig.search.provider === 'duckduckgo' ? 'sites' : 'sitesearch'}
     value={site.protocol + site.domain} />
   <button type="submit" class="btn btn-square btn-ghost ml-2">
-    <IconSearch />
+    <span class="i-heroicons-outline-search" />
   </button>
 </form>

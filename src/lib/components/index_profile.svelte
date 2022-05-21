@@ -1,6 +1,5 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
-  import IconKey from '~icons/heroicons-solid/key'
 </script>
 
 <div class="flex flex-row xl:flex-col gap-4 sticky top-24 card card-body items-right h-card">
@@ -24,7 +23,7 @@
     <p class="opacity-75 p-note">{@html site.author.bio}</p>
     {#if site.author.pgp}
       <a href={site.author.pgp.link} rel="pgpkey" class="btn btn-ghost btn-xs bg-base-300 font-mono rounded-full mt-4">
-        <IconKey class="inline-block w-4 h-4 mr-1" />
+        <span class="i-heroicons-solid-key !w-4 !h-4 mr-1" />
         {site.author.pgp.text}
       </a>
     {/if}

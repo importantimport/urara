@@ -5,10 +5,6 @@
   import { theme } from '$lib/config/general'
   import { header as headerConfig } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'
-  import IconChevronUp from '~icons/heroicons-solid/chevron-up'
-  import IconSearch from '~icons/heroicons-outline/search'
-  import IconX from '~icons/heroicons-outline/x'
-  import IconColorSwatch from '~icons/heroicons-outline/color-swatch'
   import Nav from '$lib/components/header_nav.svelte'
   import Search from '$lib/components/header_search.svelte'
   export let path: string
@@ -67,12 +63,12 @@
       <div class="navbar-end">
         {#if headerConfig.search}
           <button aria-label="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
-            <IconSearch />
+            <span class="i-heroicons-outline-search" />
           </button>
         {/if}
         <div id="change-theme" class="dropdown dropdown-end">
           <div tabindex="0" class="btn btn-square btn-ghost">
-            <IconColorSwatch />
+            <span class="i-heroicons-outline-color-swatch" />
           </div>
           <ul
             tabindex="0"
@@ -112,7 +108,7 @@
         : ''}">
       <Search />
       <button on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
-        <IconX />
+        <span class="i-heroicons-outline-x" />
       </button>
     </div>
   {/if}
@@ -127,8 +123,10 @@
     aria-label="scroll to top"
     class="btn btn-circle btn-lg btn-ghost border-none col-start-1 row-start-1 z-50"
     class:opacity-100={scrollY}>
-    <IconChevronUp
-      class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97 ? 'text-accent' : 'text-neutral-content'}" />
+    <span
+      class="i-heroicons-solid-chevron-up transition-all duration-1000 {percent > 97
+        ? 'text-accent'
+        : 'text-neutral-content'}" />
   </button>
   <div
     class="radial-progress text-accent col-start-1	row-start-1"

@@ -1,7 +1,4 @@
 <script lang="ts">
-  import IconMenu from '~icons/heroicons-outline/menu-alt-1'
-  import IconChevronRight from '~icons/heroicons-solid/chevron-right'
-  import IconChevronDown from '~icons/heroicons-solid/chevron-down'
   export let nav: { text: string; link?: string; children?: { text: string; link: string }[] }[]
   export let path: string
   export let pin: boolean
@@ -9,7 +6,7 @@
 
 <div class="dropdown lg:hidden">
   <label for="navbar-dropdown" tabindex="0" class="btn btn-square btn-ghost">
-    <IconMenu />
+    <span class="i-heroicons-outline-menu-alt-1" />
   </label>
   <ul
     id="navbar-dropdown"
@@ -25,7 +22,7 @@
         <li tabindex="0">
           <span class:font-bold={children.some(({ link }) => link === path)} class="justify-between gap-1 max-w-[13rem]">
             {text}
-            <IconChevronRight class="flex-none w-6 h-6 -mr-2" />
+            <span class="i-heroicons-solid-chevron-right mr-2" />
           </span>
           <ul class="bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
@@ -49,7 +46,7 @@
       <li tabindex="0">
         <span class:font-bold={children.some(({ link }) => link === path)} class="gap-1">
           {text}
-          <IconChevronDown class="flex-none w-6 h-6 -mr-1" />
+          <span class="i-heroicons-solid-chevron-down -mr-1" />
         </span>
         <ul class="bg-base-100 text-base-content shadow-lg p-2">
           {#each children as { text, link }}

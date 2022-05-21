@@ -86,7 +86,7 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 
 ### Vite Plugins
 
-- [Unplugin Icons](https://github.com/antfu/unplugin-icons) - Access thousands of icons as components on-demand universally.
+- [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
 
 ## 🚀 Sites
 

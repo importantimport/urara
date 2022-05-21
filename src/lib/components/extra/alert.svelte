@@ -1,8 +1,4 @@
 <script lang="ts">
-  import IconInformationCircle from '~icons/heroicons-outline/information-circle'
-  import IconCheckCircle from '~icons/heroicons-outline/check-circle'
-  import IconExclamationCircle from '~icons/heroicons-outline/exclamation-circle'
-  import IconXCircle from '~icons/heroicons-outline/x-circle'
   export let title: string = undefined
   export let description: string = undefined
   export let status: 'info' | 'success' | 'warning' | 'error' = undefined
@@ -16,13 +12,13 @@
   class="alert flex-col shadow-inner my-4">
   <div class="mr-auto">
     {#if status === 'success'}
-      <IconCheckCircle />
+      <span class="i-heroicons-outline-check-circle" />
     {:else if status === 'warning'}
-      <IconExclamationCircle />
+      <span class="i-heroicons-outline-exclamation-circle" />
     {:else if status === 'error'}
-      <IconXCircle />
+      <span class="i-heroicons-outline-x-circle" />
     {:else}
-      <IconInformationCircle />
+      <span class="i-heroicons-outline-information-circle" />
     {/if}
     <div>
       <div class:font-bold={description}>{title}</div>

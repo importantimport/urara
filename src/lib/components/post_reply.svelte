@@ -1,5 +1,4 @@
 <script lang="ts">
-  import IconReply from '~icons/heroicons-outline/reply'
   let className = ''
   export { className as class }
   export let inReplyTo: Urara.Post.Reply['inReplyTo']
@@ -14,7 +13,7 @@
         rel="noopener external"
         target="_blank"
         class="flex-none flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
-        <IconReply class="flex-none my-auto w-4 h-4" />
+        <span class="i-heroicons-outline-reply my-auto !w-4 !h-4" />
         {reply}
       </a>
     {/each}
@@ -24,7 +23,7 @@
       rel="noopener external"
       target="_blank"
       class="ml-auto flex-none flex rounded-badge bg-base-200 hover:bg-base-300 transition-all gap-2 px-4 u-in-reply-to">
-      <IconReply class="flex-none my-auto w-4 h-4" />
+      <span class="i-heroicons-outline-reply my-auto !w-4 !h-4" />
       {inReplyTo}
     </a>
   {/if}

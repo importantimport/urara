@@ -5,7 +5,6 @@
 <script lang="ts">
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string
   export let pathname: string
@@ -27,7 +26,7 @@
         <h2 class="-mt-12 md:-mt-24">{message ?? 'Not found'}</h2>
         <div class="card-actions">
           <a href="/" class="btn btn-neutral no-underline shadow-xl hover:shadow-2xl mt-8">
-            <IconHome class="inline-block w-6 h-6 -ml-1 mr-2" />
+            <span class="i-heroicons-outline-home -ml-1 mr-2" />
             Back to Home
           </a>
         </div>
