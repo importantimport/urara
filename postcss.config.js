@@ -1,4 +1,4 @@
-import postcssPresetEnv from 'postcss-preset-env'
+import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import tailwindcss from 'tailwindcss'
 import tailwindConfig from './tailwind.config.js'
@@ -6,7 +6,7 @@ import tailwindConfig from './tailwind.config.js'
 export default {
   plugins: [
     tailwindcss(tailwindConfig),
-    postcssPresetEnv,
+    autoprefixer,
     ...(process.env.NODE_ENV === 'production'
       ? [
           cssnano({

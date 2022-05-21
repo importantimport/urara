@@ -76,9 +76,7 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 
 - [daisyUI](https://github.com/saadeghi/daisyui) - The most popular, free and open-source Tailwind CSS component library
 - [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
-- [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapid UI development.
-- [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) - Convert modern CSS into something browsers understand
-- [PostCSS](https://github.com/postcss/postcss) - a tool for transforming CSS with JavaScript
+- [Autoprefixer](https://github.com/postcss/autoprefixer) - Parse CSS and add vendor prefixes to rules by Can I Use
 - [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
 
 ### Markdown preprocessor & Syntax highlighter
