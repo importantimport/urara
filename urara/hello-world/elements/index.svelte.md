@@ -20,6 +20,7 @@ tags: ['Urara', 'Elements']
   - [Unordered List (ul)](#unordered-list-ul)
   - [Checkbox List (ul)](#checkbox-list-ul)
 - [Table](#table)
+- [Footnotes](#footnotes)
 - [Code](#code)
 - [Misc](#misc)
 - [Svelte Components](#svelte-components)
@@ -108,6 +109,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 | Division 1     |   Division 2   |     Division 3 |
 | Division 1     |   Division 2   |     Division 3 |
 | Division 1     |   Division 2   |     Division 3 |
+
+[scrollToTop](#contents)
+
+## Footnotes
+
+Here is a footnote reference. [^1]
+
+This is a long note. [^longnote]
+
+This is an inline note. ^[You can type footnotes inline, so you don’t have to pick an identifier manually.]
+
+[^1]: Here is the footnote.
+[^longnote]: Here’s one footnote with longer identifier.
 
 [scrollToTop](#contents)
 

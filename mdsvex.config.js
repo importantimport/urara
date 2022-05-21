@@ -9,6 +9,7 @@ import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
+import remarkFootnotes from 'remark-footnotes'
 
 const remarkUraraFm =
   () =>
@@ -84,7 +85,7 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
       )}\` }`
     }
   },
-  remarkPlugins: [remarkUraraFm, remarkUraraSpoiler],
+  remarkPlugins: [remarkUraraFm, remarkUraraSpoiler, [remarkFootnotes, { inlineNotes: true }]],
   rehypePlugins: [
     rehypeSlug,
     [rehypeAutolinkHeadings, { behavior: 'wrap' }],
