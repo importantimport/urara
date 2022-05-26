@@ -22,7 +22,7 @@
 
 <Post layout="photo" {path} {flags} {tags} {created} {updated} {published}>
   <figure slot="top" class="mx-4 md:mx-0 w-auto">
-    <Image src={photo} class="rounded-box w-full shadow-xl" />
+    <Image src={photo} class="rounded-box w-full shadow-xl" loading="eager" decoding="auto" />
   </figure>
   <main slot="content" itemprop="articleBody" class="urara-prose prose p-name p-content">
     <slot />

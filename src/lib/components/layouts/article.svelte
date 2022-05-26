@@ -34,7 +34,7 @@
   <div slot="top">
     {#if photo}
       <figure class="!block mx-4 md:mx-0 w-auto">
-        <Image class="u-featured rounded-box w-full shadow-xl" src={photo} />
+        <Image class="u-featured rounded-box w-full shadow-xl" src={photo} loading="eager" decoding="auto" />
       </figure>
     {/if}
   </div>
