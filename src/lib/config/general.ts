@@ -131,6 +131,10 @@ export const header: HeaderConfig = {
       text: 'Elements',
       link: '/hello-world/elements'
     }
+    // {
+    //   text: 'Projects',
+    //   link: '/projects'
+    // }
   ]
 }
 
