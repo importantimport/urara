@@ -7,4 +7,4 @@
   export let decoding: 'async' | 'sync' | 'auto' = 'async'
 </script>
 
-<img {src} {alt} class="u-photo {className ?? 'rounded-lg my-2'}" {loading} {decoding} />
+<img {src} {alt} class="u-photo {className ?? 'w-full rounded-lg my-2'}" {loading} {decoding} />
