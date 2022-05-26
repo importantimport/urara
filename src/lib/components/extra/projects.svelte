@@ -33,7 +33,7 @@
             </div>
           </div>
           <p class="text-left text-base font-normal opacity-70">
-            {project.description}
+            {@html project.description}
           </p>
         </div>
       </div>
