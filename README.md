@@ -90,8 +90,9 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 
 ## 🚀 Sites
 
-- [./kwaa.dev](https://kwaa.dev)
-- [成功他媽．阿瑋](https://kwchang0831.dev)
+- [./kwaa.dev](https://kwaa.dev) - [kwaa/blog](https://github.com/kwaa/blog)
+- [成功他媽．阿瑋](https://kwchang0831.dev) - [kwchang0831/kwchang0831.dev](https://github.com/kwchang0831/kwchang0831.dev)
+- [Seviche.cc](https://seviche.cc) - [Sevichecc/Urara-Blog](https://github.com/Sevichecc/Urara-Blog)
 
 and more...
 
