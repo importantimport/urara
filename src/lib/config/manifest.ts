@@ -5,7 +5,7 @@ export const manifest = {
   name: site.title,
   shortName: site.title,
   lang: site.lang,
-  description: site.descr,
+  description: site.description,
   id: `${site.protocol + site.domain}/`,
   startUrl: '/',
   scope: '/',
