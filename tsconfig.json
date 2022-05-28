@@ -2,10 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "target": "es2019",
     "noEmit": true,
     /**
