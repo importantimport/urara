@@ -54,6 +54,10 @@ html {
 
 /* .urara-prose misc */
 
+.urara-prose > p img {
+  @apply w-full;
+}
+
 .urara-prose :is(p, li) > code {
   @apply bg-base-200 px-2;
 }
