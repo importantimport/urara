@@ -20,7 +20,7 @@
 
   $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
 
-  $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
+  $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).getFullYear()]
 
   $: if (tags) {
     posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
