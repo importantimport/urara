@@ -1,11 +1,12 @@
 {
   "name": "urara",
+  "type": "module",
   "version": "0.0.1",
   "license": "WTFPL",
   "repository": "importantimport/urara",
   "homepage": "https://github.com/importantimport/urara",
   "bugs": "https://github.com/importantimport/urara/issues",
-  "author": "藍",
+  "author": "藍+85CD",
   "scripts": {
     "clean": "node urara.js clean",
     "rename": "node urara.js rename",
@@ -70,5 +71,8 @@
     "workbox-routing": "^6.5.3",
     "workbox-strategies": "^6.5.3"
   },
-  "type": "module"
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "npx pnpm i && npx pnpm dev"
+  }
 }
