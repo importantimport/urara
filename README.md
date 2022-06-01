@@ -87,6 +87,7 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 ### Vite Plugins
 
 - [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
+- [VitePWA](https://github.com/antfu/vite-plugin-pwa) - Zero-config PWA for Vite
 
 ## 🚀 Sites
 
@@ -117,7 +118,6 @@ special thanks / inspired from:
 
 - [@michaeloliverx - Generate Posts List](https://github.com/pngwn/MDsveX/issues/294#issuecomment-907029639)
 - [@jthegedus - Build Mode](https://github.com/sveltejs/kit/issues/1258#issuecomment-874482104)
-- [@FunMiles - Service Worker](https://github.com/FunMiles/SveltekitPWA/blob/main/src/service-worker.ts)
 
 credits:
 

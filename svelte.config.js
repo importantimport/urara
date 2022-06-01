@@ -7,6 +7,7 @@ import postcss from './postcss.config.js'
 import UnoCSS from 'unocss/vite'
 import { extractorSvelte } from '@unocss/core'
 import { presetIcons } from 'unocss'
+import { VitePWA } from 'vite-plugin-pwa'
 import { mdsvex } from 'mdsvex'
 
 export default /** @type {import('@sveltejs/kit').Config} */ {
@@ -42,7 +43,8 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
               }
             })
           ]
-        })
+        }),
+        VitePWA({ registerType: 'autoUpdate' })
       ]
     }
   }
