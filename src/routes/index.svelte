@@ -92,7 +92,7 @@
         itemscope
         itemtype="https://schema.org/Blog">
         {#each posts as post, index}
-          {@const year = (post.published ?? post.created).substring(0, 4)}
+          {@const year = new Date(post.published ?? post.created).getFullYear()}
           {#if !years.includes(year)}
             <div
               in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
