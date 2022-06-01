@@ -9,9 +9,12 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import { browser, dev } from '$app/env'
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
+  import { registerSW } from 'virtual:pwa-register'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
@@ -20,6 +23,7 @@
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
+  onMount(() => !dev && browser && registerSW())
 </script>
 
 <Head />
