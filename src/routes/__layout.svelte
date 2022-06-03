@@ -23,7 +23,7 @@
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
-  onMount(() => !dev && browser && registerSW())
+  onMount(() => !dev && browser && registerSW({ onRegisterError: error => console.error(error) }))
 </script>
 
 <Head />
