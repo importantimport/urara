@@ -10,7 +10,6 @@ import chalk from 'chalk'
 
 const config = {
   extensions: ['svelte', 'md', 'js', 'ts'],
-  rename: ['404'],
   catch: ['ENOENT', 'EEXIST']
 }
 
@@ -87,22 +86,6 @@ const clean = () => {
   rmDir('static', { dest: ['static'] })
 }
 
-const rename = () => {
-  fs.readdir('build', { withFileTypes: true }).then(files =>
-    files.forEach(file => {
-      if (file.isDirectory() && config.rename.includes(file.name)) {
-        log('cyan', 'find', file.name)
-        const src = path.join('build', file.name, 'index.html')
-        const dest = path.join('build', file.name + '.html')
-        fs.copyFile(src, dest)
-          .then(log('green', 'copy file', dest))
-          .then(fs.rm(src).then(log('yellow', 'remove file', src)).catch(error))
-          .catch(error)
-      }
-    })
-  )
-}
-
 switch (process.argv[2]) {
   case 'watch':
     {
@@ -137,9 +120,6 @@ switch (process.argv[2]) {
     break
   case 'clean':
     clean()
-    break
-  case 'rename':
-    rename()
     break
   default:
     log('red', 'error', 'invalid arguments')

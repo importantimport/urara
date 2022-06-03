@@ -9,7 +9,6 @@
   "author": "藍+85CD",
   "scripts": {
     "clean": "node urara.js clean",
-    "rename": "node urara.js rename",
     "dev:urara": "node urara.js watch",
     "dev:kit": "export NODE_OPTIONS=--max_old_space_size=7680 && MODE=development svelte-kit dev",
     "dev": "npm-run-all -p -r dev:urara \"dev:kit -- {@} \" --",
