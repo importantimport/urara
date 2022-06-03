@@ -47,7 +47,9 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
         VitePWA({
           srcDir: './build',
           outDir: './.svelte-kit/output/client',
-          registerType: 'autoUpdate'
+          registerType: 'autoUpdate',
+          scope: '/',
+          base: '/'
         })
       ]
     }
