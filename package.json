@@ -31,7 +31,6 @@
     "@tailwindcss/typography": "^0.5.2",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
-    "@unocss/core": "^0.37.2",
     "autoprefixer": "^10.4.7",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
