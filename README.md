@@ -6,7 +6,7 @@
 </div>
 <br>
 
-<h1 align="center">Urara [8²]</h1>
+<h1 align="center">Urara [γ]</h1>
 <p align="center">Sweet & Powerful SvelteKit Blog Starter.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
