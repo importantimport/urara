@@ -2,6 +2,7 @@
   import { fly } from 'svelte/transition'
   import { browser } from '$app/env'
   import { posts as storedPosts } from '$lib/stores/posts'
+  import { title as storedTitle } from '$lib/stores/title'
   import { post as postConfig } from '$lib/config/post'
   import Status from '$lib/components/post_status.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
@@ -32,6 +33,7 @@
         .reverse()
         .find(post => !post.flags?.includes('unlisted'))
       next = posts.slice(index + 1).find(post => !post.flags?.includes('unlisted'))
+      storedTitle.set(post.title)
     })
 </script>
 

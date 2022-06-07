@@ -4,6 +4,7 @@
   import { page } from '$app/stores'
   import { browser } from '$app/env'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
+  import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
@@ -13,6 +14,8 @@
   let allTags: string[]
   let loaded: boolean
   let [posts, tags, years] = [[], [], []]
+
+  storedTitle.set('')
 
   $: storedPosts.subscribe(
     storedPosts => (allPosts = (storedPosts as Urara.Post[]).filter(post => !post.flags?.includes('unlisted')))
