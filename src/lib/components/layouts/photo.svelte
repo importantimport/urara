@@ -16,13 +16,17 @@
   export let flags = undefined
 
   export let photo = undefined
+  export let alt = undefined
 </script>
 
 <Head post={{ layout: 'photo', created, updated, published, photo, tags, path }} />
 
 <Post layout="photo" {path} {flags} {tags} {created} {updated} {published}>
   <figure slot="top" class="mx-4 md:mx-0 w-auto">
-    <Image src={photo} class="rounded-box w-full shadow-xl" loading="eager" decoding="auto" />
+    <Image src={photo} alt={alt ?? photo} class="rounded-box w-full shadow-xl" loading="eager" decoding="auto" />
+    {#if alt}
+      <figcaption>{@html alt}</figcaption>
+    {/if}
   </figure>
   <main slot="content" itemprop="articleBody" class="urara-prose prose p-name p-content">
     <slot />

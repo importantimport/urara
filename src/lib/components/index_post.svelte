@@ -14,7 +14,15 @@
     itemprop="blogPost"
     class="h-entry card image-full before:!bg-transparent bg-base-100 rounded-none md:rounded-box">
     <figure>
-      <Image class="u-photo object-cover object-center h-full w-full" src={post.photo} {loading} {decoding} />
+      <Image
+        class="u-photo object-cover object-center h-full w-full"
+        src={post.photo}
+        alt={post.alt ?? post.photo}
+        {loading}
+        {decoding} />
+      {#if post.alt}
+        <figcaption>{@html post.alt}</figcaption>
+      {/if}
     </figure>
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
@@ -33,8 +41,12 @@
         <Image
           class="u-featured object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out"
           src={post.photo}
+          alt={post.alt ?? post.photo}
           {loading}
           {decoding} />
+        {#if post.alt}
+          <figcaption>{@html post.alt}</figcaption>
+        {/if}
       </figure>
     {/if}
     <div
