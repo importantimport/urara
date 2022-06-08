@@ -22,7 +22,7 @@
 <Head post={{ layout: 'photo', created, updated, published, photo, tags, path }} />
 
 <Post layout="photo" {path} {flags} {tags} {created} {updated} {published}>
-  <figure slot="top" class="mx-4 md:mx-0 w-auto">
+  <figure slot="top" class="flex-col gap-2 mx-4 md:mx-0 w-auto">
     <Image src={photo} alt={alt ?? photo} class="rounded-box w-full shadow-xl" loading="eager" decoding="auto" />
     {#if alt}
       <figcaption>{@html alt}</figcaption>

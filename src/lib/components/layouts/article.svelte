@@ -34,7 +34,7 @@
   </div>
   <div slot="top">
     {#if photo}
-      <figure class="mx-4 md:mx-0 w-auto">
+      <figure class="flex-col gap-2 mx-4 md:mx-0 w-auto">
         <Image class="u-featured rounded-box w-full shadow-xl" src={photo} alt={alt ?? photo} loading="eager" decoding="auto" />
         {#if alt}
           <figcaption>{@html alt}</figcaption>
