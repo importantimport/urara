@@ -17,6 +17,7 @@ declare namespace Urara {
       layout: 'article'
       /** post photo */
       photo?: string
+      /** table of content - auto generated or set `false` to disable */
       toc?: false | Article.Toc[]
     }
     namespace Article {
