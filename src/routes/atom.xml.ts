@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
-import { icon } from '$lib/config/icon'
+import { favicon } from '$lib/config/icon'
 import { genPosts, genTags } from '$lib/utils/posts'
 
 const render = async (
@@ -10,7 +10,7 @@ const render = async (
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>${site.protocol + site.domain}/</id>
   <title><![CDATA[${site.title}]]></title>${site.subtitle ? `\n  <subtitle><![CDATA[${site.subtitle}]]></subtitle>` : ''}${
-  icon.favicon ? `\n  <icon>${icon.favicon.src}</icon>` : ''
+  favicon ? `\n  <icon>${favicon.src}</icon>` : ''
 }
   <link href="${site.protocol + site.domain}" />
   <link href="${site.protocol + site.domain}/atom.xml" rel="self" type="application/atom+xml" />${

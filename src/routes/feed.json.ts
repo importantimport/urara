@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
-import { icon } from '$lib/config/icon'
+import { favicon, any } from '$lib/config/icon'
 import { genPosts } from '$lib/utils/posts'
 
 const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, filterUnlisted: true })) => ({
@@ -10,8 +10,8 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
   home_page_url: site.protocol + site.domain,
   feed_url: site.protocol + site.domain + '/feed.json',
   description: site.description,
-  icon: icon.any192.src,
-  favicon: icon.favicon.src,
+  icon: any['512'].src ?? any['192'].src,
+  favicon: favicon?.src,
   authors: [
     {
       name: site.author.name,

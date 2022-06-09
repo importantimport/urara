@@ -1,5 +1,5 @@
 import { site } from '$lib/config/site'
-import { icon } from '$lib/config/icon'
+import { any, maskable } from '$lib/config/icon'
 
 export const manifest = {
   name: site.title,
@@ -13,5 +13,10 @@ export const manifest = {
   orientation: 'portrait',
   backgroundColor: site.themeColor,
   themeColor: site.themeColor,
-  icons: [...Object.values(icon).slice(2)]
+  icons: [
+    ...Object.values(any)
+      .filter(icon => icon.sizes !== '180x180')
+      .map(icon => ({ ...icon, purpose: 'any' })),
+    ...Object.values(maskable).map(icon => ({ ...icon, purpose: 'maskable' }))
+  ]
 }
