@@ -9,6 +9,5 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "types": ["vite/client", "vite-plugin-pwa/client"]
-  },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
+  }
 }
