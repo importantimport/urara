@@ -10,3 +10,4 @@ build/
 .env.local
 .env.**.local
 *.config.js
+urara.js

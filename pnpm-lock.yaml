@@ -8,6 +8,7 @@ specifiers:
   '@sveltejs/adapter-static': ^1.0.0-next.34
   '@sveltejs/kit': ^1.0.0-next.347
   '@tailwindcss/typography': ^0.5.2
+  '@types/node': ^17.0.43
   '@types/tailwindcss': ^3.0.10
   '@typescript-eslint/eslint-plugin': ^5.27.0
   '@typescript-eslint/parser': ^5.27.0
@@ -53,6 +54,7 @@ devDependencies:
   '@sveltejs/adapter-static': 1.0.0-next.34
   '@sveltejs/kit': 1.0.0-next.347_svelte@3.48.0
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
+  '@types/node': 17.0.43
   '@types/tailwindcss': 3.0.10
   '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
   '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
