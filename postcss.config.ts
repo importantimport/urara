@@ -5,7 +5,7 @@ import tailwindConfig from './tailwind.config.js'
 
 export default {
   plugins: [
-    tailwindcss(tailwindConfig),
+    tailwindcss(tailwindConfig as any),
     autoprefixer(),
     ...(process.env.NODE_ENV === 'production'
       ? [

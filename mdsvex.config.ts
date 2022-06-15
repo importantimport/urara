@@ -18,7 +18,7 @@ const defineConfig = (config: MdsvexOptions) => config
 const remarkUraraFm =
   () =>
   (tree: any, { data, filename }: { data: { fm?: Record<string, any> }; filename?: string }) => {
-    const filepath = filename.split('/src/routes')[1]
+    const filepath = (filename as string).split('/src/routes')[1]
     let { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
     // Generate slug & path
@@ -28,7 +28,7 @@ const remarkUraraFm =
     if (!data.fm.layout) data.fm.layout = 'article'
     // Generate ToC
     if (data.fm.toc !== false) {
-      let [slugs, toc] = [new Slugger(), []]
+      let [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
       visit(tree, 'heading', node => {
         toc.push({
           depth: node.depth,
@@ -83,11 +83,11 @@ export default defineConfig({
       } catch (error) {
         throw new Error(`Could not parse the codefence for this code sample \n${code}`)
       }
-      if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang)
+      if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang as string)
       return `{@html \`${escapeSvelte(
         renderCodeToHTML(
           code,
-          lang,
+          lang as string,
           fence ?? {},
           { themeName: 'material-default' },
           await createShikiHighlighter({ theme: 'material-default' }),
