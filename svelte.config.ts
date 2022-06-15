@@ -1,15 +1,24 @@
+// sveltekit config type
+import type { Config } from '@sveltejs/kit'
+
+// svelte preprocess
 import preprocess from 'svelte-preprocess'
 import adapterAuto from '@sveltejs/adapter-auto'
 import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
+import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
-import postcss from './postcss.config.js'
+
+// vite plugin
 import UnoCSS from 'unocss/vite'
 import { presetIcons, extractorSvelte } from 'unocss'
 import { VitePWA } from 'vite-plugin-pwa'
-import { mdsvex } from 'mdsvex'
 
-import type { Config } from '@sveltejs/kit'
+// postcss & tailwindcss
+import TailwindCSS from 'tailwindcss'
+import tailwindConfig from './tailwind.config.js'
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
 
 const defineConfig = (config: Config) => config
 
@@ -31,7 +40,21 @@ export default defineConfig({
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
-      css: { postcss: postcss as any },
+      css: {
+        postcss: {
+          plugins: [
+            TailwindCSS(tailwindConfig as any) as any,
+            autoprefixer(),
+            ...(process.env.NODE_ENV === 'production'
+              ? [
+                  cssnano({
+                    preset: ['default', { discardComments: { removeAll: true } }]
+                  })
+                ]
+              : [])
+          ]
+        }
+      },
       plugins: [
         UnoCSS({
           extractors: [extractorSvelte],

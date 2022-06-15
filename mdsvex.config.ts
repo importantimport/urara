@@ -1,9 +1,13 @@
+// mdsvex config type
+import type { MdsvexOptions } from 'mdsvex'
+
+// rehype plugins
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
-import { escapeSvelte } from 'mdsvex'
-import { lex, parse as parseFence } from 'fenceparser'
-import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash'
+
+// urara remark plugins
+import type { Node, Data } from 'unist'
 import { statSync } from 'fs'
 import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
@@ -11,13 +15,15 @@ import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 import remarkFootnotes from 'remark-footnotes'
 
-import type { MdsvexOptions } from 'mdsvex'
-
-const defineConfig = (config: MdsvexOptions) => config
+// highlighter
+import { escapeSvelte } from 'mdsvex'
+import { lex, parse as parseFence } from 'fenceparser'
+import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash'
+type VALUE = { [key in string | number]: VALUE } | Array<VALUE> | string | boolean | number
 
 const remarkUraraFm =
   () =>
-  (tree: any, { data, filename }: { data: { fm?: Record<string, any> }; filename?: string }) => {
+  (tree: Node<Data>, { data, filename }: { data: { fm?: Record<string, unknown> }; filename?: string }) => {
     const filepath = (filename as string).split('/src/routes')[1]
     let { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
@@ -29,7 +35,7 @@ const remarkUraraFm =
     // Generate ToC
     if (data.fm.toc !== false) {
       let [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
-      visit(tree, 'heading', node => {
+      visit(tree, 'heading', (node: { depth: number }) => {
         toc.push({
           depth: node.depth,
           title: toString(node),
@@ -51,8 +57,9 @@ const remarkUraraFm =
     }
   }
 
-const remarkUraraSpoiler = () => (tree: any) =>
-  visit(tree, 'paragraph', node => {
+// Better type definitions needed
+const remarkUraraSpoiler = () => (tree: Node<Data>) =>
+  visit(tree, 'paragraph', (node: any) => {
     const { children } = node
     const text = children[0].value
     const re = /\|\|(.{1,}?)\|\|/g
@@ -62,6 +69,8 @@ const remarkUraraSpoiler = () => (tree: any) =>
     }
     return node
   })
+
+const defineConfig = (config: MdsvexOptions) => config
 
 export default defineConfig({
   extensions: ['.svelte.md', '.md'],
@@ -77,7 +86,8 @@ export default defineConfig({
   },
   highlight: {
     highlighter: async (code, lang, meta) => {
-      let fence, twoslash: any
+      let fence: Record<string, VALUE> | null
+      let twoslash: any
       try {
         fence = parseFence(lex([lang, meta].filter(Boolean).join(' ')))
       } catch (error) {

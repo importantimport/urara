@@ -1,7 +1,10 @@
+// tailwind config type
+import type { TailwindConfig } from 'tailwindcss/tailwind-config'
+// @ts-ignore TS2305: Module 'tailwindcss/plugin' has no exported member 'TailwindPluginWithoutOptions'.
+import type { TailwindPluginWithoutOptions } from 'tailwindcss/plugin'
+// tailwind plugins
 import typography from '@tailwindcss/typography'
 import daisyui from 'daisyui'
-
-import type { TailwindConfig } from 'tailwindcss/tailwind-config'
 
 interface Config extends TailwindConfig {
   daisyui?: {
@@ -23,7 +26,7 @@ export default defineConfig({
   theme: {
     extend: {}
   },
-  plugins: [typography, daisyui],
+  plugins: [typography as TailwindPluginWithoutOptions, daisyui as TailwindPluginWithoutOptions],
   daisyui: {
     themes: [
       'light',
