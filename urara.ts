@@ -51,7 +51,7 @@ const rmFile = (src: string, { dest = path.join(check(path.parse(src).ext.slice(
 const cpDir = (src: string) =>
   fs.readdir(src, { withFileTypes: true }).then(files =>
     files.forEach(file => {
-      const dest = path.join(src as string, file.name)
+      const dest = path.join(src, file.name)
       if (file.isDirectory()) {
         mkDir(dest)
         cpDir(dest)
@@ -84,7 +84,7 @@ const rmDir = (src: string, { dest = [path.join('src/routes', src.slice(6)), pat
 const cleanDir = (src: string) =>
   fs.readdir(src, { withFileTypes: true }).then(files => {
     files.forEach(file => {
-      const dest = path.join(src as string, file.name)
+      const dest = path.join(src, file.name)
       file.isDirectory() ? rmDir(dest) : file.name.startsWith('.') ? log('cyan', 'ignore file', dest) : rmFile(dest)
     })
   })
