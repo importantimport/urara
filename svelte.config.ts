@@ -7,11 +7,15 @@ import postcss from './postcss.config.js'
 import UnoCSS from 'unocss/vite'
 import { presetIcons, extractorSvelte } from 'unocss'
 import { VitePWA } from 'vite-plugin-pwa'
-import { mdsvex } from 'mdsvex'
+import { mdsvex, MdsvexOptions } from 'mdsvex'
 
-export default /** @type {import('@sveltejs/kit').Config} */ {
+import type { Config } from '@sveltejs/kit'
+
+const defineConfig = (config: Config) => config
+
+export default defineConfig({
   extensions: ['.svelte', ...mdsvexConfig.extensions],
-  preprocess: [mdsvex(mdsvexConfig), preprocess()],
+  preprocess: [mdsvex(mdsvexConfig as MdsvexOptions), preprocess()],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterAuto()
@@ -31,17 +35,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
       plugins: [
         UnoCSS({
           extractors: [extractorSvelte],
-          presets: [
-            presetIcons({
-              customizations: {
-                iconCustomizer: (_collection, _icon, props) => {
-                  props.height = '1.5rem'
-                  props.width = '1.5rem'
-                  return props
-                }
-              }
-            })
-          ]
+          presets: [presetIcons({ scale: 1.5 })]
         }),
         VitePWA({
           srcDir: './build',
@@ -53,4 +47,4 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
       ]
     }
   }
-}
+})

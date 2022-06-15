@@ -1,7 +1,24 @@
 import typography from '@tailwindcss/typography'
 import daisyui from 'daisyui'
 
-export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */ {
+import type { TailwindConfig } from 'tailwindcss/tailwind-config'
+
+interface Config extends TailwindConfig {
+  daisyui?: {
+    styled?: boolean
+    themes?: boolean | string[]
+    base?: boolean
+    utils?: boolean
+    logs?: boolean
+    rtl?: boolean
+    darkTheme?: string
+    prefix?: string
+  }
+}
+
+const defineConfig = (config: Config) => config
+
+export default defineConfig({
   content: ['./src/**/*.{html,md,js,svelte,ts}'],
   theme: {
     extend: {}
@@ -40,4 +57,4 @@ export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} 
       'winter'
     ]
   }
-}
+})

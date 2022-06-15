@@ -9,3 +9,4 @@ build/
 .netlify/
 .env.local
 .env.**.local
+*.config.js

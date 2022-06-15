@@ -11,9 +11,13 @@ import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 import remarkFootnotes from 'remark-footnotes'
 
+import type { MdsvexOptions } from 'mdsvex'
+
+const defineConfig = (config: MdsvexOptions) => config
+
 const remarkUraraFm =
   () =>
-  (tree, { data, filename }) => {
+  (tree: any, { data, filename }: { data: { fm?: Record<string, any> }; filename?: string }) => {
     const filepath = filename.split('/src/routes')[1]
     let { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
@@ -29,7 +33,7 @@ const remarkUraraFm =
         toc.push({
           depth: node.depth,
           title: toString(node),
-          slug: slugs.slug(toString(node))
+          slug: slugs.slug(toString(node), false)
         })
       })
       data.fm.toc = toc
@@ -47,19 +51,19 @@ const remarkUraraFm =
     }
   }
 
-const remarkUraraSpoiler = () => tree =>
+const remarkUraraSpoiler = () => (tree: any) =>
   visit(tree, 'paragraph', node => {
     const { children } = node
     const text = children[0].value
     const re = /\|\|(.{1,}?)\|\|/g
     if (re.test(children[0].value)) {
       children[0].type = 'html'
-      children[0].value = text.replace(re, (_match, p1) => `<span class="spoiler">${p1}</span>`)
+      children[0].value = text.replace(re, (_match: unknown, p1: string) => `<span class="spoiler">${p1}</span>`)
     }
     return node
   })
 
-export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
+export default defineConfig({
   extensions: ['.svelte.md', '.md'],
   smartypants: {
     dashes: 'oldschool'
@@ -73,7 +77,7 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
   },
   highlight: {
     highlighter: async (code, lang, meta) => {
-      let fence, twoslash
+      let fence, twoslash: any
       try {
         fence = parseFence(lex([lang, meta].filter(Boolean).join(' ')))
       } catch (error) {
@@ -81,7 +85,14 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
       }
       if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang)
       return `{@html \`${escapeSvelte(
-        renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash)
+        renderCodeToHTML(
+          code,
+          lang,
+          fence ?? {},
+          { themeName: 'material-default' },
+          await createShikiHighlighter({ theme: 'material-default' }),
+          twoslash
+        )
       )}\` }`
     }
   },
@@ -97,4 +108,4 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
       }
     ]
   ]
-}
+})
