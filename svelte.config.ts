@@ -57,6 +57,7 @@ export default defineConfig({
       },
       plugins: [
         UnoCSS({
+          mode: 'svelte-scoped',
           extractors: [extractorSvelte],
           presets: [presetIcons({ scale: 1.5 })]
         }),

@@ -18,7 +18,6 @@
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
-  import 'uno.css'
   export let res: Urara.Post[]
   export let path: string
   posts.set(res)
