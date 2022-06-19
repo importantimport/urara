@@ -4,8 +4,10 @@ export type ThemeConfig = {
 }[]
 
 export type HeadConfig = {
+  /** @deprecated - use `me` instead */
+  relMe?: never
   custom?: (params: { dev: boolean; post?: Urara.Post; page?: Urara.Page }) => string[]
-  relMe?: string[]
+  me?: string[]
 }
 
 export type HeaderConfig = {
