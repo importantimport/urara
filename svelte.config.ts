@@ -11,7 +11,7 @@ import mdsvexConfig from './mdsvex.config.js'
 
 // vite plugin
 import UnoCSS from 'unocss/vite'
-import { presetIcons, extractorSvelte } from 'unocss'
+import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // postcss & tailwindcss
@@ -60,7 +60,12 @@ export default defineConfig({
           mode: 'svelte-scoped',
           include: [/\.svelte$/, /\.md?$/, /\.ts$/],
           extractors: [extractorSvelte],
-          presets: [presetIcons({ scale: 1.5 })]
+          presets: [
+            presetTagify({
+              extraProperties: (matched: string) => (matched.startsWith('i-') ? { display: 'inline-block' } : {})
+            }),
+            presetIcons({ scale: 1.5 })
+          ]
         }),
         VitePWA({
           srcDir: './build',
