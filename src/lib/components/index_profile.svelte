@@ -2,30 +2,48 @@
   import { site } from '$lib/config/site'
 </script>
 
-<div class="flex flex-row xl:flex-col gap-4 sticky top-24 card card-body items-right h-card">
-  <a href={site.protocol + site.domain} class="hidden u-url" rel="me">{site.title}</a>
-  {#if site.author.photo}
-    <img class="hidden u-photo" src={site.author.photo} alt={site.author.name} decoding="async" loading="lazy" />
-    <div class="flex-none avatar w-32 h-32 ml-auto my-auto justify-end">
-      <img
-        class="rounded-full shadow-xl hover:shadow-2xl transition-shadow w-32 h-32"
-        src={site.author.photo}
-        alt={site.author.name} />
-      {#if site.author.status}
-        <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">
-          {site.author.status}
-        </div>
-      {/if}
-    </div>
-  {/if}
-  <div class="flex-1 text-right my-auto">
-    <h2 class="text-3xl font-bold mt-0 mb-2 p-name">{site.author.name}</h2>
+<div
+  class="h-card flex flex-col gap-4 sticky top-24 card card-body p-4 items-right xl:border-2 xl:py-8 border-base-content/10 xl:ml-auto xl:mr-8 xl:max-w-xs">
+  <a href={site.protocol + site.domain} class="hidden u-url u-uid">{site.author.name}</a>
+  <figure class="relative mx-auto group">
+    <img
+      class="u-photo rounded-full shadow-xl hover:shadow-2xl transition-shadow z-10 w-24 h-24 md:w-32 md:h-32"
+      src={site.author.photo}
+      alt={site.author.name} />
+    {#if site.author.status}
+      <div
+        class="absolute z-20 rounded-full w-8 h-8 md:w-10 md:h-10 bottom-0 right-0 bg-base-100 shadow-xl text-lg md:text-xl text-center py-0.5 md:py-1.5">
+        {site.author.status}
+      </div>
+    {/if}
+  </figure>
+  <div class="text-center flex flex-col gap-2">
+    <h2 class="text-2xl font-bold mt-0 mb-2 p-name">{site.author.name}</h2>
     <p class="opacity-75 p-note">{@html site.author.bio}</p>
-    {#if site.author.pgp}
-      <a href={site.author.pgp.link} rel="pgpkey" class="btn btn-ghost btn-xs bg-base-300 font-mono rounded-full mt-4">
-        <span class="i-heroicons-solid-key !w-4 !h-4 mr-1" />
-        {site.author.pgp.text}
-      </a>
+    {#if site.author.metadata}
+      <div class="flex gap-1 flex-wrap justify-center">
+        {#each site.author.metadata as { text, icon, link, rel }}
+          {#if link}
+            <a
+              href={link}
+              rel={rel ?? 'me noopener external'}
+              class="btn btn-sm btn-ghost normal-case gap-2 u-url"
+              target="_blank">
+              {#if icon}
+                <span class="{icon} !w-5 !h-5" />
+              {/if}
+              {text}
+            </a>
+          {:else}
+            <button class="btn btn-sm btn-ghost normal-case gap-2" {rel}>
+              {#if icon}
+                <span class="{icon} !w-5 !h-5" />
+              {/if}
+              {text}
+            </button>
+          {/if}
+        {/each}
+      </div>
     {/if}
   </div>
 </div>
