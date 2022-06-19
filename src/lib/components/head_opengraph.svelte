@@ -47,8 +47,4 @@
       <meta property="og:url" content={site.protocol + site.domain} />
     {/if}
   {/if}
-  {#if site.author.twitter}
-    <meta name="twitter:site" content={site.author.twitter} />
-    <meta name="twitter:creator" content={site.author.twitter} />
-  {/if}
 </svelte:head>
