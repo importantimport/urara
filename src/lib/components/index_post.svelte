@@ -25,7 +25,7 @@
       {/if}
     </figure>
     <div class="card-body mt-auto">
-      <Status {post} index={true} photo={true} />
+      <Status {post} index={true} />
     </div>
   </article>
 {:else}
@@ -56,7 +56,7 @@
       {#if post.layout === 'reply'}
         <Reply inReplyTo={post.inReplyTo} class="-mt-4 -mx-4 mb-4" />
       {/if}
-      <Status {post} index={true} featured={post.layout === 'article' && post.photo ? true : false} />
+      <Status {post} index={true} />
       {#if post.layout === 'article'}
         <h1
           itemprop="name headline"

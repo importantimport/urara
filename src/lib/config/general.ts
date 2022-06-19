@@ -148,22 +148,12 @@ export const footer: FooterConfig = {
 }
 
 export const date: DateConfig = {
-  toPublishedString: {
-    locales: 'en-US',
-    options: {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric'
-    }
-  },
-  toUpdatedString: {
-    locales: 'en-US',
-    options: {
-      year: '2-digit',
-      weekday: 'long',
-      month: 'short',
-      day: 'numeric'
-    }
+  locales: 'en-US',
+  options: {
+    year: '2-digit',
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric'
   }
 }
 

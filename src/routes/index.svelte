@@ -45,23 +45,23 @@
   <div
     in:fly={{ x: 25, duration: 300, delay: 500 }}
     out:fly={{ x: 25, duration: 300 }}
-    class="flex-1 w-full max-w-screen-md order-first mx-auto xl:mr-0 xl:max-w-sm">
+    class="flex-1 w-full max-w-screen-md order-first mx-auto xl:mr-0 xl:ml-8 xl:max-w-md">
     <Profile />
   </div>
   <div
     in:fly={{ x: -25, duration: 300, delay: 500 }}
     out:fly={{ x: -25, duration: 300 }}
-    class="flex-1 w-full max-w-screen-md xl:order-last mx-auto xl:ml-0 xl:max-w-sm">
+    class="flex-1 w-full max-w-screen-md xl:order-last mx-auto xl:ml-0 xl:mr-8 xl:max-w-md">
     {#if allTags && Object.keys(allTags).length > 0}
       <div
-        class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full md:mb-4">
+        class="flex xl:flex-wrap gap-2 overflow-x-auto xl:overflow-x-hidden overflow-y-hidden max-h-24 my-auto xl:max-h-fit max-w-fit xl:max-w-full pl-8 md:px-0 xl:pl-8 xl:pt-8">
         {#each allTags as tag}
           <button
             id={tag}
             on:click={() => (tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag]))}
             class:!btn-secondary={tags.includes(tag)}
             class:shadow-lg={tags.includes(tag)}
-            class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 my-8 md:my-1 mx-1">
+            class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 mt-4 mb-8 xl:m-0">
             #{tag}
           </button>
         {/each}
