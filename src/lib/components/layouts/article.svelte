@@ -8,6 +8,7 @@
   import { browser } from '$app/env'
   import Head from '$lib/components/head.svelte'
   import Post from '$lib/components/layouts/_post.svelte'
+  import Status from '$lib/components/post_status.svelte'
   import Toc from '$lib/components/post_toc.svelte'
 
   export let path = undefined
@@ -32,17 +33,30 @@
       <Toc {toc} />
     {/if}
   </div>
-  <div slot="top">
+  <div slot="middle" class="flex flex-col">
     {#if photo}
-      <figure class="flex-col gap-2 mx-4 md:mx-0 w-auto">
+      <figure class="flex-col gap-2 -mx-4 mb-4 w-auto -mt-8 md:mt-0 md:mb-8 md:order-last">
         <Image class="u-featured rounded-box w-full shadow-xl" src={photo} alt={alt ?? photo} loading="eager" decoding="auto" />
         {#if alt}
           <figcaption>{@html alt}</figcaption>
         {/if}
       </figure>
     {/if}
-  </div>
-  <div slot="middle-bottom">
+    <Status
+      post={{
+        layout: 'article',
+        path,
+        created,
+        updated,
+        published,
+        tags,
+        flags,
+        title,
+        summary,
+        photo,
+        alt,
+        toc
+      }} />
     <h1 itemprop="name headline" class="card-title text-3xl mt-2 mb-8 p-name">{title ?? path.slice(1)}</h1>
     {#if summary}
       <p class="hidden p-summary">{summary}</p>

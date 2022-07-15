@@ -56,9 +56,16 @@
         {/if}
         <slot name="top" />
         <div class="card-body gap-0">
-          <slot name="middle-top" />
-          <Status {post} />
-          <slot name="middle-bottom" />
+          <div class="flex flex-col">
+            {#if $$slots.middle}
+              <slot name="middle" />
+            {:else}
+              <!-- legacy fallback -->
+              <slot name="middle-top" />
+              <Status {post} />
+              <slot name="middle-bottom" />
+            {/if}
+          </div>
           <slot name="content" />
           {#if post.tags}
             <div class="divider mt-4 mb-0" />
