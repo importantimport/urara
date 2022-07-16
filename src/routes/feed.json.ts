@@ -40,7 +40,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
   }))
 })
 
-export const get: RequestHandler = async () => ({
+export const GET: RequestHandler = async () => ({
   headers: {
     'Content-Type': 'application/feed+json; charset=utf-8'
   },

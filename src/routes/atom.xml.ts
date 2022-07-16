@@ -43,7 +43,7 @@ const render = async (
   .join('')}
 </feed>`
 
-export const get: RequestHandler = async () => ({
+export const GET: RequestHandler = async () => ({
   headers: {
     'Content-Type': 'application/atom+xml; charset=utf-8'
   },
