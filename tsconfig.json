@@ -10,6 +10,5 @@
     "sourceMap": true,
     "strict": true,
     "types": ["vite/client", "vite-plugin-pwa/client"]
-  },
-  "include": ["src/app.d.ts"]
+  }
 }
