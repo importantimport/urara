@@ -1,7 +1,6 @@
 ---
 title: Elements
-date: 2021-12-12
-priority: 501
+created: 2021-12-12
 tags: ['Urara', 'Elements']
 ---
 

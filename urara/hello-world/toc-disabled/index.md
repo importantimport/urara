@@ -1,9 +1,8 @@
 ---
 title: ToC Disabled
-date: 2021-12-12
-priority: ['Front-Matter', 501]
+summary: This post has disabled table of contents.
+created: 2021-12-12
 tags: ['Front-Matter']
-descr: This post has disabled table of contents.
 toc: false
 ---
 
