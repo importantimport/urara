@@ -4,28 +4,6 @@ created: 2021-12-12
 tags: ['Urara', 'Elements']
 ---
 
-## Contents
-
-- [Contents](#contents)
-- [Headings](#headings)
-  - [Heading](#heading)
-    - [Heading](#heading-1)
-      - [Heading](#heading-2)
-        - [Heading](#heading-3)
-- [Paragraphs](#paragraphs)
-- [Lists](#lists)
-  - [Definition List (dl)](#definition-list-dl)
-  - [Ordered List (ol)](#ordered-list-ol)
-  - [Unordered List (ul)](#unordered-list-ul)
-  - [Checkbox List (ul)](#checkbox-list-ul)
-- [Table](#table)
-- [Footnotes](#footnotes)
-- [Code](#code)
-- [Misc](#misc)
-- [Svelte Components](#svelte-components)
-
----
-
 ## Headings
 
 ### Heading
@@ -35,8 +13,6 @@ tags: ['Urara', 'Elements']
 ##### Heading
 
 ###### Heading
-
-[scrollToTop](#contents)
 
 ---
 
@@ -64,7 +40,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 さて学校か不幸か話に教えですけれども、今中力が起るて得るですためがご講演の今に訊かたです。多年をはどうしても思うでいうんたずでと、まるで何とも繰り返しが周旋はさっそく悪いうので。
 
-[scrollToTop](#contents)
+[scrollToTop](#headings)
 
 ---
 
@@ -109,7 +85,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 | Division 1     |   Division 2   |     Division 3 |
 | Division 1     |   Division 2   |     Division 3 |
 
-[scrollToTop](#contents)
+[scrollToTop](#headings)
 
 ## Footnotes
 
@@ -122,7 +98,7 @@ This is an inline note. ^[You can type footnotes inline, so you don’t have to 
 [^1]: Here is the footnote.
 [^longnote]: Here’s one footnote with longer identifier.
 
-[scrollToTop](#contents)
+[scrollToTop](#headings)
 
 ## Code
 
@@ -158,7 +134,7 @@ let a = createLabel('typescript')
 
 このコマンドにより、全てのアニヲタを破壊する！
 
-[scrollToTop](#contents)
+[scrollToTop](#headings)
 
 ## Svelte Components
 
