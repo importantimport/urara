@@ -10,59 +10,35 @@ tags:
 
 Welcome to Urara! this article contains some basic operations to help you quickly get started.
 
-## Development
+## Developing
 
-This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni). start a development server:
+Start a development server:
 
 ```bash
-# http://localhost:3000
-nr dev
+# http://127.0.0.1:5173
+pnpm dev
 ```
 
 or listen to different IP and port:
 
 ```bash
+# http://127.0.0.1:3000
+pnpm dev --port 3000
+
 # http://0.0.0.0:3000
-nr dev --host 0.0.0.0
-
-# http://0.0.0.0:8080
-nr dev --host 0.0.0.0 --port 8080
+nr dev --host 0.0.0.0 --port 3000
 ```
 
-## Build
+## Building
+
+Create a production version of ur blog:
 
 ```bash
-nr build
+pnpm build
 ```
 
-or use the specified adapter:
+u can preview the built app with `pnpm preview`.
 
-```bash
-# Vercel
-VERCEL=true nr build
+## Documentation
 
-# Cloudflare Pages
-CF_PAGES=true nr build
-
-# Netlify
-NETLIFY=true nr build
-```
-
-> This template uses `@sveltejs/adapter-auto@next` and `@sveltejs/adapter-static@next` by default.
-
-> when the environment supported by adapter-auto is not detected, it will automatically fallback to adapter-static.
-
-> u can modify it to any adapter supported by SvelteKit. see [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
-
-> u can preview the built app with `nr preview`, regardless of
-> whether u installed an adapter. This should _not_ be used to serve
-> ur app in production.
-
-## Misc
-
-```bash
-nr clean # clean the files under /src/routes/**/ and /static/
-nr check # code check
-nr format # code prittier
-nr lint # code lint
-```
+For full documentation, visit [urara-docs.netlify.app](https://urara-docs.netlify.app).
