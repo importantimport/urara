@@ -1,3 +1,5 @@
+import type { FFFAuthor } from 'fff-flavored-frontmatter'
+
 export type SiteConfig = {
   /** @deprecated - use `description` instead */
   descr?: string
@@ -15,17 +17,9 @@ export type SiteConfig = {
   description?: string
   /** site keywords. `<meta name="keywords" content={site.keywords}>` */
   keywords?: string[]
-  author: {
-    name: string
-    photo?: string
+  author: Omit<FFFAuthor, 'url'> & {
     status?: string
     bio?: string
-    /** @deprecated - use `metadata` or `head.me` instead */
-    github?: never
-    /** @deprecated - use `metadata` or `head.me` instead */
-    twitter?: never
-    /** @deprecated - use `metadata` or `head.me` instead */
-    pgp?: never
     metadata?: (
       | {
           text: string

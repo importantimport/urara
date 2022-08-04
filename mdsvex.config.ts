@@ -25,16 +25,14 @@ const remarkUraraFm =
   () =>
   (tree: Node<Data>, { data, filename }: { data: { fm?: Record<string, unknown> }; filename?: string }) => {
     const filepath = (filename as string).split('/src/routes')[1]
-    let { dir, name } = parse(filepath)
+    const { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
     // Generate slug & path
     data.fm.slug = filepath
     data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-    // Auto-set layout as article
-    if (!data.fm.layout) data.fm.layout = 'article'
     // Generate ToC
     if (data.fm.toc !== false) {
-      let [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
+      const [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
       visit(tree, 'heading', (node: { depth: number }) => {
         toc.push({
           depth: node.depth,
@@ -44,11 +42,6 @@ const remarkUraraFm =
       })
       data.fm.toc = toc
     }
-    // Rename
-    if (data.fm.date) data.fm.created = data.fm.date
-    if (data.fm.lastmod) data.fm.updated = data.fm.lastmod
-    if (data.fm.cover) data.fm.photo = data.fm.cover
-    if (data.fm.descr) data.fm.summary = data.fm.descr
     // Auto-read created & updated
     if (!data.fm.created || !data.fm.updated) {
       const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
@@ -78,11 +71,7 @@ export default defineConfig({
     dashes: 'oldschool'
   },
   layout: {
-    article: './src/lib/components/layouts/article.svelte',
-    note: './src/lib/components/layouts/note.svelte',
-    photo: './src/lib/components/layouts/photo.svelte',
-    reply: './src/lib/components/layouts/reply.svelte',
-    _: './src/lib/components/layouts/article.svelte'
+    _: './src/lib/components/post_layout.svelte'
   },
   highlight: {
     highlighter: async (code, lang, meta) => {

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
   import { any, maskable } from '$lib/config/icon'
-  export let post: Urara.Post = undefined
-  export let page: Urara.Page = undefined
+  export let post: Urara.Post | undefined = undefined
+  export let page: Urara.Page | undefined = undefined
 </script>
 
 <svelte:head>
@@ -20,8 +20,8 @@
       {#if post.summary}
         <meta property="og:description" content={post.summary} />
       {/if}
-      {#if post.photo}
-        <meta property="og:image" content={site.protocol + site.domain + post.photo} />
+      {#if post.image}
+        <meta property="og:image" content={site.protocol + site.domain + post.image} />
         <meta name="twitter:card" content="summary_large_image" />
       {:else}
         <meta property="og:image" content={maskable['512'].src ?? any['512'].src ?? any['192'].src} />

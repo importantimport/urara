@@ -1,7 +1,7 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
   import { footer as footerConfig } from '$lib/config/general'
-  let className: string = undefined
+  let className: string | undefined = undefined
   export { className as class }
   export let sticky: boolean = false
   export let rounded: boolean = false
@@ -33,7 +33,7 @@
         rel="noopener external"
         target="_blank"
         class="tooltip tooltip-secondary hover:text-secondary"
-        data-tip="🌸 [γ] - Based on MDsveX & SvelteKit 🌸"
+        data-tip="🌸 [δ] - Based on MDsveX & SvelteKit 🌸"
         href="https://github.com/importantimport/urara">
         Urara
       </a>

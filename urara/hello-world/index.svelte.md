@@ -1,6 +1,6 @@
 ---
 title: 'Hello World'
-photo: '/hello-world/cover.webp'
+image: '/hello-world/cover.webp'
 created: 2021-11-01
 updated: 2021-12-12
 tags:

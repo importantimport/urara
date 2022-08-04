@@ -1,7 +1,7 @@
 <script lang="ts">
-  export let title: string = undefined
-  export let description: string = undefined
-  export let status: 'info' | 'success' | 'warning' | 'error' = undefined
+  export let title: string | undefined = undefined
+  export let description: string | undefined = undefined
+  export let status: 'info' | 'success' | 'warning' | 'error' | undefined = undefined
 </script>
 
 <div

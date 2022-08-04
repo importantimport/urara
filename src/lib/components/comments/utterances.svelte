@@ -16,13 +16,13 @@
     }).forEach(([key, value]) => utterances.setAttribute(key, value))
     setTimeout(() => {
       const observer = new MutationObserver(() => {
-        document.getElementById('utterances-loading').remove()
+        document.getElementById('utterances-loading')!.remove()
         observer.disconnect()
       })
-      observer.observe(document.getElementById('utterances'), {
+      observer.observe(document.getElementById('utterances')!, {
         childList: true
       })
-      document.getElementById('utterances-container').appendChild(utterances)
+      document.getElementById('utterances-container')!.appendChild(utterances)
     }, 1000)
   })
 </script>

@@ -16,7 +16,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     {
       name: site.author.name,
       url: site.protocol + site.domain,
-      avatar: site.author.photo
+      avatar: site.author.avatar
     }
   ],
   language: site.lang ?? 'en',
@@ -30,7 +30,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     title: post.title,
     content_html: post.html,
     summary: post['summary'],
-    image: post['photo'],
+    image: post['image'],
     date_published: post.published ?? post.created,
     date_modified: post.updated ?? post.published ?? post.created,
     tags: post.tags,

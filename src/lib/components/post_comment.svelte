@@ -2,10 +2,13 @@
   import type { CommentConfig } from '$lib/types/post'
   import { toSnake } from '$lib/utils/case'
   export let post: Urara.Post
-  export let config: CommentConfig = undefined
-  const comments = import.meta.globEager('/src/lib/components/comments/*.svelte')
-  let currentComment: string = undefined
+  export let config: CommentConfig
+  const comments = import.meta.glob<{ default: unknown }>('/src/lib/components/comments/*.svelte', { eager: true })
+  let currentComment: string | undefined = undefined
+  let currentConfig: unknown | undefined = undefined
   currentComment = localStorage.getItem('comment') ?? toSnake(config.use[0])
+  // @ts-ignore No index signature with a parameter of type 'string' was found on type 'CommentConfig'. ts(7053)
+  $: if (currentComment) currentConfig = config[currentComment]
 </script>
 
 {#if config?.use.length > 0}
@@ -32,7 +35,7 @@
         <svelte:component
           this={comments[`/src/lib/components/comments/${currentComment}.svelte`].default}
           {post}
-          config={config?.[currentComment]} />
+          config={currentConfig} />
       {/key}
     {/if}
   </div>

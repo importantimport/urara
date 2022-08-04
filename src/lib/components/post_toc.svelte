@@ -5,7 +5,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import Tree from '$lib/components/post_toc_tree.svelte'
-  export let toc: Urara.Post.Article.Toc[]
+  export let toc: Urara.Post.Toc[]
 
   let intersecting: string[] = []
   let intersectingArticle: boolean = true
@@ -41,7 +41,7 @@
   $: if (intersectingArticle === false) bordered = []
   $: if (bordered)
     toc.forEach(heading =>
-      bordered.includes(heading.slug)
+      bordered.includes(heading.slug!)
         ? document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
         : document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
     )
@@ -57,6 +57,7 @@
       toc={toc.reduce(
         (acc, heading) => {
           let parent = acc
+          // @ts-ignore Type 'Toc | undefined' is not assignable to type 'Toc.' ts(2322)
           while (parent.depth + 1 < heading.depth) parent = parent.children.at(-1)
           parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
           return acc

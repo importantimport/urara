@@ -53,8 +53,8 @@
 <header
   id="header"
   class:-translate-y-32={!pin && scrollY > 0}
-  class="fixed z-50 w-screen bg-base-100/30 md:bg-base-200/30 transition-all duration-500 ease-in-out border-b-2 border-transparent max-h-[4.125rem] {scrollY >
-    32 && 'backdrop-blur border-base-content/10'}">
+  class="fixed z-50 w-screen transition-all duration-500 ease-in-out border-b-2 border-transparent max-h-[4.125rem] {scrollY >
+    32 && 'backdrop-blur border-base-content/10 bg-base-100/30 md:bg-base-200/30'}">
   {#if !search}
     <div in:fly={{ x: -50, duration: 300, delay: 300 }} out:fly={{ x: -50, duration: 300 }} class="navbar">
       <div class="navbar-start">
@@ -124,10 +124,10 @@
   class:opacity-100={scrollY}>
   <div
     class="radial-progress text-accent transition-all duration-500 ease-in-out group-hover:text-accent-focus col-start-1 row-start-1"
-    style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
+    style={`--size:4rem; --thickness: 0.25rem; --value:${percent};`} />
   <div
     class:border-transparent={percent > 95}
     class="border-4 border-base-content/10 group-hover:border-transparent col-start-1 row-start-1 rounded-full w-full h-full p-4 grid duration-500 ease-in-out">
-    <span class="i-heroicons-solid-chevron-up" />
+    <span class="i-heroicons-solid-chevron-up !w-6 !h-6" />
   </div>
 </button>

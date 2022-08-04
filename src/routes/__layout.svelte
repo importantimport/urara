@@ -1,9 +1,10 @@
 <script lang="ts" context="module">
+  import type { Load } from './__types'
   export const prerender = true
-  export const load = async ({ url, fetch }) => ({
+  export const load: Load = async ({ url, fetch }) => ({
     props: {
       path: url.pathname,
-      res: await (await fetch('/posts.json')).json()
+      res: await fetch('/posts.json').then(res => res.json())
     }
   })
 </script>
@@ -22,10 +23,15 @@
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
-  onMount(() => !dev && browser && registerSW({
-    onRegistered: r => r && setInterval(async () => await r.update(), 198964),
-    onRegisterError: error => console.error(error)
-  }))
+  onMount(
+    () =>
+      !dev &&
+      browser &&
+      registerSW({
+        onRegistered: r => r && setInterval(async () => await r.update(), 198964),
+        onRegisterError: error => console.error(error)
+      })
+  )
 </script>
 
 <Head />
