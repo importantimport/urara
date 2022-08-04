@@ -55,7 +55,7 @@
     <Reply in_reply_to={post.in_reply_to} class="mt-4 mx-4" />
   {/if}
   {#if post.image && preview}
-    <figure class={`!block ${post.type === 'photo' ? '' : 'p-4 md:p-0'}`}>
+    <figure class="!block">
       <Image
         class={post.type === 'article'
           ? 'u-featured object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out'
