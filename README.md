@@ -1,13 +1,9 @@
-<br>
 <div align="center">
 <a href="https://github.com/importantimport/urara">
-<img src="https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png" alt="urara" width="192px" />
-</a>
+<img src="https://github.com/importantimport/urara/raw/main/urara/hello-world/urara.webp" alt="urara" /></a>
 </div>
-<br>
+<br />
 
-<h1 align="center">Urara [δ]</h1>
-<p align="center">Sweet & Powerful SvelteKit Blog Starter.</p>
 <p align="center">
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language">
 <a href="https://github.com/importantimport/urara/blob/main/COPYING"><img src="https://img.shields.io/github/license/importantimport/urara?color=%23fff" alt="License"></a>
