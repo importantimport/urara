@@ -18,6 +18,7 @@
   import { registerSW } from 'virtual:pwa-register'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
+  import 'uno.css'
   import '../app.css'
   export let res: Urara.Post[]
   export let path: string
