@@ -35,7 +35,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     date_modified: post.updated ?? post.published ?? post.created,
     tags: post.tags,
     _indieweb: {
-      type: post.layout ?? 'article'
+      type: post.type
     }
   }))
 })
