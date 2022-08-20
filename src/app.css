@@ -36,6 +36,12 @@ html {
   @apply text-primary;
 }
 
+/* .urara-prose list */
+
+.urara-prose > ul > li > input {
+  @apply my-auto;
+}
+
 /* .urara-prose table */
 
 .urara-prose div > table > thead {
