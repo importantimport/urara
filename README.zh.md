@@ -123,8 +123,4 @@ as published by Sam Hocevar.
 特別感謝 / 靈感來自於：
 
 - [@michaeloliverx - Generate Posts List](https://github.com/pngwn/MDsveX/issues/294#issuecomment-907029639)
-- [@jthegedus - Build Mode](https://github.com/sveltejs/kit/issues/1258#issuecomment-874482104)
-
-致謝：
-
 - [Kpouri](https://github.com/kpouri) 製作的圖標
