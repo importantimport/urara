@@ -95,6 +95,7 @@ pnpm build
 ## 🚀 網站
 
 - [./kwaa.dev](https://kwaa.dev) - [kwaa/blog](https://github.com/kwaa/blog)
+- [成功他媽．阿瑋](https://urara.kwchang0831.dev) - [kwchang0831/urara.kwchang0831.dev](https://github.com/kwchang0831/urara.kwchang0831.dev)
 - [Seviche.cc](https://seviche.cc) - [Sevichecc/Urara-Blog](https://github.com/Sevichecc/Urara-Blog)
 
 和更多...
