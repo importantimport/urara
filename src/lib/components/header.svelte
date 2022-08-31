@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser, dev } from '$app/env'
+  import { browser, dev } from '$app/environment'
   import { fly } from 'svelte/transition'
   import { site } from '$lib/config/site'
   import { theme } from '$lib/config/general'

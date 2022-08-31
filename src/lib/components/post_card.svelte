@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env'
+  import { browser } from '$app/environment'
   import { post as postConfig } from '$lib/config/post'
   import { posts as storedPosts } from '$lib/stores/posts'
   import { title as storedTitle } from '$lib/stores/title'

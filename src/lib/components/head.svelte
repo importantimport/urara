@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { dev } from '$app/env'
+  import { dev } from '$app/environment'
   import { head } from '$lib/config/general'
   import { site } from '$lib/config/site'
   import OpenGraph from '$lib/components/head_opengraph.svelte'

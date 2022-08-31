@@ -1,17 +1,7 @@
-<script lang="ts" context="module">
-  import type { Load } from './__types'
-  export const prerender = true
-  export const load: Load = async ({ url, fetch }) => ({
-    props: {
-      path: url.pathname,
-      res: await fetch('/posts.json').then(res => res.json())
-    }
-  })
-</script>
-
 <script lang="ts">
+  import type { LayoutData } from './$types'
   import { onMount } from 'svelte'
-  import { browser, dev } from '$app/env'
+  import { browser, dev } from '$app/environment'
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
@@ -20,10 +10,11 @@
   import Header from '$lib/components/header.svelte'
   import 'uno.css'
   import '../app.css'
-  export let res: Urara.Post[]
-  export let path: string
-  posts.set(res)
-  tags.set(genTags(res))
+
+  export let data: LayoutData
+  
+  posts.set(data.res)
+  tags.set(genTags(data.res))
   onMount(
     () =>
       !dev &&
@@ -37,9 +28,9 @@
 
 <Head />
 
-<Header {path} />
+<Header path={data.path} />
 
-{#key path}
+{#key data.path}
   <div
     class="bg-base-100 md:bg-base-200 min-h-screen pt-16 md:pb-8 lg:pb-16"
     in:fly={{ y: 100, duration: 300, delay: 300 }}

@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
-  import { browser } from '$app/env'
+  import { browser } from '$app/environment'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
   import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'

@@ -9,7 +9,7 @@ import chokidar from 'chokidar'
 import chalk from 'chalk'
 
 const config = {
-  extensions: ['svelte', 'md', 'js', 'ts'],
+  extensions: ['md'],
   catch: ['ENOENT', 'EEXIST']
 }
 

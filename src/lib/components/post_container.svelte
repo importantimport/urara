@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
-  import { browser } from '$app/env'
+  import { browser } from '$app/environment'
   import Card from '$lib/components/post_card.svelte'
   import Head from '$lib/components/head.svelte'
   import Toc from '$lib/components/post_toc.svelte'

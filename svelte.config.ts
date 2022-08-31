@@ -23,7 +23,6 @@ export default defineConfig({
           assets: 'build',
           fallback: undefined
         }),
-    csp: { mode: 'auto' },
-    prerender: { default: true }
+    csp: { mode: 'auto' }
   }
 })
