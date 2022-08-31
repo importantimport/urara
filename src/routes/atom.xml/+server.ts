@@ -41,16 +41,9 @@ const render = async (
   .join('')}
 </feed>`
 
-throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-// Suggestion (check for correctness before using):
-// // return new Response(await render(), {
-//   headers: {// 
-//     'Content-Type': 'application/atom+xml; charset=utf-8'// 
-//   }
-// });
-export const GET: RequestHandler = async () => ({
-  headers: {
-    'Content-Type': 'application/atom+xml; charset=utf-8'
-  },
-  body: await render()
-})
+export const GET: RequestHandler = async () =>
+  new Response(await render(), {
+    headers: {
+      'Content-Type': 'application/atom+xml; charset=utf-8'
+    }
+  })
