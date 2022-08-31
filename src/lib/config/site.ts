@@ -10,7 +10,7 @@ export const site: SiteConfig = {
   author: {
     name: 'John Doe',
     avatar: '/assets/maskable@192.png',
-    status: '🎼',
+    status: '🌸',
     bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
   themeColor: '#3D4451'
