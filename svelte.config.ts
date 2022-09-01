@@ -1,12 +1,13 @@
 // sveltekit config type
 import type { Config } from '@sveltejs/kit'
-// svelte preprocess
-import preprocess from 'svelte-preprocess'
+// svelte adapter
 import adapterAuto from '@sveltejs/adapter-auto'
 import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
+// svelte preprocessor
 import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
+import preprocess from 'svelte-preprocess'
 
 const defineConfig = (config: Config) => config
 
