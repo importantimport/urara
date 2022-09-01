@@ -5,7 +5,7 @@
   console.error($page.status, $page.error.message)
 </script>
 
-<Head page={{ title: $page.status ?? '404', path: $page.url.pathname }} />
+<Head page={{ title: $page.status.toString() ?? '404', path: $page.url.pathname }} />
 
 <div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
