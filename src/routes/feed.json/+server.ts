@@ -1,10 +1,10 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { RequestHandler } from './$types'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
 import { favicon, any } from '$lib/config/icon'
 import { genPosts } from '$lib/utils/posts'
 
-const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, filterUnlisted: true })) => ({
+const render = (posts = genPosts({ postHtml: true, postLimit: feed.limit, filterUnlisted: true })) => ({
   version: 'https://jsonfeed.org/version/1.1',
   title: site.title,
   home_page_url: site.protocol + site.domain,
@@ -41,8 +41,10 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
   }))
 })
 
-export const GET: RequestHandler = async () => new Response(JSON.stringify(await render(), null, 2), {
-  headers: {
-    'Content-Type': 'application/feed+json; charset=utf-8'
-  }
-})
+export const prerender = true
+export const GET: RequestHandler = async () =>
+  new Response(JSON.stringify(render(), null, 2), {
+    headers: {
+      'content-type': 'application/feed+json; charset=utf-8'
+    }
+  })

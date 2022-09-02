@@ -1,8 +1,8 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { RequestHandler } from './$types'
 import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
-const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
+const render = (): string => `<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>${site.protocol + site.domain}</loc>
@@ -19,9 +19,10 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
       .join('')}
 </urlset>`
 
+export const prerender = true
 export const GET: RequestHandler = async () =>
-  new Response(await render(), {
+  new Response(render(), {
     headers: {
-      'Content-Type': 'application/xml; charset=utf-8'
+      'content-type': 'application/xml; charset=utf-8'
     }
   })
