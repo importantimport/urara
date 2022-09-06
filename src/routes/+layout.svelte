@@ -9,7 +9,7 @@
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import 'uno.css'
-  import '../app.css'
+  import '../app.pcss'
 
   export let data: LayoutData
   
