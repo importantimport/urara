@@ -1,4 +1,5 @@
 import type { RequestHandler } from './$types'
+import { json } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
 import { favicon, any } from '$lib/config/icon'
@@ -43,7 +44,7 @@ const render = (posts = genPosts({ postHtml: true, postLimit: feed.limit, filter
 
 export const prerender = true
 export const GET: RequestHandler = async () =>
-  new Response(JSON.stringify(render(), null, 2), {
+  json(render(), {
     headers: {
       'content-type': 'application/feed+json; charset=utf-8'
     }
