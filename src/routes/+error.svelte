@@ -2,7 +2,6 @@
   import { page } from '$app/stores'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  console.error($page.status, $page.error.message)
 </script>
 
 <Head page={{ title: $page.status.toString() ?? '404', path: $page.url.pathname }} />
