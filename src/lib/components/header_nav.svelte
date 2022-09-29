@@ -14,7 +14,7 @@
     id="navbar-dropdown"
     tabindex="0"
     class:hidden={!pin}
-    class="menu menu-compact dropdown-content bg-base-100 text-base-content shadow-lg rounded-box max-w-52 p-2">
+    class="menu menu-compact dropdown-content bg-base-100 text-base-content shadow-lg rounded-box min-w-max max-w-52 p-2">
     {#each nav as { text, link, children }}
       {#if link && !children}
         <li>
