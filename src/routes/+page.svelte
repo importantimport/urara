@@ -8,7 +8,6 @@
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/post_card.svelte'
-  // import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
 
   let allPosts: Urara.Post[]
