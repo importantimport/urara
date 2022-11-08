@@ -10,8 +10,10 @@ specifiers:
   '@tailwindcss/typography': ^0.5.7
   '@types/node': ^18.11.9
   '@types/unist': ^2.0.6
+  '@types/workbox-build': ^5.0.1
   '@typescript-eslint/eslint-plugin': ^5.42.0
   '@typescript-eslint/parser': ^5.42.0
+  '@vite-pwa/sveltekit': ^0.0.1
   autoprefixer: ^10.4.13
   chalk: ^5.1.2
   chokidar: ^3.5.3
@@ -46,7 +48,7 @@ specifiers:
   unist-util-visit: ^4.1.1
   unocss: ^0.46.3
   vite: ^3.2.2
-  vite-plugin-pwa: ^0.13.2
+  vite-plugin-pwa: ^0.13.3
   workbox-window: ^6.5.4
 
 devDependencies:
@@ -59,8 +61,10 @@ devDependencies:
   '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.2
   '@types/node': 18.11.9
   '@types/unist': 2.0.6
+  '@types/workbox-build': 5.0.1
   '@typescript-eslint/eslint-plugin': 5.42.0_ofgjrzjuekeo7s3hdyz2yuzw34
   '@typescript-eslint/parser': 5.42.0_rmayb2veg2btbq6mbmnyivgasy
+  '@vite-pwa/sveltekit': 0.0.1_mxyp6wtzkqofzgjtkavgznr6uq
   autoprefixer: 10.4.13_postcss@8.4.18
   chalk: 5.1.2
   chokidar: 3.5.3
@@ -95,7 +99,7 @@ devDependencies:
   unist-util-visit: 4.1.1
   unocss: 0.46.3_vite@3.2.2
   vite: 3.2.2
-  vite-plugin-pwa: 0.13.2_myl6patgrxx3pi23owcfujsiju
+  vite-plugin-pwa: 0.13.3_myl6patgrxx3pi23owcfujsiju
   workbox-window: 6.5.4
 
 packages:
@@ -149,11 +153,11 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.2
+      '@babel/generator': 7.20.3
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.2
       '@babel/helper-module-transforms': 7.20.2
       '@babel/helpers': 7.20.1
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@babel/template': 7.18.10
       '@babel/traverse': 7.20.1
       '@babel/types': 7.20.2
@@ -166,8 +170,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/generator/7.20.2:
-    resolution: {integrity: sha512-SD75PMIK6i9H8G/tfGvB4KKl4Nw6Ssos9nGgYwxbgyTP0iX/Z55DveoH86rmUB/YHTQQ+ZC0F7xxaY8l2OF44Q==}
+  /@babel/generator/7.20.3:
+    resolution: {integrity: sha512-Wl5ilw2UD1+ZYprHVprxHZJCFeBWlzZYOovE4SDYLZnqCOD11j+0QzNeEWKLLTWM7nixrZEh7vNIyb76MyJg3A==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.2
@@ -413,8 +417,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@babel/parser/7.20.2:
-    resolution: {integrity: sha512-afk318kh2uKbo7BEj2QtEi8HVCGrwHUffrYDy7dgVcSa2j9lY3LDjPzcyGdpX7xgm35aWqvciZJ4WKmdF/SxYg==}
+  /@babel/parser/7.20.3:
+    resolution: {integrity: sha512-OP/s5a94frIPXwjzEcv5S/tpQfc6XhxYUnmWpgdqMWGgYCuErA3SzozaRAMQgSZWKeTJxht9aWAkUY+0UzvOFg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
@@ -562,7 +566,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.2
       '@babel/helper-plugin-utils': 7.20.2
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.20.2
-      '@babel/plugin-transform-parameters': 7.20.1_@babel+core@7.20.2
+      '@babel/plugin-transform-parameters': 7.20.3_@babel+core@7.20.2
     dev: true
 
   /@babel/plugin-proposal-optional-catch-binding/7.18.6_@babel+core@7.20.2:
@@ -1013,8 +1017,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/plugin-transform-parameters/7.20.1_@babel+core@7.20.2:
-    resolution: {integrity: sha512-nDvKLrAvl+kf6BOy1UJ3MGwzzfTMgppxwiD2Jb4LO3xjYyZq30oQzDNJbCQpMdG9+j2IXHoiMrw5Cm/L6ZoxXQ==}
+  /@babel/plugin-transform-parameters/7.20.3_@babel+core@7.20.2:
+    resolution: {integrity: sha512-oZg/Fpx0YDrj13KsLyO8I/CX3Zdw7z0O9qOd95SqcoIzuqy/WTGWvePeHAnZCN54SfdyjHcb1S30gc8zlzlHcA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1190,7 +1194,7 @@ packages:
       '@babel/plugin-transform-named-capturing-groups-regex': 7.19.1_@babel+core@7.20.2
       '@babel/plugin-transform-new-target': 7.18.6_@babel+core@7.20.2
       '@babel/plugin-transform-object-super': 7.18.6_@babel+core@7.20.2
-      '@babel/plugin-transform-parameters': 7.20.1_@babel+core@7.20.2
+      '@babel/plugin-transform-parameters': 7.20.3_@babel+core@7.20.2
       '@babel/plugin-transform-property-literals': 7.18.6_@babel+core@7.20.2
       '@babel/plugin-transform-regenerator': 7.18.6_@babel+core@7.20.2
       '@babel/plugin-transform-reserved-words': 7.18.6_@babel+core@7.20.2
@@ -1237,7 +1241,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@babel/types': 7.20.2
     dev: true
 
@@ -1246,12 +1250,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.2
+      '@babel/generator': 7.20.3
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@babel/types': 7.20.2
       debug: 4.3.4
       globals: 11.12.0
@@ -1539,6 +1543,16 @@ packages:
       rollup: 2.79.1
     dev: true
 
+  /@rollup/plugin-replace/4.0.0_rollup@2.79.1:
+    resolution: {integrity: sha512-+rumQFiaNac9y64OHtkHGmdjm7us9bo1PlbgQfdihQtuNxzjpaB064HbRnewUOggLQxVCCyINfStkgmBeQpv1g==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.79.1
+      magic-string: 0.25.9
+      rollup: 2.79.1
+    dev: true
+
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
@@ -1586,7 +1600,7 @@ packages:
       ejs: 3.1.8
       json5: 2.2.1
       magic-string: 0.25.9
-      string.prototype.matchall: 4.0.7
+      string.prototype.matchall: 4.0.8
     dev: true
 
   /@sveltejs/adapter-auto/1.0.0-next.87:
@@ -1778,6 +1792,16 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+    dev: true
+
+  /@types/workbox-build/5.0.1:
+    resolution: {integrity: sha512-lJrGzEHX/QT3E4F5ABBNvCb8ObOr2LfHNAqAGfRuBPncWlU/d3iIUorECKNXmnZnLbLsgpgvhJWPMgByzR+L+A==}
+    dependencies:
+      '@types/workbox-routing': 4.3.1
+    dev: true
+
+  /@types/workbox-routing/4.3.1:
+    resolution: {integrity: sha512-2TYTiMcF6lMdMU36zUZPyQurpM8xso3Ad6XnFDdlSZowukoFy6pwZV+oT27z/jU1eaa+QgtPkdYFrS5KsJDMOQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.42.0_ofgjrzjuekeo7s3hdyz2yuzw34:
@@ -2112,6 +2136,17 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: true
+
+  /@vite-pwa/sveltekit/0.0.1_mxyp6wtzkqofzgjtkavgznr6uq:
+    resolution: {integrity: sha512-ybdYNM9Qq21RwvMiYflBfwm5QaT8SRyh1e5HwBEcZEfglIjPGhY3p7TCPHKtZMpbjLtwLcTJcrJiQjfu3jn1gg==}
+    engines: {node: '>=16.14'}
+    peerDependencies:
+      '@types/workbox-build': ^5.0.1
+      vite-plugin-pwa: ^0.13.3
+    dependencies:
+      '@types/workbox-build': 5.0.1
+      vite-plugin-pwa: 0.13.3_myl6patgrxx3pi23owcfujsiju
     dev: true
 
   /abbrev/1.1.1:
@@ -5570,8 +5605,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /string.prototype.matchall/4.0.7:
-    resolution: {integrity: sha512-f48okCX7JiwVi1NXCVWcFnZgADDC/n2vePlQ/KUCNqCikLLilQvwjMO8+BHVKvgzH0JB0J9LEPgxOGT02RoETg==}
+  /string.prototype.matchall/4.0.8:
+    resolution: {integrity: sha512-6zOCOcJ+RJAQshcTvXPHoxoQGONa3e/Lqx90wUA+wEzX78sg5Bo+1tQo4N0pohS0erG9qtCqJDjNCQBjeWVxyg==}
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.1.4
@@ -6155,12 +6190,13 @@ packages:
       vfile-message: 3.1.2
     dev: true
 
-  /vite-plugin-pwa/0.13.2_myl6patgrxx3pi23owcfujsiju:
-    resolution: {integrity: sha512-RwWJBaeMATrdicNFCXWb3aUELnmTk4Um72hE97nz9HKYG165kQGUE/TSrXOLExiPWJ23doV1Uw4IcHnOix17aA==}
+  /vite-plugin-pwa/0.13.3_myl6patgrxx3pi23owcfujsiju:
+    resolution: {integrity: sha512-cjWXpZ7slAY14OKz7M8XdgTIi9wjf6OD6NkhiMAc+ogxnbUrecUwLdRtfGPCPsN2ftut5gaN1jTghb11p6IQAA==}
     peerDependencies:
       vite: ^3.1.0
       workbox-window: ^6.5.4
     dependencies:
+      '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
       debug: 4.3.4
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0

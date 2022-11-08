@@ -12,7 +12,7 @@
   import '../app.pcss'
 
   export let data: LayoutData
-  
+
   posts.set(data.res)
   tags.set(genTags(data.res))
   onMount(
@@ -20,6 +20,7 @@
       !dev &&
       browser &&
       registerSW({
+        immediate: true,
         onRegistered: r => r && setInterval(async () => await r.update(), 198964),
         onRegisterError: error => console.error(error)
       })

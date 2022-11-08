@@ -34,8 +34,10 @@
     "@tailwindcss/typography": "^0.5.7",
     "@types/node": "^18.11.9",
     "@types/unist": "^2.0.6",
+    "@types/workbox-build": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "@vite-pwa/sveltekit": "^0.0.1",
     "autoprefixer": "^10.4.13",
     "chalk": "^5.1.2",
     "chokidar": "^3.5.3",
@@ -70,7 +72,7 @@
     "unist-util-visit": "^4.1.1",
     "unocss": "^0.46.3",
     "vite": "^3.2.2",
-    "vite-plugin-pwa": "^0.13.2",
+    "vite-plugin-pwa": "^0.13.3",
     "workbox-window": "^6.5.4"
   }
 }

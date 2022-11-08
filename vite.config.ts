@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 // vite plugin
 import UnoCSS from 'unocss/vite'
 import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
-import { VitePWA } from 'vite-plugin-pwa'
+import { SvelteKitPWA } from '@vite-pwa/sveltekit'
 import { sveltekit } from '@sveltejs/kit/vite'
 // postcss & tailwindcss
 import TailwindCSS from 'tailwindcss'
@@ -39,13 +39,11 @@ export default defineConfig({
         presetIcons({ scale: 1.5 })
       ]
     }),
-    VitePWA({
-      srcDir: './build',
-      outDir: './.svelte-kit/output/client',
+    sveltekit(),
+    SvelteKitPWA({
       registerType: 'autoUpdate',
-      scope: '/',
-      base: '/'
-    }),
-    sveltekit()
+      manifest: false,
+      scope: '/'
+    })
   ]
 })
