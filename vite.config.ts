@@ -16,7 +16,7 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [
-        TailwindCSS(tailwindConfig as any) as any,
+        TailwindCSS(tailwindConfig),
         autoprefixer(),
         ...(process.env.NODE_ENV === 'production'
           ? [
