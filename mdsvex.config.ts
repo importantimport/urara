@@ -13,7 +13,7 @@ import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
-import remarkFFF from 'remark-fff'
+// import remarkFFF from 'remark-fff'
 import remarkFootnotes from 'remark-footnotes'
 
 // highlighter
@@ -97,7 +97,7 @@ export default defineConfig({
     }
   },
   remarkPlugins: [
-    [remarkFFF as any, { presets: ['hugo'], target: 'mdsvex' }],
+    // [remarkFFF as any, { presets: ['hugo'], target: 'mdsvex' }],
     remarkUraraFm,
     remarkUraraSpoiler,
     [remarkFootnotes, { inlineNotes: true }]
