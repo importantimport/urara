@@ -17,9 +17,7 @@
 
   storedTitle.set('')
 
-  $: storedPosts.subscribe(
-    storedPosts => (allPosts = (storedPosts as Urara.Post[]).filter(post => !post.flags?.includes('unlisted')))
-  )
+  $: storedPosts.subscribe(storedPosts => (allPosts = storedPosts.filter(post => !post.flags?.includes('unlisted'))))
 
   $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
 
