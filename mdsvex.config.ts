@@ -97,13 +97,13 @@ export default defineConfig({
     }
   },
   remarkPlugins: [
-    [remarkFFF, { presets: ['hugo'], target: 'mdsvex' }],
+    [remarkFFF as any, { presets: ['hugo'], target: 'mdsvex' }],
     remarkUraraFm,
     remarkUraraSpoiler,
     [remarkFootnotes, { inlineNotes: true }]
   ],
   rehypePlugins: [
-    rehypeSlug,
+    rehypeSlug as any,
     [rehypeAutolinkHeadings, { behavior: 'wrap' }],
     [
       rehypeExternalLinks,
