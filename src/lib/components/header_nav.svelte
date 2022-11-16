@@ -49,11 +49,11 @@
     {#each nav as { text, link, children }}
       {#if link && !children}
         <li>
-          <a sveltekit:prefetch class:font-bold={link === path} href={link}>{text}</a>
+          <a sveltekit:prefetch class="!rounded-btn" class:font-bold={link === path} href={link}>{text}</a>
         </li>
       {:else if children}
         <li tabindex="0">
-          <span class:font-bold={children.some(({ link }) => link === path)} class="gap-1">
+          <span class:font-bold={children.some(({ link }) => link === path)} class="!rounded-btn gap-1">
             {text}
             <span class="i-heroicons-solid-chevron-down -mr-1" />
           </span>
