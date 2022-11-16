@@ -10,7 +10,7 @@
       href={prev.path}
       class:image-full={prev['image']}
       class:md:rounded-r-box={next && !next['image']}
-      class="flex-1 card group rounded-none before:!rounded-none">
+      class="flex-1 card group rounded-none before:!rounded-none overflow-hidden">
       {#if prev['image']}
         <figure class="!block">
           <Image
@@ -37,7 +37,7 @@
       href={next.path}
       class:image-full={next['image']}
       class:md:rounded-l-box={prev && !prev['image']}
-      class="flex-1 card group rounded-none before:!rounded-none">
+      class="flex-1 card group rounded-none before:!rounded-none overflow-hidden">
       {#if next['image']}
         <figure class="!block">
           <Image
