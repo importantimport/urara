@@ -43,12 +43,6 @@ const remarkUraraFm =
       })
       data.fm.toc = toc
     }
-    // Auto-read created & updated
-    if (!data.fm.created || !data.fm.updated) {
-      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-      if (!data.fm.created) data.fm.created = ctime
-      if (!data.fm.updated) data.fm.updated = mtime
-    }
   }
 
 // Better type definitions needed
