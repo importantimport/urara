@@ -4,6 +4,7 @@ specifiers:
   '@iconify-json/heroicons-outline': ^1.1.4
   '@iconify-json/heroicons-solid': ^1.1.5
   '@sveltejs/adapter-auto': next
+  '@sveltejs/adapter-netlify': 1.0.0-next.84
   '@sveltejs/adapter-node': next
   '@sveltejs/adapter-static': next
   '@sveltejs/kit': 1.0.0-next.535
@@ -55,6 +56,7 @@ devDependencies:
   '@iconify-json/heroicons-outline': 1.1.4
   '@iconify-json/heroicons-solid': 1.1.5
   '@sveltejs/adapter-auto': 1.0.0-next.88
+  '@sveltejs/adapter-netlify': 1.0.0-next.84
   '@sveltejs/adapter-node': 1.0.0-next.100
   '@sveltejs/adapter-static': 1.0.0-next.48
   '@sveltejs/kit': 1.0.0-next.535_svelte@3.51.0+vite@3.2.4
@@ -1327,6 +1329,10 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iarna/toml/2.2.5:
+    resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
+    dev: true
+
   /@iconify-json/heroicons-outline/1.1.4:
     resolution: {integrity: sha512-H59TKT8dK6SDonC0NXeT021Erhq7n0apg+41cUDFgv3Zps4x+2t2Sd3QWI5cs6sW/kpOlY8DTP0xUtF5T/bp4w==}
     dependencies:
@@ -1581,6 +1587,14 @@ packages:
     resolution: {integrity: sha512-WcbELnu0Dz/72T1gbhDHxmNevVMEnQeNVi2IYrEj/uEKSMet4LOIrPv3DAAl8NETgBfzNJbMQpE7r9yL67CMTA==}
     dependencies:
       import-meta-resolve: 2.1.0
+    dev: true
+
+  /@sveltejs/adapter-netlify/1.0.0-next.84:
+    resolution: {integrity: sha512-i4vf3to0sV/iI39UPPhlVjOP+jZCZ048M4oHkqDM1FfJwACwgXaysdF2t4X0DV3loLmrkfarwbatjbGIECA9uQ==}
+    dependencies:
+      '@iarna/toml': 2.2.5
+      esbuild: 0.15.14
+      set-cookie-parser: 2.5.1
     dev: true
 
   /@sveltejs/adapter-node/1.0.0-next.100:

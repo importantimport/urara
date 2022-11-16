@@ -28,6 +28,7 @@
     "@iconify-json/heroicons-outline": "^1.1.4",
     "@iconify-json/heroicons-solid": "^1.1.5",
     "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-netlify": "1.0.0-next.84",
     "@sveltejs/adapter-node": "next",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "1.0.0-next.535",
