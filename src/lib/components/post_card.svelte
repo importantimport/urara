@@ -72,9 +72,11 @@
     <div class="flex flex-col gap-2">
       {#if post.image && !preview}
         <figure
-          class={`md:order-last mb-4 ${post.type === 'article' ? 'flex-col gap-2 -mx-4 -mt-8 md:mt-0' : 'flex-col -mx-8'}`}>
+          class={`md:order-last rounded-box shadow-xl mb-4 ${
+            post.type === 'article' ? 'flex-col gap-2 -mx-4 -mt-8 md:mt-0' : 'flex-col -mx-8'
+          }`}>
           <Image
-            class={`${post.type === 'article' ? 'u-featured rounded-box shadow-xl' : 'u-photo'}`}
+            class={`${post.type === 'article' ? 'u-featured' : 'u-photo'}`}
             src={post.image}
             alt={post.image}
             {loading}
