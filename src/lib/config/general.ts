@@ -70,7 +70,7 @@ export const theme: ThemeConfig = [
     text: '🐣 Fantasy'
   },
   {
-    name: 'wirefream',
+    name: 'wireframe',
     text: '📱 Wireframe'
   },
   {
