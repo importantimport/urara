@@ -1,0 +1,10 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: importantimport/.github/.github/workflows/pnpm-gh-pages.yml@main
