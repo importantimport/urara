@@ -24,6 +24,10 @@ export default defineConfig({
           assets: 'build',
           fallback: undefined
         }),
+    trailingSlash:
+      !Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key)) && process.env.ADAPTER !== 'node'
+        ? 'always'
+        : undefined,
     prerender: {
       handleMissingId: 'warn'
     },
