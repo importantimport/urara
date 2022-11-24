@@ -8,3 +8,5 @@ on:
 jobs:
   deploy:
     uses: importantimport/.github/.github/workflows/pnpm-gh-pages.yml@main
+    with:
+      publish_dir: build
