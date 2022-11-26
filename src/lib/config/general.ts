@@ -2,120 +2,52 @@ import type { ThemeConfig, HeadConfig, HeaderConfig, FooterConfig, DateConfig, F
 
 export const theme: ThemeConfig = [
   {
-    name: 'light',
-    text: '🌕 Light'
+    name: 'cmyk',
+    text: '🖨 Light'
   },
   {
-    name: 'dark',
-    text: '🌑 Dark'
-  },
-  {
-    name: 'cupcake',
-    text: '🧁 Cupcake'
-  },
-  {
-    name: 'bumblebee',
-    text: '🐝 Bumblebee'
-  },
-  {
-    name: 'emerald',
-    text: '✳️ Emerald'
-  },
-  {
-    name: 'corporate',
-    text: '🏢 Corporate'
+    name: 'dracula',
+    text: '🧛 Dark'
   },
   {
     name: 'valentine',
     text: '🌸 Valentine'
   },
   {
-    name: 'synthwave',
-    text: '🌃 Synthwave'
-  },
-  {
-    name: 'retro',
-    text: '🌇 Retro'
-  },
-  {
-    name: 'cyberpunk',
-    text: '🌐 Cyberpunk'
-  },
-  {
-    name: 'halloween',
-    text: '🎃 Halloween'
-  },
-  {
-    name: 'garden',
-    text: '🏡 Garden'
-  },
-  {
-    name: 'forest',
-    text: '🌲 Forest'
-  },
-  {
     name: 'aqua',
     text: '💦 Aqua'
   },
   {
-    name: 'lofi',
-    text: '🎶 Lo-Fi'
-  },
-  {
-    name: 'pastel',
-    text: '🌈 Pastel'
-  },
-  {
-    name: 'fantasy',
-    text: '🐣 Fantasy'
-  },
-  {
-    name: 'wireframe',
-    text: '📱 Wireframe'
-  },
-  {
-    name: 'black',
-    text: '🖤 Black'
-  },
-  {
-    name: 'luxury',
-    text: '💰 Luxury'
-  },
-  {
-    name: 'dracula',
-    text: '🧛 Dracula'
-  },
-  {
-    name: 'cmyk',
-    text: '🖨️ CMYK'
-  },
-  {
-    name: 'autumn',
-    text: '🍂 Autumn'
-  },
-  {
-    name: 'business',
-    text: '🗄️ Business'
-  },
-  {
-    name: 'acid',
-    text: '🌧️ Acid'
-  },
-  {
-    name: 'lemonade',
-    text: '🍋 Lemonade'
+    name: 'synthwave',
+    text: '🌃 Synthwave'
   },
   {
     name: 'night',
     text: '🌃 Night'
   },
   {
-    name: 'coffee',
-    text: '☕ Coffee'
+    name: 'lofi',
+    text: '🎶 Lo-Fi'
   },
   {
-    name: 'winter',
-    text: '❄️ Winter'
+    name: 'lemonade',
+    text: '🍋 Lemonade'
+  },
+  {
+    name: 'cupcake',
+    text: '🧁 Cupcake'
+  },
+  {
+    name: 'garden',
+    text: '🏡 Garden'
+  },
+  {
+    name: 'retro',
+    text: '🌇 Retro'
+  },
+  {
+    name: 'black',
+    text: '🖤 Black'
   }
 ]
 
