@@ -34,7 +34,7 @@
     // @ts-ignore: Cannot find name 'headingsObserver'
     if (typeof headingsObserver !== 'undefined') headingsObserver.disconnect()
     // @ts-ignore: Cannot find name 'articleObserver'
-    if (typeof headingsObserver !== 'undefined') articleObserver.disconnect()
+    if (typeof articleObserver !== 'undefined') articleObserver.disconnect()
   })
 
   $: if (intersecting.length > 0) bordered = intersecting
