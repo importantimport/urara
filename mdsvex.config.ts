@@ -41,7 +41,8 @@ const remarkUraraFm =
           slug: slugs.slug(toString(node), false)
         })
       })
-      data.fm.toc = toc
+      if (toc.length > 0) data.fm.toc = toc
+      else data.fm.toc = false
     }
   }
 
