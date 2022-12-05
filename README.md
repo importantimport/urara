@@ -96,6 +96,7 @@ tyvm! ur ⭐ will give me more motivation to improve this project.
 
 - [./kwaa.dev](https://kwaa.dev) - [kwaa/blog](https://github.com/kwaa/blog)
 - [Seviche.cc](https://seviche.cc) - [Sevichecc/Urara-Blog](https://github.com/Sevichecc/Urara-Blog)
+- [Antonio Sarcevic](https://www.sarcevic.dev) - [SarcevicAntonio/SarcevicAntonio](https://github.com/SarcevicAntonio/SarcevicAntonio)
 
 and more...
 
