@@ -15,7 +15,12 @@ export type SiteConfig = {
   description?: string
   /** site keywords. `<meta name="keywords" content={site.keywords}>` */
   keywords?: string[]
-  author: Omit<FFFAuthor, 'url'> & {
+  author: Omit<FFFAuthor, 'url' | 'avatar'> & {
+    /**
+     * @deprecated
+     * @see `$lib/components/index_profile.svelte`
+     */
+    avatar?: never
     status?: string
     bio?: string
     metadata?: (
