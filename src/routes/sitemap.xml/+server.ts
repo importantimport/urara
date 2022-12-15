@@ -17,7 +17,7 @@ const render = (): string => `<?xml version='1.0' encoding='utf-8'?>
         </url>`
       )
       .join('')}
-</urlset>`
+  </urlset>`.trim()
 
 export const prerender = true
 export const GET: RequestHandler = async () =>
