@@ -1,8 +1,6 @@
 import type { FFFAuthor } from 'fff-flavored-frontmatter'
 
 export type SiteConfig = {
-  /** @deprecated - use `description` instead */
-  descr?: string
   /** site protocol. for example: `https://` */
   protocol: string
   /** site domain. for example: `example.com` */
