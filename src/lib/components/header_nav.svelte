@@ -55,12 +55,12 @@
           <a data-sveltekit-prefetch class="!rounded-btn" class:font-bold={link === path} href={link}>{text}</a>
         </li>
       {:else if children}
-      <li >
-        <span class:font-bold={children.some(({ link }) => link === path)} class="!rounded-btn gap-1">
-          {text}
-          <span class="i-heroicons-solid-chevron-down -mr-1" />
-        </span>
-        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+        <li>
+          <span class:font-bold={children.some(({ link }) => link === path)} class="!rounded-btn gap-1">
+            {text}
+            <span class="i-heroicons-solid-chevron-down -mr-1" />
+          </span>
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul tabindex="0" class="menu rounded-box bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
               <li>

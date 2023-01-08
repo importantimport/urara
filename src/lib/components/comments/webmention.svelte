@@ -32,7 +32,13 @@
     'wm-private': boolean
   }
 
-  let [page, loaded, end, mentions, sortDirUp]: [number, boolean, boolean, WebmentionEntry[], boolean] = [0, false, false, [], config?.sortDir === 'up' ? true : false]
+  let [page, loaded, end, mentions, sortDirUp]: [number, boolean, boolean, WebmentionEntry[], boolean] = [
+    0,
+    false,
+    false,
+    [],
+    config?.sortDir === 'up' ? true : false
+  ]
 
   const load = async () =>
     await fetch(
@@ -48,8 +54,7 @@
         feed = {
           ...feed,
           children: feed.children.filter(
-            (entry: WebmentionEntry) =>
-              !config.blockList?.includes(new URL(entry['wm-source']).origin)
+            (entry: WebmentionEntry) => !config.blockList?.includes(new URL(entry['wm-source']).origin)
           )
         }
         if (feed.children.length > 0) mentions = [...mentions, ...feed.children]
@@ -96,7 +101,8 @@
         'mention-of': ['💬 mentioned', 'border-base-300/50', 'text-base-content', 'tooltip-base-content'],
         rsvp: [
           `📅 RSVPed ${
-            mention.rsvp && {
+            mention.rsvp &&
+            {
               yes: '✅',
               no: '❌',
               interested: '💡',
