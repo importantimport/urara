@@ -140,6 +140,12 @@ let a = createLabel('typescript')
 
 <script>
     import YouTube from '$lib/components/extra/youtube.svelte'
+    import Spotify from '$lib/components/extra/spotify.svelte'
+    import SoundCloud from '$lib/components/extra/soundcloud.svelte'
 </script>
 
 <YouTube id="WysuxO4yR04" />
+
+<Spotify id="6pCXYUR3mBfXY8s0FYcZqQ" />
+
+<SoundCloud type="playlist" id="1259265289" />
