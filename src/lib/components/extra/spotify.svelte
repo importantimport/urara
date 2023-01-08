@@ -13,7 +13,7 @@
 
 <iframe
   title="Spotify music player"
-  class="rounded-box"
+  class="mb-4 rounded-box"
   {src}
   {width}
   {height}
