@@ -96,7 +96,7 @@ This is a long note. [^longnote]
 This is an inline note. ^[You can type footnotes inline, so you don’t have to pick an identifier manually.]
 
 [^1]: Here is the footnote.
-[^longnote]: Here’s one footnote with longer identifier.
+[^longnote]: Here's one footnote with longer identifier.
 
 [scrollToTop](#headings)
 
