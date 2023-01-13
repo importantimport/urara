@@ -33,7 +33,7 @@
           {#if link}
             <a
               href={link}
-              rel={rel ?? 'me noopener external'}
+              rel={rel ?? 'me noopener noreferrer external'}
               class:btn-square={!text}
               class="btn btn-sm btn-ghost normal-case gap-2 u-url"
               target="_blank">
