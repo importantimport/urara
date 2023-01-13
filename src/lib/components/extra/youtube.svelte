@@ -1,15 +1,15 @@
 <script lang="ts">
   export let id: string
-  export let list: boolean = undefined
-  export let playlist: string = undefined
-  export let start: string = undefined
+  export let list: boolean | undefined = undefined
+  export let playlist: string | undefined = undefined
+  export let start: string | undefined = undefined
   export let autoplay: boolean = false
   export let disablekb: boolean = false
   export let controls: boolean = true
   export let fs = true
   export let loop = false
   const src = `https://www.youtube.com/embed/${id}?${new URLSearchParams({
-    ...(list ? { listType: 'playlist', list }: {}),
+    ...(list ? { listType: 'playlist', list: 'true' } : {}),
     ...(playlist ? { playlist } : {}),
     ...(start ? { start } : {}),
     autoplay: autoplay ? '1' : '0',

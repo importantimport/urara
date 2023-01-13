@@ -3,13 +3,13 @@
   export let id: string
   export let visual: boolean = true
   export let color: string = '#ff5500'
-  export let autoplay: booelan = false
+  export let autoplay: boolean = false
   export let width: string = '100%'
-  export let height: string = visual ? '300' : type === 'tracks' ? '166' : '450'
+  export let height: string = visual ? '300' : type === 'track' ? '166' : '450'
   const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/${type}s/${id}?${new URLSearchParams({
-    color,
-    visual,
-    auto_play: autoplay,
+    color: color.startsWith('#') ? encodeURIComponent(color) : color,
+    visual: visual ? 'true' : 'false',
+    auto_play: autoplay ? 'true' : 'false',
     hide_related: 'false',
     show_comments: 'true',
     show_user: 'true',
