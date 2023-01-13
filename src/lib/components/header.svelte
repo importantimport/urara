@@ -71,9 +71,13 @@
           </button>
         {/if}
         <div id="change-theme" class="dropdown dropdown-end">
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
           <div tabindex="0" class="btn btn-square btn-ghost">
             <span class="i-heroicons-outline-color-swatch" />
           </div>
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
           <ul
             tabindex="0"
             class="flex flex-nowrap shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2 overflow-y-auto max-h-[21.5rem]"
