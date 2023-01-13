@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-import { FFFBase, FFFExtra } from 'fff-flavored-frontmatter'
+import type { FFFBase, FFFMention } from 'fff-flavored-frontmatter'
 
 interface ImportMetaEnv extends Readonly<Record<string, string>> {
   readonly URARA_SITE_PROTOCOL?: 'http://' | 'https://'
@@ -15,8 +15,8 @@ interface ImportMeta {
 declare global {
   namespace Urara {
     namespace Post {
-      type Frontmatter = Omit<FFFBase, 'created' | 'updated' | 'image' | 'audio' | 'video' | 'flags'> &
-        Pick<FFFExtra, 'in_reply_to'> & {
+      type Frontmatter = Omit<FFFBase, 'flags'> &
+        Pick<FFFMention, 'in_reply_to'> & {
           /**
            * post type.
            * @remarks auto-generated
@@ -51,6 +51,10 @@ declare global {
            * @remarks auto-generated or set manually
            */
           updated: string
+          /**
+           * the published date of the post.
+           */
+          published?: string
           /**
            * the featured image for article, or image for "photo" / "multi-photo" posts.
            * @remarks currently only supports string
