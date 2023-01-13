@@ -6,7 +6,6 @@
 <form
   action={headerConfig?.search?.provider === 'duckduckgo' ? '//duckduckgo.com/' : '//google.com/search'}
   method="get"
-  accept-charset="UTF-8"
   class="flex-1">
   <input
     type="text"
