@@ -16,6 +16,7 @@
     {#if config.use.length > 1}
       <div class="tabs w-full mb-8" class:tabs-boxed={config?.['style'] === 'boxed'}>
         {#each config.use as name}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <span
             on:click={() => {
               currentComment = toSnake(name)
