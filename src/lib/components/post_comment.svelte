@@ -3,7 +3,7 @@
   import { toSnake } from '$lib/utils/case'
   export let post: Urara.Post
   export let config: CommentConfig
-  const comments = import.meta.glob<{ default: unknown }>('/src/lib/components/comments/*.svelte', { eager: true })
+  const comments = import.meta.glob<{ default: any }>('/src/lib/components/comments/*.svelte', { eager: true })
   let currentComment: string | undefined = undefined
   let currentConfig: unknown | undefined = undefined
   currentComment = localStorage.getItem('comment') ?? toSnake(config.use[0])
