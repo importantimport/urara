@@ -21,7 +21,7 @@
     {#each nav as { text, link, children }}
       {#if link && !children}
         <li>
-          <a data-sveltekit-prefetch class:font-bold={link === path} href={link}>{text}</a>
+          <a class:font-bold={link === path} href={link}>{text}</a>
         </li>
       {:else if children}
         <li tabindex="0">
@@ -32,7 +32,7 @@
           <ul class="bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
               <li>
-                <a data-sveltekit-prefetch class:font-bold={link === path} href={link}>{text}</a>
+                <a class:font-bold={link === path} href={link}>{text}</a>
               </li>
             {/each}
           </ul>
@@ -52,7 +52,7 @@
     {#each nav as { text, link, children }}
       {#if link && !children}
         <li>
-          <a data-sveltekit-prefetch class="!rounded-btn" class:font-bold={link === path} href={link}>{text}</a>
+          <a class="!rounded-btn" class:font-bold={link === path} href={link}>{text}</a>
         </li>
       {:else if children}
         <li>
@@ -64,7 +64,7 @@
           <ul tabindex="0" class="menu rounded-box bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
               <li>
-                <a data-sveltekit-prefetch class:font-bold={link === path} href={link}>{text}</a>
+                <a class:font-bold={link === path} href={link}>{text}</a>
               </li>
             {/each}
           </ul>
