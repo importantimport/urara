@@ -13,8 +13,10 @@
 
   export let data: LayoutData
 
-  posts.set(data.res)
-  tags.set(genTags(data.res))
+  let { res, path } = data
+
+  posts.set(res)
+  tags.set(genTags(res))
   onMount(
     () =>
       !dev &&
@@ -29,7 +31,7 @@
 
 <Head />
 
-<Header path={data.path} />
+<Header {path} />
 
 {#key data.path}
   <div
