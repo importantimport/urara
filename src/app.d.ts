@@ -3,6 +3,7 @@
 import { FFFBase, FFFExtra } from 'fff-flavored-frontmatter'
 
 interface ImportMetaEnv extends Readonly<Record<string, string>> {
+  readonly URARA_SITE_PROTOCOL?: 'http://' | 'https://'
   readonly URARA_SITE_DOMAIN?: string
 }
 
