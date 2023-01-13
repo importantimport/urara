@@ -6,7 +6,7 @@
 <br />
 
 <p align="center">
-<a href="https://fff.js.org"><img src="https://img.shields.io/badge/%F0%9F%8C%9F%20F%20F%20F-0.2-yellow?style=flat" alt="fff" /></a>
+<a href="https://fff.js.org"><img src="https://img.shields.io/badge/%F0%9F%8C%9F%20F%20F%20F-0.5-yellow?style=flat" alt="fff" /></a>
 <img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language" />
 <a href="https://github.com/importantimport/urara/blob/main/COPYING"><img src="https://img.shields.io/github/license/importantimport/urara?color=%23fff" alt="License" /></a>
 <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=shield" alt="FOSSA Status" />
@@ -59,7 +59,7 @@ pnpm build
 
 ### 文檔
 
-如需完整文檔，請訪問 [urara-docs.netlify.app](https://urara-docs.netlify.app)
+如需完整文檔，請訪問 [urara-docs.netlify.app](https://urara-docs.netlify.app)。
 
 ### 給這個項目一個 star
 
@@ -68,18 +68,18 @@ pnpm build
 ## ✨ 特徵
 
 - 開箱即用的 **Atom feed** (WebSub), **Sitemap**, **PWA** (Web app manifest & ServiceWorker) 支持。
-- 使用 daisyUI 呈現精美的界面設計和動畫，當然。
-- 良好的 [IndieWeb](https://indieweb.org/) 兼容性 - 帶有 [microformats2](https://microformats.org/) 標記內容的多種帖子，通過 [webmentions.io](https://webmentions.io) API 展示 [Webmentions](https://webmention.org/)
-- 不用擔心文章和圖像目錄 - 只需將它們放在一個文件夾下，它們就會 [在構建時自動複製](https://github.com/importantimport/urara/blob/main/urara.js).
-- [評論組件](https://github.com/importantimport/urara/tree/main/src/lib/components/comments): Webmentions, Giscus, Utterances... 你可以使用不止一個。
+- 使用 daisyUI 呈現精美的界面設計和動畫效果，當然。
+- 良好的 [IndieWeb](https://indieweb.org/) 兼容性 - 帶有 [microformats2](https://microformats.org/) 標記內容的多種帖子，通過 [webmentions.io](https://webmentions.io) API 展示 [Webmentions](https://indieweb.org/Webmention)。
+- 不用擔心文章和圖像目錄 - 只需將它們放在一個文件夾下，它們就會[在構建時自動複製](https://github.com/importantimport/urara/blob/main/urara.ts)。
+- [評論組件](https://github.com/importantimport/urara/tree/main/src/lib/components/comments)： Webmentions、 Giscus、 Utterances... 你可以使用不止一個。
 
 ## 📦️ 預捆綁
 
 ### TailwindCSS & PostCSS 插件
 
-- [daisyUI](https://github.com/saadeghi/daisyui) - The most popular, free and open-source Tailwind CSS component library
+- [daisyUI](https://github.com/saadeghi/daisyui) - The most popular, free and open-source Tailwind CSS component library.
 - [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
-- [Autoprefixer](https://github.com/postcss/autoprefixer) - Parse CSS and add vendor prefixes to rules by Can I Use
+- [Autoprefixer](https://github.com/postcss/autoprefixer) - Parse CSS and add vendor prefixes to rules by Can I Use.
 - [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
 
 ### Markdown 預處理器和語法高亮
@@ -90,7 +90,7 @@ pnpm build
 ### Vite 插件
 
 - [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
-- [VitePWA](https://github.com/antfu/vite-plugin-pwa) - Zero-config PWA for Vite
+- [VitePWA](https://github.com/antfu/vite-plugin-pwa) - Zero-config PWA for Vite.
 
 ## 🚀 網站
 
@@ -103,7 +103,7 @@ pnpm build
 - [urara-blog - Discussions](https://github.com/importantimport/urara/discussions/2)
 - [urara-blog - Topics](https://github.com/topics/urara-blog)
 
-你在用 Urara 嗎？ 在你的 repo 上添加 `urara-blog` 主題！
+你在用 Urara 嗎？在你的 repo 上添加 `urara-blog` 主題！
 
 ## 👥 貢獻
 
