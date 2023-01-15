@@ -7,7 +7,7 @@ specifiers:
   '@sveltejs/adapter-netlify': ^1.0.0
   '@sveltejs/adapter-node': ^1.1.0
   '@sveltejs/adapter-static': ^1.0.1
-  '@sveltejs/adapter-vercel': ^1.0.3
+  '@sveltejs/adapter-vercel': 1.0.2
   '@sveltejs/kit': ^1.0.11
   '@tailwindcss/typography': ^0.5.9
   '@types/node': ^18.11.18
@@ -62,7 +62,7 @@ devDependencies:
   '@sveltejs/adapter-netlify': 1.0.0_@sveltejs+kit@1.0.11
   '@sveltejs/adapter-node': 1.1.0_@sveltejs+kit@1.0.11
   '@sveltejs/adapter-static': 1.0.1_@sveltejs+kit@1.0.11
-  '@sveltejs/adapter-vercel': 1.0.3_@sveltejs+kit@1.0.11
+  '@sveltejs/adapter-vercel': 1.0.2_@sveltejs+kit@1.0.11
   '@sveltejs/kit': 1.0.11_svelte@3.55.1+vite@4.0.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.4
   '@types/node': 18.11.18
@@ -1847,8 +1847,8 @@ packages:
       '@sveltejs/kit': 1.0.11_svelte@3.55.1+vite@4.0.4
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.3_@sveltejs+kit@1.0.11:
-    resolution: {integrity: sha512-eACBPwpJIPZeh2R8kiKiwUNOpvLK5s1+zx9assD/yq+Hb/t3wDDVjsURVL/Wy1PLndyWeoNrx7QWXhI95eGJug==}
+  /@sveltejs/adapter-vercel/1.0.2_@sveltejs+kit@1.0.11:
+    resolution: {integrity: sha512-Ms2cTlqpA8Rf6Pl8GuqC6bLoMdA30W688+wV8i6DcHlLO3Z9NBEZET2jF+tEmRF1jrxxAWEDngdQBfs25eOBxw==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
