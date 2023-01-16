@@ -42,6 +42,7 @@
     "autoprefixer": "^10.4.13",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
+    "clsx": "^1.2.1",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.14",
     "daisyui": "^2.46.1",
