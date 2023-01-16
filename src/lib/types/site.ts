@@ -15,13 +15,7 @@ export type SiteConfig = {
   description?: string
   /** site keywords. `<meta name="keywords" content={site.keywords}>` */
   keywords?: string[]
-  author: Omit<FFFAuthor, 'url' | 'avatar'> & {
-    /**
-     * @example 'static/assets/maskable@512'
-     * @remarks no leading slash, only `.png` files are accepted
-     * @see `$lib/components/index_profile.svelte`
-     */
-    avatar?: string
+  author: Omit<FFFAuthor, 'url'> & {
     status?: string
     bio?: string
     metadata?: (
