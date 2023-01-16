@@ -16,7 +16,7 @@ export default defineConfig({
   extensions: ['.svelte', ...(mdsvexConfig.extensions as string[])],
   preprocess: [mdsvex(mdsvexConfig), importAssets(), vitePreprocess()],
   kit: {
-    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
+    adapter: Object.keys(process.env).some(key => ['VERCEL', 'NETLIFY'].includes(key))
       ? adapterAuto()
       : process.env.ADAPTER === 'node'
       ? adapterNode({ out: 'build' })
