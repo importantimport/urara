@@ -1,12 +1,12 @@
 <script lang="ts">
   /* @see {@link https://github.com/sveltejs/kit/issues/241#issuecomment-1363621896} */
 
-  const images = import.meta.glob('/static/**/*.{jpg,jpeg,png,webp,avif}', {
+  const images = import.meta.glob(['/static/**/*.{jpg,jpeg,png,webp,avif}', '!/static/assets'], {
     import: 'default',
     eager: true
   })
 
-  const sources = import.meta.glob('/static/**/*.{jpg,jpeg,png,webp,avif}', {
+  const sources = import.meta.glob(['/static/**/*.{jpg,jpeg,png,webp,avif}', '!/static/assets'], {
     query: {
       format: 'avif',
       width: '384;768',
