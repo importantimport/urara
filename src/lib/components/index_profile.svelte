@@ -1,6 +1,5 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
-  import Image from '$lib/components/prose/img.svelte'
 </script>
 
 <div
@@ -8,7 +7,7 @@
   <a href={site.protocol + site.domain} class="hidden u-url u-uid">{site.author.name}</a>
   <figure class="relative mx-auto group">
     {#if site.author.avatar}
-      <Image
+      <img
         class="u-photo rounded-full shadow-xl hover:shadow-2xl transition-shadow z-10 w-24 h-24 md:w-32 md:h-32"
         src={site.author.avatar}
         alt={site.author.name} />
