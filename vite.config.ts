@@ -14,6 +14,12 @@ import cssnano from 'cssnano'
 
 export default defineConfig({
   envPrefix: 'URARA_',
+  build: {
+    sourcemap: false,
+    rollupOptions: {
+      cache: false
+    }
+  },
   css: {
     postcss: {
       plugins: [
