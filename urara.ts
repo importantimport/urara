@@ -102,7 +102,7 @@ const clean = () => {
 switch (process.argv[2]) {
   case 'watch':
     {
-      let watcher = chokidar.watch('urara', {
+      const watcher = chokidar.watch('urara', {
         ignored: (file: string) => path.basename(file).startsWith('.')
       })
       watcher
