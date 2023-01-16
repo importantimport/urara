@@ -1,5 +1,8 @@
 lockfileVersion: 5.4
 
+overrides:
+  vite>rollup: ^3.10.0
+
 specifiers:
   '@iconify-json/heroicons-outline': ^1.1.5
   '@iconify-json/heroicons-solid': ^1.1.6
