@@ -17,10 +17,11 @@ export type SiteConfig = {
   keywords?: string[]
   author: Omit<FFFAuthor, 'url' | 'avatar'> & {
     /**
-     * @deprecated
+     * @example 'static/assets/maskable@512'
+     * @remarks no leading slash, only `.png` files are accepted
      * @see `$lib/components/index_profile.svelte`
      */
-    avatar?: never
+    avatar?: string
     status?: string
     bio?: string
     metadata?: (

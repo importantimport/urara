@@ -1,7 +1,12 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
-  import { src, width, height } from '/static/assets/maskable@512.png?width=384&format=webp&metadata'
-  import srcset from '/static/assets/maskable@512.png?w=48;96;192&avif&srcset'
+
+  const srcset = import(`./${site.author.avatar}.png?w=48;96;192&avif&srcset`) as unknown as string
+  const { src, width, height } = import(`./${site.author.avatar}.png?width=384&format=webp&metadata`) as unknown as {
+    src: string
+    width: number
+    height: number
+  }
 </script>
 
 <div
