@@ -9,7 +9,8 @@
   const sources = import.meta.glob(['/static/**/*.{jpg,jpeg,png,webp,avif}', '!/static/assets'], {
     query: {
       format: 'avif',
-      width: '384;768',
+      quality: '80',
+      width: '736',
       source: ''
     },
     import: 'default',
