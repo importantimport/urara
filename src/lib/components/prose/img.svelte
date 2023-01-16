@@ -36,5 +36,5 @@
 
 <picture>
   <source srcset={source.map(({ src, w }) => `${src} ${w}w`).join(', ')} type="image/avif" />
-  <img src={image.src} width={image.w} height={image.h} {alt} class={className ?? 'rounded-lg my-2'} {loading} {decoding} />
+  <img src={image.src} {alt} class={className ?? 'rounded-lg my-2'} {loading} {decoding} />
 </picture>
