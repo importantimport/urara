@@ -3,6 +3,7 @@ import { site } from '$lib/config/site'
 import { any, maskable } from '$lib/config/icon'
 
 export const prerender = true
+export const trailingSlash = 'never'
 export const GET: RequestHandler = () =>
   new Response(
     JSON.stringify(

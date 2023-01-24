@@ -27,6 +27,7 @@ const render = (): string =>
   </urlset>`.trim()
 
 export const prerender = true
+export const trailingSlash = 'never'
 export const GET: RequestHandler = async () =>
   new Response(render(), {
     headers: {
