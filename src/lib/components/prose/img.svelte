@@ -7,7 +7,7 @@
     h: number
   }
 
-  const sources = import.meta.glob<Image[]>(['/static/**/*.{jpg,jpeg,png,webp,avif}', '!/static/assets'], {
+  const sources = import.meta.glob<Image[]>(['/src/static/**/*.{jpg,jpeg,png,webp,avif}', '!/src/static/assets'], {
     query: {
       format: 'avif',
       quality: '80',
@@ -24,7 +24,7 @@
   export let alt: string = src
   export let loading: 'eager' | 'lazy' = 'lazy'
   export let decoding: 'async' | 'sync' | 'auto' = 'async'
-  let source: Image[] | undefined = sources[`/static${src}`]
+  let source: Image[] | undefined = sources[`/src/static${src}`]
 </script>
 
 {#if source}

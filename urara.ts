@@ -9,11 +9,15 @@ import chokidar from 'chokidar'
 import chalk from 'chalk'
 
 const config = {
-  extensions: ['md'],
+  extensions: {
+    posts: ['md'],
+    images: ['jpg', 'png', 'webp', 'avif']
+  },
+  images: [''],
   catch: ['ENOENT', 'EEXIST']
 }
 
-const check = (ext: string) => (config.extensions.includes(ext) ? 'src/routes' : 'static')
+const check = (ext: string) => (config.extensions.posts.includes(ext) ? 'src/routes' : 'static')
 
 const log = (color: string, msg: string, dest?: string | Error) =>
   console.log(
@@ -37,16 +41,28 @@ const error = (err: { code: string; message: unknown }) => {
 }
 
 const cpFile = (src: string, { stat = 'copy', dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
-  fs
-    .copyFile(src, dest)
-    .then(() => log('green', `${stat} file`, dest))
-    .catch(error)
+  config.extensions.images.includes(path.parse(src).ext.slice(1))
+    ? fs
+        .copyFile(src, path.join('src/static', src.slice(6)))
+        .then(() => fs.copyFile(src, path.join('static', src.slice(6))))
+        .then(() => log('green', `${stat} file`, dest))
+        .catch(error)
+    : fs
+        .copyFile(src, dest)
+        .then(() => log('green', `${stat} file`, dest))
+        .catch(error)
 
 const rmFile = (src: string, { dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
-  fs
-    .rm(dest)
-    .then(() => log('yellow', 'remove file', dest))
-    .catch(error)
+  config.extensions.images.includes(path.parse(src).ext.slice(1))
+    ? fs
+        .rm(path.join('src/static', src.slice(6)))
+        .then(() => fs.rm(path.join('static', src.slice(6))))
+        .then(() => log('yellow', 'remove file', dest))
+        .catch(error)
+    : fs
+        .rm(dest)
+        .then(() => log('yellow', 'remove file', dest))
+        .catch(error)
 
 const cpDir = (src: string) =>
   fs.readdir(src, { withFileTypes: true }).then(files =>
@@ -63,7 +79,12 @@ const cpDir = (src: string) =>
     })
   )
 
-const mkDir = (src: string, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+const mkDir = (
+  src: string,
+  {
+    dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6)), path.join('src/static', src.slice(6))]
+  } = {}
+) => {
   dest.forEach(path =>
     fs
       .mkdir(path)
@@ -72,7 +93,12 @@ const mkDir = (src: string, { dest = [path.join('src/routes', src.slice(6)), pat
   )
 }
 
-const rmDir = (src: string, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+const rmDir = (
+  src: string,
+  {
+    dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6)), path.join('src/static', src.slice(6))]
+  } = {}
+) => {
   dest.forEach(path =>
     fs
       .rm(path, { force: true, recursive: true })
@@ -91,12 +117,14 @@ const cleanDir = (src: string) =>
 
 const build = () => {
   mkDir('static', { dest: ['static'] })
+  mkDir('src/static', { dest: ['src/static'] })
   cpDir('urara')
 }
 
 const clean = () => {
   cleanDir('urara')
   rmDir('static', { dest: ['static'] })
+  rmDir('src/static', { dest: ['src/static'] })
 }
 
 switch (process.argv[2]) {
