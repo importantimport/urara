@@ -95,11 +95,10 @@
                 <p class="flex-1 text-left text-base-content group-hover:text-primary-content transition-color">
                   {text ?? name}
                 </p>
-                <div class="flex-none m-auto flex gap-1">
-                  <div class="bg-primary w-2 h-4 rounded" />
-                  <div class="bg-secondary w-2 h-4 rounded" />
-                  <div class="bg-accent w-2 h-4 rounded" />
-                  <div class="bg-neutral w-2 h-4 rounded" />
+                <div class="grid grid-cols-4 gap-0.5 m-auto">
+                  {#each ['bg-primary', 'bg-secondary', 'bg-accent', 'bg-neutral'] as bg}
+                    <div class={`${bg} w-1 h-4 rounded-btn`} />
+                  {/each}
                 </div>
               </button>
             {/each}
