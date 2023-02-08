@@ -2,7 +2,6 @@
 import type { Config } from '@sveltejs/kit'
 // svelte adapter
 import adapterAuto from '@sveltejs/adapter-auto'
-import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
 // svelte preprocessor
 import { mdsvex } from 'mdsvex'
@@ -17,8 +16,6 @@ export default defineConfig({
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'NETLIFY'].includes(key))
       ? adapterAuto()
-      : process.env.ADAPTER === 'node'
-      ? adapterNode({ out: 'build' })
       : adapterStatic({
           pages: 'build',
           assets: 'build',

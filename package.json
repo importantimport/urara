@@ -29,7 +29,6 @@
     "@iconify-json/heroicons-solid": "^1.1.6",
     "@sveltejs/adapter-auto": "^1.0.0",
     "@sveltejs/adapter-netlify": "^1.0.0",
-    "@sveltejs/adapter-node": "^1.1.0",
     "@sveltejs/adapter-static": "^1.0.1",
     "@sveltejs/adapter-vercel": "1.0.2",
     "@sveltejs/kit": "^1.0.11",
