@@ -6,7 +6,6 @@ overrides:
 specifiers:
   '@iconify-json/heroicons-outline': ^1.1.5
   '@iconify-json/heroicons-solid': ^1.1.6
-  '@sveltejs/adapter-auto': ^1.0.0
   '@sveltejs/adapter-netlify': ^1.0.0
   '@sveltejs/adapter-static': ^1.0.1
   '@sveltejs/adapter-vercel': 1.0.2
@@ -59,7 +58,6 @@ specifiers:
 devDependencies:
   '@iconify-json/heroicons-outline': 1.1.5
   '@iconify-json/heroicons-solid': 1.1.6
-  '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.11
   '@sveltejs/adapter-netlify': 1.0.0_@sveltejs+kit@1.0.11
   '@sveltejs/adapter-static': 1.0.1_@sveltejs+kit@1.0.11
   '@sveltejs/adapter-vercel': 1.0.2_@sveltejs+kit@1.0.11
@@ -1755,15 +1753,6 @@ packages:
       json5: 2.2.3
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.8
-    dev: true
-
-  /@sveltejs/adapter-auto/1.0.0_@sveltejs+kit@1.0.11:
-    resolution: {integrity: sha512-yKyPvlLVua1bJ/42FrR3X041mFGdB4GzTZOAEoHUcNBRE5Mhx94+eqHpC3hNvAOiLEDcKfVO0ObyKSu7qldU+w==}
-    peerDependencies:
-      '@sveltejs/kit': ^1.0.0
-    dependencies:
-      '@sveltejs/kit': 1.0.11_svelte@3.55.1+vite@4.0.4
-      import-meta-resolve: 2.2.1
     dev: true
 
   /@sveltejs/adapter-netlify/1.0.0_@sveltejs+kit@1.0.11:
@@ -3767,10 +3756,6 @@ packages:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
-    dev: true
-
-  /import-meta-resolve/2.2.1:
-    resolution: {integrity: sha512-C6lLL7EJPY44kBvA80gq4uMsVFw5x3oSKfuMl1cuZ2RkI5+UJqQXgn+6hlUew0y4ig7Ypt4CObAAIzU53Nfpuw==}
     dev: true
 
   /imurmurhash/0.1.4:
