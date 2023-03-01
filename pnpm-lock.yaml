@@ -44,6 +44,7 @@ specifiers:
   svelte: ^3.55.1
   svelte-check: ^3.0.3
   svelte-preprocess: ^5.0.1
+  sveltekit-embed: ^0.0.12
   tailwindcss: ^3.2.7
   tslib: ^2.5.0
   typescript: ^4.9.5
@@ -96,6 +97,7 @@ devDependencies:
   svelte: 3.55.1
   svelte-check: 3.0.3_pehl75e5jsy22vp33udjja4soi
   svelte-preprocess: 5.0.1_k4bhxdknaltjvjwprbm23edr5q
+  sveltekit-embed: 0.0.12
   tailwindcss: 3.2.7_postcss@8.4.21
   tslib: 2.5.0
   typescript: 4.9.5
@@ -5992,6 +5994,10 @@ packages:
   /svelte/3.55.1:
     resolution: {integrity: sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /sveltekit-embed/0.0.12:
+    resolution: {integrity: sha512-77GiPxkn4ZyF5tcq+YuosYjiFTrjYwA+sOMUiWoN+8sTCM0vJVi9sxHpIHWK6Cvmn0fAeaHagV//2i+tFmELkA==}
     dev: true
 
   /svgo/2.8.0:

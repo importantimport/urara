@@ -139,13 +139,15 @@ let a = createLabel('typescript')
 ## Svelte Components
 
 <script>
-    import YouTube from '$lib/components/extra/youtube.svelte'
-    import Spotify from '$lib/components/extra/spotify.svelte'
-    import SoundCloud from '$lib/components/extra/soundcloud.svelte'
+  import { YouTube, Spotify, SoundCloud } from 'sveltekit-embed'
 </script>
 
-<YouTube id="WysuxO4yR04" />
+<YouTube youTubeId="WysuxO4yR04" />
 
-<Spotify id="6pCXYUR3mBfXY8s0FYcZqQ" />
+<br />
 
-<SoundCloud type="playlist" id="1259265289" />
+<Spotify spotifyLink="track/6pCXYUR3mBfXY8s0FYcZqQ" width="100%" />
+
+<br />
+
+<SoundCloud soundcloudLink="https://soundcloud.com/hatsunemikuofficial/sets/sweety-glitch-remix-contest" />
