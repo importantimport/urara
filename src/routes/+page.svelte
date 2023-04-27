@@ -3,6 +3,7 @@
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/environment'
+  import { goto } from '$app/navigation'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
   import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
@@ -26,7 +27,7 @@
   $: if (tags) {
     posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
     if (browser && window.location.pathname === '/')
-      window.history.replaceState({}, '', tags.length > 0 ? `?tags=${tags.toString()}` : `/`)
+      goto(tags.length > 0 ? `?tags=${tags.toString()}` : `/`, { replaceState: true })
   }
 
   onMount(() => {
