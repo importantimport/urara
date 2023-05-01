@@ -9,9 +9,7 @@ import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 
-const defineConfig = (config: Config) => config
-
-export default defineConfig({
+export default {
   extensions: ['.svelte', ...(mdsvexConfig.extensions as string[])],
   preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
   kit: {
@@ -29,4 +27,4 @@ export default defineConfig({
     },
     csp: { mode: 'auto' }
   }
-})
+} as Config
