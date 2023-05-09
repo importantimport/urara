@@ -16,7 +16,7 @@ export default {
     adapter: Object.keys(process.env).some(key => key === 'VERCEL')
       ? adapterVercel()
       : Object.keys(process.env).some(key => key === 'NETLIFY')
-      ? adapterNetlify({ edge: true })
+      ? adapterNetlify()
       : adapterStatic({
           pages: 'build',
           assets: 'build',
