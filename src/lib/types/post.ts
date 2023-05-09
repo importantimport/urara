@@ -15,6 +15,7 @@ export type CommentConfig = {
   giscus?: GiscusConfig
   /** Utterances config, more at https://utteranc.es */
   utterances?: UtterancesConfig
+  remark42?: Remark42Config
 }
 
 export type WebmentionConfig = {
@@ -70,4 +71,37 @@ export type UtterancesConfig = {
   label?: string
   /** choose an utterances theme that matches your blog. */
   theme?: string
+}
+
+export type Remark42Config = {
+  /** hostname of Remark42 server, same as REMARK_URL in backend config, e.g. "https://demo.remark42.com" */
+  host: string
+  /** the SITE that you passed to Remark42 instance on start of backend. (default: remark) */
+  site_id?: string
+  /** url to the page with comments*/
+  url?: string
+  /** an array of widgets that should be rendered on a page (default: ['embed'] )*/
+  components?: ['embed' | 'last-comments' | 'counter']
+  /** maximum number of comments that is rendered on mobile version (default: 15 )*/
+  max_shown_comments?: number
+  /** maximum number of comments in the last comments widget (default: 15 )*/
+  max_last_comments?: number
+  /** changes UI theme, (default: light )*/
+  theme?: 'light' | 'dark'
+  /** title for current comments page  (default: document.title)*/
+  page_title?: string
+  /**
+   * interface localization,
+   * English (en), Belarusian (be), Brazilian Portuguese (bp), Bulgarian (bg), Chinese (zh), Finnish (fi), French (fr), German (de), Japanese (ja), Korean (ko), Polish (pl), Russian (ru), Spanish (es), Turkish (tr), Ukrainian (ua), Italian (it) and Vietnamese (vi)
+   * default: en
+   */
+  locale?: 'en' | 'be' | 'bp' | 'bg' | 'zh' | 'fi' | 'fr' | 'de' | 'ja' | 'ko' | 'pl' | 'ru' | 'es' | 'tr' | 'ua' | 'it' | 'vi'
+  /** enables email subscription  (default: true) */
+  show_email_subscription?: boolean
+  /** enables RSS subscription, (default: true) */
+  show_rss_subscription?: boolean
+  /** minimized UI with basic info only, (default: false) */
+  simple_view?: boolean
+  /** hides footer with signature and links to Remark42,(default: false)  */
+  no_footer?: boolean
 }
