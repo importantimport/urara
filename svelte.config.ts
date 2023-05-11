@@ -25,6 +25,11 @@ export default {
     prerender: {
       handleMissingId: 'warn'
     },
-    csp: { mode: 'auto' }
+    csp: {
+      mode: 'auto',
+      directives: {
+        'style-src': ['self', 'unsafe-inline', 'https://giscus.app']
+      }
+    }
   }
 } as Config
