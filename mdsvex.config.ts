@@ -15,6 +15,8 @@ import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 import remarkFFF from 'remark-fff'
 import remarkFootnotes from 'remark-footnotes'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex-svelte'
 
 // highlighter
 import { escapeSvelte } from 'mdsvex'
@@ -103,7 +105,8 @@ export default {
     ],
     remarkUraraFm,
     remarkUraraSpoiler,
-    [remarkFootnotes, { inlineNotes: true }]
+    [remarkFootnotes, { inlineNotes: true }],
+    remarkMath
   ],
   rehypePlugins: [
     rehypeSlug as any,
@@ -114,6 +117,7 @@ export default {
         rel: ['nofollow', 'noopener', 'noreferrer', 'external'],
         target: '_blank'
       }
-    ]
+    ],
+    rehypeKatex
   ]
 } as MdsvexOptions
