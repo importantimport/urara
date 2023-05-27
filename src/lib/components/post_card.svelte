@@ -60,7 +60,7 @@
           ? 'u-featured object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out'
           : 'u-photo rounded-xl md:rounded-b-none -mb-6 md:-mb-2'}
         src={post.image}
-        alt={post.image}
+        alt={post.alt ?? post.image}
         {loading}
         {decoding} />
     </figure>
@@ -78,7 +78,7 @@
           <Image
             class={`${post.type === 'article' ? 'u-featured' : 'u-photo'}`}
             src={post.image}
-            alt={post.image}
+            alt={post.alt ?? post.image}
             {loading}
             {decoding} />
         </figure>

@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-import type { FFFBase, FFFMention } from 'fff-flavored-frontmatter'
+import type { FFFBase, FFFMedia, FFFMention } from 'fff-flavored-frontmatter'
 
 interface ImportMetaEnv extends Readonly<Record<string, string>> {
   readonly URARA_SITE_PROTOCOL?: 'http://' | 'https://'
@@ -16,7 +16,8 @@ declare global {
   namespace Urara {
     namespace Post {
       type Frontmatter = Omit<FFFBase, 'flags'> &
-        Pick<FFFMention, 'in_reply_to'> & {
+        Pick<FFFMention, 'in_reply_to'> &
+        Pick<FFFMedia, 'alt'> & {
           /**
            * post type.
            * @remarks auto-generated

@@ -14,7 +14,8 @@
         <figure class="!block">
           <Image
             class="object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out"
-            src={prev['image']} />
+            src={prev['image']}
+            alt={prev['alt'] ?? prev['image']} />
         </figure>
       {/if}
       <div class="card-body">
@@ -40,7 +41,8 @@
         <figure class="!block">
           <Image
             class="object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out"
-            src={next['image']} />
+            src={next['image']}
+            alt={next['alt'] ?? next['image']} />
         </figure>
       {/if}
       <div class="card-body">

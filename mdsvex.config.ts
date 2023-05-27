@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // mdsvex config type
 import type { MdsvexOptions } from 'mdsvex'
 
@@ -8,8 +10,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 
 // urara remark plugins
 import type { Node, Data } from 'unist'
-import { statSync } from 'fs'
-import { parse, join } from 'path'
+import { parse, join } from 'node:path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
@@ -20,31 +21,30 @@ import remarkFootnotes from 'remark-footnotes'
 import { escapeSvelte } from 'mdsvex'
 import { lex, parse as parseFence } from 'fenceparser'
 import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash'
-type VALUE = { [key in string | number]: VALUE } | Array<VALUE> | string | boolean | number
 
 const remarkUraraFm =
   () =>
-  (tree: Node<Data>, { data, filename }: { data: { fm?: Record<string, unknown> }; filename?: string }) => {
-    const filepath = filename ? filename.split('/src/routes')[1] : 'unknown'
-    const { dir, name } = parse(filepath)
-    if (!data.fm) data.fm = {}
-    // Generate slug & path
-    data.fm.slug = filepath
-    data.fm.path = join(dir, `/${name}`.replace('/+page', '').replace('.svelte', ''))
-    // Generate ToC
-    if (data.fm.toc !== false) {
-      const [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
-      visit(tree, 'heading', (node: { depth: number }) => {
-        toc.push({
-          depth: node.depth,
-          title: toString(node),
-          slug: slugs.slug(toString(node), false)
+    (tree: Node<Data>, { data, filename }: { data: { fm?: Record<string, unknown> }; filename?: string }) => {
+      const filepath = filename ? filename.split('/src/routes')[1] : 'unknown'
+      const { dir, name } = parse(filepath)
+      if (!data.fm) data.fm = {}
+      // Generate slug & path
+      data.fm.slug = filepath
+      data.fm.path = join(dir, `/${name}`.replace('/+page', '').replace('.svelte', ''))
+      // Generate ToC
+      if (data.fm.toc !== false) {
+        const [slugs, toc]: [slugs: Slugger, toc: { depth: number; title: string; slug: string }[]] = [new Slugger(), []]
+        visit(tree, 'heading', (node: { depth: number }) => {
+          toc.push({
+            depth: node.depth,
+            title: toString(node),
+            slug: slugs.slug(toString(node), false)
+          })
         })
-      })
-      if (toc.length > 0) data.fm.toc = toc
-      else data.fm.toc = false
+        if (toc.length > 0) data.fm.toc = toc
+        else data.fm.toc = false
+      }
     }
-  }
 
 // Better type definitions needed
 const remarkUraraSpoiler = () => (tree: Node<Data>) =>
@@ -69,7 +69,7 @@ export default {
   },
   highlight: {
     highlighter: async (code, lang, meta) => {
-      let fence: Record<string, VALUE> | null
+      let fence: any
       let twoslash: any
       try {
         fence = parseFence(lex([lang, meta].filter(Boolean).join(' ')))
@@ -91,13 +91,19 @@ export default {
   },
   remarkPlugins: [
     [
-      remarkFFF as any,
+      remarkFFF,
       {
-        presets: ['hugo'],
+        presets: [],
         target: 'mdsvex',
         autofill: {
           provider: 'fs',
           path: (path: string) => path.replace('/src/routes/', '/urara/')
+        },
+        strict: {
+          media: {
+            type: 'string',
+            array: false,
+          }
         }
       }
     ],
@@ -117,3 +123,5 @@ export default {
     ]
   ]
 } as MdsvexOptions
+
+/* eslint-enable @typescript-eslint/no-explicit-any */

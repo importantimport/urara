@@ -68,8 +68,8 @@ devDependencies:
     specifier: ^2.2.0
     version: 2.2.0
   fff-flavored-frontmatter:
-    specifier: ~0.5.3
-    version: 0.5.3
+    specifier: 1.0.0-alpha.1
+    version: 1.0.0-alpha.1
   github-slugger:
     specifier: ^2.0.0
     version: 2.0.0
@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^14.0.3
     version: 14.0.3
   remark-fff:
-    specifier: ~0.5.3
-    version: 0.5.3
+    specifier: 1.0.0-alpha.1
+    version: 1.0.0-alpha.1
   remark-footnotes:
     specifier: ~2.0.0
     version: 2.0.0
@@ -3401,8 +3401,8 @@ packages:
     resolution: {integrity: sha512-fdXOPciCALTWvooKxyRUmYERiw1L1mzqVsfpk5F9kGr3NoT/Sdwew4BqGctY6xZpUXiZ7dXXPb27Om2nmUmHMg==}
     dev: true
 
-  /fff-flavored-frontmatter@0.5.3:
-    resolution: {integrity: sha512-VkFRfY2e4PtukkNL2QBQEuQyIs7lbfkYdyVK1+Vztt96HUknQa2CsNY3v5eE2AFw1ODNh40v4QDxqKufcPvQFw==}
+  /fff-flavored-frontmatter@1.0.0-alpha.1:
+    resolution: {integrity: sha512-5Pd6XnxpuJYVqENDCiCcJE47NdvizN0juaC2HJ+tJghoXHqAerJjLm4CHuCiXuh+KjXxGh0VOkAZBgNvX3dk3w==}
     dev: true
 
   /file-entry-cache@6.0.1:
@@ -5226,8 +5226,11 @@ packages:
       unist-util-visit: 4.1.2
     dev: true
 
-  /remark-fff@0.5.3:
-    resolution: {integrity: sha512-DmcXy4y0oXMSR9vK+DGqCJ1oqN9Di5pPBmBH9Hej7PtQsJcA+F+0jvFT6UreAjcgIssLFgeSCqQnV+1TENscCA==}
+  /remark-fff@1.0.0-alpha.1:
+    resolution: {integrity: sha512-A1UZJdEg2LiyAIwh2goDFSgkEen5jfbXPFmsU+hVyvw2K6WlU8g18/wuxaUJsRkh+XCV96eBtKK8vDxZdDdBxQ==}
+    dependencies:
+      fff-flavored-frontmatter: 1.0.0-alpha.1
+      unified: 10.1.2
     dev: true
 
   /remark-footnotes@2.0.0:
