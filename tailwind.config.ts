@@ -15,8 +15,10 @@ export default {
               padding: 0
             },
             'ul > li:has(input[type="checkbox"])': {
-              margin: 0,
               listStyle: 'none'
+            },
+            'ul > li:has(input[type="checkbox"]) ul li': {
+              paddingLeft: 30
             }
           }
         }
