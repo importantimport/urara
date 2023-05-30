@@ -6,7 +6,23 @@ import daisyui from 'daisyui'
 
 export default {
   content: ['./src/**/*.{html,md,js,svelte,ts}'],
-  theme: { extend: {} },
+  theme: {
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ul:has(li):has(input[type="checkbox"])': {
+              padding: 0
+            },
+            'ul > li:has(input[type="checkbox"])': {
+              margin: 0,
+              listStyle: 'none'
+            }
+          }
+        }
+      }
+    }
+  },
   plugins: [typography, daisyui],
   daisyui: { themes: theme.map(({ name }) => name) }
 }
