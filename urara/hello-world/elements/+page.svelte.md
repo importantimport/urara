@@ -70,6 +70,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - [ ] List Item 1 unchecked
 - [x] List Item 2 checked
 - [x] List Item 3 checked
+  - [ ] Sub List Item 1 unchecked
+  - [x] Sub List Item 1 checked
 
 ## Table
 
