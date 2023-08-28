@@ -10,6 +10,7 @@ import { SvelteKitPWA } from '@vite-pwa/sveltekit'
 // postcss & tailwindcss
 import TailwindCSS from 'tailwindcss'
 import tailwindConfig from './tailwind.config'
+// @ts-expect-error
 import LightningCSS from 'postcss-lightningcss'
 
 export default defineConfig({
