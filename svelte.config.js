@@ -9,7 +9,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite'
 
 /** @type {import("@svletejs/kit".Config)} */
 export default {
-  extensions: ['.svelte', ...(mdsvexConfig.extensions)],
+  extensions: ['.svelte', ...mdsvexConfig.extensions],
   preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
   kit: {
     adapter: Object.keys(process.env).some(key => key === 'VERCEL')

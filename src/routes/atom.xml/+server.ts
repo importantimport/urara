@@ -28,8 +28,8 @@ const render = (posts = genPosts({ postHtml: true, postLimit: feed.limit, filter
     <id>${site.protocol + site.domain + post.path}</id>
     <published>${new Date(post.published ?? post.created).toJSON()}</published>
     <updated>${new Date(post.updated ?? post.published ?? post.created).toJSON()}</updated>${
-        post.summary ? `\n    <summary type="html"><![CDATA[${post.summary.toString()}]]></summary>` : ''
-      }
+      post.summary ? `\n    <summary type="html"><![CDATA[${post.summary.toString()}]]></summary>` : ''
+    }
     <content type="html">
       <![CDATA[${post.html}]]>
     </content>${post.tags

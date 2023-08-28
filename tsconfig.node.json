@@ -7,7 +7,5 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "urara.ts"
-  ]
+  "include": ["urara.ts"]
 }

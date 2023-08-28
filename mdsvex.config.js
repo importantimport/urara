@@ -18,31 +18,31 @@ import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-two
 
 const remarkUraraFm =
   () =>
-    (tree, { data, filename }) => {
-      const filepath = filename ? filename.split('/src/routes')[1] : 'unknown'
-      const { dir, name } = parse(filepath)
-      if (!data.fm) data.fm = {}
-      // Generate slug & path
-      data.fm.slug = filepath
-      data.fm.path = join(dir, `/${name}`.replace('/+page', '').replace('.svelte', ''))
-      // Generate ToC
-      if (data.fm.toc !== false) {
-        const [slugs, toc] = [new Slugger(), []]
-        visit(tree, 'heading', (node) => {
-          toc.push({
-            depth: node.depth,
-            title: toString(node),
-            slug: slugs.slug(toString(node), false)
-          })
+  (tree, { data, filename }) => {
+    const filepath = filename ? filename.split('/src/routes')[1] : 'unknown'
+    const { dir, name } = parse(filepath)
+    if (!data.fm) data.fm = {}
+    // Generate slug & path
+    data.fm.slug = filepath
+    data.fm.path = join(dir, `/${name}`.replace('/+page', '').replace('.svelte', ''))
+    // Generate ToC
+    if (data.fm.toc !== false) {
+      const [slugs, toc] = [new Slugger(), []]
+      visit(tree, 'heading', node => {
+        toc.push({
+          depth: node.depth,
+          title: toString(node),
+          slug: slugs.slug(toString(node), false)
         })
-        if (toc.length > 0) data.fm.toc = toc
-        else data.fm.toc = false
-      }
+      })
+      if (toc.length > 0) data.fm.toc = toc
+      else data.fm.toc = false
     }
+  }
 
 // Better type definitions needed
-const remarkUraraSpoiler = () => (tree) =>
-  visit(tree, 'paragraph', (node) => {
+const remarkUraraSpoiler = () => tree =>
+  visit(tree, 'paragraph', node => {
     const { children } = node
     const text = children[0].value
     const re = /\|\|(.{1,}?)\|\|/g
@@ -91,12 +91,12 @@ export default {
         target: 'mdsvex',
         autofill: {
           provider: 'fs',
-          path: (path) => path.replace('/src/routes/', '/urara/')
+          path: path => path.replace('/src/routes/', '/urara/')
         },
         strict: {
           media: {
             type: 'string',
-            array: false,
+            array: false
           }
         }
       }
