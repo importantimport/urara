@@ -1,5 +1,3 @@
-// sveltekit config type
-import type { Config } from '@sveltejs/kit'
 // svelte adapter
 import adapterVercel from '@sveltejs/adapter-vercel'
 import adapterNetlify from '@sveltejs/adapter-netlify'
@@ -9,8 +7,9 @@ import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 
+/** @type {import("@svletejs/kit".Config)} */
 export default {
-  extensions: ['.svelte', ...(mdsvexConfig.extensions as string[])],
+  extensions: ['.svelte', ...(mdsvexConfig.extensions)],
   preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
   kit: {
     adapter: Object.keys(process.env).some(key => key === 'VERCEL')
@@ -32,4 +31,4 @@ export default {
       }
     }
   }
-} as Config
+}

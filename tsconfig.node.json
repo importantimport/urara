@@ -7,5 +7,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["urara.ts", "svelte.config.ts", "mdsvex.config.ts"]
+  "include": [
+    "urara.ts"
+  ]
 }

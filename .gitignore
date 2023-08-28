@@ -21,5 +21,4 @@ pnpm-debug.log*
 src/routes/**/+page.svelte.md
 src/routes/**/+page.md
 src/static
-*.config.js
 urara.js
