@@ -19,6 +19,7 @@
     "dev": "run-s tsc \"dev:parallel {@} \" --",
     "build": "run-s tsc urara:build kit:build clean",
     "preview": "vite preview",
+    "start": "cross-env ADAPTER=node pnpm build && node build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
