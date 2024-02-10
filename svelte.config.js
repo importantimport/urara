@@ -25,7 +25,7 @@ export default {
     adapter:
       process.env.ADAPTER
         ? adapter[process.env.ADAPTER.toLowerCase()]
-        : Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
+        : Object.keys(process.env).some(key => ['VERCEL', 'NETLIFY'].includes(key))
           ? adapter['auto']
           : adapter['static'],
     prerender: {
