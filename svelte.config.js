@@ -22,10 +22,10 @@ export default {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
   preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
   kit: {
-    adapter: 
+    adapter:
       process.env.ADAPTER
         ? adapter[process.env.ADAPTER.toLowerCase()]
-        : Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY', 'GITHUB_ACTION_REPOSITORY', 'SST'].includes(key))
+        : Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
           ? adapter['auto']
           : adapter['static'],
     prerender: {
