@@ -169,7 +169,8 @@ pre.twoslash:hover data-lsp {
 }
 
 pre.twoslash data-lsp:hover::before {
-  @apply content-[attr(lsp)] absolute rounded translate-y-5 bg-neutral-focus text-neutral-content font-mono whitespace-pre-wrap transition-all px-2 py-1 z-50;
+  /* https://daisyui.com/blog/how-to-update-daisyui-4/#3-all--focus-colors-are-removed */
+  @apply content-[attr(lsp)] absolute rounded translate-y-5 bg-[color-mix(in_oklab,oklch(var(--n)),black_7%)] text-neutral-content font-mono whitespace-pre-wrap transition-all px-2 py-1 z-50;
 }
 
 /* your code here */

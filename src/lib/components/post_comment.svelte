@@ -14,17 +14,20 @@
 {#if config?.use.length > 0}
   <div id="post-comment" class="card card-body">
     {#if config.use.length > 1}
-      <div class="tabs w-full mb-8" class:tabs-boxed={config?.['style'] === 'boxed'}>
+      <div
+        class="tabs w-full mb-8"
+        class:tabs-boxed={config?.['style'] === 'boxed'}
+        class:tab-bordered={config?.['style'] === 'bordered'}
+        class:tab-lifted={config?.['style'] === 'lifted'}>
         {#each config.use as name}
           <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
           <span
             on:click={() => {
               currentComment = toSnake(name)
               localStorage.setItem('comment', toSnake(name))
             }}
             class="flex-1 tab transition-all"
-            class:tab-bordered={config?.['style'] === 'bordered'}
-            class:tab-lifted={config?.['style'] === 'lifted'}
             class:tab-active={currentComment === toSnake(name)}>
             {name}
           </span>
