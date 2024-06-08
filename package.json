@@ -7,7 +7,7 @@
   "homepage": "https://github.com/importantimport/urara",
   "bugs": "https://github.com/importantimport/urara/issues",
   "author": "藍+85CD",
-  "packageManager": "pnpm@8.14.1",
+  "packageManager": "pnpm@9.1.1",
   "scripts": {
     "clean": "node urara.js clean",
     "tsc": "tsc -p tsconfig.node.json",
