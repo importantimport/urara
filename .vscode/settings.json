@@ -1,12 +1,4 @@
 {
-  "editor.formatOnSave": true,
-  "files.eol": "\n",
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "css.lint.unknownAtRules": "ignore",
-  "svelte.plugin.css.diagnostics.enable": false,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
@@ -53,5 +45,10 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+
+  // Enable unstable_ts_config
+  "eslint.options": {
+    "flags": ["unstable_ts_config"]
+  }
 }

@@ -23,8 +23,8 @@
     "start": "cross-env ADAPTER=node pnpm build && node build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint --flag unstable_ts_config .",
+    "lint:fix": "eslint --flag unstable_ts_config . --fix"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.5.1",
