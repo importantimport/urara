@@ -11,12 +11,6 @@ import tailwindConfig from './tailwind.config'
 import unoConfig from './uno.config'
 
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      cache: false,
-    },
-    sourcemap: false,
-  },
   css: {
     postcss: {
       plugins: [TailwindCSS(tailwindConfig), LightningCSS()],
