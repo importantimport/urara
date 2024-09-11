@@ -17,13 +17,14 @@ const adapter = {
   })
 }
 
-/** @type {import("@svletejs/kit".Config)} */
+/** @type {import("@sveltejs/kit").Config} */
 export default {
-  extensions: ['.svelte', ...mdsvexConfig.extensions],
+  extensions: ['.svelte', ...(mdsvexConfig.extensions ?? [])],
   preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
   kit: {
     adapter:
       process.env.ADAPTER
+        // @ts-expect-error adapter types
         ? adapter[process.env.ADAPTER.toLowerCase()]
         : Object.keys(process.env).some(key => ['VERCEL', 'NETLIFY'].includes(key))
           ? adapter['auto']
