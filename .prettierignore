@@ -1,7 +1,0 @@
-.svelte-kit/**
-static/**
-build/**
-node_modules/**
-pnpm-lock.yaml
-.netlify/**
-.vercel_build_output/**
