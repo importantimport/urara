@@ -1,12 +1,13 @@
-<script lang="ts" context="module">
+<script context='module' lang='ts'>
   import Image from '$lib/components/prose/img.svelte'
   import table from '$lib/components/prose/table.svelte'
+
   export { Image as img, table }
 </script>
 
-<script lang="ts">
-  import { typeOfPost } from '$lib/utils/posts'
+<script lang='ts'>
   import Container from '$lib/components/post_container.svelte'
+  import { typeOfPost } from '$lib/utils/posts'
   // auto-generated
   export let path
   export let slug
@@ -23,8 +24,8 @@
   export let image
   export let in_reply_to
   // post
-  let fm = { path, slug, toc, created, updated, published, summary, tags, flags, title, image, in_reply_to }
-  let post = { type: typeOfPost(fm), ...fm }
+  const fm = { created, flags, image, in_reply_to, path, published, slug, summary, tags, title, toc, updated }
+  const post = { type: typeOfPost(fm), ...fm }
 </script>
 
 <Container {post}>

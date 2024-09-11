@@ -105,7 +105,7 @@ This is an inline note. ^[You can type footnotes inline, so you don’t have to 
 ## Code
 
 ```ts twoslash title="examples/index.ts"
-for (let x in [0]) console.log(x)
+for (const x in [0]) console.log(x)
 ```
 
 ```ts twoslash {1-6}
@@ -123,7 +123,7 @@ function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
   throw 'unimplemented'
 }
 
-let a = createLabel('typescript')
+const a = createLabel('typescript')
 ```
 
 ## Misc

@@ -4,8 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "declaration": false,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   },
   "include": ["urara.ts"]
 }

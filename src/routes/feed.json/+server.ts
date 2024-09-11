@@ -1,45 +1,46 @@
-import type { RequestHandler } from './$types'
-import { json } from '@sveltejs/kit'
-import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
-import { favicon, any } from '$lib/config/icon'
+import { any, favicon } from '$lib/config/icon'
+import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
+import { json } from '@sveltejs/kit'
 
-const render = (posts = genPosts({ postHtml: true, postLimit: feed.limit, filterUnlisted: true })) => ({
-  version: 'https://jsonfeed.org/version/1.1',
-  title: site.title,
-  home_page_url: site.protocol + site.domain,
-  feed_url: site.protocol + site.domain + '/feed.json',
-  description: site.description,
-  icon: any['512'].src ?? any['192'].src,
-  favicon: favicon?.src,
+import type { RequestHandler } from './$types'
+
+const render = (posts = genPosts({ filterUnlisted: true, postHtml: true, postLimit: feed.limit })) => ({
   authors: [
     {
+      avatar: site.author.avatar,
       name: site.author.name,
       url: site.protocol + site.domain,
-      avatar: site.author.avatar
-    }
+    },
   ],
-  language: site.lang ?? 'en',
+  description: site.description,
+  favicon: favicon?.src,
+  feed_url: `${site.protocol + site.domain}/feed.json`,
+  home_page_url: site.protocol + site.domain,
   hubs: feed.hubs?.map(hub => ({
     type: 'WebSub',
-    url: hub
+    url: hub,
   })),
+  icon: any['512'].src ?? any['192'].src,
   items: posts.map(post => ({
-    id: post.path.slice(1),
-    url: site.protocol + site.domain + post.path,
-    title: post.title,
-    content_html: post.html,
-    summary: post['summary'],
-    image: post['image'],
-    date_published: post.published ?? post.created,
-    date_modified: post.updated ?? post.published ?? post.created,
-    tags: post.tags,
     _indieweb: {
-      type: post.type,
-      'in-reply-to': post.in_reply_to
-    }
-  }))
+      'in-reply-to': post.in_reply_to,
+      'type': post.type,
+    },
+    content_html: post.html,
+    date_modified: post.updated ?? post.published ?? post.created,
+    date_published: post.published ?? post.created,
+    id: post.path.slice(1),
+    image: post.image,
+    summary: post.summary,
+    tags: post.tags,
+    title: post.title,
+    url: site.protocol + site.domain + post.path,
+  })),
+  language: site.lang ?? 'en',
+  title: site.title,
+  version: 'https://jsonfeed.org/version/1.1',
 })
 
 export const prerender = true
@@ -47,6 +48,6 @@ export const trailingSlash = 'never'
 export const GET: RequestHandler = async () =>
   json(render(), {
     headers: {
-      'content-type': 'application/feed+json; charset=utf-8'
-    }
+      'content-type': 'application/feed+json; charset=utf-8',
+    },
   })

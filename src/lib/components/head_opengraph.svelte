@@ -1,45 +1,46 @@
-<script lang="ts">
-  import { site } from '$lib/config/site'
+<script lang='ts'>
   import { any, maskable } from '$lib/config/icon'
-  export let post: Urara.Post | undefined = undefined
-  export let page: Urara.Page | undefined = undefined
+  import { site } from '$lib/config/site'
+
+  export let post: undefined | Urara.Post
+  export let page: undefined | Urara.Page
 </script>
 
 <svelte:head>
-  <meta property="og:site_name" content={site.title} />
-  <meta property="og:locale" content={site.lang} />
+  <meta content={site.title} property='og:site_name' />
+  <meta content={site.lang} property='og:locale' />
   {#if post}
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content={post.title ?? post.summary ?? post.path.slice(1)} />
+    <meta content='article' property='og:type' />
+    <meta content={post.title ?? post.summary ?? post.path.slice(1)} property='og:title' />
     {#if post.summary}
-      <meta property="og:description" content={post.summary} />
+      <meta content={post.summary} property='og:description' />
     {/if}
     {#if post.image}
-      <meta property="og:image" content={(post.image.startsWith('http') ? '' : site.protocol + site.domain) + post.image} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta content={(post.image.startsWith('http') ? '' : site.protocol + site.domain) + post.image} property='og:image' />
+      <meta content='summary_large_image' name='twitter:card' />
     {:else}
-      <meta property="og:image" content={maskable['512'].src ?? any['512'].src ?? any['192'].src} />
-      <meta name="twitter:card" content="summary" />
+      <meta content={maskable['512'].src ?? any['512'].src ?? any['192'].src} property='og:image' />
+      <meta content='summary' name='twitter:card' />
     {/if}
     {#if post.tags}
       {#each post.tags as tag}
-        <meta property="article:tag" content={tag} />
+        <meta content={tag} property='article:tag' />
       {/each}
     {/if}
-    <meta property="og:url" content={site.protocol + site.domain + post.path} />
-    <meta property="article:author" content={site.author.name} />
-    <meta property="article:published_time" content={post.published ?? post.created} />
-    <meta property="article:modified_time" content={post.updated ?? post.published ?? post.created} />
+    <meta content={site.protocol + site.domain + post.path} property='og:url' />
+    <meta content={site.author.name} property='article:author' />
+    <meta content={post.published ?? post.created} property='article:published_time' />
+    <meta content={post.updated ?? post.published ?? post.created} property='article:modified_time' />
   {:else}
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={maskable['512'].src ?? any['512'].src ?? any['192'].src} />
-    <meta property="og:description" content={site.description} />
+    <meta content='website' property='og:type' />
+    <meta content={maskable['512'].src ?? any['512'].src ?? any['192'].src} property='og:image' />
+    <meta content={site.description} property='og:description' />
     {#if page}
-      <meta property="og:title" content={page.title ?? page.path.slice(1)} />
-      <meta property="og:url" content={site.protocol + site.domain + page.path} />
+      <meta content={page.title ?? page.path.slice(1)} property='og:title' />
+      <meta content={site.protocol + site.domain + page.path} property='og:url' />
     {:else}
-      <meta property="og:title" content={site.title} />
-      <meta property="og:url" content={site.protocol + site.domain} />
+      <meta content={site.title} property='og:title' />
+      <meta content={site.protocol + site.domain} property='og:url' />
     {/if}
   {/if}
 </svelte:head>
