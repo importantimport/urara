@@ -7,7 +7,7 @@
   "homepage": "https://github.com/importantimport/urara",
   "bugs": "https://github.com/importantimport/urara/issues",
   "author": "藍+85CD",
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "build": "run-s tsc urara:build kit:build clean",
     "check": "svelte-check --tsconfig ./tsconfig.json",
