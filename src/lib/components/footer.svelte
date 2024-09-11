@@ -1,24 +1,25 @@
-<script lang="ts">
-  import { site } from '$lib/config/site'
+<script lang='ts'>
   import { footer as footerConfig } from '$lib/config/general'
-  let className: string | undefined = undefined
+  import { site } from '$lib/config/site'
+
+  let className: string | undefined
   export { className as class }
   export let sticky: boolean = false
   export let rounded: boolean = false
 </script>
 
 <footer
-  id="footer"
-  class="footer footer-center bg-base-300 text-base-content shadow-inner p-8 {rounded
+  class="footer footer-center bg-base-300 text-base-content shadow-inner p-8{rounded
     ? 'rounded-box'
-    : 'md:rounded-box'} {sticky ? 'sticky bottom-0 z-0 md:static' : ''} {className ?? ''}">
-  <div class="prose">
+    : 'md:rounded-box'} {sticky ? 'sticky bottom-0 z-0 md:static' : ''} {className ?? ''}"
+  id='footer'>
+  <div class='prose'>
     <p>
       {#if footerConfig.nav}
-        {#each footerConfig.nav as { text, link }, i}
-          <a href={link} rel="noopener noreferrer external" target="_blank">{text}</a>
+        {#each footerConfig.nav as { link, text }, i}
+          <a href={link} rel='noopener noreferrer external' target='_blank'>{text}</a>
           {#if i + 1 < footerConfig.nav.length}
-            <span class="mr-1">·</span>
+            <span class='mr-1'>·</span>
           {/if}
         {/each}
         <br />
@@ -30,11 +31,11 @@
       <br />
       Powered by
       <a
-        rel="noopener noreferrer external"
-        target="_blank"
-        class="tooltip tooltip-secondary hover:text-secondary"
-        data-tip="🌸 [Polaris] - Based on MDsveX & SvelteKit 🌸"
-        href="https://github.com/importantimport/urara">
+        class='tooltip tooltip-secondary hover:text-secondary'
+        data-tip='🌸 [Polaris] - Based on MDsveX & SvelteKit 🌸'
+        href='https://github.com/importantimport/urara'
+        rel='noopener noreferrer external'
+        target='_blank'>
         Urara
       </a>
       {#if footerConfig.html}

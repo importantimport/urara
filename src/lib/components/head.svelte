@@ -1,39 +1,40 @@
-<script lang="ts">
+<script lang='ts'>
   import { dev } from '$app/environment'
+  import OpenGraph from '$lib/components/head_opengraph.svelte'
   import { head } from '$lib/config/general'
   import { site } from '$lib/config/site'
-  import OpenGraph from '$lib/components/head_opengraph.svelte'
-  export let post: Urara.Post | undefined = undefined
-  export let page: Urara.Page | undefined = undefined
+
+  export let post: undefined | Urara.Post
+  export let page: undefined | Urara.Page
 </script>
 
 <svelte:head>
-  <meta name="author" content={site.author?.name} />
+  <meta content={site.author?.name} name='author' />
   {#if post}
-    <link rel="canonical" href={site.protocol + site.domain + post.path} />
+    <link href={site.protocol + site.domain + post.path} rel='canonical' />
     {#if post.type === 'article'}
       <title>{post.title} | {site.title}</title>
     {:else if post.type === 'note'}
       <title>{post.summary ?? post.path.slice(1)} | {site.title}</title>
     {/if}
-    {#if post.tags}<meta name="keywords" content={post.tags.join(', ')} />{/if}
-    {#if post.summary}<meta name="description" content={post.summary} />{/if}
+    {#if post.tags}<meta content={post.tags.join(', ')} name='keywords' />{/if}
+    {#if post.summary}<meta content={post.summary} name='description' />{/if}
   {:else}
-    <meta name="description" content={site.description} />
-    <meta name="keywords" content={site.keywords?.join(', ')} />
+    <meta content={site.description} name='description' />
+    <meta content={site.keywords?.join(', ')} name='keywords' />
     {#if page}
       <title>{page.title ?? page.path.slice(1)} | {site.title}</title>
-      <link rel="canonical" href={site.protocol + site.domain + page.path} />
+      <link href={site.protocol + site.domain + page.path} rel='canonical' />
     {:else}
       <title>{site.subtitle ? `${site.title} - ${site.subtitle}` : site.title}</title>
-      <link rel="canonical" href={site.protocol + site.domain} />
+      <link href={site.protocol + site.domain} rel='canonical' />
     {/if}
   {/if}
   {#if head.custom}
-    {#each head.custom({ dev, post, page }) as tag}
+    {#each head.custom({ dev, page, post }) as tag}
       {@html tag}
     {/each}
   {/if}
 </svelte:head>
 
-<OpenGraph {post} {page} />
+<OpenGraph {page} {post} />

@@ -7,5 +7,5 @@ export const hslToHex = (
   f = (n: number, k = (n + h / 30) % 12) =>
     Math.round(255 * (ll - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)))
       .toString(16)
-      .padStart(2, '0')
+      .padStart(2, '0'),
 ) => `#${f(0)}${f(8)}${f(4)}`

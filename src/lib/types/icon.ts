@@ -1,5 +1,5 @@
-export type Icon = {
-  src: string
+export interface Icon {
   sizes?: string
+  src: string
   type?: string
 }
